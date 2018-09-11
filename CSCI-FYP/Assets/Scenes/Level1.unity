@@ -472,6 +472,7 @@ MonoBehaviour:
   bulletForce: 0
   range: 10
   damage: 10
+  animator: {fileID: 0}
 --- !u!114 &1070404587
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -566,6 +567,26 @@ Rigidbody:
   m_Interpolate: 0
   m_Constraints: 112
   m_CollisionDetection: 2
+--- !u!114 &1070404593
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  m_GameObject: {fileID: 1070404584}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 3a06548c4c7510742a4a460c4da69139, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  punchSpeed: 0
+  fireHandL: {fileID: 685334132}
+  shootPoint: {fileID: 375506546}
+  bullet: {fileID: 1025034366332902, guid: dca5888f1876ca747a57f8e1a6931e27, type: 2}
+  fireHandR: {fileID: 1278878161}
+  fire: {fileID: 2109544714}
+  bulletForce: 0
+  range: 10
+  damage: 10
 --- !u!1001 &1125750420
 Prefab:
   m_ObjectHideFlags: 0
