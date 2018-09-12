@@ -25,7 +25,8 @@ public class FireBlowController : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-        bool shoot = Input.GetButton("Fire1");
+        bool shoot = (Input.GetAxisRaw("Fire1") != 0);
+        //bool shoot = Input.GetButton("Fire1");
         animator.SetBool("Punch", shoot);
         if (shoot)
         {
