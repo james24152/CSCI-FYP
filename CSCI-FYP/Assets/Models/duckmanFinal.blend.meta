@@ -235,12 +235,12 @@ ModelImporter:
       scale: {x: 1, y: 1, z: 1}
     - name: Armature
       parentName: duckmanFinal(Clone)
-      position: {x: -0, y: -0.33415353, z: 0.000000014606315}
+      position: {x: -0, y: 0.35448718, z: -0.000000015495127}
       rotation: {x: -0.7071068, y: 0, z: -0, w: 0.7071068}
       scale: {x: 1, y: 1, z: 1}
     - name: hip
       parentName: Armature
-      position: {x: 0, y: -0.000000059604645, z: 0.6757236}
+      position: {x: -0, y: 0, z: -0.037466586}
       rotation: {x: 0.50000006, y: 0.49999997, z: -0.49999997, w: 0.50000006}
       scale: {x: 1, y: 1, z: 1}
     - name: spine
@@ -315,7 +315,7 @@ ModelImporter:
       scale: {x: 1, y: 1, z: 0.99999994}
     - name: Cube
       parentName: duckmanFinal(Clone)
-      position: {x: -0, y: 0, z: 0.33415353}
+      position: {x: -0, y: 0, z: -0.35448718}
       rotation: {x: 0, y: -0, z: -0, w: 1}
       scale: {x: 1, y: 1, z: 1}
     armTwist: 0.5
