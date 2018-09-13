@@ -6582,6 +6582,16 @@ Prefab:
       propertyPath: playerCamera
       value: 
       objectReference: {fileID: 806411592}
+    - target: {fileID: 114065224947347926, guid: 8cc2b9d271e85fa4889701ae5b8971c8,
+        type: 2}
+      propertyPath: punchButton
+      value: Fire1_P4
+      objectReference: {fileID: 0}
+    - target: {fileID: 95120882692353462, guid: 8cc2b9d271e85fa4889701ae5b8971c8,
+        type: 2}
+      propertyPath: m_Controller
+      value: 
+      objectReference: {fileID: 9100000, guid: 1ac2a1891f6a2814dbcb83cbd24d5ee1, type: 2}
     m_RemovedComponents: []
   m_ParentPrefab: {fileID: 100100000, guid: 8cc2b9d271e85fa4889701ae5b8971c8, type: 2}
   m_IsPrefabParent: 0
@@ -6933,7 +6943,7 @@ Camera:
   m_NormalizedViewPortRect:
     serializedVersion: 2
     x: 0
-    y: 0.5
+    y: 0
     width: 0.5
     height: 0.5
   near clip plane: 0.3
@@ -6988,8 +6998,8 @@ MonoBehaviour:
   verticalAimingSpeed: 6
   maxVerticalAngle: 30
   minVerticalAngle: -60
-  XAxis: Analog X
-  YAxis: Analog Y
+  XAxis: Analog X_P3
+  YAxis: Analog Y_P3
 --- !u!1001 &235128194
 Prefab:
   m_ObjectHideFlags: 0
@@ -11478,8 +11488,8 @@ MonoBehaviour:
   verticalAimingSpeed: 6
   maxVerticalAngle: 30
   minVerticalAngle: -60
-  XAxis: Analog X
-  YAxis: Analog Y
+  XAxis: Analog X_P4
+  YAxis: Analog Y_P4
 --- !u!81 &806411594
 AudioListener:
   m_ObjectHideFlags: 0
@@ -11507,7 +11517,7 @@ Camera:
   m_NormalizedViewPortRect:
     serializedVersion: 2
     x: 0.5
-    y: 0.5
+    y: 0
     width: 0.5
     height: 0.5
   near clip plane: 0.3
@@ -12577,8 +12587,8 @@ MonoBehaviour:
   verticalAimingSpeed: 6
   maxVerticalAngle: 30
   minVerticalAngle: -60
-  XAxis: Analog X
-  YAxis: Analog Y
+  XAxis: Analog X_P2
+  YAxis: Analog Y_P2
 --- !u!81 &920012721
 AudioListener:
   m_ObjectHideFlags: 0
@@ -12606,7 +12616,7 @@ Camera:
   m_NormalizedViewPortRect:
     serializedVersion: 2
     x: 0.5
-    y: 0
+    y: 0.5
     width: 0.5
     height: 0.5
   near clip plane: 0.3
@@ -13519,8 +13529,8 @@ MonoBehaviour:
   verticalAimingSpeed: 6
   maxVerticalAngle: 30
   minVerticalAngle: -60
-  XAxis: Analog X
-  YAxis: Analog Y
+  XAxis: Analog X_P1
+  YAxis: Analog Y_P1
 --- !u!81 &1024532229
 AudioListener:
   m_ObjectHideFlags: 0
@@ -13548,7 +13558,7 @@ Camera:
   m_NormalizedViewPortRect:
     serializedVersion: 2
     x: 0
-    y: 0
+    y: 0.5
     width: 0.5
     height: 0.5
   near clip plane: 0.3
@@ -13742,6 +13752,21 @@ Prefab:
       propertyPath: playerCamera
       value: 
       objectReference: {fileID: 1024532227}
+    - target: {fileID: 95654149918081676, guid: b811bac26e56bba4db5fdf16ac3c9ae7,
+        type: 2}
+      propertyPath: m_Controller
+      value: 
+      objectReference: {fileID: 9100000, guid: 1ac2a1891f6a2814dbcb83cbd24d5ee1, type: 2}
+    - target: {fileID: 95654149918081676, guid: b811bac26e56bba4db5fdf16ac3c9ae7,
+        type: 2}
+      propertyPath: m_ApplyRootMotion
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 114165856677063542, guid: b811bac26e56bba4db5fdf16ac3c9ae7,
+        type: 2}
+      propertyPath: punchButton
+      value: Fire1_P1
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_ParentPrefab: {fileID: 100100000, guid: b811bac26e56bba4db5fdf16ac3c9ae7, type: 2}
   m_IsPrefabParent: 0
@@ -20227,6 +20252,16 @@ Prefab:
       propertyPath: playerCamera
       value: 
       objectReference: {fileID: 226556697}
+    - target: {fileID: 114636926706629076, guid: 130d10b41ada2a84d8eb0606a76a2a24,
+        type: 2}
+      propertyPath: punchButton
+      value: Fire1_P3
+      objectReference: {fileID: 0}
+    - target: {fileID: 95254058471459180, guid: 130d10b41ada2a84d8eb0606a76a2a24,
+        type: 2}
+      propertyPath: m_Controller
+      value: 
+      objectReference: {fileID: 9100000, guid: 1ac2a1891f6a2814dbcb83cbd24d5ee1, type: 2}
     m_RemovedComponents: []
   m_ParentPrefab: {fileID: 100100000, guid: 130d10b41ada2a84d8eb0606a76a2a24, type: 2}
   m_IsPrefabParent: 0
@@ -25195,6 +25230,16 @@ Prefab:
       propertyPath: playerCamera
       value: 
       objectReference: {fileID: 920012719}
+    - target: {fileID: 114013758029253808, guid: ca2c4f6fe32d1584d95e751bbd3f140f,
+        type: 2}
+      propertyPath: punchButton
+      value: Fire1_P2
+      objectReference: {fileID: 0}
+    - target: {fileID: 95379622398942352, guid: ca2c4f6fe32d1584d95e751bbd3f140f,
+        type: 2}
+      propertyPath: m_Controller
+      value: 
+      objectReference: {fileID: 9100000, guid: 1ac2a1891f6a2814dbcb83cbd24d5ee1, type: 2}
     m_RemovedComponents: []
   m_ParentPrefab: {fileID: 100100000, guid: ca2c4f6fe32d1584d95e751bbd3f140f, type: 2}
   m_IsPrefabParent: 0
@@ -26236,23 +26281,6 @@ Prefab:
     m_RemovedComponents: []
   m_ParentPrefab: {fileID: 100100000, guid: f950b0ae81304e64297da5068592b6ef, type: 2}
   m_IsPrefabParent: 0
---- !u!1 &1754693582 stripped
-GameObject:
-  m_PrefabParentObject: {fileID: 1762008793476488, guid: 130d10b41ada2a84d8eb0606a76a2a24,
-    type: 2}
-  m_PrefabInternal: {fileID: 1198004694}
---- !u!65 &1754693592
-BoxCollider:
-  m_ObjectHideFlags: 0
-  m_PrefabParentObject: {fileID: 0}
-  m_PrefabInternal: {fileID: 0}
-  m_GameObject: {fileID: 1754693582}
-  m_Material: {fileID: 0}
-  m_IsTrigger: 1
-  m_Enabled: 1
-  serializedVersion: 2
-  m_Size: {x: 1, y: 1, z: 1}
-  m_Center: {x: 0, y: 0, z: 0}
 --- !u!1001 &1758276660
 Prefab:
   m_ObjectHideFlags: 0

@@ -14,6 +14,8 @@ public class FireBlowController : MonoBehaviour
     public float bulletForce;
     public float range = 10;
     public float damage = 10;
+    public string punchButton;
+    
 
     Animator animator;
     // Use this for initialization
@@ -25,8 +27,9 @@ public class FireBlowController : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-        bool shoot = (Input.GetAxisRaw("Fire1") != 0);
-        //bool shoot = Input.GetButton("Fire1");
+        bool shoot = (Input.GetAxis(punchButton) != 0);
+        print("shoot is" + punchButton + "and" + Input.GetAxis(punchButton));
+        //bool shoot = Input.GetButton(punchButton);
         animator.SetBool("Punch", shoot);
         if (shoot)
         {
