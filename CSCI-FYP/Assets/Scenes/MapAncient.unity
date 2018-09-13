@@ -6592,6 +6592,11 @@ Prefab:
       propertyPath: m_Controller
       value: 
       objectReference: {fileID: 9100000, guid: 1ac2a1891f6a2814dbcb83cbd24d5ee1, type: 2}
+    - target: {fileID: 114238505069414264, guid: 8cc2b9d271e85fa4889701ae5b8971c8,
+        type: 2}
+      propertyPath: jumpButton
+      value: Jump_P4
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_ParentPrefab: {fileID: 100100000, guid: 8cc2b9d271e85fa4889701ae5b8971c8, type: 2}
   m_IsPrefabParent: 0
@@ -13767,6 +13772,11 @@ Prefab:
       propertyPath: punchButton
       value: Fire1_P1
       objectReference: {fileID: 0}
+    - target: {fileID: 114557168602210864, guid: b811bac26e56bba4db5fdf16ac3c9ae7,
+        type: 2}
+      propertyPath: jumpButton
+      value: Jump_P1
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_ParentPrefab: {fileID: 100100000, guid: b811bac26e56bba4db5fdf16ac3c9ae7, type: 2}
   m_IsPrefabParent: 0
@@ -20262,6 +20272,11 @@ Prefab:
       propertyPath: m_Controller
       value: 
       objectReference: {fileID: 9100000, guid: 1ac2a1891f6a2814dbcb83cbd24d5ee1, type: 2}
+    - target: {fileID: 114999324396983402, guid: 130d10b41ada2a84d8eb0606a76a2a24,
+        type: 2}
+      propertyPath: jumpButton
+      value: Jump_P3
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_ParentPrefab: {fileID: 100100000, guid: 130d10b41ada2a84d8eb0606a76a2a24, type: 2}
   m_IsPrefabParent: 0
@@ -25240,6 +25255,11 @@ Prefab:
       propertyPath: m_Controller
       value: 
       objectReference: {fileID: 9100000, guid: 1ac2a1891f6a2814dbcb83cbd24d5ee1, type: 2}
+    - target: {fileID: 114562592588744072, guid: ca2c4f6fe32d1584d95e751bbd3f140f,
+        type: 2}
+      propertyPath: jumpButton
+      value: Jump_P2
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_ParentPrefab: {fileID: 100100000, guid: ca2c4f6fe32d1584d95e751bbd3f140f, type: 2}
   m_IsPrefabParent: 0

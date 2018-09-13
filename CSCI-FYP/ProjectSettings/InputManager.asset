@@ -108,7 +108,7 @@ InputManager:
     negativeButton: 
     positiveButton: 
     altNegativeButton: 
-    altPositiveButton: joystick button 0
+    altPositiveButton: joystick 1 button 0
     gravity: 1000
     dead: 0.001
     sensitivity: 1000
@@ -124,7 +124,7 @@ InputManager:
     negativeButton: 
     positiveButton: 
     altNegativeButton: 
-    altPositiveButton: joystick button 0
+    altPositiveButton: joystick 6 button 0
     gravity: 1000
     dead: 0.001
     sensitivity: 1000
@@ -132,7 +132,7 @@ InputManager:
     invert: 0
     type: 0
     axis: 0
-    joyNum: 2
+    joyNum: 6
   - serializedVersion: 3
     m_Name: Jump_P3
     descriptiveName: 
@@ -140,7 +140,7 @@ InputManager:
     negativeButton: 
     positiveButton: 
     altNegativeButton: 
-    altPositiveButton: joystick button 0
+    altPositiveButton: joystick 7 button 0
     gravity: 1000
     dead: 0.001
     sensitivity: 1000
@@ -148,7 +148,7 @@ InputManager:
     invert: 0
     type: 0
     axis: 0
-    joyNum: 3
+    joyNum: 7
   - serializedVersion: 3
     m_Name: Jump_P4
     descriptiveName: 
@@ -156,7 +156,7 @@ InputManager:
     negativeButton: 
     positiveButton: 
     altNegativeButton: 
-    altPositiveButton: joystick button 0
+    altPositiveButton: joystick 5 button 0
     gravity: 1000
     dead: 0.001
     sensitivity: 1000
@@ -164,7 +164,7 @@ InputManager:
     invert: 0
     type: 0
     axis: 0
-    joyNum: 4
+    joyNum: 5
   - serializedVersion: 3
     m_Name: Sprint
     descriptiveName: 
@@ -244,7 +244,7 @@ InputManager:
     invert: 0
     type: 2
     axis: 3
-    joyNum: 2
+    joyNum: 6
   - serializedVersion: 3
     m_Name: Analog X_P3
     descriptiveName: 
@@ -260,7 +260,7 @@ InputManager:
     invert: 0
     type: 2
     axis: 3
-    joyNum: 3
+    joyNum: 7
   - serializedVersion: 3
     m_Name: Analog X_P4
     descriptiveName: 
@@ -324,7 +324,7 @@ InputManager:
     invert: 1
     type: 2
     axis: 4
-    joyNum: 2
+    joyNum: 6
   - serializedVersion: 3
     m_Name: Analog Y_P3
     descriptiveName: 
@@ -340,7 +340,7 @@ InputManager:
     invert: 1
     type: 2
     axis: 4
-    joyNum: 3
+    joyNum: 7
   - serializedVersion: 3
     m_Name: Analog Y_P4
     descriptiveName: 
