@@ -15,6 +15,8 @@ public class FireBlowController : MonoBehaviour
     public float range = 10;
     public float damage = 10;
     public string punchButton;
+
+    private MoveBehaviour moveScript;
     
 
     Animator animator;
@@ -22,28 +24,30 @@ public class FireBlowController : MonoBehaviour
     void Start()
     {
         animator = GetComponent<Animator>();
+        moveScript = GetComponent<MoveBehaviour>();
     }
 
     // Update is called once per frame
     void Update()
     {
         bool shoot = (Input.GetAxis(punchButton) != 0);
-        print("shoot is" + punchButton + "and" + Input.GetAxis(punchButton));
-        //bool shoot = Input.GetButton(punchButton);
         animator.SetBool("Punch", shoot);
-        if (shoot)
+
+        if (animator.GetCurrentAnimatorStateInfo(0).IsName("Cast") || animator.GetCurrentAnimatorStateInfo(0).IsName("Fire"))
         {
-            Shoot();
+            moveScript.walkSpeed = 1.5f;
+            moveScript.runSpeed = 1.5f;
+        }
+        else
+        {
+            moveScript.walkSpeed = 4;
+            moveScript.runSpeed = 4;
         }
 
-        if (animator.GetCurrentAnimatorStateInfo(0).IsName("Shoot"))
-        {
-            transform.Translate(transform.forward * punchSpeed * Time.deltaTime, Space.World);
-        }
 
     }
 
-    void Shoot()
+    void Cast()
     {
         fireHandL.Play();
         fireHandR.Play();

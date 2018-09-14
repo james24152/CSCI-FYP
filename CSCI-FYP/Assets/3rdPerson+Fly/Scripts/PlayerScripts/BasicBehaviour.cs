@@ -9,8 +9,10 @@ public class BasicBehaviour : MonoBehaviour
 	public float turnSmoothing = 0.06f;                   // Speed of turn when moving to match camera facing.
 	public float sprintFOV = 100f;                        // the FOV to use on the camera when player is sprinting.
 	public string sprintButton = "Sprint";                // Default sprint button input name.
+    public string horizontal = "Horizontal";
+    public string vertical = "Vertical";
 
-	private float h;                                      // Horizontal Axis.
+    private float h;                                      // Horizontal Axis.
 	private float v;                                      // Vertical Axis.
 	private int currentBehaviour;                         // Reference to the current player behaviour.
 	private int defaultBehaviour;                         // The default behaviour of the player when any other is not active.
@@ -63,8 +65,8 @@ public class BasicBehaviour : MonoBehaviour
 	void Update()
 	{
 		// Store the input axes.
-		h = Input.GetAxis("Horizontal");
-		v = Input.GetAxis("Vertical");
+		h = Input.GetAxis(horizontal);
+		v = Input.GetAxis(vertical);
 
 		// Set the input axes on the Animator Controller.
 		anim.SetFloat(hFloat, h, 0.1f, Time.deltaTime);
