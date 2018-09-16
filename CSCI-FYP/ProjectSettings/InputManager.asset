@@ -108,7 +108,7 @@ InputManager:
     negativeButton: 
     positiveButton: 
     altNegativeButton: 
-    altPositiveButton: joystick 4 button 0
+    altPositiveButton: joystick button 0
     gravity: 1000
     dead: 0.001
     sensitivity: 1000
@@ -124,7 +124,7 @@ InputManager:
     negativeButton: 
     positiveButton: 
     altNegativeButton: 
-    altPositiveButton: joystick 2 button 0
+    altPositiveButton: joystick button 0
     gravity: 1000
     dead: 0.001
     sensitivity: 1000
@@ -140,7 +140,7 @@ InputManager:
     negativeButton: 
     positiveButton: 
     altNegativeButton: 
-    altPositiveButton: joystick 6 button 0
+    altPositiveButton: joystick button 0
     gravity: 1000
     dead: 0.001
     sensitivity: 1000
@@ -156,7 +156,7 @@ InputManager:
     negativeButton: 
     positiveButton: 
     altNegativeButton: 
-    altPositiveButton: joystick 5 button 0
+    altPositiveButton: joystick button 0
     gravity: 1000
     dead: 0.001
     sensitivity: 1000
@@ -228,7 +228,7 @@ InputManager:
     invert: 0
     type: 2
     axis: 3
-    joyNum: 4
+    joyNum: 0
   - serializedVersion: 3
     m_Name: Analog X_P2
     descriptiveName: 
@@ -244,7 +244,7 @@ InputManager:
     invert: 0
     type: 2
     axis: 3
-    joyNum: 2
+    joyNum: 0
   - serializedVersion: 3
     m_Name: Analog X_P3
     descriptiveName: 
@@ -260,7 +260,7 @@ InputManager:
     invert: 0
     type: 2
     axis: 3
-    joyNum: 6
+    joyNum: 0
   - serializedVersion: 3
     m_Name: Analog X_P4
     descriptiveName: 
@@ -276,7 +276,7 @@ InputManager:
     invert: 0
     type: 2
     axis: 3
-    joyNum: 5
+    joyNum: 0
   - serializedVersion: 3
     m_Name: Mouse Y
     descriptiveName: 
@@ -308,7 +308,7 @@ InputManager:
     invert: 1
     type: 2
     axis: 4
-    joyNum: 4
+    joyNum: 0
   - serializedVersion: 3
     m_Name: Analog Y_P2
     descriptiveName: 
@@ -324,7 +324,7 @@ InputManager:
     invert: 1
     type: 2
     axis: 4
-    joyNum: 2
+    joyNum: 0
   - serializedVersion: 3
     m_Name: Analog Y_P3
     descriptiveName: 
@@ -340,7 +340,7 @@ InputManager:
     invert: 1
     type: 2
     axis: 4
-    joyNum: 6
+    joyNum: 0
   - serializedVersion: 3
     m_Name: Analog Y_P4
     descriptiveName: 
@@ -356,7 +356,7 @@ InputManager:
     invert: 1
     type: 2
     axis: 4
-    joyNum: 5
+    joyNum: 0
   - serializedVersion: 3
     m_Name: Mouse ScrollWheel
     descriptiveName: 
@@ -388,7 +388,7 @@ InputManager:
     invert: 0
     type: 2
     axis: 0
-    joyNum: 4
+    joyNum: 0
   - serializedVersion: 3
     m_Name: Horizontal_P2
     descriptiveName: 
@@ -404,7 +404,7 @@ InputManager:
     invert: 0
     type: 2
     axis: 0
-    joyNum: 2
+    joyNum: 0
   - serializedVersion: 3
     m_Name: Horizontal_P3
     descriptiveName: 
@@ -420,7 +420,7 @@ InputManager:
     invert: 0
     type: 2
     axis: 0
-    joyNum: 6
+    joyNum: 0
   - serializedVersion: 3
     m_Name: Horizontal_P4
     descriptiveName: 
@@ -436,7 +436,7 @@ InputManager:
     invert: 0
     type: 2
     axis: 0
-    joyNum: 5
+    joyNum: 0
   - serializedVersion: 3
     m_Name: Vertical_P1
     descriptiveName: 
@@ -452,7 +452,7 @@ InputManager:
     invert: 1
     type: 2
     axis: 1
-    joyNum: 4
+    joyNum: 0
   - serializedVersion: 3
     m_Name: Vertical_P2
     descriptiveName: 
@@ -468,7 +468,7 @@ InputManager:
     invert: 1
     type: 2
     axis: 1
-    joyNum: 2
+    joyNum: 0
   - serializedVersion: 3
     m_Name: Vertical_P3
     descriptiveName: 
@@ -484,7 +484,7 @@ InputManager:
     invert: 1
     type: 2
     axis: 1
-    joyNum: 6
+    joyNum: 0
   - serializedVersion: 3
     m_Name: Vertical_P4
     descriptiveName: 
@@ -500,7 +500,7 @@ InputManager:
     invert: 1
     type: 2
     axis: 1
-    joyNum: 5
+    joyNum: 0
   - serializedVersion: 3
     m_Name: Fire1
     descriptiveName: 
@@ -548,7 +548,7 @@ InputManager:
     invert: 0
     type: 2
     axis: 9
-    joyNum: 2
+    joyNum: 0
   - serializedVersion: 3
     m_Name: Fire1_P3
     descriptiveName: 
@@ -564,7 +564,7 @@ InputManager:
     invert: 0
     type: 2
     axis: 9
-    joyNum: 6
+    joyNum: 0
   - serializedVersion: 3
     m_Name: Fire1_P4
     descriptiveName: 
@@ -580,7 +580,7 @@ InputManager:
     invert: 0
     type: 2
     axis: 9
-    joyNum: 5
+    joyNum: 0
   - serializedVersion: 3
     m_Name: Fire2
     descriptiveName: 
