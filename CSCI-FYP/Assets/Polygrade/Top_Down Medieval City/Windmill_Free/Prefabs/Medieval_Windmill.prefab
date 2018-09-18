@@ -38,6 +38,7 @@ GameObject:
   - component: {fileID: 4032395409819742}
   - component: {fileID: 33286050601830500}
   - component: {fileID: 23258267877575044}
+  - component: {fileID: 64829707460991420}
   m_Layer: 0
   m_Name: Medieval_Windmill
   m_TagString: Untagged
@@ -160,7 +161,7 @@ Transform:
   m_PrefabInternal: {fileID: 100100000}
   m_GameObject: {fileID: 1636781234506520}
   m_LocalRotation: {x: 0.00000004214685, y: 0.7071068, z: -0.00000004214685, w: 0.7071068}
-  m_LocalPosition: {x: 1.3697, y: 5.60752, z: 0}
+  m_LocalPosition: {x: 1.3697, y: 5, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children: []
   m_Father: {fileID: 4032395409819742}
@@ -376,6 +377,20 @@ MeshFilter:
   m_PrefabInternal: {fileID: 100100000}
   m_GameObject: {fileID: 1636781234506520}
   m_Mesh: {fileID: 4300006, guid: b4985f90ce1d8bc46bdeb800679c7363, type: 3}
+--- !u!64 &64829707460991420
+MeshCollider:
+  m_ObjectHideFlags: 1
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 100100000}
+  m_GameObject: {fileID: 1335958607354298}
+  m_Material: {fileID: 0}
+  m_IsTrigger: 0
+  m_Enabled: 1
+  serializedVersion: 3
+  m_Convex: 0
+  m_CookingOptions: 14
+  m_SkinWidth: 0.01
+  m_Mesh: {fileID: 4300000, guid: b4985f90ce1d8bc46bdeb800679c7363, type: 3}
 --- !u!114 &114938031293677050
 MonoBehaviour:
   m_ObjectHideFlags: 1
@@ -387,3 +402,4 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 45ad713422f6a4443ac8543cc4d01bd6, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  spinSpeed: 10
