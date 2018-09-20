@@ -15,6 +15,7 @@ public class FireBlowController : MonoBehaviour
     public float range = 10;
     public float damage = 10;
     public string punchButton;
+    public Camera cam;
 
     private MoveBehaviour moveScript;
     
@@ -55,7 +56,11 @@ public class FireBlowController : MonoBehaviour
 
     void Fire()
     {
-        /*GameObject tempBullet;
+        fire.Play();
+    }
+    void FireBear()
+    {
+        GameObject tempBullet;
         tempBullet = Instantiate(bullet, shootPoint.transform.position, shootPoint.transform.rotation) as GameObject;
 
         tempBullet.transform.Rotate(Vector3.back * 90);
@@ -63,9 +68,9 @@ public class FireBlowController : MonoBehaviour
         Rigidbody tempRigid;
         tempRigid = tempBullet.GetComponent<Rigidbody>();
 
-        tempRigid.AddForce(transform.forward * bulletForce);
-        */
-        fire.Play();
+        tempRigid.AddForce(cam.transform.forward * bulletForce);
+        
+        //fire.Play();
 
     }
 }

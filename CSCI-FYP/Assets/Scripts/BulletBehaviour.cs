@@ -15,14 +15,15 @@ public class BulletBehaviour : MonoBehaviour {
     private void OnCollisionEnter(Collision collision)
     {
         hit = collision.collider.gameObject;
-        if (hit.CompareTag("Target")) {
+        /*if (hit.CompareTag("Target")) {
             Target target = hit.GetComponent<Target>();
             target.TakeDamage(damage);
             tempRigid = hit.GetComponent<Rigidbody>();
             tempRigid.AddForce(-collision.contacts[0].normal * impactForce);
-        }
-        if (!hit.CompareTag("Player"))
+        }*/
+        if (!hit.CompareTag("EarthEve"))
         {
+            Debug.Log(hit);
             impactGO = Instantiate(explosion, collision.contacts[0].point, Quaternion.LookRotation(collision.contacts[0].normal));
             Destroy(gameObject);
             Destroy(impactGO, 2f);
