@@ -16,6 +16,7 @@ public class MoveBehaviour : GenericBehaviour
     private float speedSmoothVelocity;
     private int jumpBool;                           // Animator variable related to jumping.
 	private int groundedBool;                       // Animator variable related to whether or not the player is on ground.
+    private int jumpButtonBool;
     private int flyBool;
     private bool jump;                              // Boolean to determine whether or not the player started a jump.
 	private bool isColliding;                       // Boolean to determine if the player has collided with an obstacle.
@@ -25,7 +26,8 @@ public class MoveBehaviour : GenericBehaviour
 	{
 		// Set up the references.
 		jumpBool = Animator.StringToHash("Jump");
-		groundedBool = Animator.StringToHash("Grounded");
+        jumpButtonBool = Animator.StringToHash("JumpButton");
+        groundedBool = Animator.StringToHash("Grounded");
         flyBool = Animator.StringToHash("Fly");
         behaviourManager.GetAnim.SetBool (groundedBool, true);
 
@@ -43,7 +45,15 @@ public class MoveBehaviour : GenericBehaviour
 		{
 			jump = true;
 		}
-	}
+        if (Input.GetButton(jumpButton))
+        {
+            behaviourManager.GetAnim.SetBool(jumpButtonBool, true);
+        }
+        else
+        {
+            behaviourManager.GetAnim.SetBool(jumpButtonBool, false);
+        }
+    }
 
 	// LocalFixedUpdate overrides the virtual function of the base class.
 	public override void LocalFixedUpdate()
@@ -52,53 +62,64 @@ public class MoveBehaviour : GenericBehaviour
 		MovementManagement(behaviourManager.GetH, behaviourManager.GetV);
 
         // Call the jump manager.
-		JumpManagement();
+        JumpManagement();
 	}
 
 	// Execute the idle and walk/run jump movements.
 	void JumpManagement()
 	{
-		// Start a new jump.
-		if (jump && !behaviourManager.GetAnim.GetBool(jumpBool) && behaviourManager.IsGrounded())
+        // Is already jumping?
+        if (behaviourManager.GetAnim.GetBool(jumpBool) && !behaviourManager.IsGrounded())
+        {
+            // Keep forward movement while in the air.
+            if (!behaviourManager.IsGrounded() && !isColliding && behaviourManager.GetTempLockStatus() && !behaviourManager.GetAnim.GetBool(flyBool))
+            {
+                behaviourManager.GetRigidBody.AddForce(transform.forward * jumpIntertialForce * Physics.gravity.magnitude * sprintSpeed, ForceMode.Acceleration);
+            }
+            // Has landed?
+            if (!behaviourManager.IsGrounded())
+            {
+                behaviourManager.GetAnim.SetBool(groundedBool, true);
+                // Change back player friction to default.
+                GetComponent<CapsuleCollider>().material.dynamicFriction = 0.6f;
+                GetComponent<CapsuleCollider>().material.staticFriction = 0.6f;
+                // Set jump related parameters.
+                jump = false;
+                behaviourManager.GetAnim.SetBool(jumpBool, false);
+                behaviourManager.UnlockTempBehaviour(this.behaviourCode);
+            }
+        }
+        // Start a new jump.
+        else if (jump && !behaviourManager.GetAnim.GetBool(jumpBool) && behaviourManager.IsGrounded())
 		{
-			// Set jump related parameters.
-			behaviourManager.LockTempBehaviour(this.behaviourCode);
+            // Set jump related parameters.
+            behaviourManager.LockTempBehaviour(this.behaviourCode);
 			behaviourManager.GetAnim.SetBool(jumpBool, true);
-			// Is a locomotion jump?
-			//if(behaviourManager.GetAnim.GetFloat(speedFloat) > 0.1)
-			//{
-				// Temporarily change player friction to pass through obstacles.
-				GetComponent<CapsuleCollider>().material.dynamicFriction = 0f;
+            // Is a locomotion jump?
+            if (behaviourManager.GetAnim.GetFloat(speedFloat) > 0.1)
+			{
+                // Temporarily change player friction to pass through obstacles.
+                GetComponent<CapsuleCollider>().material.dynamicFriction = 0f;
 				GetComponent<CapsuleCollider>().material.staticFriction = 0f;
 				// Set jump vertical impulse velocity.
 				float velocity = 2f * Mathf.Abs(Physics.gravity.y) * jumpHeight;
 				velocity = Mathf.Sqrt(velocity);
                 behaviourManager.GetRigidBody.AddForce(Vector3.up * velocity, ForceMode.VelocityChange);
-			//}
+			}
 
 		}
-		// Is already jumping?
-		else if (behaviourManager.GetAnim.GetBool(jumpBool))
-		{
-			// Keep forward movement while in the air.
-			if (!behaviourManager.IsGrounded() && !isColliding && behaviourManager.GetTempLockStatus() && !behaviourManager.GetAnim.GetBool(flyBool))
-			{
-				behaviourManager.GetRigidBody.AddForce(transform.forward * jumpIntertialForce * Physics.gravity.magnitude * sprintSpeed, ForceMode.Acceleration);
-			}
-			// Has landed?
-			if ((behaviourManager.GetRigidBody.velocity.y < 0) && behaviourManager.IsGrounded())
-			{
-				behaviourManager.GetAnim.SetBool(groundedBool, true);
-				// Change back player friction to default.
-				GetComponent<CapsuleCollider>().material.dynamicFriction = 0.6f;
-				GetComponent<CapsuleCollider>().material.staticFriction = 0.6f;
-				// Set jump related parameters.
-				jump = false;
-				behaviourManager.GetAnim.SetBool(jumpBool, false);
-				behaviourManager.UnlockTempBehaviour(this.behaviourCode);
-			}
-		}
 	}
+
+    void IdleJump()
+    {
+        // Temporarily change player friction to pass through obstacles.
+        GetComponent<CapsuleCollider>().material.dynamicFriction = 0f;
+        GetComponent<CapsuleCollider>().material.staticFriction = 0f;
+        // Set jump vertical impulse velocity.
+        float velocity = 2f * Mathf.Abs(Physics.gravity.y) * jumpHeight;
+        velocity = Mathf.Sqrt(velocity);
+        behaviourManager.GetRigidBody.AddForce(Vector3.up * velocity, ForceMode.VelocityChange);
+    }
 
 	// Deal with the basic player movement
 	void MovementManagement(float horizontal, float vertical)
