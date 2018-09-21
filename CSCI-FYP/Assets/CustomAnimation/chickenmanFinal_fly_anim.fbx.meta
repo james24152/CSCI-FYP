@@ -126,7 +126,23 @@ ModelImporter:
       mirror: 0
       bodyMask: 01000000010000000100000001000000010000000100000001000000010000000100000001000000010000000100000001000000
       curves: []
-      events: []
+      events:
+      - time: 0.24840577
+        functionName: Activate
+        data: 
+        objectReferenceParameter: {fileID: 11500000, guid: 95dace5331ba3f846aa7ba2abd656c1a,
+          type: 3}
+        floatParameter: 0
+        intParameter: 0
+        messageOptions: 0
+      - time: 0.9523112
+        functionName: Drag
+        data: 
+        objectReferenceParameter: {fileID: 11500000, guid: 95dace5331ba3f846aa7ba2abd656c1a,
+          type: 3}
+        floatParameter: 0
+        intParameter: 0
+        messageOptions: 0
       transformMask: []
       maskType: 3
       maskSource: {instanceID: 0}
@@ -156,7 +172,7 @@ ModelImporter:
       curves: []
       events:
       - time: 0
-        functionName: Activate
+        functionName: Stay
         data: 
         objectReferenceParameter: {fileID: 11500000, guid: 95dace5331ba3f846aa7ba2abd656c1a,
           type: 3}

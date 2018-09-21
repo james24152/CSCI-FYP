@@ -88,7 +88,10 @@ public class BasicBehaviour : MonoBehaviour
 		}
 		// Set the grounded test on the Animator Controller.
 		anim.SetBool(groundedBool, IsGrounded());
-	}
+
+        if (IsGrounded())
+            GetRigidBody.drag = 0;
+    }
 
 	// Call the FixedUpdate functions of the active or overriding behaviours.
 	void FixedUpdate()

@@ -9649,7 +9649,9 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 95dace5331ba3f846aa7ba2abd656c1a, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  height: 100
+  height: 40
+  stayHeight: 1
+  drag: 5
 --- !u!4 &496970557 stripped
 Transform:
   m_PrefabParentObject: {fileID: 4628409827923012, guid: c60839d5374ca364a96378433d932845,
