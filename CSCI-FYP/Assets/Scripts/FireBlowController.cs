@@ -20,7 +20,7 @@ public class FireBlowController : MonoBehaviour
     private MoveBehaviour moveScript;
     
 
-    Animator animator;
+    private Animator animator;
     // Use this for initialization
     void Start()
     {
