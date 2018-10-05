@@ -11,6 +11,7 @@ public class BasicBehaviour : MonoBehaviour
 	public string sprintButton = "Sprint";                // Default sprint button input name.
     public string horizontal = "Horizontal";
     public string vertical = "Vertical";
+    public LayerMask mask;
 
     private float h;                                      // Horizontal Axis.
 	private float v;                                      // Vertical Axis.
@@ -86,7 +87,7 @@ public class BasicBehaviour : MonoBehaviour
 			camScript.ResetFOV();
 			changedFOV = false;
 		}
-		// Set the grounded test on the Animator Controller.
+        // Set the grounded test on the Animator Controller.
 		anim.SetBool(groundedBool, IsGrounded());
 
         if (IsGrounded())
@@ -327,7 +328,7 @@ public class BasicBehaviour : MonoBehaviour
 	public bool IsGrounded()
 	{
 		Ray ray = new Ray(this.transform.position + Vector3.up * 2 * colExtents.x, Vector3.down);
-		return Physics.SphereCast(ray, colExtents.x, colExtents.x + 0.2f);
+		return Physics.SphereCast(ray, colExtents.x, colExtents.x + 0.2f, mask);
 	}
 }
 

@@ -11,7 +11,6 @@ public class FlyBehaviour : GenericBehaviour
 	private int flyBool;                          // Animator variable related to flying.
 	private bool fly = false;                     // Boolean to determine whether or not the player activated fly mode.
 	private CapsuleCollider col;                  // Reference to the player capsulle collider.
-
 	// Start is always called after any Awake functions.
 	void Start()
 	{
@@ -20,7 +19,7 @@ public class FlyBehaviour : GenericBehaviour
 		col = this.GetComponent<CapsuleCollider>();
 		// Subscribe this behaviour on the manager.
 		behaviourManager.SubscribeBehaviour(this);
-	}
+    }
 
 	// Update is used to set features regardless the active behaviour.
 	void Update()
