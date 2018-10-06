@@ -108,7 +108,7 @@ AnimatorController:
   - serializedVersion: 5
     m_Name: Swim
     m_StateMachine: {fileID: 1107381620579897832}
-    m_Mask: {fileID: 31900000, guid: ddd4bdfae9cedc141b6381ad4bf53a25, type: 2}
+    m_Mask: {fileID: 0}
     m_Motions: []
     m_Behaviours: []
     m_BlendingMode: 0

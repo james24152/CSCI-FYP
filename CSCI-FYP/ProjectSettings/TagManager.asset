@@ -5,6 +5,11 @@ TagManager:
   serializedVersion: 2
   tags:
   - EarthEve
+  - Water
+  - FireAttack
+  - WaterAttack
+  - WindAttack
+  - MudAttack
   layers:
   - Default
   - TransparentFX
