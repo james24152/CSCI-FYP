@@ -10,6 +10,7 @@ TagManager:
   - WaterAttack
   - WindAttack
   - MudAttack
+  - bridgeButton
   layers:
   - Default
   - TransparentFX

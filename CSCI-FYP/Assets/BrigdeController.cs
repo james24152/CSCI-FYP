@@ -8,8 +8,8 @@ public class BrigdeController : MonoBehaviour {
     private Vector3 targetPosition;
     // Use this for initialization
     void Start () {
-        print("hello");
-		targetPosition = new Vector3(button.transform.position.x, button.transform.position.y-0.1f, button.transform.position.z);
+        
+		targetPosition = new Vector3(transform.position.x, transform.position.y-0.1f, transform.position.z);
 	}
 	
 	// Update is called once per frame
@@ -17,5 +17,19 @@ public class BrigdeController : MonoBehaviour {
 		
 	}
 
-   
+    private void OnCollisionEnter(Collision collision)
+    {
+
+        
+            print(collision.gameObject);
+            print("hi");
+
+
+
+        
+           
+    }
+
+  
+
 }
