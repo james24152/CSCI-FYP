@@ -1,11 +1,11 @@
 ﻿using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using XboxCtrlrInput;
 
 public class FireBlowController : MonoBehaviour
 {
-
-    public float punchSpeed = 0;
+    public XboxController joystick;
     public ParticleSystem fireHandL;
     public GameObject shootPoint;
     public GameObject bullet;
@@ -14,7 +14,7 @@ public class FireBlowController : MonoBehaviour
     public float bulletForce;
     public float range = 10;
     public float damage = 10;
-    public string punchButton;
+    public XboxAxis punchButton;
     public Camera cam;
 
     private MoveBehaviour moveScript;
@@ -31,7 +31,7 @@ public class FireBlowController : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-        bool shoot = (Input.GetAxis(punchButton) != 0);
+        bool shoot = (XCI.GetAxis(punchButton, joystick) != 0);
         animator.SetBool("Punch", shoot);
 
         if (animator.GetCurrentAnimatorStateInfo(0).IsName("Cast") || animator.GetCurrentAnimatorStateInfo(0).IsName("Fire"))

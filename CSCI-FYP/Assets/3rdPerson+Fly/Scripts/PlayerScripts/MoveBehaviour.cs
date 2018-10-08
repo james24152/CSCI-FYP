@@ -1,14 +1,16 @@
 ﻿using UnityEngine;
+using XboxCtrlrInput;
 
 // MoveBehaviour inherits from GenericBehaviour. This class corresponds to basic walk and run behaviour, it is the default behaviour.
 public class MoveBehaviour : GenericBehaviour
 {
+    public XboxController joystick;
     public float walkSpeed = 0.15f;                 // Default walk speed.
     public float runSpeed = 1.0f;                   // Default run speed.
     public float sprintSpeed = 2.0f;                // Default sprint speed.
     public float animSpeedDampTime = 0.1f;              // Default damp time to change the animations based on current speed.
     public float speedDampTime = 0.1f;
-    public string jumpButton = "Jump";              // Default jump button.
+    public XboxButton jumpButton;              // Default jump button.
 	public float jumpHeight = 1.5f;                 // Default jump height.
 	public float jumpIntertialForce = 5f;           // Default horizontal inertial force when jumping.
 
@@ -41,11 +43,11 @@ public class MoveBehaviour : GenericBehaviour
 	void Update ()
 	{
 		// Get jump input.
-		if (!jump && Input.GetButtonDown(jumpButton) && behaviourManager.IsCurrentBehaviour(this.behaviourCode) && !behaviourManager.IsOverriding())
+		if (!jump && XCI.GetButtonDown(jumpButton, joystick) && behaviourManager.IsCurrentBehaviour(this.behaviourCode) && !behaviourManager.IsOverriding())
 		{
 			jump = true;
 		}
-        if (Input.GetButton(jumpButton))
+        if (XCI.GetButton(jumpButton, joystick))
         {
             behaviourManager.GetAnim.SetBool(jumpButtonBool, true);
         }
@@ -137,6 +139,7 @@ public class MoveBehaviour : GenericBehaviour
 		// This is for PC only, gamepads control speed via analog stick.
 		speedSeeker += Input.GetAxis("Mouse ScrollWheel");
 		speedSeeker = Mathf.Clamp(speedSeeker, walkSpeed, runSpeed);
+        Debug.Log(speedSeeker);
 		speed *= speedSeeker;
 		if (behaviourManager.IsSprinting())
 		{

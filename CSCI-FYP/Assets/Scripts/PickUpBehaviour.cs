@@ -1,14 +1,16 @@
 ﻿using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using XboxCtrlrInput;
 
 public class PickUpBehaviour : MonoBehaviour {
 
+    public XboxController joystick;
     private bool pickButtonPressed;
     private bool pickUp = false;
     private Animator anim;
     private int layerMask;
-    public string pickUpButton;
+    public XboxButton pickUpButton;
     public ParticleSystem fireHandL;
     public ParticleSystem fireHandR;
     public Camera playerCam;
@@ -31,7 +33,7 @@ public class PickUpBehaviour : MonoBehaviour {
 	
 	// Update is called once per frame
 	void Update () {
-        pickButtonPressed = Input.GetButtonDown(pickUpButton);
+        pickButtonPressed = XCI.GetButtonDown(pickUpButton, joystick);
         if (pickButtonPressed && !pickUp)
         {
             pickUp = true;

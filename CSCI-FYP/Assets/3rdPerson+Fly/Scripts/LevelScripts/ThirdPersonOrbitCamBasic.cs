@@ -1,8 +1,10 @@
 ﻿using UnityEngine;
+using XboxCtrlrInput;
 
 // This class corresponds to the 3rd person camera features.
 public class ThirdPersonOrbitCamBasic : MonoBehaviour 
 {
+    public XboxController joystick;
 	public Transform player;                                           // Player's reference.
 	public Vector3 pivotOffset = new Vector3(0.0f, 1.0f,  0.0f);       // Offset to repoint the camera.
 	public Vector3 camOffset   = new Vector3(0.4f, 0.5f, -2.0f);       // Offset to relocate the camera related to the player position.
@@ -11,8 +13,8 @@ public class ThirdPersonOrbitCamBasic : MonoBehaviour
 	public float verticalAimingSpeed = 6f;                             // Vertical turn speed.
 	public float maxVerticalAngle = 30f;                               // Camera max clamp angle. 
 	public float minVerticalAngle = -60f;                              // Camera min clamp angle.
-	public string XAxis = "Analog X";                                  // The default horizontal axis input name.
-	public string YAxis = "Analog Y";                                  // The default vertical axis input name.
+    public XboxAxis xAxis;
+    public XboxAxis yAxis;                                             // The default vertical axis input name.
 
 	private float angleH = 0;                                          // Float to store camera horizontal angle related to mouse movement.
 	private float angleV = 0;                                          // Float to store camera vertical angle related to mouse movement.
@@ -58,11 +60,11 @@ public class ThirdPersonOrbitCamBasic : MonoBehaviour
 	{
 		// Get mouse movement to orbit the camera.
 		// Mouse:
-		angleH += Mathf.Clamp(Input.GetAxis("Mouse X"), -1, 1) * horizontalAimingSpeed;
-		angleV += Mathf.Clamp(Input.GetAxis("Mouse Y"), -1, 1) * verticalAimingSpeed;
+		//angleH += Mathf.Clamp(Input.GetAxis("Mouse X"), -1, 1) * horizontalAimingSpeed;
+		//angleV += Mathf.Clamp(Input.GetAxis("Mouse Y"), -1, 1) * verticalAimingSpeed;
 		// Joystick:
-		angleH += Mathf.Clamp(Input.GetAxis(XAxis), -1, 1) * 60 * horizontalAimingSpeed * Time.deltaTime;
-		angleV += Mathf.Clamp(Input.GetAxis(YAxis), -1, 1) * 60 * verticalAimingSpeed * Time.deltaTime;
+		angleH += Mathf.Clamp(XCI.GetAxis(xAxis, joystick), -1, 1) * 60 * horizontalAimingSpeed * Time.deltaTime;
+		angleV += Mathf.Clamp(XCI.GetAxis(yAxis, joystick), -1, 1) * 60 * verticalAimingSpeed * Time.deltaTime;
 
 		// Set vertical movement limit.
 		angleV = Mathf.Clamp(angleV, minVerticalAngle, targetMaxVerticalAngle);

@@ -1,16 +1,15 @@
 ﻿using UnityEngine;
+using XboxCtrlrInput;
 using System.Collections.Generic;
 
 // This class manages which player behaviour is active or overriding, and call its local functions.
 // Contains basic setup and common functions used by all the player behaviours.
 public class BasicBehaviour : MonoBehaviour
 {
+    public XboxController joystick;
 	public Transform playerCamera;                        // Reference to the camera that focus the player.
 	public float turnSmoothing = 0.06f;                   // Speed of turn when moving to match camera facing.
 	public float sprintFOV = 100f;                        // the FOV to use on the camera when player is sprinting.
-	public string sprintButton = "Sprint";                // Default sprint button input name.
-    public string horizontal = "Horizontal";
-    public string vertical = "Vertical";
     public LayerMask mask;
 
     private float h;                                      // Horizontal Axis.
@@ -66,15 +65,15 @@ public class BasicBehaviour : MonoBehaviour
 	void Update()
 	{
 		// Store the input axes.
-		h = Input.GetAxis(horizontal);
-		v = Input.GetAxis(vertical);
+		h = XCI.GetAxis(XboxAxis.LeftStickX, joystick);
+		v = XCI.GetAxis(XboxAxis.LeftStickY, joystick);
 
 		// Set the input axes on the Animator Controller.
 		anim.SetFloat(hFloat, h, 0.1f, Time.deltaTime);
 		anim.SetFloat(vFloat, v, 0.1f, Time.deltaTime);
 
 		// Toggle sprint by input.
-		sprint = Input.GetButton (sprintButton);
+		sprint = XCI.GetDPad(XboxDPad.Up, joystick);
 
 		// Set the correct camera FOV for sprint mode.
 		if(IsSprinting())

@@ -6576,6 +6576,46 @@ Prefab:
       propertyPath: m_LocalEulerAnglesHint.y
       value: -88.91901
       objectReference: {fileID: 0}
+    - target: {fileID: 114065224947347926, guid: 8cc2b9d271e85fa4889701ae5b8971c8,
+        type: 2}
+      propertyPath: joystick
+      value: 4
+      objectReference: {fileID: 0}
+    - target: {fileID: 114065224947347926, guid: 8cc2b9d271e85fa4889701ae5b8971c8,
+        type: 2}
+      propertyPath: punchButton
+      value: 5
+      objectReference: {fileID: 0}
+    - target: {fileID: 114412443914609806, guid: 8cc2b9d271e85fa4889701ae5b8971c8,
+        type: 2}
+      propertyPath: m_Enabled
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 114384803656719432, guid: 8cc2b9d271e85fa4889701ae5b8971c8,
+        type: 2}
+      propertyPath: joystick
+      value: 4
+      objectReference: {fileID: 0}
+    - target: {fileID: 114384803656719432, guid: 8cc2b9d271e85fa4889701ae5b8971c8,
+        type: 2}
+      propertyPath: pickUpButton
+      value: 2
+      objectReference: {fileID: 0}
+    - target: {fileID: 114642843534217004, guid: 8cc2b9d271e85fa4889701ae5b8971c8,
+        type: 2}
+      propertyPath: joystick
+      value: 4
+      objectReference: {fileID: 0}
+    - target: {fileID: 114920643502627200, guid: 8cc2b9d271e85fa4889701ae5b8971c8,
+        type: 2}
+      propertyPath: m_Enabled
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 114238505069414264, guid: 8cc2b9d271e85fa4889701ae5b8971c8,
+        type: 2}
+      propertyPath: joystick
+      value: 4
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_ParentPrefab: {fileID: 100100000, guid: 8cc2b9d271e85fa4889701ae5b8971c8, type: 2}
   m_IsPrefabParent: 0
@@ -6983,6 +7023,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 455241d876ac8b44d8a43bf97c726307, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  joystick: 3
   player: {fileID: 1014628090}
   pivotOffset: {x: 0, y: 1, z: 0}
   camOffset: {x: 0, y: 0.4, z: -2}
@@ -6991,8 +7032,8 @@ MonoBehaviour:
   verticalAimingSpeed: 6
   maxVerticalAngle: 30
   minVerticalAngle: -60
-  XAxis: Analog X_P3
-  YAxis: Analog Y_P3
+  xAxis: 2
+  yAxis: 3
 --- !u!1001 &235128194
 Prefab:
   m_ObjectHideFlags: 0
@@ -11564,6 +11605,46 @@ Prefab:
       propertyPath: m_LocalEulerAnglesHint.y
       value: 86.534004
       objectReference: {fileID: 0}
+    - target: {fileID: 114352596796905156, guid: ca2c4f6fe32d1584d95e751bbd3f140f,
+        type: 2}
+      propertyPath: joystick
+      value: 2
+      objectReference: {fileID: 0}
+    - target: {fileID: 114352596796905156, guid: ca2c4f6fe32d1584d95e751bbd3f140f,
+        type: 2}
+      propertyPath: punchButton
+      value: 5
+      objectReference: {fileID: 0}
+    - target: {fileID: 114864590187368476, guid: ca2c4f6fe32d1584d95e751bbd3f140f,
+        type: 2}
+      propertyPath: m_Enabled
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 114591217808376054, guid: ca2c4f6fe32d1584d95e751bbd3f140f,
+        type: 2}
+      propertyPath: joystick
+      value: 2
+      objectReference: {fileID: 0}
+    - target: {fileID: 114773308638391312, guid: ca2c4f6fe32d1584d95e751bbd3f140f,
+        type: 2}
+      propertyPath: joystick
+      value: 2
+      objectReference: {fileID: 0}
+    - target: {fileID: 114104358241983038, guid: ca2c4f6fe32d1584d95e751bbd3f140f,
+        type: 2}
+      propertyPath: joystick
+      value: 2
+      objectReference: {fileID: 0}
+    - target: {fileID: 114104358241983038, guid: ca2c4f6fe32d1584d95e751bbd3f140f,
+        type: 2}
+      propertyPath: pickUpButton
+      value: 2
+      objectReference: {fileID: 0}
+    - target: {fileID: 114414311102419668, guid: ca2c4f6fe32d1584d95e751bbd3f140f,
+        type: 2}
+      propertyPath: m_Enabled
+      value: 0
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_ParentPrefab: {fileID: 100100000, guid: ca2c4f6fe32d1584d95e751bbd3f140f, type: 2}
   m_IsPrefabParent: 0
@@ -11848,6 +11929,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 455241d876ac8b44d8a43bf97c726307, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  joystick: 4
   player: {fileID: 2090207979}
   pivotOffset: {x: 0, y: 1, z: 0}
   camOffset: {x: 0, y: 0.4, z: -2}
@@ -11856,8 +11938,8 @@ MonoBehaviour:
   verticalAimingSpeed: 6
   maxVerticalAngle: 30
   minVerticalAngle: -60
-  XAxis: Analog X_P4
-  YAxis: Analog Y_P4
+  xAxis: 2
+  yAxis: 3
 --- !u!81 &806411594
 AudioListener:
   m_ObjectHideFlags: 0
@@ -13029,6 +13111,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 455241d876ac8b44d8a43bf97c726307, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  joystick: 2
   player: {fileID: 1796167160}
   pivotOffset: {x: 0, y: 1, z: 0}
   camOffset: {x: 0, y: 0.4, z: -2}
@@ -13037,8 +13120,8 @@ MonoBehaviour:
   verticalAimingSpeed: 6
   maxVerticalAngle: 30
   minVerticalAngle: -60
-  XAxis: Analog X_P2
-  YAxis: Analog Y_P2
+  xAxis: 2
+  yAxis: 3
 --- !u!81 &920012721
 AudioListener:
   m_ObjectHideFlags: 0
@@ -13979,6 +14062,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 455241d876ac8b44d8a43bf97c726307, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  joystick: 1
   player: {fileID: 1088762479}
   pivotOffset: {x: 0, y: 1, z: 0}
   camOffset: {x: 0, y: 0.4, z: -2}
@@ -13987,8 +14071,8 @@ MonoBehaviour:
   verticalAimingSpeed: 6
   maxVerticalAngle: 30
   minVerticalAngle: -60
-  XAxis: Analog X_P1
-  YAxis: Analog Y_P1
+  xAxis: 2
+  yAxis: 3
 --- !u!81 &1024532229
 AudioListener:
   m_ObjectHideFlags: 0
@@ -20449,7 +20533,7 @@ Transform:
   - {fileID: 1282890027}
   - {fileID: 1907961762}
   m_Father: {fileID: 0}
-  m_RootOrder: 12
+  m_RootOrder: 11
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!4 &1183135120 stripped
 Transform:
@@ -20663,6 +20747,46 @@ Prefab:
     - target: {fileID: 1614512366499568, guid: 130d10b41ada2a84d8eb0606a76a2a24, type: 2}
       propertyPath: m_TagString
       value: FireAttack
+      objectReference: {fileID: 0}
+    - target: {fileID: 114188199813188418, guid: 130d10b41ada2a84d8eb0606a76a2a24,
+        type: 2}
+      propertyPath: joystick
+      value: 3
+      objectReference: {fileID: 0}
+    - target: {fileID: 114188199813188418, guid: 130d10b41ada2a84d8eb0606a76a2a24,
+        type: 2}
+      propertyPath: punchButton
+      value: 5
+      objectReference: {fileID: 0}
+    - target: {fileID: 114141379290259184, guid: 130d10b41ada2a84d8eb0606a76a2a24,
+        type: 2}
+      propertyPath: m_Enabled
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 114237003627430842, guid: 130d10b41ada2a84d8eb0606a76a2a24,
+        type: 2}
+      propertyPath: joystick
+      value: 3
+      objectReference: {fileID: 0}
+    - target: {fileID: 114237003627430842, guid: 130d10b41ada2a84d8eb0606a76a2a24,
+        type: 2}
+      propertyPath: pickUpButton
+      value: 2
+      objectReference: {fileID: 0}
+    - target: {fileID: 114730793562989974, guid: 130d10b41ada2a84d8eb0606a76a2a24,
+        type: 2}
+      propertyPath: joystick
+      value: 3
+      objectReference: {fileID: 0}
+    - target: {fileID: 114043754672021410, guid: 130d10b41ada2a84d8eb0606a76a2a24,
+        type: 2}
+      propertyPath: m_Enabled
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 114175194138917646, guid: 130d10b41ada2a84d8eb0606a76a2a24,
+        type: 2}
+      propertyPath: joystick
+      value: 3
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_ParentPrefab: {fileID: 100100000, guid: 130d10b41ada2a84d8eb0606a76a2a24, type: 2}
@@ -23575,6 +23699,46 @@ Prefab:
     - target: {fileID: 4034332714791088, guid: b811bac26e56bba4db5fdf16ac3c9ae7, type: 2}
       propertyPath: m_LocalEulerAnglesHint.y
       value: 182.39699
+      objectReference: {fileID: 0}
+    - target: {fileID: 114165856677063542, guid: b811bac26e56bba4db5fdf16ac3c9ae7,
+        type: 2}
+      propertyPath: joystick
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 114165856677063542, guid: b811bac26e56bba4db5fdf16ac3c9ae7,
+        type: 2}
+      propertyPath: punchButton
+      value: 5
+      objectReference: {fileID: 0}
+    - target: {fileID: 114948748366093442, guid: b811bac26e56bba4db5fdf16ac3c9ae7,
+        type: 2}
+      propertyPath: m_Enabled
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 114067123372550648, guid: b811bac26e56bba4db5fdf16ac3c9ae7,
+        type: 2}
+      propertyPath: joystick
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 114557168602210864, guid: b811bac26e56bba4db5fdf16ac3c9ae7,
+        type: 2}
+      propertyPath: joystick
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 114254355574026466, guid: b811bac26e56bba4db5fdf16ac3c9ae7,
+        type: 2}
+      propertyPath: joystick
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 114254355574026466, guid: b811bac26e56bba4db5fdf16ac3c9ae7,
+        type: 2}
+      propertyPath: pickUpButton
+      value: 2
+      objectReference: {fileID: 0}
+    - target: {fileID: 114660628036168320, guid: b811bac26e56bba4db5fdf16ac3c9ae7,
+        type: 2}
+      propertyPath: m_Enabled
+      value: 0
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_ParentPrefab: {fileID: 100100000, guid: b811bac26e56bba4db5fdf16ac3c9ae7, type: 2}
@@ -28473,48 +28637,6 @@ Prefab:
     m_RemovedComponents: []
   m_ParentPrefab: {fileID: 100100000, guid: 1c8776a0b36cd9a4f813bf0d2d59d109, type: 2}
   m_IsPrefabParent: 0
---- !u!1001 &1885530995
-Prefab:
-  m_ObjectHideFlags: 0
-  serializedVersion: 2
-  m_Modification:
-    m_TransformParent: {fileID: 0}
-    m_Modifications:
-    - target: {fileID: 4060098627687566, guid: 81fefd7f07c0c8f4c8392618a2fda44f, type: 2}
-      propertyPath: m_LocalPosition.x
-      value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 4060098627687566, guid: 81fefd7f07c0c8f4c8392618a2fda44f, type: 2}
-      propertyPath: m_LocalPosition.y
-      value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 4060098627687566, guid: 81fefd7f07c0c8f4c8392618a2fda44f, type: 2}
-      propertyPath: m_LocalPosition.z
-      value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 4060098627687566, guid: 81fefd7f07c0c8f4c8392618a2fda44f, type: 2}
-      propertyPath: m_LocalRotation.x
-      value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 4060098627687566, guid: 81fefd7f07c0c8f4c8392618a2fda44f, type: 2}
-      propertyPath: m_LocalRotation.y
-      value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 4060098627687566, guid: 81fefd7f07c0c8f4c8392618a2fda44f, type: 2}
-      propertyPath: m_LocalRotation.z
-      value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 4060098627687566, guid: 81fefd7f07c0c8f4c8392618a2fda44f, type: 2}
-      propertyPath: m_LocalRotation.w
-      value: 1
-      objectReference: {fileID: 0}
-    - target: {fileID: 4060098627687566, guid: 81fefd7f07c0c8f4c8392618a2fda44f, type: 2}
-      propertyPath: m_RootOrder
-      value: 11
-      objectReference: {fileID: 0}
-    m_RemovedComponents: []
-  m_ParentPrefab: {fileID: 100100000, guid: 81fefd7f07c0c8f4c8392618a2fda44f, type: 2}
-  m_IsPrefabParent: 0
 --- !u!1001 &1886036980
 Prefab:
   m_ObjectHideFlags: 0
@@ -29054,7 +29176,7 @@ Prefab:
       objectReference: {fileID: 0}
     - target: {fileID: 100000, guid: 5e9e851c0e142814dac026a256ba2ac0, type: 2}
       propertyPath: m_IsActive
-      value: 1
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 8200000, guid: 5e9e851c0e142814dac026a256ba2ac0, type: 2}
       propertyPath: m_Enabled
