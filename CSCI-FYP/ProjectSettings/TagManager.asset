@@ -11,6 +11,10 @@ TagManager:
   - WindAttack
   - MudAttack
   - bridgeButton
+  - Axe
+  - WaterEve
+  - FireEve
+  - AirEve
   layers:
   - Default
   - TransparentFX
@@ -23,7 +27,7 @@ TagManager:
   - Terrain
   - Environment
   - Character
-  - 
+  - Grabs
   - 
   - 
   - 

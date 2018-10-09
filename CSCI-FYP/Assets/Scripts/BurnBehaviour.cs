@@ -7,6 +7,7 @@ public class BurnBehaviour : MonoBehaviour
 
     public GameObject fireFx;
     public GameObject firePoint;
+    public GameObject burntTree;
     private GameObject tempFire;
     private bool alreadyInstantiated = false;
 
@@ -17,9 +18,14 @@ public class BurnBehaviour : MonoBehaviour
             if (alreadyInstantiated == false) {
                 tempFire = Instantiate(fireFx, firePoint.transform.position, firePoint.transform.rotation) as GameObject;
                 alreadyInstantiated = true;
+                Invoke("SpawnBurntTree", 3f);
                 Destroy(gameObject, 3f);
                 Destroy(tempFire, 3f);
             }
         }
+    }
+
+    void SpawnBurntTree() {
+        Instantiate(burntTree, firePoint.transform.position, firePoint.transform.rotation);
     }
 }

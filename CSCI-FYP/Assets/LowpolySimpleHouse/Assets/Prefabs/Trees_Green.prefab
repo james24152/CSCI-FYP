@@ -36,8 +36,8 @@ GameObject:
   - component: {fileID: 4760580799989440}
   - component: {fileID: 33397684608669656}
   - component: {fileID: 23130899834029452}
-  - component: {fileID: 65412830118447698}
   - component: {fileID: 114500563659623224}
+  - component: {fileID: 64417285631959822}
   m_Layer: 9
   m_Name: Trees_Green
   m_TagString: Untagged
@@ -65,7 +65,7 @@ Transform:
   m_PrefabInternal: {fileID: 100100000}
   m_GameObject: {fileID: 1454891189569676}
   m_LocalRotation: {x: 0.7071068, y: -0, z: -0, w: 0.7071067}
-  m_LocalPosition: {x: 0.0033345718, y: -0.004395379, z: 0.000017309683}
+  m_LocalPosition: {x: 0.008394982, y: 0.0070032007, z: 0.0005091033}
   m_LocalScale: {x: 0.0066666673, y: 0.015000012, z: 0.0066666743}
   m_Children:
   - {fileID: 4562017237190536}
@@ -114,8 +114,8 @@ MeshFilter:
   m_PrefabInternal: {fileID: 100100000}
   m_GameObject: {fileID: 1454891189569676}
   m_Mesh: {fileID: 4300000, guid: aeaad255f6dbcb943ad99e9a5ec9e418, type: 3}
---- !u!65 &65412830118447698
-BoxCollider:
+--- !u!64 &64417285631959822
+MeshCollider:
   m_ObjectHideFlags: 1
   m_PrefabParentObject: {fileID: 0}
   m_PrefabInternal: {fileID: 100100000}
@@ -123,9 +123,11 @@ BoxCollider:
   m_Material: {fileID: 0}
   m_IsTrigger: 0
   m_Enabled: 1
-  serializedVersion: 2
-  m_Size: {x: 0.15, y: 1, z: 0.15}
-  m_Center: {x: 0, y: 0, z: 0}
+  serializedVersion: 3
+  m_Convex: 0
+  m_CookingOptions: 14
+  m_SkinWidth: 0.01
+  m_Mesh: {fileID: 4300000, guid: aeaad255f6dbcb943ad99e9a5ec9e418, type: 3}
 --- !u!114 &114500563659623224
 MonoBehaviour:
   m_ObjectHideFlags: 1
@@ -139,3 +141,4 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   fireFx: {fileID: 1753275818073386, guid: 81fefd7f07c0c8f4c8392618a2fda44f, type: 2}
   firePoint: {fileID: 1229373601154516}
+  burntTree: {fileID: 1976385257114684, guid: 82803724491a8df43946cea6dc75d586, type: 2}
