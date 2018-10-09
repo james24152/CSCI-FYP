@@ -6,6 +6,7 @@ public class BrigdeController : MonoBehaviour {
     public GameObject button;
     public GameObject bridge;
     private Vector3 targetPosition;
+    public float rotateSpeed = 10.0f;
     // Use this for initialization
     void Start () {
         
@@ -17,19 +18,12 @@ public class BrigdeController : MonoBehaviour {
 		
 	}
 
-    private void OnCollisionEnter(Collision collision)
+    private void OnTriggerStay(Collider other)
     {
-
-        
-            print(collision.gameObject);
-            print("hi");
-
-
-
-        
-           
+        Debug.Log("collision");
+        bridge.transform.Rotate(0, Time.deltaTime * rotateSpeed, 0);
     }
 
-  
+
 
 }

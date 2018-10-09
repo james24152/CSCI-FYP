@@ -9,7 +9,7 @@ public class bridgeButton : MonoBehaviour {
     private Vector3 OriginPos;
 	// Use this for initialization
 	void Start () {
-        print(transform.position.x);print(transform.position.y);print( transform.position.z);
+        //print(transform.position.x);print(transform.position.y);print( transform.position.z);
         targetPos = new Vector3(23.7f,1.7f,42.0f);
         OriginPos = new Vector3(23.1f,2.0f,42.0f);
     }
@@ -21,7 +21,7 @@ public class bridgeButton : MonoBehaviour {
             if(transform.position.z>41.5f && transform.position.z < 43.0f)
             {
                 if (transform.position.y < 3.0f){
-                    print("onTheButton");
+                    //print("onTheButton");
                    //button.transform.position = Vector3.MoveTowards(button.transform.position, targetPos, 0.005f);
                     bridge.transform.Rotate(0,Time.deltaTime*10,0);
                 }
