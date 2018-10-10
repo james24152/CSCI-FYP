@@ -70,23 +70,23 @@ public class PickUpBehaviour : MonoBehaviour {
                 if (hit.transform.gameObject.CompareTag("Axe"))
                 {
                     if (gameObject.CompareTag("EarthEve")) {
-                        grabPosition = new Vector3(-0.2438f, -0.008f, 0.1127f);
-                        grabRotation = new Vector3(-66.08501f, -279.57f, 92.494f);
+                        grabPosition = new Vector3(-0.039f, 0.001f, 0.089f);
+                        grabRotation = new Vector3(-107.399f, 240.646f, -85.57199f);
                     }
                     else if (gameObject.CompareTag("WaterEve"))
                     {
-                        grabPosition = new Vector3(-0.079f, 0.075f, 0.133f);
-                        grabRotation = new Vector3(2.926f, -193.964f, 0.58f);
+                        grabPosition = new Vector3(-0.015f, 0.065f, 0.001f);
+                        grabRotation = new Vector3(-1.536f, 161.945f, -1.289f);
                     }
                     else if (gameObject.CompareTag("FireEve"))
                     {
-                        grabPosition = new Vector3(-0.641f, 0.0f, 0.196f);
-                        grabRotation = new Vector3(-54.713f, 104.347f, 76.604f);
+                        grabPosition = new Vector3(-0.038f, 0.0f, 0.187f);
+                        grabRotation = new Vector3(-61.538f, 426.303f, -254.492f);
                     }
                     else if (gameObject.CompareTag("AirEve"))
                     {
-                        grabPosition = new Vector3(-0.013f, 0.065f, 0.002f);
-                        grabRotation = new Vector3(-2.765f, -215.814f, -6.007f);
+                        grabPosition = new Vector3(-0.012f, 0.053f, 0.006f);
+                        grabRotation = new Vector3(-5.297f, -186.048f, -2.949f);
                     }
                     itemGrabbed = hit.transform.gameObject;
                     hit.collider.enabled = false; //turn off collider

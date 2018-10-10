@@ -15,6 +15,7 @@ TagManager:
   - WaterEve
   - FireEve
   - AirEve
+  - InteractableTrees
   layers:
   - Default
   - TransparentFX

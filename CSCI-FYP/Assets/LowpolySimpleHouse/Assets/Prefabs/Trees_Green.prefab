@@ -40,7 +40,7 @@ GameObject:
   - component: {fileID: 64417285631959822}
   m_Layer: 9
   m_Name: Trees_Green
-  m_TagString: Untagged
+  m_TagString: InteractableTrees
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0

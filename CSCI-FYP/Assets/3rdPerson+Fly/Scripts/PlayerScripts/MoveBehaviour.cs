@@ -139,7 +139,6 @@ public class MoveBehaviour : GenericBehaviour
 		// This is for PC only, gamepads control speed via analog stick.
 		speedSeeker += Input.GetAxis("Mouse ScrollWheel");
 		speedSeeker = Mathf.Clamp(speedSeeker, walkSpeed, runSpeed);
-        Debug.Log(speedSeeker);
 		speed *= speedSeeker;
 		if (behaviourManager.IsSprinting())
 		{

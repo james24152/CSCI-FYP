@@ -6,10 +6,15 @@ public class SwimBehaviour : GenericBehaviour
 {
     public float swimSpeed = 1.0f;                 // Default flying speed.
     public Camera cam;
+    public float turningSpeed = 0.01f;
+    public float flapVelocity = 0.0f;
+    public float drag = 5;
     private int swimBool;                          // Animator variable related to swimming.
     private bool swim = false;                     // Boolean to determine whether or not the player activated fly mode.
     private bool isInWater = false;
     private float waterSurfaceY = -2.0f;
+    private Rigidbody rb;
+    private Animator anim;
 
     // Start is always called after any Awake functions.
     void Start()
@@ -18,6 +23,8 @@ public class SwimBehaviour : GenericBehaviour
         swimBool = Animator.StringToHash("Swimming");
         // Subscribe this behaviour on the manager.
         behaviourManager.SubscribeBehaviour(this);
+        rb = GetComponent<Rigidbody>();
+        anim = GetComponent<Animator>();
     }
 
     // Update is used to set features regardless the active behaviour.
@@ -35,6 +42,7 @@ public class SwimBehaviour : GenericBehaviour
             behaviourManager.UnlockTempBehaviour(behaviourManager.GetDefaultBehaviour);
 
             behaviourManager.GetRigidBody.useGravity = false;
+            behaviourManager.GetRigidBody.drag = drag;
 
             // Register this behaviour.
             behaviourManager.RegisterBehaviour(this.behaviourCode);
@@ -44,6 +52,7 @@ public class SwimBehaviour : GenericBehaviour
         {
             swim = false;
             behaviourManager.GetRigidBody.useGravity = true;
+            behaviourManager.GetRigidBody.drag = 0;
             behaviourManager.UnregisterBehaviour(this.behaviourCode);
         }
         // Assert this is the active behaviour
@@ -94,29 +103,23 @@ public class SwimBehaviour : GenericBehaviour
         {
             Quaternion targetRotation = Quaternion.LookRotation(targetDirection);
 
-            Quaternion newRotation = Quaternion.Slerp(behaviourManager.GetRigidBody.rotation, targetRotation, behaviourManager.turnSmoothing);
+            Quaternion newRotation = Quaternion.Slerp(behaviourManager.GetRigidBody.rotation, targetRotation, turningSpeed);
 
             behaviourManager.GetRigidBody.MoveRotation(newRotation);
             behaviourManager.SetLastDirection(targetDirection);
         }
 
-        /*// Player is flying and idle?
         if (!(Mathf.Abs(horizontal) > 0.2 || Mathf.Abs(vertical) > 0.2))
         {
-            // Rotate the player to stand position.
-            behaviourManager.Repositioning();
-            // Set collider direction to vertical.
-            col.direction = 1;
+            anim.SetBool("SwimIdle", true);
         }
         else
-        {
-            // Set collider direction to horizontal.
-            col.direction = 2;
-        }*/
+            anim.SetBool("SwimIdle", false);
 
         // Return the current fly direction.
         return targetDirection;
     }
+
 
     public void OnTriggerEnter(Collider other)
     {
