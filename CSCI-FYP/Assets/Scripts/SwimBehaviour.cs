@@ -15,6 +15,7 @@ public class SwimBehaviour : GenericBehaviour
     private float waterSurfaceY = -2.0f;
     private Rigidbody rb;
     private Animator anim;
+    private FogBehaviour fogScript;
 
     // Start is always called after any Awake functions.
     void Start()
@@ -25,6 +26,7 @@ public class SwimBehaviour : GenericBehaviour
         behaviourManager.SubscribeBehaviour(this);
         rb = GetComponent<Rigidbody>();
         anim = GetComponent<Animator>();
+        fogScript = cam.GetComponent<FogBehaviour>();
     }
 
     // Update is used to set features regardless the active behaviour.
@@ -55,6 +57,11 @@ public class SwimBehaviour : GenericBehaviour
             behaviourManager.GetRigidBody.drag = 0;
             behaviourManager.UnregisterBehaviour(this.behaviourCode);
         }
+
+        if (IsUnderWater()) {
+            fogScript.fog = true;
+        } else
+            fogScript.fog = false;
         // Assert this is the active behaviour
         swim = swim && behaviourManager.IsCurrentBehaviour(this.behaviourCode);
 

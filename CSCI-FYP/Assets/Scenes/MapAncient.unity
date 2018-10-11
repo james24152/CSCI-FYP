@@ -15,9 +15,9 @@ RenderSettings:
   m_ObjectHideFlags: 0
   serializedVersion: 9
   m_Fog: 0
-  m_FogColor: {r: 0.5, g: 0.5, b: 0.5, a: 1}
+  m_FogColor: {r: 0, g: 0.24390484, b: 0.5566038, a: 1}
   m_FogMode: 3
-  m_FogDensity: 0.01
+  m_FogDensity: 0.05
   m_LinearFogStart: 0
   m_LinearFogEnd: 300
   m_AmbientSkyColor: {r: 0.1, g: 0.1, b: 0.1, a: 1}
@@ -11781,6 +11781,11 @@ Prefab:
       propertyPath: swimSpeed
       value: 0.3
       objectReference: {fileID: 0}
+    - target: {fileID: 114033977323900526, guid: ca2c4f6fe32d1584d95e751bbd3f140f,
+        type: 2}
+      propertyPath: cam
+      value: 
+      objectReference: {fileID: 920012723}
     m_RemovedComponents: []
   m_ParentPrefab: {fileID: 100100000, guid: ca2c4f6fe32d1584d95e751bbd3f140f, type: 2}
   m_IsPrefabParent: 0
@@ -13270,6 +13275,7 @@ GameObject:
   - component: {fileID: 920012722}
   - component: {fileID: 920012721}
   - component: {fileID: 920012720}
+  - component: {fileID: 920012724}
   m_Layer: 0
   m_Name: Main Camera Player2
   m_TagString: MainCamera
@@ -13362,6 +13368,23 @@ Camera:
   m_OcclusionCulling: 1
   m_StereoConvergence: 10
   m_StereoSeparation: 0.022
+--- !u!114 &920012724
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  m_GameObject: {fileID: 920012718}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 6706c3ef6a203fd409f43c875b2ac1fe, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  fog: 0
+  fogColor: {r: 0, g: 0.6127057, b: 1, a: 0}
+  fogDensity: 0.06
+  ambientLight: {r: 0, g: 0, b: 0, a: 0}
+  haloStrength: 0.5
+  flareStrength: 1
 --- !u!1001 &921427654
 Prefab:
   m_ObjectHideFlags: 0
