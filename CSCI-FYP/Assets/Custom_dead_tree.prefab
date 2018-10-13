@@ -9,75 +9,104 @@ Prefab:
     m_Modifications: []
     m_RemovedComponents: []
   m_ParentPrefab: {fileID: 0}
-  m_RootGameObject: {fileID: 1454891189569676}
+  m_RootGameObject: {fileID: 1195489404042952}
   m_IsPrefabParent: 1
---- !u!1 &1229373601154516
+--- !u!1 &1195489404042952
 GameObject:
   m_ObjectHideFlags: 0
   m_PrefabParentObject: {fileID: 0}
   m_PrefabInternal: {fileID: 100100000}
   serializedVersion: 5
   m_Component:
-  - component: {fileID: 4562017237190536}
+  - component: {fileID: 4779159986732670}
+  - component: {fileID: 33501741890019114}
+  - component: {fileID: 23619579439130674}
+  - component: {fileID: 64951190334485690}
+  - component: {fileID: 114601713487489474}
   m_Layer: 0
-  m_Name: FirePoint
-  m_TagString: Untagged
+  m_Name: Custom_dead_tree
+  m_TagString: InteractableTrees
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
   m_IsActive: 1
---- !u!1 &1454891189569676
+--- !u!1 &1585192979436724
 GameObject:
   m_ObjectHideFlags: 0
   m_PrefabParentObject: {fileID: 0}
   m_PrefabInternal: {fileID: 100100000}
   serializedVersion: 5
   m_Component:
-  - component: {fileID: 4760580799989440}
-  - component: {fileID: 33397684608669656}
-  - component: {fileID: 23130899834029452}
-  - component: {fileID: 114500563659623224}
-  - component: {fileID: 64417285631959822}
-  m_Layer: 9
-  m_Name: Trees_Green
+  - component: {fileID: 4843144000940798}
+  m_Layer: 0
+  m_Name: TrunkPoint
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
   m_IsActive: 1
---- !u!4 &4562017237190536
+--- !u!1 &1594159303688628
+GameObject:
+  m_ObjectHideFlags: 0
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 100100000}
+  serializedVersion: 5
+  m_Component:
+  - component: {fileID: 4751622535467580}
+  m_Layer: 0
+  m_Name: woodPoint
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!4 &4751622535467580
 Transform:
   m_ObjectHideFlags: 1
   m_PrefabParentObject: {fileID: 0}
   m_PrefabInternal: {fileID: 100100000}
-  m_GameObject: {fileID: 1229373601154516}
+  m_GameObject: {fileID: 1594159303688628}
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: 0, y: 2.65, z: 0}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_Children: []
+  m_Father: {fileID: 4779159986732670}
+  m_RootOrder: 1
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!4 &4779159986732670
+Transform:
+  m_ObjectHideFlags: 1
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 100100000}
+  m_GameObject: {fileID: 1195489404042952}
+  m_LocalRotation: {x: 0.0000000218557, y: 0, z: -0, w: 1}
+  m_LocalPosition: {x: 12.73, y: 0.57, z: 33.61}
+  m_LocalScale: {x: 1, y: 1.5, z: 1}
+  m_Children:
+  - {fileID: 4843144000940798}
+  - {fileID: 4751622535467580}
+  m_Father: {fileID: 0}
+  m_RootOrder: 0
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!4 &4843144000940798
+Transform:
+  m_ObjectHideFlags: 1
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 100100000}
+  m_GameObject: {fileID: 1585192979436724}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
   m_LocalPosition: {x: 0, y: 0, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children: []
-  m_Father: {fileID: 4760580799989440}
+  m_Father: {fileID: 4779159986732670}
   m_RootOrder: 0
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
---- !u!4 &4760580799989440
-Transform:
-  m_ObjectHideFlags: 1
-  m_PrefabParentObject: {fileID: 0}
-  m_PrefabInternal: {fileID: 100100000}
-  m_GameObject: {fileID: 1454891189569676}
-  m_LocalRotation: {x: 0.7071068, y: -0, z: -0, w: 0.7071067}
-  m_LocalPosition: {x: 0.008394982, y: 0.0070032007, z: 0.0005091033}
-  m_LocalScale: {x: 0.0066666673, y: 0.015000012, z: 0.0066666743}
-  m_Children:
-  - {fileID: 4562017237190536}
-  m_Father: {fileID: 0}
-  m_RootOrder: 0
-  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
---- !u!23 &23130899834029452
+--- !u!23 &23619579439130674
 MeshRenderer:
   m_ObjectHideFlags: 1
   m_PrefabParentObject: {fileID: 0}
   m_PrefabInternal: {fileID: 100100000}
-  m_GameObject: {fileID: 1454891189569676}
+  m_GameObject: {fileID: 1195489404042952}
   m_Enabled: 1
   m_CastShadows: 1
   m_ReceiveShadows: 1
@@ -87,7 +116,7 @@ MeshRenderer:
   m_ReflectionProbeUsage: 1
   m_RenderingLayerMask: 4294967295
   m_Materials:
-  - {fileID: 2100000, guid: 10f2802fd7de5e345be1f6d3a480b853, type: 2}
+  - {fileID: 2100000, guid: 31d2ce6101ceb3840879e7f99fd6ef0d, type: 2}
   m_StaticBatchInfo:
     firstSubMesh: 0
     subMeshCount: 0
@@ -107,19 +136,19 @@ MeshRenderer:
   m_SortingLayerID: 0
   m_SortingLayer: 0
   m_SortingOrder: 0
---- !u!33 &33397684608669656
+--- !u!33 &33501741890019114
 MeshFilter:
   m_ObjectHideFlags: 1
   m_PrefabParentObject: {fileID: 0}
   m_PrefabInternal: {fileID: 100100000}
-  m_GameObject: {fileID: 1454891189569676}
-  m_Mesh: {fileID: 4300000, guid: aeaad255f6dbcb943ad99e9a5ec9e418, type: 3}
---- !u!64 &64417285631959822
+  m_GameObject: {fileID: 1195489404042952}
+  m_Mesh: {fileID: 4300000, guid: e8fcfda13fca0094492d09e79d8538c7, type: 3}
+--- !u!64 &64951190334485690
 MeshCollider:
   m_ObjectHideFlags: 1
   m_PrefabParentObject: {fileID: 0}
   m_PrefabInternal: {fileID: 100100000}
-  m_GameObject: {fileID: 1454891189569676}
+  m_GameObject: {fileID: 1195489404042952}
   m_Material: {fileID: 0}
   m_IsTrigger: 0
   m_Enabled: 1
@@ -127,18 +156,19 @@ MeshCollider:
   m_Convex: 0
   m_CookingOptions: 14
   m_SkinWidth: 0.01
-  m_Mesh: {fileID: 4300000, guid: aeaad255f6dbcb943ad99e9a5ec9e418, type: 3}
---- !u!114 &114500563659623224
+  m_Mesh: {fileID: 4300000, guid: e8fcfda13fca0094492d09e79d8538c7, type: 3}
+--- !u!114 &114601713487489474
 MonoBehaviour:
   m_ObjectHideFlags: 1
   m_PrefabParentObject: {fileID: 0}
   m_PrefabInternal: {fileID: 100100000}
-  m_GameObject: {fileID: 1454891189569676}
+  m_GameObject: {fileID: 1195489404042952}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: fe968242631bf1d47815f784531b5def, type: 3}
+  m_Script: {fileID: 11500000, guid: 1a93edbdc7e9ecb48840838ced6a4ceb, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  fireFx: {fileID: 1753275818073386, guid: 81fefd7f07c0c8f4c8392618a2fda44f, type: 2}
-  firePoint: {fileID: 1229373601154516}
-  burntTree: {fileID: 1195489404042952, guid: 2fc2e9837067a6b48bcbd86f14a678a9, type: 2}
+  trunk: {fileID: 1683659784726726, guid: 265b8a402962cea4a9aa57871e082493, type: 2}
+  wood: {fileID: 1531829584304606, guid: bd2eb0d0c51649c4897ecf8a9a645fd7, type: 2}
+  trunkPoint: {fileID: 1585192979436724}
+  woodPoint: {fileID: 1594159303688628}

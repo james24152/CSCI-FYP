@@ -122,11 +122,12 @@ public class PickUpBehaviour : MonoBehaviour {
             anim.SetBool("PickUp", false);
         }
         else if (pickButtonPressed && grab) {
+            itemGrabbed.GetComponent<BoxCollider>().enabled = true; //turn collider back on
             grab = false;
             anim.SetBool("Grab", false);
-            itemGrabbed.GetComponent<Collider>().enabled = true; //turn collider back on
             itemGrabbed.transform.parent = null;
-            itemGrabbed.transform.localPosition = bindingHand2.transform.position;
+            itemGrabbed.transform.gameObject.GetComponent<Rigidbody>().velocity = Vector3.zero; //dont inherit any velocity from localmotion
+            itemGrabbed.transform.position = bindingHand2.transform.position;
             //itemGrabbed.transform.localEulerAngles = bindingHand2.transform.localEulerAngles;
             itemGrabbed = null;
         }
