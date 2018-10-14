@@ -16,6 +16,10 @@ TagManager:
   - FireEve
   - AirEve
   - InteractableTrees
+  - AirCollect
+  - FireCollect
+  - EarthCollect
+  - WaterCollect
   layers:
   - Default
   - TransparentFX

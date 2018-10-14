@@ -25,7 +25,7 @@ GameObject:
   - component: {fileID: 114593422516975340}
   m_Layer: 0
   m_Name: CollectableAir
-  m_TagString: Untagged
+  m_TagString: AirCollect
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0

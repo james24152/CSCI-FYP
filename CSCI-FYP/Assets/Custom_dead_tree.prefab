@@ -23,7 +23,7 @@ GameObject:
   - component: {fileID: 23619579439130674}
   - component: {fileID: 64951190334485690}
   - component: {fileID: 114601713487489474}
-  m_Layer: 0
+  m_Layer: 9
   m_Name: Custom_dead_tree
   m_TagString: InteractableTrees
   m_Icon: {fileID: 0}
