@@ -327,8 +327,9 @@ public class BasicBehaviour : MonoBehaviour
 	public bool IsGrounded()
 	{
 		Ray ray = new Ray(this.transform.position + Vector3.up * 2 * colExtents.x, Vector3.down);
-		return Physics.SphereCast(ray, colExtents.x, colExtents.x + 0.2f, mask);
-	}
+        return Physics.SphereCast(ray, colExtents.x, colExtents.x + 0.2f, mask);
+        //return Physics.Raycast(transform.position, Vector3.down, 0.1f, mask);
+    }
 }
 
 // This is the base class for all player behaviours, any custom behaviour must inherit from this.

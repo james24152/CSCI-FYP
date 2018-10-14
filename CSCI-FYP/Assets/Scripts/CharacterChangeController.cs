@@ -21,6 +21,7 @@ public class CharacterChangeController : MonoBehaviour {
     private ParticleSystem tempFx;
     private XboxController joyNum;
     private GameObject tempEve;
+    private GameObject tempElement;
     private FireBlowController fireScript;
     private BasicBehaviour basicScript;
     private MoveBehaviour moveScript;
@@ -35,25 +36,29 @@ public class CharacterChangeController : MonoBehaviour {
             case 1:
                 tempFx = Instantiate(earthFx, center.transform.position, center.transform.rotation);
                 tempFx.transform.parent = center.transform;
-                bornEve(earthEve);
+                tempElement = earthEve;
+                Invoke("Go", 2f);
                 Debug.Log("change to earth");
                 break;
             case 2:
                 tempFx = Instantiate(waterFx, center.transform.position, center.transform.rotation);
                 tempFx.transform.parent = center.transform;
-                bornEve(waterEve);
+                tempElement = waterEve;
+                Invoke("Go", 2f);
                 Debug.Log("change to water");
                 break;
             case 3:
                 tempFx = Instantiate(fireFx, center.transform.position, center.transform.rotation);
                 tempFx.transform.parent = center.transform;
-                bornEve(fireEve);
+                tempElement = fireEve;
+                Invoke("Go", 2f);
                 Debug.Log("change to fire");
                 break;
             case 4:
                 tempFx = Instantiate(airFx, center.transform.position, center.transform.rotation);
                 tempFx.transform.parent = center.transform;
-                bornEve(airEve);
+                tempElement = airEve;
+                Invoke("Go", 2f);
                 Debug.Log("change to air");
                 break;
             default:
@@ -86,16 +91,15 @@ public class CharacterChangeController : MonoBehaviour {
         if (swimScript != null) {
             swimScript.cam = cam;
         }
-        Invoke("Flush", 2f);
-    }
-
-    void Flush() {
-        Destroy(tempFx);
         camScript = cam.GetComponent<ThirdPersonOrbitCamBasic>();
         camScript.player = tempEve.transform;
-        tempEve.transform.position = transform.position;
+        Destroy(tempFx);
         tempEve.SetActive(true);
         Destroy(gameObject);
+    }
+
+    void Go() {
+        bornEve(tempElement);
     }
 
     void GetJoyNum(int playerNum) {
