@@ -20,7 +20,7 @@ public class BurnBehaviour : MonoBehaviour
                 alreadyInstantiated = true;
                 Invoke("SpawnBurntTree", 3f);
                 Destroy(gameObject, 3f);
-                Destroy(tempFire, 3f);
+                Destroy(tempFire, 5f);
             }
         }
     }

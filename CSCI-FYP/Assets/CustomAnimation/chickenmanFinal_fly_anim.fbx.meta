@@ -144,6 +144,14 @@ ModelImporter:
         floatParameter: 0
         intParameter: 0
         messageOptions: 0
+      - time: 0
+        functionName: Charge
+        data: 
+        objectReferenceParameter: {fileID: 11500000, guid: 95dace5331ba3f846aa7ba2abd656c1a,
+          type: 3}
+        floatParameter: 0
+        intParameter: 0
+        messageOptions: 0
       transformMask: []
       maskType: 3
       maskSource: {instanceID: 0}

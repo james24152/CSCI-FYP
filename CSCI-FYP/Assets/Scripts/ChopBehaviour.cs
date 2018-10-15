@@ -7,14 +7,30 @@ public class ChopBehaviour : MonoBehaviour {
     public GameObject trunk;
     public GameObject wood;
     public GameObject trunkPoint;
-    public GameObject woodPoint;
+    public GameObject woodPoint0;
+    public GameObject woodPoint1;
+    public GameObject woodPoint2;
+    private Rigidbody rigid;
     private bool alreadyInstantiated = false;
 
     public void GetChopped() {
+        if (alreadyInstantiated == false) {
+            transform.Translate(Vector3.up * 0.6f, Space.World);
+            rigid = GetComponent<Rigidbody>();
+            rigid.isKinematic = false;
+            rigid.AddForceAtPosition(transform.forward * 50, woodPoint2.transform.position);
+            rigid.AddForceAtPosition(-transform.forward * 10, transform.position);
+            Instantiate(trunk, trunkPoint.transform.position, trunkPoint.transform.rotation);
+        }
+        Invoke("RealGetChopped", 3f);
+    }
+
+    public void RealGetChopped() {
         if (alreadyInstantiated == false)
         {
-            Instantiate(trunk, trunkPoint.transform.position, trunkPoint.transform.rotation);
-            Instantiate(wood, woodPoint.transform.position, woodPoint.transform.rotation);
+            Instantiate(wood, woodPoint0.transform.position, woodPoint0.transform.rotation);
+            Instantiate(wood, woodPoint1.transform.position, woodPoint1.transform.rotation);
+            Instantiate(wood, woodPoint2.transform.position, woodPoint2.transform.rotation);
             alreadyInstantiated = true;
             Destroy(gameObject);
         }

@@ -11,6 +11,21 @@ Prefab:
   m_ParentPrefab: {fileID: 0}
   m_RootGameObject: {fileID: 1195489404042952}
   m_IsPrefabParent: 1
+--- !u!1 &1112820866434032
+GameObject:
+  m_ObjectHideFlags: 0
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 100100000}
+  serializedVersion: 5
+  m_Component:
+  - component: {fileID: 4114129754223722}
+  m_Layer: 0
+  m_Name: woodPoint
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
 --- !u!1 &1195489404042952
 GameObject:
   m_ObjectHideFlags: 0
@@ -23,6 +38,7 @@ GameObject:
   - component: {fileID: 23619579439130674}
   - component: {fileID: 64951190334485690}
   - component: {fileID: 114601713487489474}
+  - component: {fileID: 54328033420345192}
   m_Layer: 9
   m_Name: Custom_dead_tree
   m_TagString: InteractableTrees
@@ -54,24 +70,65 @@ GameObject:
   m_Component:
   - component: {fileID: 4751622535467580}
   m_Layer: 0
-  m_Name: woodPoint
+  m_Name: woodPoint (2)
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
   m_IsActive: 1
---- !u!4 &4751622535467580
+--- !u!1 &1963454307350372
+GameObject:
+  m_ObjectHideFlags: 0
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 100100000}
+  serializedVersion: 5
+  m_Component:
+  - component: {fileID: 4174407750363662}
+  m_Layer: 0
+  m_Name: woodPoint (1)
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!4 &4114129754223722
 Transform:
   m_ObjectHideFlags: 1
   m_PrefabParentObject: {fileID: 0}
   m_PrefabInternal: {fileID: 100100000}
-  m_GameObject: {fileID: 1594159303688628}
+  m_GameObject: {fileID: 1112820866434032}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
   m_LocalPosition: {x: 0, y: 2.65, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children: []
   m_Father: {fileID: 4779159986732670}
   m_RootOrder: 1
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!4 &4174407750363662
+Transform:
+  m_ObjectHideFlags: 1
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 100100000}
+  m_GameObject: {fileID: 1963454307350372}
+  m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
+  m_LocalPosition: {x: 0, y: 1.28, z: 0}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_Children: []
+  m_Father: {fileID: 4779159986732670}
+  m_RootOrder: 2
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!4 &4751622535467580
+Transform:
+  m_ObjectHideFlags: 1
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 100100000}
+  m_GameObject: {fileID: 1594159303688628}
+  m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
+  m_LocalPosition: {x: 0, y: 3.93, z: 0.34}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_Children: []
+  m_Father: {fileID: 4779159986732670}
+  m_RootOrder: 3
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!4 &4779159986732670
 Transform:
@@ -84,6 +141,8 @@ Transform:
   m_LocalScale: {x: 1, y: 1.5, z: 1}
   m_Children:
   - {fileID: 4843144000940798}
+  - {fileID: 4114129754223722}
+  - {fileID: 4174407750363662}
   - {fileID: 4751622535467580}
   m_Father: {fileID: 0}
   m_RootOrder: 0
@@ -95,7 +154,7 @@ Transform:
   m_PrefabInternal: {fileID: 100100000}
   m_GameObject: {fileID: 1585192979436724}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 0, y: 0, z: 0}
+  m_LocalPosition: {x: 0, y: -0.469, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children: []
   m_Father: {fileID: 4779159986732670}
@@ -143,6 +202,21 @@ MeshFilter:
   m_PrefabInternal: {fileID: 100100000}
   m_GameObject: {fileID: 1195489404042952}
   m_Mesh: {fileID: 4300000, guid: e8fcfda13fca0094492d09e79d8538c7, type: 3}
+--- !u!54 &54328033420345192
+Rigidbody:
+  m_ObjectHideFlags: 1
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 100100000}
+  m_GameObject: {fileID: 1195489404042952}
+  serializedVersion: 2
+  m_Mass: 1
+  m_Drag: 0
+  m_AngularDrag: 0.05
+  m_UseGravity: 1
+  m_IsKinematic: 1
+  m_Interpolate: 0
+  m_Constraints: 0
+  m_CollisionDetection: 0
 --- !u!64 &64951190334485690
 MeshCollider:
   m_ObjectHideFlags: 1
@@ -153,7 +227,7 @@ MeshCollider:
   m_IsTrigger: 0
   m_Enabled: 1
   serializedVersion: 3
-  m_Convex: 0
+  m_Convex: 1
   m_CookingOptions: 14
   m_SkinWidth: 0.01
   m_Mesh: {fileID: 4300000, guid: e8fcfda13fca0094492d09e79d8538c7, type: 3}
@@ -171,4 +245,6 @@ MonoBehaviour:
   trunk: {fileID: 1683659784726726, guid: 265b8a402962cea4a9aa57871e082493, type: 2}
   wood: {fileID: 1531829584304606, guid: bd2eb0d0c51649c4897ecf8a9a645fd7, type: 2}
   trunkPoint: {fileID: 1585192979436724}
-  woodPoint: {fileID: 1594159303688628}
+  woodPoint0: {fileID: 1112820866434032}
+  woodPoint1: {fileID: 1963454307350372}
+  woodPoint2: {fileID: 1594159303688628}

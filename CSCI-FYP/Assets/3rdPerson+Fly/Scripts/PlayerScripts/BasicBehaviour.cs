@@ -326,9 +326,9 @@ public class BasicBehaviour : MonoBehaviour
 	// Function to tell whether or not the player is on ground.
 	public bool IsGrounded()
 	{
-		Ray ray = new Ray(this.transform.position + Vector3.up * 2 * colExtents.x, Vector3.down);
-        return Physics.SphereCast(ray, colExtents.x, colExtents.x + 0.2f, mask);
-        //return Physics.Raycast(transform.position, Vector3.down, 0.1f, mask);
+		//Ray ray = new Ray(this.transform.position + Vector3.up * 2 * colExtents.x, Vector3.down);
+        //return Physics.SphereCast(ray, colExtents.x, colExtents.x + 0.2f, mask);
+        return Physics.Raycast(transform.position, Vector3.down, 0.5f, mask);
     }
 }
 

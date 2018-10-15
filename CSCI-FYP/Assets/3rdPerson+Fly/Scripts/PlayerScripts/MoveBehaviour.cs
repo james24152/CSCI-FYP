@@ -19,6 +19,9 @@ public class MoveBehaviour : GenericBehaviour
     private int jumpBool;                           // Animator variable related to jumping.
 	private int groundedBool;                       // Animator variable related to whether or not the player is on ground.
     private int jumpButtonBool;
+    private int idleJumpBool;
+    private int flightBool;
+    private bool idleJumpLeaveGround;
     private int flyBool;
     private bool jump = false;                              // Boolean to determine whether or not the player started a jump.
 	private bool isColliding;                       // Boolean to determine if the player has collided with an obstacle.
@@ -31,6 +34,8 @@ public class MoveBehaviour : GenericBehaviour
         jumpButtonBool = Animator.StringToHash("JumpButton");
         groundedBool = Animator.StringToHash("Grounded");
         flyBool = Animator.StringToHash("Fly");
+        idleJumpBool = Animator.StringToHash("IdleJump");
+        flightBool = Animator.StringToHash("FlightSkill");
         behaviourManager.GetAnim.SetBool (groundedBool, true);
 
 		// Subscribe and register this behaviour as the default behaviour.
@@ -73,43 +78,75 @@ public class MoveBehaviour : GenericBehaviour
         // Is already jumping?
         if (behaviourManager.GetAnim.GetBool(jumpBool) && !behaviourManager.IsGrounded())
         {
+            Debug.Log("jump1");
             // Keep forward movement while in the air.
             if (!behaviourManager.IsGrounded() && !isColliding && behaviourManager.GetTempLockStatus() && !behaviourManager.GetAnim.GetBool(flyBool))
             {
                 behaviourManager.GetRigidBody.AddForce(transform.forward * jumpIntertialForce * Physics.gravity.magnitude * sprintSpeed, ForceMode.Acceleration);
             }
-            // Has landed?
-            if (!behaviourManager.IsGrounded())
-            {
-                behaviourManager.GetAnim.SetBool(groundedBool, true);
-                // Change back player friction to default.
-                GetComponent<CapsuleCollider>().material.dynamicFriction = 0.6f;
-                GetComponent<CapsuleCollider>().material.staticFriction = 0.6f;
-                // Set jump related parameters.
-                jump = false;
-                behaviourManager.GetAnim.SetBool(jumpBool, false);
-                behaviourManager.UnlockTempBehaviour(this.behaviourCode);
-            }
+        }
+        // Has landed? (if it is a local jump and has landed)
+        else if (behaviourManager.GetAnim.GetBool(jumpBool) && behaviourManager.IsGrounded() && !behaviourManager.GetAnim.GetBool(idleJumpBool))
+        {
+            Debug.Log("jump2");
+            //never being executed
+            behaviourManager.GetAnim.SetBool(groundedBool, true);
+            // Change back player friction to default.
+            GetComponent<CapsuleCollider>().material.dynamicFriction = 0.6f;
+            GetComponent<CapsuleCollider>().material.staticFriction = 0.6f;
+            // Set jump related parameters.
+            jump = false;
+            behaviourManager.GetAnim.SetBool(jumpBool, false);
+            behaviourManager.UnlockTempBehaviour(this.behaviourCode);
+        }
+        //it is a idle jump and has landed
+        else if (behaviourManager.IsGrounded() && behaviourManager.GetAnim.GetBool(idleJumpBool) && (idleJumpLeaveGround == true))
+        {
+            Debug.Log("jump3");
+            //never being executed
+            behaviourManager.GetAnim.SetBool(groundedBool, true);
+            // Change back player friction to default.
+            GetComponent<CapsuleCollider>().material.dynamicFriction = 10f;
+            GetComponent<CapsuleCollider>().material.staticFriction = 10f;
+            // Set jump related parameters.
+            jump = false;
+            //set flight skill bool to false if it is true before (using)
+            if (behaviourManager.GetAnim.GetBool(flightBool))
+                behaviourManager.GetAnim.SetBool(flightBool, false);
+            behaviourManager.GetAnim.SetBool(idleJumpBool, false);
+            behaviourManager.UnlockTempBehaviour(this.behaviourCode);
+        }
+        //idle jump started jump
+        else if (!behaviourManager.IsGrounded() && behaviourManager.GetAnim.GetBool(idleJumpBool))
+        {
+            Debug.Log("jump4");
+            idleJumpLeaveGround = true;
         }
         // Start a new jump.
-        else if (jump && !behaviourManager.GetAnim.GetBool(jumpBool) && behaviourManager.IsGrounded())
-		{
+        else if (jump && !behaviourManager.GetAnim.GetBool(jumpBool) && behaviourManager.IsGrounded() && !behaviourManager.GetAnim.GetBool(flightBool) && !behaviourManager.GetAnim.GetBool(idleJumpBool))
+        {
+            Debug.Log("jump5");
             // Set jump related parameters.
             behaviourManager.LockTempBehaviour(this.behaviourCode);
-			behaviourManager.GetAnim.SetBool(jumpBool, true);
             // Is a locomotion jump?
             if (behaviourManager.GetAnim.GetFloat(speedFloat) > 0.1)
-			{
+            {
+                behaviourManager.GetAnim.SetBool(jumpBool, true);
                 // Temporarily change player friction to pass through obstacles.
                 GetComponent<CapsuleCollider>().material.dynamicFriction = 0f;
-				GetComponent<CapsuleCollider>().material.staticFriction = 0f;
-				// Set jump vertical impulse velocity.
-				float velocity = 2f * Mathf.Abs(Physics.gravity.y) * jumpHeight;
-				velocity = Mathf.Sqrt(velocity);
+                GetComponent<CapsuleCollider>().material.staticFriction = 0f;
+                // Set jump vertical impulse velocity.
+                float velocity = 2f * Mathf.Abs(Physics.gravity.y) * jumpHeight;
+                velocity = Mathf.Sqrt(velocity);
                 behaviourManager.GetRigidBody.AddForce(Vector3.up * velocity, ForceMode.VelocityChange);
-			}
+            }
+            //idle jump
+            else {
+                behaviourManager.GetAnim.SetBool(idleJumpBool, true);
+                idleJumpLeaveGround = false;
+            }
 
-		}
+        }
 	}
 
     void IdleJump()
