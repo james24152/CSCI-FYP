@@ -20,6 +20,7 @@ TagManager:
   - FireCollect
   - EarthCollect
   - WaterCollect
+  - WindmillSign
   layers:
   - Default
   - TransparentFX

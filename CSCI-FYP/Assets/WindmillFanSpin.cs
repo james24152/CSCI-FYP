@@ -6,8 +6,8 @@ public class WindmillFanSpin : MonoBehaviour {
     public GameObject fan;
     public float spinSpeed;
     private float accelerate;
-    private bool triggered;
-    private 
+    public bool triggered;
+
 	// Use this for initialization
 	void Start () {
         accelerate = 0;
@@ -20,8 +20,8 @@ public class WindmillFanSpin : MonoBehaviour {
         if (triggered) {
             if (accelerate < 1.0f)
             {
-                accelerate = accelerate + 0.001f;
-                
+                accelerate = accelerate + 0.01f;
+                fan.transform.Rotate(0, 0, spinSpeed * accelerate * Time.deltaTime);
             }
             else
             {
@@ -32,9 +32,5 @@ public class WindmillFanSpin : MonoBehaviour {
         
 	}
 
-    private void OnTriggerEnter(Collider other)
-    {
-        triggered = true;
-        transform.Translate(Vector3.back * 0.1f);
-    }
+   
 }
