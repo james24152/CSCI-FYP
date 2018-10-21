@@ -21,6 +21,13 @@ TagManager:
   - EarthCollect
   - WaterCollect
   - WindmillSign
+  - target
+  - ground
+  - block
+  - goal
+  - EnemyWall
+  - Entrance
+  - Agent
   layers:
   - Default
   - TransparentFX

@@ -3,7 +3,6 @@ using System.Collections.Generic;
 using UnityEngine;
 
 public class WindmillFanSpin : MonoBehaviour {
-    public GameObject fan;
     public float spinSpeed;
     private float accelerate;
     public bool triggered;
@@ -21,11 +20,11 @@ public class WindmillFanSpin : MonoBehaviour {
             if (accelerate < 1.0f)
             {
                 accelerate = accelerate + 0.01f;
-                fan.transform.Rotate(0, 0, spinSpeed * accelerate * Time.deltaTime);
+                transform.Rotate(0, 0, spinSpeed * accelerate * Time.deltaTime);
             }
             else
             {
-                fan.transform.Rotate(0, 0, spinSpeed * accelerate * Time.deltaTime);
+                transform.Rotate(0, 0, spinSpeed * accelerate * Time.deltaTime);
             }
         }
         
