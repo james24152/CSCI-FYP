@@ -28,6 +28,7 @@ public class AgentScript : Agent {
     public GameObject target;
     public TargetScript targetScript;
     public float rotateAmount = 150f;
+    public float speedScale = 8;
 
     public Transform[] spawns;
 
@@ -54,7 +55,7 @@ public class AgentScript : Agent {
         if (brain.brainParameters.vectorActionSpaceType == SpaceType.continuous)
         {
             rotateDir = transform.up * Mathf.Clamp(vectorAction[0], -1f, 1f);
-            speed = Mathf.Clamp(vectorAction[1], 0f, 1f) * 8;
+            speed = Mathf.Clamp(vectorAction[1], 0f, 1f) * speedScale;
             attack = Mathf.Clamp(vectorAction[2], -1f, 1f);
             //if attack is below 0, don't attack; if above 0, attack
             if (attack > 0) {
@@ -93,10 +94,10 @@ public class AgentScript : Agent {
         if (counter == 2) {
             if (distance > Vector3.Distance(transform.position, target.transform.position))
             {
-                AddReward(+0.001f);
+                AddReward(+0.0005f);
             }
             else {
-                AddReward(-0.0003f);
+                AddReward(-0.0002f);
             }
             counter = 0;
         }
@@ -109,7 +110,7 @@ public class AgentScript : Agent {
         if (collision.gameObject.layer == LayerMask.NameToLayer("Character"))
         {
             wayOfDone = 1;
-            AddReward(-1f);
+            AddReward(-0.9f);
             Done();
         }
         if (collision.gameObject.CompareTag("Agent"))
@@ -129,14 +130,21 @@ public class AgentScript : Agent {
             Done();
         }
         if (other.gameObject.layer == LayerMask.NameToLayer("Character")) {
+            if (other.gameObject.CompareTag("EarthEve"))
+                AddReward(0.1f);
+            if (other.gameObject.CompareTag("WaterEve"))
+                AddReward(0.25f);
+            if (other.gameObject.CompareTag("FireEve"))
+                AddReward(0.23f);
+            if (other.gameObject.CompareTag("AirEve"))
+                AddReward(0.15f);
             Debug.Log("entered trigger");
-            AddReward(0.2f);
         }
         if (other.CompareTag("Entrance"))
         {
             wayOfDone = 2;
             Debug.Log("reached goal");
-            AddReward(3f);
+            AddReward(1f);
             Done();
         }
     }
@@ -175,8 +183,8 @@ public class AgentScript : Agent {
     }
 
     void InitAttack() {
-        AddReward(-0.005f);
-        Invoke("Attack", 0.4f);
+        AddReward(-0.002f);
+        Invoke("Attack", 1f);
     }
 
     void Attack() {
@@ -186,7 +194,14 @@ public class AgentScript : Agent {
                 if (Time.time > nextTimeGetHit) { //this is to control the hit rate of the player
                     Debug.Log("playerhit");
                     hit.transform.gameObject.GetComponent<Health>().health--;
-                    AddReward(0.3f);
+                    if (hit.transform.CompareTag("EarthEve"))
+                        AddReward(0.42f);
+                    if (hit.transform.CompareTag("WaterEve"))
+                        AddReward(0.48f);
+                    if (hit.transform.CompareTag("FireEve"))
+                        AddReward(0.48f);
+                    if (hit.transform.CompareTag("AirEve"))
+                        AddReward(0.48f);
                     nextTimeGetHit = Time.time + downTime;
                 }
             }
