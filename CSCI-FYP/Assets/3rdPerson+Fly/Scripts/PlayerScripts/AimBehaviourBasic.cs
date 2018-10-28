@@ -1,5 +1,6 @@
 ﻿using UnityEngine;
 using System.Collections;
+using XboxCtrlrInput;
 
 // AimBehaviour inherits from GenericBehaviour. This class corresponds to aim and strafe behaviour.
 public class AimBehaviourBasic : GenericBehaviour
@@ -8,13 +9,16 @@ public class AimBehaviourBasic : GenericBehaviour
 	public Texture2D crosshair;                                           // Crosshair texture.
 	public float aimTurnSmoothing = 0.15f;                                // Speed of turn response when aiming to match camera facing.
 	public Vector3 aimPivotOffset = new Vector3(0.5f, 1.2f,  0f);         // Offset to repoint the camera when aiming.
-	public Vector3 aimCamOffset   = new Vector3(0f, 0.4f, -0.7f);         // Offset to relocate the camera when aiming.
+	public Vector3 aimCamOffset   = new Vector3(0f, 0.4f, -0.7f);
+    public XboxController joystick;// Offset to relocate the camera when aiming.
 
-	private int aimBool;                                                  // Animator variable related to aiming.
-	private bool aim;                                                     // Boolean to determine whether or not the player is aiming.
+    private int aimBool;                                                  // Animator variable related to aiming.
+	private bool aim;// Boolean to determine whether or not the player is aiming.
+    private float speedSmoothVelocity;
+    private float currSpeed;
 
-	// Start is always called after any Awake functions.
-	void Start ()
+    // Start is always called after any Awake functions.
+    void Start ()
 	{
 		// Set up the references.
 		aimBool = Animator.StringToHash("Aim");
@@ -24,11 +28,11 @@ public class AimBehaviourBasic : GenericBehaviour
 	void Update ()
 	{
 		// Activate/deactivate aim by input.
-		if (Input.GetAxisRaw(aimButton) != 0 && !aim)
+		if (XCI.GetAxis(XboxAxis.LeftTrigger, joystick) != 0 && !aim)
 		{
 			StartCoroutine(ToggleAimOn());
 		}
-		else if (aim && Input.GetAxisRaw(aimButton) == 0)
+		else if (aim && XCI.GetAxis(XboxAxis.LeftTrigger, joystick) == 0)
 		{
 			StartCoroutine(ToggleAimOff());
 		}
@@ -37,7 +41,7 @@ public class AimBehaviourBasic : GenericBehaviour
 		canSprint = !aim;
 
 		// Toggle camera aim position left or right, switching shoulders.
-		if (aim && Input.GetButtonDown (shoulderButton))
+		if (aim && XCI.GetButton(XboxButton.LeftStick, joystick))
 		{
 			aimCamOffset.x = aimCamOffset.x * (-1);
 			aimPivotOffset.x = aimPivotOffset.x * (-1);
@@ -47,8 +51,18 @@ public class AimBehaviourBasic : GenericBehaviour
 		behaviourManager.GetAnim.SetBool (aimBool, aim);
 	}
 
-	// Co-rountine to start aiming mode with delay.
-	private IEnumerator ToggleAimOn()
+    void MovementManagement(float horizontal, float vertical)
+    {
+        // On ground, obey gravity.
+        if (behaviourManager.IsGrounded())
+            behaviourManager.GetRigidBody.useGravity = true;
+        //Vector2 dir = new Vector2(horizontal, vertical);
+        //move the character without rootmotion
+        currSpeed = Mathf.SmoothDamp(currSpeed, 3, ref speedSmoothVelocity, 0.1f);
+        transform.Translate( (transform.right * horizontal + transform.forward * vertical) * currSpeed * Time.deltaTime, Space.World);
+    }
+    // Co-rountine to start aiming mode with delay.
+    private IEnumerator ToggleAimOn()
 	{
 		yield return new WaitForSeconds(0.05f);
 		// Aiming is not possible.
@@ -83,9 +97,11 @@ public class AimBehaviourBasic : GenericBehaviour
 	// LocalFixedUpdate overrides the virtual function of the base class.
 	public override void LocalFixedUpdate()
 	{
-		// Set camera position and orientation to the aim mode parameters.
-		if(aim)
-			behaviourManager.GetCamScript.SetTargetOffsets (aimPivotOffset, aimCamOffset);
+        // Set camera position and orientation to the aim mode parameters.
+        if (aim) {
+            MovementManagement(behaviourManager.GetH, behaviourManager.GetV);
+            behaviourManager.GetCamScript.SetTargetOffsets(aimPivotOffset, aimCamOffset);
+        }
 	}
 
 	// LocalLateUpdate: manager is called here to set player rotation after camera rotates, avoiding flickering.

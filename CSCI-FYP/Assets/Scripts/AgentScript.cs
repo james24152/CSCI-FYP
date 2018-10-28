@@ -15,6 +15,7 @@ public class AgentScript : Agent {
     private int wayOfDone = 0;
     private bool attackInited = false;
     private float nextTimeGetHit = 0f;
+    private Animator anim;
     //wayOfDone = 1 means collide to wall, 2 means collide to goal
 
     public GameObject player1;
@@ -37,14 +38,15 @@ public class AgentScript : Agent {
         rbody = GetComponent<Rigidbody>();
         rayPer = GetComponent<RayPerception>();
         distance = Vector3.Distance(transform.position, target.transform.position);
+        anim = GetComponent<Animator>();
         //attributes of first spawn
     }
 
     public override void CollectObservations()
     {
         float[] rayAngles = {0f,10f,20f,30f,40f,50f,60f,70f,80f,90f,100f,110f,120f,130f,140f,150f,160f,170f,180f,190f,200f,210f,220f,230f,240f,250f,260f,270f,280f,290f,300f,310f,320f,330f,340f,350f};
-        string[] detectableObjects = { "EnemyWall", "Entrance" , "EarthEve", "WaterEve", "FireEve", "AirEve", "Agent"};
-        AddVectorObs(rayPer.Perceive(rayDistance, rayAngles, detectableObjects, 1.2f, 0f));
+        string[] detectableObjects = { "EnemyWall", "Entrance" , "Player", "WaterEve", "FireEve", "AirEve", "Agent"};
+        AddVectorObs(rayPer.Perceive(rayDistance, rayAngles, detectableObjects, 0.65f, 0f));
     }
 
     public override void AgentAction(float[] vectorAction, string textAction)
@@ -62,6 +64,7 @@ public class AgentScript : Agent {
                 if (!attackInited) {
                     InitAttack();
                     attackInited = true;
+                    anim.SetBool("Attack", true);
                 }
             }
         }
@@ -207,5 +210,6 @@ public class AgentScript : Agent {
             }
         }
         attackInited = false;
+        anim.SetBool("Attack", false);
     }
 }

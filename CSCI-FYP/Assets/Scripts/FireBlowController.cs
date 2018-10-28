@@ -68,7 +68,7 @@ public class FireBlowController : MonoBehaviour
         Rigidbody tempRigid;
         tempRigid = tempBullet.GetComponent<Rigidbody>();
 
-        tempRigid.AddForce(cam.transform.forward * bulletForce);
+        tempRigid.AddForce(transform.forward * bulletForce);
         
         //fire.Play();
 
