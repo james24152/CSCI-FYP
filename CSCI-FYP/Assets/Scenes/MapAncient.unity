@@ -53,7 +53,7 @@ LightmapSettings:
     m_TemporalCoherenceThreshold: 1
     m_EnvironmentLightingMode: 1
     m_EnableBakedLightmaps: 1
-    m_EnableRealtimeLightmaps: 1
+    m_EnableRealtimeLightmaps: 0
   m_LightmapEditorSettings:
     serializedVersion: 10
     m_Resolution: 2
@@ -32556,17 +32556,10 @@ Prefab:
       propertyPath: m_RootOrder
       value: 0
       objectReference: {fileID: 0}
-    - target: {fileID: 4266213164760734, guid: 4a80f91438b4c6e4691fbcf73d22c61f, type: 2}
-      propertyPath: m_LocalEulerAnglesHint.y
-      value: -9.148001
-      objectReference: {fileID: 0}
-    - target: {fileID: 4266213164760734, guid: 4a80f91438b4c6e4691fbcf73d22c61f, type: 2}
-      propertyPath: m_LocalScale.x
-      value: 1
-      objectReference: {fileID: 0}
-    - target: {fileID: 4266213164760734, guid: 4a80f91438b4c6e4691fbcf73d22c61f, type: 2}
-      propertyPath: m_LocalScale.z
-      value: 1
+    - target: {fileID: 108893209353366828, guid: 4a80f91438b4c6e4691fbcf73d22c61f,
+        type: 2}
+      propertyPath: m_Range
+      value: 50
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_ParentPrefab: {fileID: 100100000, guid: 4a80f91438b4c6e4691fbcf73d22c61f, type: 2}
@@ -43462,7 +43455,7 @@ Light:
   m_Enabled: 1
   serializedVersion: 8
   m_Type: 1
-  m_Color: {r: 1, g: 1, b: 1, a: 1}
+  m_Color: {r: 0.7607844, g: 0.7607844, b: 0.7607844, a: 1}
   m_Intensity: 1
   m_Range: 10
   m_SpotAngle: 30
@@ -43495,13 +43488,13 @@ Transform:
   m_PrefabParentObject: {fileID: 0}
   m_PrefabInternal: {fileID: 0}
   m_GameObject: {fileID: 1703357461}
-  m_LocalRotation: {x: -0.0044283806, y: -0.48958588, z: 0.8331815, w: 0.2570888}
-  m_LocalPosition: {x: -4, y: 9.443794, z: -148.2}
+  m_LocalRotation: {x: -0.24648277, y: -0.6713552, z: -0.69510293, w: -0.07321537}
+  m_LocalPosition: {x: -7.6, y: -2.2, z: -140.4}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children: []
   m_Father: {fileID: 0}
   m_RootOrder: 0
-  m_LocalEulerAnglesHint: {x: 54.444004, y: -26.462002, z: -588.089}
+  m_LocalEulerAnglesHint: {x: -63.796, y: -267.022, z: -618.525}
 --- !u!1001 &1708326286
 Prefab:
   m_ObjectHideFlags: 0
@@ -48681,6 +48674,11 @@ Prefab:
     - target: {fileID: 1454891189569676, guid: b170f3beac4273148ade7130d556a901, type: 2}
       propertyPath: m_Layer
       value: 9
+      objectReference: {fileID: 0}
+    - target: {fileID: 23130899834029452, guid: b170f3beac4273148ade7130d556a901,
+        type: 2}
+      propertyPath: m_ReceiveShadows
+      value: 1
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_ParentPrefab: {fileID: 100100000, guid: b170f3beac4273148ade7130d556a901, type: 2}
