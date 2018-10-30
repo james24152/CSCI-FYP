@@ -11,6 +11,7 @@ public class AimBehaviourBasic : GenericBehaviour
 	public Vector3 aimPivotOffset = new Vector3(0.5f, 1.2f,  0f);         // Offset to repoint the camera when aiming.
 	public Vector3 aimCamOffset   = new Vector3(0f, 0.4f, -0.7f);
     public XboxController joystick;// Offset to relocate the camera when aiming.
+    public float aimSpeed = 1.5f;
 
     private int aimBool;                                                  // Animator variable related to aiming.
 	private bool aim;// Boolean to determine whether or not the player is aiming.
@@ -34,7 +35,7 @@ public class AimBehaviourBasic : GenericBehaviour
 		}
 		else if (aim && XCI.GetAxis(XboxAxis.LeftTrigger, joystick) == 0)
 		{
-			StartCoroutine(ToggleAimOff());
+            StartCoroutine(ToggleAimOff());
 		}
 
 		// No sprinting while aiming.
@@ -58,7 +59,7 @@ public class AimBehaviourBasic : GenericBehaviour
             behaviourManager.GetRigidBody.useGravity = true;
         //Vector2 dir = new Vector2(horizontal, vertical);
         //move the character without rootmotion
-        currSpeed = Mathf.SmoothDamp(currSpeed, 3, ref speedSmoothVelocity, 0.1f);
+        currSpeed = Mathf.SmoothDamp(currSpeed, aimSpeed, ref speedSmoothVelocity, 0.3f);
         transform.Translate( (transform.right * horizontal + transform.forward * vertical) * currSpeed * Time.deltaTime, Space.World);
     }
     // Co-rountine to start aiming mode with delay.
@@ -72,7 +73,7 @@ public class AimBehaviourBasic : GenericBehaviour
 		// Start aiming.
 		else
 		{
-			aim = true;
+            aim = true;
 			int signal = 1;
 			aimCamOffset.x = Mathf.Abs(aimCamOffset.x) * signal;
 			aimPivotOffset.x = Mathf.Abs(aimPivotOffset.x) * signal;
@@ -87,10 +88,10 @@ public class AimBehaviourBasic : GenericBehaviour
 	private IEnumerator ToggleAimOff()
 	{
 		aim = false;
-		yield return new WaitForSeconds(0.3f);
-		behaviourManager.GetCamScript.ResetTargetOffsets();
+        yield return new WaitForSeconds(0.3f);
+        behaviourManager.GetCamScript.ResetTargetOffsets();
 		behaviourManager.GetCamScript.ResetMaxVerticalAngle();
-		yield return new WaitForSeconds(0.05f);
+        yield return new WaitForSeconds(0.05f);
 		behaviourManager.RevokeOverridingBehaviour(this);
 	}
 

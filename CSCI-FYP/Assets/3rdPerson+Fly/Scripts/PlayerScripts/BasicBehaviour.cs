@@ -217,7 +217,7 @@ public class BasicBehaviour : MonoBehaviour
 		if (overridingBehaviours.Contains(behaviour))
 		{
 			overridingBehaviours.Remove(behaviour);
-			return true;
+            return true;
 		}
 		return false;
 	}

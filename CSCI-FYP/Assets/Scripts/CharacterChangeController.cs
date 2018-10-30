@@ -29,6 +29,7 @@ public class CharacterChangeController : MonoBehaviour {
     private CharacterChangeController changeScript;
     private SwimBehaviour swimScript;
     private ThirdPersonOrbitCamBasic camScript;
+    private AimBehaviourBasic aimScript;
 
     public void Evolve(int element) { //find out what element collected
         switch (element)
@@ -75,6 +76,8 @@ public class CharacterChangeController : MonoBehaviour {
         fireScript = tempEve.GetComponent<FireBlowController>();
         fireScript.joystick = joyNum;
         fireScript.cam = cam;
+        aimScript = tempEve.GetComponent<AimBehaviourBasic>();
+        aimScript.joystick = joyNum;
         basicScript = tempEve.GetComponent<BasicBehaviour>();
         basicScript.joystick = joyNum;
         basicScript.playerCamera = cam.transform;

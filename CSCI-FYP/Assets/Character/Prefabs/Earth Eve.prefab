@@ -243,9 +243,11 @@ GameObject:
   - component: {fileID: 114953699619143820}
   - component: {fileID: 114360234133141714}
   - component: {fileID: 114425912049235816}
+  - component: {fileID: 65229137340380686}
+  - component: {fileID: 114330201310113292}
   m_Layer: 10
   m_Name: Earth Eve
-  m_TagString: EarthEve
+  m_TagString: Player
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -1485,7 +1487,7 @@ Transform:
   m_PrefabInternal: {fileID: 100100000}
   m_GameObject: {fileID: 1131277630755150}
   m_LocalRotation: {x: -0, y: 0.99978125, z: -0, w: -0.020915374}
-  m_LocalPosition: {x: -14.06, y: 0, z: 5.74}
+  m_LocalPosition: {x: 44.98, y: 0, z: -22.84}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children:
   - {fileID: 4632023521142446}
@@ -2808,6 +2810,18 @@ Rigidbody:
   m_Interpolate: 0
   m_Constraints: 112
   m_CollisionDetection: 2
+--- !u!65 &65229137340380686
+BoxCollider:
+  m_ObjectHideFlags: 1
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 100100000}
+  m_GameObject: {fileID: 1131277630755150}
+  m_Material: {fileID: 0}
+  m_IsTrigger: 1
+  m_Enabled: 1
+  serializedVersion: 2
+  m_Size: {x: 3, y: 0.1, z: 3}
+  m_Center: {x: 0, y: 0.3, z: 0}
 --- !u!95 &95654149918081676
 Animator:
   serializedVersion: 3
@@ -2914,6 +2928,18 @@ MonoBehaviour:
   itemHeight: 3
   bindingHand: {fileID: 4460890616624476}
   bindingHand2: {fileID: 4460890616624476}
+--- !u!114 &114330201310113292
+MonoBehaviour:
+  m_ObjectHideFlags: 1
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 100100000}
+  m_GameObject: {fileID: 1131277630755150}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: f056a71656d059444b1cd6fd69456c1f, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  health: 2
 --- !u!114 &114360234133141714
 MonoBehaviour:
   m_ObjectHideFlags: 1
@@ -2991,7 +3017,7 @@ MonoBehaviour:
   m_PrefabParentObject: {fileID: 0}
   m_PrefabInternal: {fileID: 100100000}
   m_GameObject: {fileID: 1131277630755150}
-  m_Enabled: 0
+  m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: 247335de9c2ba3d49bbbada1d0562339, type: 3}
   m_Name: 
@@ -3001,7 +3027,9 @@ MonoBehaviour:
   crosshair: {fileID: 0}
   aimTurnSmoothing: 0.15
   aimPivotOffset: {x: 0.5, y: 1.2, z: 0}
-  aimCamOffset: {x: 0, y: 0.4, z: -0.7}
+  aimCamOffset: {x: 0, y: 0.4, z: -1.5}
+  joystick: 1
+  aimSpeed: 1.5
 --- !u!114 &114953699619143820
 MonoBehaviour:
   m_ObjectHideFlags: 1
@@ -3022,10 +3050,10 @@ CapsuleCollider:
   m_Material: {fileID: 13400000, guid: 7a665289b8701a143a4d81cc38730390, type: 2}
   m_IsTrigger: 0
   m_Enabled: 1
-  m_Radius: 0.5
-  m_Height: 1
+  m_Radius: 0.38732365
+  m_Height: 1.8410444
   m_Direction: 1
-  m_Center: {x: 0, y: 0.5, z: 0}
+  m_Center: {x: -2.9798185e-11, y: 0.9205222, z: 0.027938515}
 --- !u!137 &137293905379133936
 SkinnedMeshRenderer:
   m_ObjectHideFlags: 1

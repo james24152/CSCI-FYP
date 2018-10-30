@@ -30,7 +30,7 @@ public class BulletBehaviour : MonoBehaviour {
         }
         else {
             if (hit.transform.name == "Earth Eve")
-                Physics.IgnoreCollision(collision.collider, hit.GetComponent<Collider>());
+                Physics.IgnoreCollision(collision.collider, GetComponent<Collider>());
         }
     }
 }

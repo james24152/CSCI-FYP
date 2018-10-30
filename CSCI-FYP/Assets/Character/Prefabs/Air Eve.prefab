@@ -1448,9 +1448,11 @@ GameObject:
   - component: {fileID: 114384803656719432}
   - component: {fileID: 114840817659637242}
   - component: {fileID: 114867075826237364}
+  - component: {fileID: 65735880983549596}
+  - component: {fileID: 114541236168354898}
   m_Layer: 10
   m_Name: Air Eve
-  m_TagString: AirEve
+  m_TagString: Player
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -1725,8 +1727,8 @@ Transform:
   m_PrefabParentObject: {fileID: 0}
   m_PrefabInternal: {fileID: 100100000}
   m_GameObject: {fileID: 1950760899719728}
-  m_LocalRotation: {x: -0, y: -0.7004071, z: -0, w: 0.71374357}
-  m_LocalPosition: {x: -15.74, y: 0.29, z: 7.74}
+  m_LocalRotation: {x: 0, y: 1, z: 0, w: 0}
+  m_LocalPosition: {x: 44.8, y: 0.29, z: -24.2}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children:
   - {fileID: 4121878073534424}
@@ -1735,7 +1737,7 @@ Transform:
   - {fileID: 4866307968493976}
   m_Father: {fileID: 0}
   m_RootOrder: 0
-  m_LocalEulerAnglesHint: {x: 0, y: -88.91901, z: 0}
+  m_LocalEulerAnglesHint: {x: 0, y: 180, z: 0}
 --- !u!4 &4155667554712038
 Transform:
   m_ObjectHideFlags: 1
@@ -2933,6 +2935,18 @@ Rigidbody:
   m_Interpolate: 0
   m_Constraints: 112
   m_CollisionDetection: 2
+--- !u!65 &65735880983549596
+BoxCollider:
+  m_ObjectHideFlags: 1
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 100100000}
+  m_GameObject: {fileID: 1950760899719728}
+  m_Material: {fileID: 0}
+  m_IsTrigger: 1
+  m_Enabled: 1
+  serializedVersion: 2
+  m_Size: {x: 3, y: 0.1, z: 3}
+  m_Center: {x: 0, y: 0.3, z: 0}
 --- !u!95 &95120882692353462
 Animator:
   serializedVersion: 3
@@ -3050,7 +3064,7 @@ MonoBehaviour:
   m_PrefabParentObject: {fileID: 0}
   m_PrefabInternal: {fileID: 100100000}
   m_GameObject: {fileID: 1950760899719728}
-  m_Enabled: 0
+  m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: 247335de9c2ba3d49bbbada1d0562339, type: 3}
   m_Name: 
@@ -3060,7 +3074,21 @@ MonoBehaviour:
   crosshair: {fileID: 0}
   aimTurnSmoothing: 0.15
   aimPivotOffset: {x: 0.5, y: 1.2, z: 0}
-  aimCamOffset: {x: 0, y: 0.4, z: -0.7}
+  aimCamOffset: {x: 0, y: 0.4, z: -1.5}
+  joystick: 4
+  aimSpeed: 1.5
+--- !u!114 &114541236168354898
+MonoBehaviour:
+  m_ObjectHideFlags: 1
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 100100000}
+  m_GameObject: {fileID: 1950760899719728}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: f056a71656d059444b1cd6fd69456c1f, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  health: 2
 --- !u!114 &114642843534217004
 MonoBehaviour:
   m_ObjectHideFlags: 1
@@ -3165,9 +3193,9 @@ CapsuleCollider:
   m_IsTrigger: 0
   m_Enabled: 1
   m_Radius: 0.5
-  m_Height: 1
+  m_Height: 1.6220888
   m_Direction: 1
-  m_Center: {x: 0, y: 0.5, z: 0}
+  m_Center: {x: 0, y: 0.8110444, z: 0}
 --- !u!137 &137245940796492484
 SkinnedMeshRenderer:
   m_ObjectHideFlags: 1

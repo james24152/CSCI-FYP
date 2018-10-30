@@ -340,9 +340,11 @@ GameObject:
   - component: {fileID: 114104358241983038}
   - component: {fileID: 114535801451716416}
   - component: {fileID: 114870861302202192}
+  - component: {fileID: 65076287392182322}
+  - component: {fileID: 114066016929219954}
   m_Layer: 10
   m_Name: Water Eve
-  m_TagString: WaterEve
+  m_TagString: Player
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -2318,8 +2320,8 @@ Transform:
   m_PrefabParentObject: {fileID: 0}
   m_PrefabInternal: {fileID: 100100000}
   m_GameObject: {fileID: 1203809743094474}
-  m_LocalRotation: {x: -0, y: 0.6853998, z: -0, w: 0.72816706}
-  m_LocalPosition: {x: -17.159777, y: 0, z: 3.8686218}
+  m_LocalRotation: {x: 0, y: 1, z: 0, w: 0}
+  m_LocalPosition: {x: 36.73, y: 0, z: -22.98}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children:
   - {fileID: 4159620276411622}
@@ -2328,7 +2330,7 @@ Transform:
   - {fileID: 4332019315300476}
   m_Father: {fileID: 0}
   m_RootOrder: 0
-  m_LocalEulerAnglesHint: {x: 0, y: 86.534004, z: 0}
+  m_LocalEulerAnglesHint: {x: 0, y: 180, z: 0}
 --- !u!4 &4494644679122988
 Transform:
   m_ObjectHideFlags: 1
@@ -3058,6 +3060,18 @@ Rigidbody:
   m_Interpolate: 0
   m_Constraints: 112
   m_CollisionDetection: 2
+--- !u!65 &65076287392182322
+BoxCollider:
+  m_ObjectHideFlags: 1
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 100100000}
+  m_GameObject: {fileID: 1203809743094474}
+  m_Material: {fileID: 0}
+  m_IsTrigger: 1
+  m_Enabled: 1
+  serializedVersion: 2
+  m_Size: {x: 3, y: 0.1, z: 3}
+  m_Center: {x: 0, y: 0.3, z: 0}
 --- !u!95 &95561847420168828
 Animator:
   serializedVersion: 3
@@ -3110,6 +3124,18 @@ MonoBehaviour:
   turningSpeed: 0.01
   flapVelocity: 0
   drag: 5
+--- !u!114 &114066016929219954
+MonoBehaviour:
+  m_ObjectHideFlags: 1
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 100100000}
+  m_GameObject: {fileID: 1203809743094474}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: f056a71656d059444b1cd6fd69456c1f, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  health: 2
 --- !u!114 &114104358241983038
 MonoBehaviour:
   m_ObjectHideFlags: 1
@@ -3233,7 +3259,7 @@ MonoBehaviour:
   m_PrefabParentObject: {fileID: 0}
   m_PrefabInternal: {fileID: 100100000}
   m_GameObject: {fileID: 1203809743094474}
-  m_Enabled: 0
+  m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: 247335de9c2ba3d49bbbada1d0562339, type: 3}
   m_Name: 
@@ -3243,7 +3269,9 @@ MonoBehaviour:
   crosshair: {fileID: 0}
   aimTurnSmoothing: 0.15
   aimPivotOffset: {x: 0.5, y: 1.2, z: 0}
-  aimCamOffset: {x: 0, y: 0.4, z: -0.7}
+  aimCamOffset: {x: 0, y: 0.4, z: -1.5}
+  joystick: 2
+  aimSpeed: 1.5
 --- !u!114 &114870861302202192
 MonoBehaviour:
   m_ObjectHideFlags: 1
@@ -3278,9 +3306,9 @@ CapsuleCollider:
   m_IsTrigger: 0
   m_Enabled: 1
   m_Radius: 0.5
-  m_Height: 1
+  m_Height: 1.5777276
   m_Direction: 1
-  m_Center: {x: 0, y: 0.5, z: 0}
+  m_Center: {x: 0, y: 0.7888638, z: 0}
 --- !u!137 &137191614637100208
 SkinnedMeshRenderer:
   m_ObjectHideFlags: 1

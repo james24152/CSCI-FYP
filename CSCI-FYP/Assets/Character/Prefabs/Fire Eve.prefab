@@ -706,9 +706,11 @@ GameObject:
   - component: {fileID: 114237003627430842}
   - component: {fileID: 114971871235359096}
   - component: {fileID: 114698080388341064}
+  - component: {fileID: 65275628899713154}
+  - component: {fileID: 114647238701189048}
   m_Layer: 10
   m_Name: Fire Eve
-  m_TagString: FireEve
+  m_TagString: Player
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -2014,8 +2016,8 @@ Transform:
   m_PrefabParentObject: {fileID: 0}
   m_PrefabInternal: {fileID: 100100000}
   m_GameObject: {fileID: 1359491581565756}
-  m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
-  m_LocalPosition: {x: -14.25, y: -0.015163362, z: 0.8}
+  m_LocalRotation: {x: 0, y: 1, z: 0, w: 0}
+  m_LocalPosition: {x: 33.84, y: -0.015163362, z: -29.4}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children:
   - {fileID: 4405470547783962}
@@ -2024,7 +2026,7 @@ Transform:
   - {fileID: 4432447467031508}
   m_Father: {fileID: 0}
   m_RootOrder: 0
-  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+  m_LocalEulerAnglesHint: {x: 0, y: 180, z: 0}
 --- !u!4 &4273185517541942
 Transform:
   m_ObjectHideFlags: 1
@@ -3427,6 +3429,18 @@ Rigidbody:
   m_Interpolate: 0
   m_Constraints: 112
   m_CollisionDetection: 2
+--- !u!65 &65275628899713154
+BoxCollider:
+  m_ObjectHideFlags: 1
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 100100000}
+  m_GameObject: {fileID: 1359491581565756}
+  m_Material: {fileID: 0}
+  m_IsTrigger: 1
+  m_Enabled: 1
+  serializedVersion: 2
+  m_Size: {x: 3, y: 0.1, z: 3}
+  m_Center: {x: 0, y: 0.3, z: 0}
 --- !u!95 &95653956201886264
 Animator:
   serializedVersion: 3
@@ -3495,7 +3509,7 @@ MonoBehaviour:
   m_PrefabParentObject: {fileID: 0}
   m_PrefabInternal: {fileID: 100100000}
   m_GameObject: {fileID: 1359491581565756}
-  m_Enabled: 0
+  m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: 247335de9c2ba3d49bbbada1d0562339, type: 3}
   m_Name: 
@@ -3505,7 +3519,9 @@ MonoBehaviour:
   crosshair: {fileID: 0}
   aimTurnSmoothing: 0.15
   aimPivotOffset: {x: 0.5, y: 1.2, z: 0}
-  aimCamOffset: {x: 0, y: 0.4, z: -0.7}
+  aimCamOffset: {x: 0, y: 0.4, z: -1.5}
+  joystick: 3
+  aimSpeed: 1.5
 --- !u!114 &114175194138917646
 MonoBehaviour:
   m_ObjectHideFlags: 1
@@ -3567,6 +3583,18 @@ MonoBehaviour:
   itemHeight: 3
   bindingHand: {fileID: 4111093827894932}
   bindingHand2: {fileID: 4111093827894932}
+--- !u!114 &114647238701189048
+MonoBehaviour:
+  m_ObjectHideFlags: 1
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 100100000}
+  m_GameObject: {fileID: 1359491581565756}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: f056a71656d059444b1cd6fd69456c1f, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  health: 2
 --- !u!114 &114698080388341064
 MonoBehaviour:
   m_ObjectHideFlags: 1
@@ -3630,10 +3658,10 @@ CapsuleCollider:
   m_Material: {fileID: 13400000, guid: 7a665289b8701a143a4d81cc38730390, type: 2}
   m_IsTrigger: 0
   m_Enabled: 1
-  m_Radius: 0.5
-  m_Height: 1
+  m_Radius: 0.35439968
+  m_Height: 1.496108
   m_Direction: 1
-  m_Center: {x: 0, y: 0.5, z: 0}
+  m_Center: {x: 0, y: 0.748054, z: -0.08141422}
 --- !u!137 &137339875648690246
 SkinnedMeshRenderer:
   m_ObjectHideFlags: 1
