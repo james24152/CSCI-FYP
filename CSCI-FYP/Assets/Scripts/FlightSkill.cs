@@ -4,7 +4,7 @@ using UnityEngine;
 
 public class FlightSkill : MonoBehaviour {
 
-    public float height = 100f;
+    public float height;
     public float stayHeight = 10f;
     public float drag = 10f;
     private Rigidbody rb;

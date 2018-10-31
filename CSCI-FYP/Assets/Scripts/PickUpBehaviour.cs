@@ -18,10 +18,12 @@ public class PickUpBehaviour : MonoBehaviour {
     public float itemHeight;
     public Transform bindingHand;
     public Transform bindingHand2;
+    public bool forceEject = false;
 
     private Vector3 grabPosition;
     private Vector3 grabRotation;
     private GameObject itemGrabbed;
+    private Grabber grabber;
     const float k_Spring = 100.0f;
     const float k_Damper = 5.0f;
     const float k_Drag = 5.0f;
@@ -69,21 +71,21 @@ public class PickUpBehaviour : MonoBehaviour {
                 hit.transform.parent = bindingHand;
                 if (hit.transform.gameObject.CompareTag("Axe"))
                 {
-                    if (gameObject.CompareTag("EarthEve")) {
+                    if (gameObject.transform.name == "Earth Eve" || gameObject.transform.name == "Earth Eve(Clone)") {
                         grabPosition = new Vector3(-0.039f, 0.001f, 0.089f);
                         grabRotation = new Vector3(-107.399f, 240.646f, -85.57199f);
                     }
-                    else if (gameObject.CompareTag("WaterEve"))
+                    else if (gameObject.transform.name == "Water Eve" || gameObject.transform.name == "Water Eve(Clone)")
                     {
                         grabPosition = new Vector3(-0.015f, 0.065f, 0.001f);
                         grabRotation = new Vector3(-1.536f, 161.945f, -1.289f);
                     }
-                    else if (gameObject.CompareTag("FireEve"))
+                    else if (gameObject.transform.name == "Fire Eve" || gameObject.transform.name == "Fire Eve(Clone)")
                     {
                         grabPosition = new Vector3(-0.038f, 0.0f, 0.187f);
                         grabRotation = new Vector3(-61.538f, 426.303f, -254.492f);
                     }
-                    else if (gameObject.CompareTag("AirEve"))
+                    else if (gameObject.transform.name == "Air Eve" || gameObject.transform.name == "Air Eve(Clone)")
                     {
                         grabPosition = new Vector3(-0.012f, 0.053f, 0.006f);
                         grabRotation = new Vector3(-5.297f, -186.048f, -2.949f);
@@ -97,6 +99,9 @@ public class PickUpBehaviour : MonoBehaviour {
             {
                 pickUp = true;
                 anim.SetBool("PickUp", true);
+                if (grabber = hit.transform.GetComponent<Grabber>()) {
+                    grabber.grabber = gameObject;
+                }
                 if (!m_SpringJoint)
                 {
                     var go = new GameObject("Rigidbody dragger");
@@ -116,10 +121,11 @@ public class PickUpBehaviour : MonoBehaviour {
                 StartCoroutine("DragObject", hit.distance);
             }
         }
-        else if (pickButtonPressed && pickUp) //pressed x to drop
+        else if ((pickButtonPressed && pickUp) || forceEject) //pressed x to drop
         { 
             pickUp = false;
             anim.SetBool("PickUp", false);
+            forceEject = false;
         }
         else if (pickButtonPressed && grab) {
             itemGrabbed.GetComponent<BoxCollider>().enabled = true; //turn collider back on

@@ -90,7 +90,7 @@ public class AgentScript : Agent {
         transform.Rotate(rotateDir, Time.deltaTime * rotateAmount);
 
         rbody.velocity = transform.forward * speed;
-
+        //transform.Translate(transform.forward * speed * Time.deltaTime);
         //time punishment
         AddReward(-1f / 5000f);
         //Debug.Log(Vector3.Distance(transform.position, target.transform.position));
@@ -114,7 +114,7 @@ public class AgentScript : Agent {
         {
             wayOfDone = 1;
             AddReward(-0.9f);
-            Done();
+            //Done();
         }
         if (collision.gameObject.CompareTag("Agent"))
         {
@@ -192,7 +192,7 @@ public class AgentScript : Agent {
 
     void Attack() {
         RaycastHit hit;
-        if (Physics.SphereCast(transform.position, 0.25f, transform.forward, out hit, 3f)) {
+        if (Physics.SphereCast(new Vector3(transform.position.x, transform.position.y + 1, transform.position.z), 0.5f, transform.forward, out hit, 1.5f)) {
             if (hit.transform.gameObject.layer == LayerMask.NameToLayer("Character")) {
                 if (Time.time > nextTimeGetHit) { //this is to control the hit rate of the player
                     Debug.Log("playerhit");

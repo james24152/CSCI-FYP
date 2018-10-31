@@ -7,11 +7,12 @@ public class Windmill_controller : MonoBehaviour {
     private WindmillFanSpin fanScript;
     private Rigidbody signRigidbody;
     private Vector3 location;
+    private Grabber grabber;
 	// Use this for initialization
 	void Start () {
         
         fanScript = fan.GetComponent<WindmillFanSpin>();
-        location = new Vector3(transform.position.x-0.3f, transform.position.y - 17.3f, transform.position.z - 6.0f);
+        location = new Vector3(0, -0.41f, 0);
     }
 	
 	// Update is called once per frame
@@ -24,9 +25,14 @@ public class Windmill_controller : MonoBehaviour {
         
         if(other.gameObject.tag == "WindmillSign")
         {
+            grabber = other.gameObject.GetComponent<Grabber>();
+            if (grabber.grabber != null)
+                if (grabber.grabber.transform.name == "Air Eve" || grabber.grabber.transform.name == "Air Eve(Clone)")
+                    grabber.grabber.GetComponent<PickUpBehaviour>().forceEject = true;
             signRigidbody = other.gameObject.GetComponent<Rigidbody>();
             fanScript.triggered = true;
-            other.gameObject.transform.position = location;
+            other.gameObject.transform.localPosition = location;
+            other.gameObject.transform.rotation = Quaternion.Euler(0, -90, 0);
             Destroy(signRigidbody);
         }
     }
