@@ -28,6 +28,7 @@ TagManager:
   - EnemyWall
   - Entrance
   - Agent
+  - logs
   layers:
   - Default
   - TransparentFX
