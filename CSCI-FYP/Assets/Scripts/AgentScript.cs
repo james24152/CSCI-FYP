@@ -14,15 +14,20 @@ public class AgentScript : Agent {
     private int counter = 0;
     private int wayOfDone = 0;
     private bool attackInited = false;
-    private float nextTimeGetHit = 0f;
     private Animator anim;
+    private bool inRange = false; //agent inside enemy trigger or not.
+    private int targetHealth;
+    private GameObject steppedIn;
+    private bool death = false;
     //wayOfDone = 1 means collide to wall, 2 means collide to goal
 
+    /*
     public GameObject player1;
     public GameObject player2;
     public GameObject player3;
     public GameObject player4;
-    public float downTime = 1f; //player down time is 2 seconds
+    */
+    public ParticleSystem ghostFire;
     public float attack;
     public float speed;
     public float rayDistance = 50f;
@@ -52,21 +57,32 @@ public class AgentScript : Agent {
     public override void AgentAction(float[] vectorAction, string textAction)
     {
         Vector3 rotateDir = Vector3.zero;
-
         //if output is continuous
         if (brain.brainParameters.vectorActionSpaceType == SpaceType.continuous)
         {
-            rotateDir = transform.up * Mathf.Clamp(vectorAction[0], -1f, 1f);
-            speed = Mathf.Clamp(vectorAction[1], 0f, 1f) * speedScale;
+            if (death == false)
+            {
+                rotateDir = transform.up * Mathf.Clamp(vectorAction[0], -1f, 1f);
+                speed = Mathf.Clamp(vectorAction[1], 0f, 1f) * speedScale;
+            }
+            else {
+                speed = 0; //cant move when dying
+                rotateDir = Vector3.zero; //cant rotate when dying
+            }
             attack = Mathf.Clamp(vectorAction[2], -1f, 1f);
             //if attack is below 0, don't attack; if above 0, attack
             if (attack > 0) {
-                if (!attackInited) {
-                    InitAttack();
-                    attackInited = true;
-                    anim.SetBool("Attack", true);
+                if (inRange) {
+                    if (steppedIn.GetComponent<Health>().health > 0)
+                    {
+                        //attackInited = true;
+                        anim.SetBool("Attack", true);
+                    }
+                    else
+                        inRange = false;
                 }
-            }
+            }else
+                anim.SetBool("Attack", false);
         }
 
         //if output is discrete
@@ -90,10 +106,8 @@ public class AgentScript : Agent {
         transform.Rotate(rotateDir, Time.deltaTime * rotateAmount);
 
         rbody.velocity = transform.forward * speed;
-        //transform.Translate(transform.forward * speed * Time.deltaTime);
         //time punishment
         AddReward(-1f / 5000f);
-        //Debug.Log(Vector3.Distance(transform.position, target.transform.position));
         if (counter == 2) {
             if (distance > Vector3.Distance(transform.position, target.transform.position))
             {
@@ -120,7 +134,7 @@ public class AgentScript : Agent {
         {
             wayOfDone = 1;
             AddReward(-1f);
-            Done();
+            //Done();
         }
     }
 
@@ -130,9 +144,11 @@ public class AgentScript : Agent {
         {
             wayOfDone = 1;
             AddReward(-1f);
-            Done();
+            //Done();
         }
         if (other.gameObject.layer == LayerMask.NameToLayer("Character")) {
+            inRange = true;
+            steppedIn = other.gameObject;
             if (other.gameObject.CompareTag("EarthEve"))
                 AddReward(0.1f);
             if (other.gameObject.CompareTag("WaterEve"))
@@ -141,19 +157,42 @@ public class AgentScript : Agent {
                 AddReward(0.23f);
             if (other.gameObject.CompareTag("AirEve"))
                 AddReward(0.15f);
-            Debug.Log("entered trigger");
         }
         if (other.CompareTag("Entrance"))
         {
             wayOfDone = 2;
             Debug.Log("reached goal");
             AddReward(1f);
-            Done();
+            //Done();
         }
     }
 
+
+    private void OnTriggerExit(Collider other)
+    {
+        if (other.gameObject.layer == LayerMask.NameToLayer("Character"))
+        {
+            inRange = false;
+        }
+    }
+
+    private void OnParticleCollision(GameObject other)
+    {
+        Debug.Log("hit by particle");
+        Die();
+    }
+
+    public void Die() {
+        //agent is hit by any attack from eves
+        ghostFire.Play();
+        death = true;
+        anim.SetBool("Die", true);
+    }
+
+
     public override void AgentReset()
     {
+        //in practice, wayofDone 1 and 2 will not be used
         if (wayOfDone == 1) { //collide wall
             transform.position = restartPos;
             transform.eulerAngles = restartRot;
@@ -175,6 +214,7 @@ public class AgentScript : Agent {
         }
         rbody.velocity = Vector3.zero;
         rbody.angularVelocity = Vector3.zero;
+        /*
         player1.SetActive(true);
         player2.SetActive(true);
         player3.SetActive(true);
@@ -183,33 +223,38 @@ public class AgentScript : Agent {
         player2.GetComponent<Health>().health = 2;
         player3.GetComponent<Health>().health = 2;
         player4.GetComponent<Health>().health = 2;
+        */
     }
 
-    void InitAttack() {
+    /*void InitAttack() {
         AddReward(-0.002f);
         Invoke("Attack", 1f);
-    }
+    }*/
 
     void Attack() {
+        Debug.Log("attack");
         RaycastHit hit;
-        if (Physics.SphereCast(new Vector3(transform.position.x, transform.position.y + 1, transform.position.z), 0.5f, transform.forward, out hit, 1.5f)) {
+        if (Physics.SphereCast(new Vector3(transform.position.x, transform.position.y + 1, transform.position.z), 0.125f, transform.forward, out hit, 1.375f)) {
             if (hit.transform.gameObject.layer == LayerMask.NameToLayer("Character")) {
-                if (Time.time > nextTimeGetHit) { //this is to control the hit rate of the player
+                targetHealth = hit.transform.gameObject.GetComponent<Health>().health;
+                bool effective = hit.transform.gameObject.GetComponent<Health>().GetHit();
+                if (effective) {
                     Debug.Log("playerhit");
-                    hit.transform.gameObject.GetComponent<Health>().health--;
-                    if (hit.transform.CompareTag("EarthEve"))
-                        AddReward(0.42f);
-                    if (hit.transform.CompareTag("WaterEve"))
-                        AddReward(0.48f);
-                    if (hit.transform.CompareTag("FireEve"))
-                        AddReward(0.48f);
-                    if (hit.transform.CompareTag("AirEve"))
-                        AddReward(0.48f);
-                    nextTimeGetHit = Time.time + downTime;
+                    targetHealth--;
                 }
+                if (targetHealth <= 0)
+                    inRange = false;
+                if (hit.transform.CompareTag("EarthEve"))
+                    AddReward(0.42f);
+                if (hit.transform.CompareTag("WaterEve"))
+                    AddReward(0.48f);
+                if (hit.transform.CompareTag("FireEve"))
+                    AddReward(0.48f);
+                if (hit.transform.CompareTag("AirEve"))
+                    AddReward(0.48f);
             }
         }
-        attackInited = false;
-        anim.SetBool("Attack", false);
+        //attackInited = false;
+        //anim.SetBool("Attack", false);
     }
 }

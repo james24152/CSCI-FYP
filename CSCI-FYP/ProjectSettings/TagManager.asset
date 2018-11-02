@@ -29,6 +29,7 @@ TagManager:
   - Entrance
   - Agent
   - logs
+  - FxTemporaire
   layers:
   - Default
   - TransparentFX
@@ -42,7 +43,7 @@ TagManager:
   - Environment
   - Character
   - Grabs
-  - 
+  - Enemies
   - 
   - 
   - 

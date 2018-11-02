@@ -25,7 +25,7 @@ public class BulletBehaviour : MonoBehaviour {
         {
             Debug.Log(hit);
             impactGO = Instantiate(explosion, collision.contacts[0].point, Quaternion.LookRotation(collision.contacts[0].normal));
-            Destroy(gameObject);
+            Destroy(gameObject, 0.5f);
             Destroy(impactGO, 2f);
         }
         else {

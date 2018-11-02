@@ -100,7 +100,7 @@ public class MoveBehaviour : GenericBehaviour
             behaviourManager.UnlockTempBehaviour(this.behaviourCode);
         }
         //it is a idle jump and has landed
-        else if (behaviourManager.IsGrounded() && behaviourManager.GetAnim.GetBool(idleJumpBool) && (idleJumpLeaveGround == true))
+        else if (behaviourManager.IsGrounded() && behaviourManager.GetAnim.GetBool(idleJumpBool) && (idleJumpLeaveGround == true) && !behaviourManager.GetAnim.GetBool(idleJumpBool))
         {
             Debug.Log("jump3");
             //never being executed
@@ -123,7 +123,7 @@ public class MoveBehaviour : GenericBehaviour
             idleJumpLeaveGround = true;
         }
         // Start a new jump.
-        else if (jump && !behaviourManager.GetAnim.GetBool(jumpBool) && behaviourManager.IsGrounded() && !behaviourManager.GetAnim.GetBool(flightBool) && !behaviourManager.GetAnim.GetBool(idleJumpBool))
+        else if (jump && !behaviourManager.GetAnim.GetBool(jumpBool) && behaviourManager.IsGrounded() && !behaviourManager.GetAnim.GetBool(flightBool) && !behaviourManager.GetAnim.GetCurrentAnimatorStateInfo(0).IsName("Down"))
         {
             Debug.Log("jump5");
             // Set jump related parameters.
@@ -182,6 +182,10 @@ public class MoveBehaviour : GenericBehaviour
 			speed = sprintSpeed;
 		}
 
+        if (behaviourManager.GetAnim.GetCurrentAnimatorStateInfo(0).IsName("Down")) {
+            speed = 0f;
+        }
+
 		behaviourManager.GetAnim.SetFloat(speedFloat, speed, animSpeedDampTime, Time.deltaTime);
 
         //move the character without rootmotion
@@ -202,8 +206,11 @@ public class MoveBehaviour : GenericBehaviour
 		// Calculate target direction based on camera forward and direction key.
 		Vector3 right = new Vector3(forward.z, 0, -forward.x);
 		Vector3 targetDirection;
-		targetDirection = forward * vertical + right * horizontal;
-
+        if (!behaviourManager.GetAnim.GetCurrentAnimatorStateInfo(0).IsName("Down"))
+        {
+            targetDirection = forward * vertical + right * horizontal;
+        }else
+            targetDirection = Vector3.zero;
 		// Lerp current direction to calculated target direction.
 		if((behaviourManager.IsMoving() && targetDirection != Vector3.zero))
 		{
