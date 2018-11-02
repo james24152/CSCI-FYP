@@ -3,11 +3,12 @@ using System.Collections.Generic;
 using UnityEngine;
 
 public class LogReceiveController : MonoBehaviour {
-    private int woodCount = 0;
+    public int woodCount = 0;
     public ParticleSystem smokeParticle;
 	// Use this for initialization
 	void Start () {
         smokeParticle.Stop();
+        print("stoped");
 	}
 	
 	// Update is called once per frame
