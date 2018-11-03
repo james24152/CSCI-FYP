@@ -59,7 +59,8 @@ GameObject:
   - component: {fileID: 23198229534022740}
   - component: {fileID: 54895205380522174}
   - component: {fileID: 65352603967877892}
-  m_Layer: 0
+  - component: {fileID: 114751991880568568}
+  m_Layer: 9
   m_Name: Ornament
   m_TagString: WindmillSign
   m_Icon: {fileID: 0}
@@ -433,3 +434,15 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   spinSpeed: 10
   triggered: 0
+--- !u!114 &114751991880568568
+MonoBehaviour:
+  m_ObjectHideFlags: 1
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 100100000}
+  m_GameObject: {fileID: 1252306426764674}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: cdb1f0b1a67ea9e428685b1529691f2d, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  grabber: {fileID: 0}

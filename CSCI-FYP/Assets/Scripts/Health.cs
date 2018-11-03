@@ -25,10 +25,10 @@ public class Health : MonoBehaviour {
             {
                 anim.SetBool("Damaged", true);
                 invoked = true;
-                Invoke("SetDamagedFalse", 0.2f);
+                //Invoke("SetDamagedFalse", 0.2f);
             }
             if (health == 0)
-                gameObject.SetActive(false);
+                anim.SetBool("Death", true);
             nextTimeGetHit = Time.time + downTime;
             return true;
         }

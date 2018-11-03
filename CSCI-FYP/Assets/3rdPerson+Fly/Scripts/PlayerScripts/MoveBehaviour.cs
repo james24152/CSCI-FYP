@@ -76,7 +76,7 @@ public class MoveBehaviour : GenericBehaviour
 	void JumpManagement()
 	{
         // Is already jumping?
-        if (behaviourManager.GetAnim.GetBool(jumpBool) && !behaviourManager.IsGrounded())
+        /*if (behaviourManager.GetAnim.GetBool(jumpBool) && !behaviourManager.IsGrounded())
         {
             Debug.Log("jump1");
             // Keep forward movement while in the air.
@@ -84,9 +84,9 @@ public class MoveBehaviour : GenericBehaviour
             {
                 behaviourManager.GetRigidBody.AddForce(transform.forward * jumpIntertialForce * Physics.gravity.magnitude * sprintSpeed, ForceMode.Acceleration);
             }
-        }
+        }*/
         // Has landed? (if it is a local jump and has landed)
-        else if (behaviourManager.GetAnim.GetBool(jumpBool) && behaviourManager.IsGrounded() && !behaviourManager.GetAnim.GetBool(idleJumpBool))
+        if (behaviourManager.GetAnim.GetBool(jumpBool) && behaviourManager.IsGrounded() && !behaviourManager.GetAnim.GetBool(idleJumpBool))
         {
             Debug.Log("jump2");
             //never being executed
@@ -100,7 +100,7 @@ public class MoveBehaviour : GenericBehaviour
             behaviourManager.UnlockTempBehaviour(this.behaviourCode);
         }
         //it is a idle jump and has landed
-        else if (behaviourManager.IsGrounded() && behaviourManager.GetAnim.GetBool(idleJumpBool) && (idleJumpLeaveGround == true) && !behaviourManager.GetAnim.GetBool(idleJumpBool))
+        else if (behaviourManager.IsGrounded() && behaviourManager.GetAnim.GetBool(idleJumpBool) && (idleJumpLeaveGround == true) /*&& !behaviourManager.GetAnim.GetBool(idleJumpBool)*/)
         {
             Debug.Log("jump3");
             //never being executed
@@ -123,7 +123,7 @@ public class MoveBehaviour : GenericBehaviour
             idleJumpLeaveGround = true;
         }
         // Start a new jump.
-        else if (jump && !behaviourManager.GetAnim.GetBool(jumpBool) && behaviourManager.IsGrounded() && !behaviourManager.GetAnim.GetBool(flightBool) && !behaviourManager.GetAnim.GetCurrentAnimatorStateInfo(0).IsName("Down"))
+        else if (jump && !behaviourManager.GetAnim.GetBool(jumpBool) && behaviourManager.IsGrounded() && !behaviourManager.GetAnim.GetBool(flightBool) && !behaviourManager.GetAnim.GetCurrentAnimatorStateInfo(0).IsName("Down") && !behaviourManager.GetAnim.GetCurrentAnimatorStateInfo(0).IsName("Recover"))
         {
             Debug.Log("jump5");
             // Set jump related parameters.
@@ -182,7 +182,7 @@ public class MoveBehaviour : GenericBehaviour
 			speed = sprintSpeed;
 		}
 
-        if (behaviourManager.GetAnim.GetCurrentAnimatorStateInfo(0).IsName("Down")) {
+        if (behaviourManager.GetAnim.GetCurrentAnimatorStateInfo(0).IsName("Down") || behaviourManager.GetAnim.GetCurrentAnimatorStateInfo(0).IsName("Recover")) {
             speed = 0f;
         }
 
@@ -206,13 +206,14 @@ public class MoveBehaviour : GenericBehaviour
 		// Calculate target direction based on camera forward and direction key.
 		Vector3 right = new Vector3(forward.z, 0, -forward.x);
 		Vector3 targetDirection;
-        if (!behaviourManager.GetAnim.GetCurrentAnimatorStateInfo(0).IsName("Down"))
+        if (!behaviourManager.GetAnim.GetCurrentAnimatorStateInfo(0).IsName("Down") && !behaviourManager.GetAnim.GetCurrentAnimatorStateInfo(0).IsName("Recover"))
         {
             targetDirection = forward * vertical + right * horizontal;
         }else
             targetDirection = Vector3.zero;
-		// Lerp current direction to calculated target direction.
-		if((behaviourManager.IsMoving() && targetDirection != Vector3.zero))
+        
+        // Lerp current direction to calculated target direction.
+        if ((behaviourManager.IsMoving() && targetDirection != Vector3.zero))
 		{
 			Quaternion targetRotation = Quaternion.LookRotation (targetDirection);
 

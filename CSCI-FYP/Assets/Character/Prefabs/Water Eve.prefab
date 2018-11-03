@@ -3135,7 +3135,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: f056a71656d059444b1cd6fd69456c1f, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  health: 2
+  downTime: 4
+  health: 5
 --- !u!114 &114104358241983038
 MonoBehaviour:
   m_ObjectHideFlags: 1
@@ -3155,6 +3156,7 @@ MonoBehaviour:
   itemHeight: 3
   bindingHand: {fileID: 4569655961537124}
   bindingHand2: {fileID: 4569655961537124}
+  forceEject: 0
 --- !u!114 &114295702830037870
 MonoBehaviour:
   m_ObjectHideFlags: 1
@@ -64148,7 +64150,7 @@ ParticleSystem:
     radiusScale: 1
     collidesWith:
       serializedVersion: 2
-      m_Bits: 528
+      m_Bits: 4624
     maxCollisionShapes: 256
     quality: 0
     voxelSize: 0.5

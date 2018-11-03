@@ -23,6 +23,7 @@ GameObject:
   - component: {fileID: 23064951941338614}
   - component: {fileID: 54349353944341202}
   - component: {fileID: 65701251707216276}
+  - component: {fileID: 114032770308331732}
   m_Layer: 9
   m_Name: Custom_wood
   m_TagString: logs
@@ -112,3 +113,15 @@ BoxCollider:
   serializedVersion: 2
   m_Size: {x: 0.1268533, y: 0.07666384, z: 0.117253706}
   m_Center: {x: 0, y: 0.03833192, z: 0.0000000949949}
+--- !u!114 &114032770308331732
+MonoBehaviour:
+  m_ObjectHideFlags: 1
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 100100000}
+  m_GameObject: {fileID: 1531829584304606}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: cdb1f0b1a67ea9e428685b1529691f2d, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  grabber: {fileID: 0}

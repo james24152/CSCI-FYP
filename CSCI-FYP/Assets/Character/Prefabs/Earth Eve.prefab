@@ -1486,8 +1486,8 @@ Transform:
   m_PrefabParentObject: {fileID: 0}
   m_PrefabInternal: {fileID: 100100000}
   m_GameObject: {fileID: 1131277630755150}
-  m_LocalRotation: {x: -0, y: 0.99978125, z: -0, w: -0.020915374}
-  m_LocalPosition: {x: 44.98, y: 0, z: -22.84}
+  m_LocalRotation: {x: 0, y: 1, z: 0, w: 0}
+  m_LocalPosition: {x: 46.59, y: 0, z: -23.13}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children:
   - {fileID: 4632023521142446}
@@ -1496,7 +1496,7 @@ Transform:
   - {fileID: 4611456589964848}
   m_Father: {fileID: 0}
   m_RootOrder: 0
-  m_LocalEulerAnglesHint: {x: 0, y: 182.39699, z: 0}
+  m_LocalEulerAnglesHint: {x: 0, y: 180, z: 0}
 --- !u!4 &4059960771087654
 Transform:
   m_ObjectHideFlags: 1
@@ -2928,6 +2928,7 @@ MonoBehaviour:
   itemHeight: 3
   bindingHand: {fileID: 4460890616624476}
   bindingHand2: {fileID: 4460890616624476}
+  forceEject: 0
 --- !u!114 &114330201310113292
 MonoBehaviour:
   m_ObjectHideFlags: 1
@@ -2939,7 +2940,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: f056a71656d059444b1cd6fd69456c1f, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  health: 2
+  downTime: 4
+  health: 5
 --- !u!114 &114360234133141714
 MonoBehaviour:
   m_ObjectHideFlags: 1

@@ -12,7 +12,7 @@ public class Windmill_controller : MonoBehaviour {
 	void Start () {
         
         fanScript = fan.GetComponent<WindmillFanSpin>();
-        location = new Vector3(0, -0.41f, 0);
+        location = new Vector3(1.54f, 4.07f, 0.04f);
     }
 	
 	// Update is called once per frame
@@ -31,6 +31,7 @@ public class Windmill_controller : MonoBehaviour {
                     grabber.grabber.GetComponent<PickUpBehaviour>().forceEject = true;
             signRigidbody = other.gameObject.GetComponent<Rigidbody>();
             fanScript.triggered = true;
+            other.gameObject.transform.parent = transform.parent;
             other.gameObject.transform.localPosition = location;
             other.gameObject.transform.rotation = Quaternion.Euler(0, -90, 0);
             Destroy(signRigidbody);
