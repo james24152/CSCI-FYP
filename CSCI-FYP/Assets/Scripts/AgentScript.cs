@@ -18,7 +18,7 @@ public class AgentScript : Agent {
     private bool inRange = false; //agent inside enemy trigger or not.
     private int targetHealth;
     private GameObject steppedIn;
-    private bool death = false;
+    public bool death = false;
     //wayOfDone = 1 means collide to wall, 2 means collide to goal
 
     /*
@@ -44,6 +44,7 @@ public class AgentScript : Agent {
         rayPer = GetComponent<RayPerception>();
         distance = Vector3.Distance(transform.position, target.transform.position);
         anim = GetComponent<Animator>();
+        AgentReset();
         //attributes of first spawn
     }
 
@@ -186,12 +187,14 @@ public class AgentScript : Agent {
         //agent is hit by any attack from eves
         ghostFire.Play();
         death = true;
+        GetComponent<Collider>().enabled = false;
         anim.SetBool("Die", true);
     }
 
 
     public override void AgentReset()
     {
+        Debug.Log("reset");
         //in practice, wayofDone 1 and 2 will not be used
         if (wayOfDone == 1) { //collide wall
             transform.position = restartPos;
