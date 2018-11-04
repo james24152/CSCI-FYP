@@ -6,16 +6,17 @@ public class LogReceiveController : MonoBehaviour {
     public int woodCount = 0;
     public ParticleSystem smokeParticle;
     private Grabber grabber;
+    private Vector3 targetPosition;
+    private GameObject chimney;
 	// Use this for initialization
 	void Start () {
-        smokeParticle.Stop();
-        print("stoped");
+        chimney = transform.GetChild(0).gameObject;
+        targetPosition = chimney.transform.position;
 	}
 
     private void working()
     {
-        Debug.Log("working");
-        smokeParticle.Play();
+        Instantiate(smokeParticle, targetPosition,Quaternion.identity);
     }
 
     private void OnTriggerEnter(Collider other)
