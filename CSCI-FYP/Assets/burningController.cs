@@ -27,6 +27,7 @@ public class burningController : MonoBehaviour {
 	}
     public void turn()
     {
+        print("turn!");
         burning = !burning;
     }
 }

@@ -13,10 +13,14 @@ public class FireCageSwtich : MonoBehaviour {
     private burningController burningScript3;
     public bool burning;
     private bool theSwitch;
-	// Use this for initialization
-	void Start () {
+    private bool fire;
+    private bool water;
+    // Use this for initialization
+    void Start () {
         theSwitch = false;
 		burning = true;
+        fire = true;
+        water = false;
         burningScriptSelf = selfFireCage.transform.GetChild(0).gameObject.GetComponent<burningController>();
         burningScript1 = fireCage1.transform.GetChild(0).gameObject.GetComponent<burningController>();
         burningScript2 = fireCage2.transform.GetChild(0).gameObject.GetComponent<burningController>();
@@ -46,15 +50,25 @@ public class FireCageSwtich : MonoBehaviour {
     {
         if (other.gameObject.CompareTag("WaterAttack") && burning == true)
         {
-            turn();
-            burning = false;
-            theSwitch = true;
+            if (!water)
+            {
+                turn();
+                burning = false;
+                theSwitch = true;
+                water = true;
+                fire = false;
+            }
         }
-        if (other.gameObject.CompareTag("fireAttack") && burning == false)
+        else if (other.gameObject.CompareTag("FireAttack") && burning == false)
         {
-            turn();
-            burning = true;
-            theSwitch = true;
+            if (!fire)
+            {
+                turn();
+                burning = true;
+                theSwitch = true;
+                fire = true;
+                water = false;
+            }
         }
     }
 

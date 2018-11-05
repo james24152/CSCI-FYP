@@ -32,6 +32,7 @@ public class parkMissionController : MonoBehaviour {
         burningScript3 = fireCage3.transform.GetChild(0).gameObject.GetComponent<burningController>();
         burningScript4 = fireCage4.transform.GetChild(0).gameObject.GetComponent<burningController>();
         burningScript5 = fireCage5.transform.GetChild(0).gameObject.GetComponent<burningController>();
+        burningScript3.turn();
     }
 	
     private bool AllOff()

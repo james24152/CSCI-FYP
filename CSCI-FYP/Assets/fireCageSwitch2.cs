@@ -15,15 +15,20 @@ public class fireCageSwitch2 : MonoBehaviour {
     private burningController burningScript4;
     public bool burning;
     private bool theSwitch;
+    private bool fire;
+    private bool water;
     // Use this for initialization
     void Start () {
         theSwitch = false;
-        burning = true;
+        burning = false ;
+        fire = false;
+        water = true;
         burningScriptSelf = selfFireCage.transform.GetChild(0).gameObject.GetComponent<burningController>();
         burningScript1 = fireCage1.transform.GetChild(0).gameObject.GetComponent<burningController>();
         burningScript2 = fireCage2.transform.GetChild(0).gameObject.GetComponent<burningController>();
         burningScript3 = fireCage3.transform.GetChild(0).gameObject.GetComponent<burningController>();
         burningScript4 = fireCage4.transform.GetChild(0).gameObject.GetComponent<burningController>();
+        burningScriptSelf.turn();
     }
 	
 	// Update is called once per frame
@@ -46,18 +51,29 @@ public class fireCageSwitch2 : MonoBehaviour {
 
     private void OnParticleCollision(GameObject other)
     {
+       
         if (other.gameObject.CompareTag("WaterAttack") && burning == true)
         {
-            turn();
-            burning = false;
-            theSwitch = true;
+                if (!water)
+                {
+                turn();
+                burning = false;
+                theSwitch = true;
+                water = true;
+                fire = false;
+                }
         }
-        if (other.gameObject.CompareTag("fireAttack") && burning == false)
-        {
-            turn();
-            burning = true;
-            theSwitch = true;
+        else if (other.gameObject.CompareTag("FireAttack") && burning == false)
+            {
+            if (!fire) {
+                turn();
+                burning = true;
+                theSwitch = true;
+                fire = true;
+                water = false;
+            }
         }
+        
     }
 
  /*   private void OnTriggerEnter(Collider other)
