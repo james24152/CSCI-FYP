@@ -11,6 +11,7 @@ public class parkMissionController : MonoBehaviour {
     public GameObject fireCage3;
     public GameObject fireCage4;
     public GameObject fireCage5;
+    public GameObject DB;
     private burningController burningScriptS1;
     private burningController burningScriptS2;
     private burningController burningScriptS3;
@@ -19,6 +20,7 @@ public class parkMissionController : MonoBehaviour {
     private burningController burningScript3;
     private burningController burningScript4;
     private burningController burningScript5;
+    private CommunWithDatabase DBscript; 
     private bool forOnce;
 
     // Use this for initialization
@@ -33,6 +35,7 @@ public class parkMissionController : MonoBehaviour {
         burningScript4 = fireCage4.transform.GetChild(0).gameObject.GetComponent<burningController>();
         burningScript5 = fireCage5.transform.GetChild(0).gameObject.GetComponent<burningController>();
         burningScript3.turn();
+        DBscript = DB.GetComponent<CommunWithDatabase>();
     }
 	
     private bool AllOff()
@@ -58,7 +61,10 @@ public class parkMissionController : MonoBehaviour {
                 StartCoroutine(DisableObject(i,transform.GetChild(26-i).gameObject));
                 i = i + 1;
             }
-            
+            burningScriptS1.enabled = false;
+            burningScriptS2.enabled = false;
+            burningScriptS3.enabled = false;
+            DBscript.finishPuzzle(0);
         }
 	}
 
