@@ -1399,6 +1399,7 @@ GameObject:
   - component: {fileID: 114930072014263450}
   - component: {fileID: 65394938575062804}
   - component: {fileID: 114844960576203668}
+  - component: {fileID: 114995080740505664}
   m_Layer: 10
   m_Name: Fire Eve
   m_TagString: Player
@@ -2306,7 +2307,7 @@ Transform:
   m_PrefabInternal: {fileID: 100100000}
   m_GameObject: {fileID: 1095902945024526}
   m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
-  m_LocalPosition: {x: 100, y: 10, z: 280}
+  m_LocalPosition: {x: 0, y: 0, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children:
   - {fileID: 4152071851166822}
@@ -3796,6 +3797,22 @@ MonoBehaviour:
   center: {fileID: 1077484150983514}
   cam: {fileID: 20499480458000636}
   playerNum: 3
+--- !u!114 &114995080740505664
+MonoBehaviour:
+  m_ObjectHideFlags: 1
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 100100000}
+  m_GameObject: {fileID: 1804718523987538}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: aa6345162cdaadb4fb28b58d679ae159, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  swimSpeed: 1
+  cam: {fileID: 20499480458000636}
+  turningSpeed: 0.01
+  flapVelocity: 0
+  drag: 5
 --- !u!136 &136648539197923078
 CapsuleCollider:
   m_ObjectHideFlags: 1

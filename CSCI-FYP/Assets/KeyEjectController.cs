@@ -37,5 +37,9 @@ public class KeyEjectController : MonoBehaviour {
             nkey.GetComponent<Rigidbody>().velocity = new Vector3(-7.0f, 5.0f, Random.Range(-2.0f,2.0f));
             
         }
+        GameObject[] gameManager;
+        gameManager = GameObject.FindGameObjectsWithTag("GameManager");
+        Level1GameManager managerScript = gameManager[0].GetComponent<Level1GameManager>();
+        managerScript.sublevel = 2;
     }
 }

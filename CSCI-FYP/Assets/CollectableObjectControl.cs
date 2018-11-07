@@ -28,7 +28,7 @@ public class CollectableObjectControl : MonoBehaviour {
                 {
                     case "EarthCollect":
 
-                        if (other.gameObject.tag != "EarthEve")
+                        if (other.gameObject.transform.name != "Earth Eve" && other.gameObject.transform.name != "Earth Eve(Clone)")
                         {                                       //it is not same element
                             CCCScript.Evolve(1);
                             sameElement = false;
@@ -40,7 +40,7 @@ public class CollectableObjectControl : MonoBehaviour {
                         break;
 
                     case "WaterCollect":
-                        if (other.gameObject.tag != "WaterEve")
+                        if (other.gameObject.transform.name != "Water Eve" && other.gameObject.transform.name != "Water Eve(Clone)")
                         {                                       //it is not same element
                             CCCScript.Evolve(2);
                             sameElement = false;
@@ -52,7 +52,7 @@ public class CollectableObjectControl : MonoBehaviour {
                         break;
 
                     case "FireCollect":
-                        if (other.gameObject.tag != "FireEve")
+                        if (other.gameObject.transform.name != "Fire Eve" && other.gameObject.transform.name != "Fire Eve(Clone)")
                         {                                       //it is not same element
                             CCCScript.Evolve(3);
                             sameElement = false;
@@ -63,7 +63,7 @@ public class CollectableObjectControl : MonoBehaviour {
                         }
                         break;
                     case "AirCollect":
-                        if (other.gameObject.tag != "AirEve")
+                        if (other.gameObject.transform.name != "Air Eve" && other.gameObject.transform.name != "Air Eve(Clone)")
                         {                                       //it is not same element
                             CCCScript.Evolve(4);
                             sameElement = false;

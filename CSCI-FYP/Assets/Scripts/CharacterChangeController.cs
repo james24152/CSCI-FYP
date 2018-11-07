@@ -30,6 +30,7 @@ public class CharacterChangeController : MonoBehaviour {
     private SwimBehaviour swimScript;
     private ThirdPersonOrbitCamBasic camScript;
     private AimBehaviourBasic aimScript;
+    private DrownBehaviour drownScript;
 
     public void Evolve(int element) { //find out what element collected
         switch (element)
@@ -93,6 +94,11 @@ public class CharacterChangeController : MonoBehaviour {
         swimScript = tempEve.GetComponent<SwimBehaviour>();
         if (swimScript != null) {
             swimScript.cam = cam;
+        }
+        drownScript = tempEve.GetComponent<DrownBehaviour>();
+        if (drownScript != null)
+        {
+            drownScript.cam = cam;
         }
         camScript = cam.GetComponent<ThirdPersonOrbitCamBasic>();
         camScript.player = tempEve.transform;

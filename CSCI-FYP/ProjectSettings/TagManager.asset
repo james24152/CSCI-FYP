@@ -30,6 +30,9 @@ TagManager:
   - Agent
   - logs
   - FxTemporaire
+  - GameManager
+  - Spawn1
+  - Spawn2
   layers:
   - Default
   - TransparentFX
