@@ -18,6 +18,7 @@ public class AgentScript : Agent {
     private bool inRange = false; //agent inside enemy trigger or not.
     private int targetHealth;
     private GameObject steppedIn;
+    private GameObject[] manager;
     public bool death = false;
     //wayOfDone = 1 means collide to wall, 2 means collide to goal
 
@@ -44,6 +45,7 @@ public class AgentScript : Agent {
         rayPer = GetComponent<RayPerception>();
         distance = Vector3.Distance(transform.position, target.transform.position);
         anim = GetComponent<Animator>();
+        manager = GameObject.FindGameObjectsWithTag("GameManager");
         AgentReset();
         //attributes of first spawn
     }
@@ -164,6 +166,8 @@ public class AgentScript : Agent {
             wayOfDone = 2;
             Debug.Log("reached goal");
             AddReward(1f);
+            Level1GameManager managerScript = manager[0].GetComponent<Level1GameManager>();
+            managerScript.missionFailed = true;
             //Done();
         }
     }

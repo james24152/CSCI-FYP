@@ -16,6 +16,8 @@ public class Level1GameManager : MonoBehaviour {
     public Text signObjective;
     public bool logObjectiveStart;
     public bool signObjectiveStart;
+    public bool missionFailed;
+    public DialogueTrigger dialogueTrigger;
     private void Start()
     {
         switch (playerCount)
@@ -53,5 +55,7 @@ public class Level1GameManager : MonoBehaviour {
             signObjective.gameObject.SetActive(true);
         else
             signObjective.gameObject.SetActive(false);
+        if (missionFailed)
+            dialogueTrigger.TriggerDialogue(); //also cinematic
     }
 }

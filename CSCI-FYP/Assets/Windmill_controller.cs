@@ -16,10 +16,6 @@ public class Windmill_controller : MonoBehaviour {
         location = new Vector3(1.54f, 4.07f, 0.04f);
     }
 	
-	// Update is called once per frame
-	void Update () {
-		
-	}
 
     private void OnTriggerEnter(Collider other)
     {

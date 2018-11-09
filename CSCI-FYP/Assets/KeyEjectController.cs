@@ -13,6 +13,7 @@ public class KeyEjectController : MonoBehaviour {
     private int keyEjected = 0;
     private Vector3 keyPos;
     public Level1GameManager managerScript;
+    public DialogueTrigger dialogueTrigger;
     // Use this for initialization
     void Start () {
         logReceiveScript1 = door1.GetComponent<LogReceiveController>();
@@ -46,5 +47,6 @@ public class KeyEjectController : MonoBehaviour {
         gameManager = GameObject.FindGameObjectsWithTag("GameManager");
         Level1GameManager managerScript = gameManager[0].GetComponent<Level1GameManager>();
         managerScript.sublevel = 2;
+        dialogueTrigger.TriggerDialogue();
     }
 }

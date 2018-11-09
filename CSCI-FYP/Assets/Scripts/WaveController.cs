@@ -6,6 +6,7 @@ public class WaveController : MonoBehaviour {
 
     public GameObject[] enemies;
     public bool waveStart = true;
+    public DialogueTrigger dialogueTrigger;
     private bool inited1;
     private bool inited2;
     private bool inited3;
@@ -44,6 +45,7 @@ public class WaveController : MonoBehaviour {
                         inited3 = true;
                     }
                     if (CheckFinishWave3()) {
+                        dialogueTrigger.TriggerDialogue();
                     }
                 }
             }

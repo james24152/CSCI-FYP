@@ -14,6 +14,7 @@ public class WindmillToLightController : MonoBehaviour {
     public Level1GameManager managerScript;
     public Light light1;
     public Light light2;
+    public DialogueTrigger dialogueTrigger;
     // Use this for initialization
     void Start()
     { 
@@ -38,5 +39,6 @@ public class WindmillToLightController : MonoBehaviour {
     private void LightenUp() {
         light1.intensity = 1.95f;
         light2.intensity = 1.95f;
+        dialogueTrigger.TriggerDialogue();
     }
 }
