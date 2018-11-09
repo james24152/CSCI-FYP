@@ -122,8 +122,8 @@ public class BasicBehaviour : MonoBehaviour
 		if (!isAnyBehaviourActive && overridingBehaviours.Count == 0)
 		{
 			rBody.useGravity = true;
-			Repositioning ();
-		}
+            Repositioning();
+        }
 	}
 
 	// Call the LateUpdate functions of the active or overriding behaviours.

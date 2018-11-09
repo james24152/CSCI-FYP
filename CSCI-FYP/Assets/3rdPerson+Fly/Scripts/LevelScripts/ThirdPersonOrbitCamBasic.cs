@@ -15,6 +15,7 @@ public class ThirdPersonOrbitCamBasic : MonoBehaviour
 	public float minVerticalAngle = -60f;                              // Camera min clamp angle.
     public XboxAxis xAxis;
     public XboxAxis yAxis;                                             // The default vertical axis input name.
+    public Canvas canvas;
 
 	private float angleH = 0;                                          // Float to store camera horizontal angle related to mouse movement.
 	private float angleV = 0;                                          // Float to store camera vertical angle related to mouse movement.

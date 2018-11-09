@@ -2,6 +2,7 @@
 using System.Collections.Generic;
 using UnityEngine;
 using XboxCtrlrInput;
+using UnityEngine.UI;
 
 public class PickUpBehaviour : MonoBehaviour {
 
@@ -19,6 +20,7 @@ public class PickUpBehaviour : MonoBehaviour {
     public Transform bindingHand;
     public Transform bindingHand2;
     public bool forceEject = false;
+    public Image popUp;
 
     private Vector3 grabPosition;
     private Vector3 grabRotation;
@@ -36,11 +38,21 @@ public class PickUpBehaviour : MonoBehaviour {
     // Use this for initialization
     void Start () {
         anim = GetComponent<Animator>();
-        layerMask = LayerMask.GetMask("Environment", "Grabs");
+        layerMask = LayerMask.GetMask("PickUp", "Grabs");
     }
 	
 	// Update is called once per frame
 	void Update () {
+        RaycastHit hitCheck = new RaycastHit();
+        if (
+            Physics.Raycast(playerCam.transform.position,
+                             playerCam.transform.forward, out hitCheck, 4,
+                             layerMask))
+        {
+            popUp.gameObject.SetActive(true);
+        }else
+            popUp.gameObject.SetActive(false);
+
         pickButtonPressed = XCI.GetButtonDown(pickUpButton, joystick);
         if (pickButtonPressed && !pickUp && !grab) //pressed X button and nothing holding
         {
@@ -50,7 +62,7 @@ public class PickUpBehaviour : MonoBehaviour {
             RaycastHit hit = new RaycastHit();
             if (
                 !Physics.Raycast(mainCamera.transform.position,
-                                 mainCamera.transform.forward, out hit, 100,
+                                 mainCamera.transform.forward, out hit, 4,
                                  layerMask))
             {
                 Debug.Log("returned");
@@ -95,7 +107,7 @@ public class PickUpBehaviour : MonoBehaviour {
                     StartCoroutine(ItemFollowHand(hit.transform.gameObject));
                 }
             }
-            else if ((hit.transform.gameObject.layer == LayerMask.NameToLayer("Environment")))
+            else if ((hit.transform.gameObject.layer == LayerMask.NameToLayer("PickUp")))
             {
                 pickUp = true;
                 anim.SetBool("PickUp", true);

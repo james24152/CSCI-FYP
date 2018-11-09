@@ -2004,8 +2004,8 @@ Transform:
   m_PrefabParentObject: {fileID: 0}
   m_PrefabInternal: {fileID: 100100000}
   m_GameObject: {fileID: 1359491581565756}
-  m_LocalRotation: {x: 0, y: 1, z: 0, w: 0}
-  m_LocalPosition: {x: 33.84, y: -0.015163362, z: -29.4}
+  m_LocalRotation: {x: 0, y: -0.7071068, z: 0, w: 0.7071068}
+  m_LocalPosition: {x: -12.01, y: -0.015163362, z: 4.09}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children:
   - {fileID: 4405470547783962}
@@ -2014,7 +2014,7 @@ Transform:
   - {fileID: 4432447467031508}
   m_Father: {fileID: 0}
   m_RootOrder: 0
-  m_LocalEulerAnglesHint: {x: 0, y: 180, z: 0}
+  m_LocalEulerAnglesHint: {x: 0, y: -90, z: 0}
 --- !u!4 &4273185517541942
 Transform:
   m_ObjectHideFlags: 1
@@ -3538,7 +3538,9 @@ MonoBehaviour:
   cam: {fileID: 0}
   turningSpeed: 0.01
   flapVelocity: 0
-  drag: 5
+  drag: 2
+  inited: 0
+  isInWater: 0
 --- !u!114 &114175194138917646
 MonoBehaviour:
   m_ObjectHideFlags: 1
@@ -3601,6 +3603,7 @@ MonoBehaviour:
   bindingHand: {fileID: 4111093827894932}
   bindingHand2: {fileID: 4111093827894932}
   forceEject: 0
+  popUp: {fileID: 0}
 --- !u!114 &114647238701189048
 MonoBehaviour:
   m_ObjectHideFlags: 1
@@ -3614,11 +3617,22 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   downTime: 4
   health: 2
+  healthCap: 2
   center: {fileID: 1321078439968796}
   earthFx: {fileID: 198683642931419858, guid: 5e8ffcfa8485e5d458be6d64015c4433, type: 2}
   waterFx: {fileID: 198627196327330122, guid: d399199477fccfe4aad81b1d1fa4eeca, type: 2}
   fireFx: {fileID: 198476698190073724, guid: 13182df65c0c2c64fa8898144cd3666e, type: 2}
   airFx: {fileID: 198300492543995352, guid: 7009526a947da324e936b768a0748e9c, type: 2}
+  icon: {fileID: 0}
+  earthIcon: {fileID: 21300000, guid: 91addd09fd603474ebc4e5c88dc65c16, type: 3}
+  waterIcon: {fileID: 21300000, guid: ee4ee25e5d20cce44ac03cf11e81fa50, type: 3}
+  fireIcon: {fileID: 21300000, guid: fd92662ae2321c44fba4ce0de698f86b, type: 3}
+  airIcon: {fileID: 21300000, guid: 401ce66eab9b7174d8f7ccbbd0dbe891, type: 3}
+  hearts:
+  - {fileID: 0}
+  - {fileID: 0}
+  fullHeart: {fileID: 21300000, guid: 287510acbff2ddd4dbcaffb840fa6a8b, type: 3}
+  hollowHeart: {fileID: 21300000, guid: 84500bb5e6ab15e4eb0443a97c78fb2a, type: 3}
 --- !u!114 &114698080388341064
 MonoBehaviour:
   m_ObjectHideFlags: 1

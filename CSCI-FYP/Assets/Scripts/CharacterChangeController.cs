@@ -30,7 +30,9 @@ public class CharacterChangeController : MonoBehaviour {
     private SwimBehaviour swimScript;
     private ThirdPersonOrbitCamBasic camScript;
     private AimBehaviourBasic aimScript;
+    private Health healthScript;
     private DrownBehaviour drownScript;
+    private CanvasHearts heartScript;
 
     public void Evolve(int element) { //find out what element collected
         switch (element)
@@ -46,6 +48,7 @@ public class CharacterChangeController : MonoBehaviour {
                 tempFx = Instantiate(waterFx, center.transform.position, center.transform.rotation);
                 tempFx.transform.parent = center.transform;
                 tempElement = waterEve;
+                Debug.Log(tempElement);
                 Invoke("Go", 2f);
                 Debug.Log("change to water");
                 break;
@@ -74,6 +77,8 @@ public class CharacterChangeController : MonoBehaviour {
         tempEve = Instantiate(eve, origin.transform.position, origin.transform.rotation) as GameObject;
         tempEve.transform.parent = player;
         tempEve.transform.position = transform.position;
+        camScript = cam.GetComponent<ThirdPersonOrbitCamBasic>();
+        heartScript = camScript.canvas.GetComponent<CanvasHearts>();
         fireScript = tempEve.GetComponent<FireBlowController>();
         fireScript.joystick = joyNum;
         fireScript.cam = cam;
@@ -87,6 +92,7 @@ public class CharacterChangeController : MonoBehaviour {
         pickScript = tempEve.GetComponent<PickUpBehaviour>();
         pickScript.joystick = joyNum;
         pickScript.playerCam = cam;
+        pickScript.popUp = heartScript.pressX;
         changeScript = tempEve.GetComponent<CharacterChangeController>();
         changeScript.player = tempEve.transform.parent;
         changeScript.cam = cam;
@@ -100,8 +106,10 @@ public class CharacterChangeController : MonoBehaviour {
         {
             drownScript.cam = cam;
         }
-        camScript = cam.GetComponent<ThirdPersonOrbitCamBasic>();
         camScript.player = tempEve.transform;
+        healthScript = tempEve.GetComponent<Health>();
+        healthScript.icon = heartScript.icon;
+        healthScript.hearts = heartScript.hearts;
         Destroy(tempFx);
         tempEve.SetActive(true);
         Destroy(gameObject);

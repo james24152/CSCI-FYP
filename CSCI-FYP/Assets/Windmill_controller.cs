@@ -4,6 +4,7 @@ using UnityEngine;
 
 public class Windmill_controller : MonoBehaviour {
     public GameObject fan;
+    public bool fanSpin;
     private WindmillFanSpin fanScript;
     private Rigidbody signRigidbody;
     private Vector3 location;
@@ -35,6 +36,7 @@ public class Windmill_controller : MonoBehaviour {
             other.gameObject.transform.localPosition = location;
             other.gameObject.transform.rotation = Quaternion.Euler(0, -90, 0);
             Destroy(signRigidbody);
+            fanSpin = true;
         }
     }
 }

@@ -10,9 +10,10 @@ public class DrownBehaviour : MonoBehaviour
     public float turningSpeed = 0.01f;
     public float flapVelocity = 0.0f;
     public float drag = 2;
+    public bool inited;
+    public bool isInWater = false;
     private int swimBool;                          // Animator variable related to swimming.
     private bool swim = false;                     // Boolean to determine whether or not the player activated fly mode.
-    private bool isInWater = false;
     private float waterSurfaceY = -2.0f;
     private Rigidbody rb;
     private Animator anim;
@@ -32,7 +33,7 @@ public class DrownBehaviour : MonoBehaviour
     void Update()
     {
         // Toggle fly by input, only if there is no overriding state or temporary transitions.
-        if (IsUnderWater())
+        if (isInWater)
         {
             rb.useGravity = false;
             rb.drag = drag;
@@ -56,9 +57,12 @@ public class DrownBehaviour : MonoBehaviour
     {
         if (other.gameObject.CompareTag("Water"))
         {
-            isInWater = true;
-            healthScript.Drown();
-            Debug.Log("we are in water");
+            if (!inited) {
+                isInWater = true;
+                healthScript.Drown();
+                Debug.Log("we are in water");
+                inited = true;
+            }
         }
     }
 }
