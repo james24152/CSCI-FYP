@@ -36,17 +36,18 @@ public class DialogueManager : MonoBehaviour {
         }
 
         string sentence = sentences.Dequeue();
-
-        StartCoroutine(TypeSentence(sentence));
+        dialogueText.text = sentence;
+        Invoke("DisplayNextSentence", 4f);
+        //StartCoroutine(TypeSentence(sentence));
     }
 
     IEnumerator TypeSentence(string sentence) {
         dialogueText.text = "";
         foreach (char letter in sentence.ToCharArray()) {
             dialogueText.text += letter;
-            yield return null;
+            yield return new WaitForSeconds(0.1f);
         }
-        Invoke("DisplayNextSentence", 2f);
+        Invoke("DisplayNextSentence", 4f);
     }
 
 

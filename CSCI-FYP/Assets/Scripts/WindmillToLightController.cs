@@ -15,6 +15,7 @@ public class WindmillToLightController : MonoBehaviour {
     public Light light1;
     public Light light2;
     public DialogueTrigger dialogueTrigger;
+    private bool inited;
     // Use this for initialization
     void Start()
     { 
@@ -33,12 +34,15 @@ public class WindmillToLightController : MonoBehaviour {
         }
         if (windmillScript1.fanSpin && windmillScript2.fanSpin) {
             managerScript.signObjectiveStart = false;
-            Invoke("LightenUp", 5f);
+            if (!inited) {
+                dialogueTrigger.TriggerDialogue();
+                Invoke("LightenUp", 3f);
+                inited = true;
+            }
         }
     }
     private void LightenUp() {
         light1.intensity = 1.95f;
         light2.intensity = 1.95f;
-        dialogueTrigger.TriggerDialogue();
     }
 }

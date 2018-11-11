@@ -5,7 +5,7 @@ using UnityEngine;
 public class WaveController : MonoBehaviour {
 
     public GameObject[] enemies;
-    public bool waveStart = true;
+    public bool waveStart;
     public DialogueTrigger dialogueTrigger;
     private bool inited1;
     private bool inited2;
@@ -23,9 +23,22 @@ public class WaveController : MonoBehaviour {
     void Start () {
 		
 	}
-	
-	// Update is called once per frame
-	void Update () {
+
+    private void OnEnable()
+    {
+        inited1 = false;
+        inited2 = false;
+        inited3 = false;
+        GameObject[] enemies;
+        enemies = GameObject.FindGameObjectsWithTag("Agent");
+        foreach (GameObject enemy in enemies) {
+            Destroy(enemy);
+        }
+        waveStart = true;
+    }
+
+    // Update is called once per frame
+    void Update () {
         if (waveStart) {
             if (!inited1) {
                 initWave1();

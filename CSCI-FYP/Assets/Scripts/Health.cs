@@ -131,7 +131,7 @@ public class Health : MonoBehaviour {
         invoked = false;
     }
 
-    private void Respawn() {
+    public void Respawn() {
         Debug.Log("respawn");
         health = 2;
         respawn = FindSpawn();

@@ -14,10 +14,20 @@ public class Level1GameManager : MonoBehaviour {
     public GameObject player4;
     public Text logObjective;
     public Text signObjective;
+    public GameObject enemyAcademy;
+    public GameObject enemies;
+    public ParticleSystem enemySymbol;
     public bool logObjectiveStart;
     public bool signObjectiveStart;
+    public bool defendObjectiveStart;
     public bool missionFailed;
     public DialogueTrigger dialogueTrigger;
+    public bool missionReset;
+    public bool missionSuccess;
+
+    private bool inited;
+    private bool inited2;
+    private GameObject[] players;
     private void Start()
     {
         switch (playerCount)
@@ -55,7 +65,43 @@ public class Level1GameManager : MonoBehaviour {
             signObjective.gameObject.SetActive(true);
         else
             signObjective.gameObject.SetActive(false);
-        if (missionFailed)
-            dialogueTrigger.TriggerDialogue(); //also cinematic
+        if (defendObjectiveStart) {
+            if (!inited) {
+                enemySymbol.Play();
+                Invoke("SetEnemyActive", 2f);
+                inited = true;
+            }
+        }
+        if (missionFailed) {
+            dialogueTrigger.TriggerDialogue();
+            missionFailed = false;
+        }
+        if (missionReset) {
+            if (!inited2)
+            {
+                MissionReset();
+            }
+        }
+        if (missionSuccess) {
+            //endgame
+        }
+    }
+
+    private void SetEnemyActive() {
+        enemies.SetActive(true);
+        enemyAcademy.SetActive(true);
+    }
+
+    private void MissionReset() {
+        enemies.SetActive(false);
+        enemies.SetActive(true);
+        missionReset = false;
+        players = GameObject.FindGameObjectsWithTag("Player");
+        Health healthScript;
+        foreach (GameObject player in players) {
+            healthScript = player.GetComponent<Health>();
+            healthScript.Respawn();
+        }
+        inited2 = false;
     }
 }

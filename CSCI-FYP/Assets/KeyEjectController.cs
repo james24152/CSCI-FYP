@@ -2,6 +2,7 @@
 using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.UI;
+using UnityEngine.Playables;
 
 public class KeyEjectController : MonoBehaviour {
     private LogReceiveController logReceiveScript1;
