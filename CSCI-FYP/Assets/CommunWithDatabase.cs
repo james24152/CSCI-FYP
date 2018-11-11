@@ -14,8 +14,16 @@ public class CommunWithDatabase : MonoBehaviour {
     public int saveStatus;
     public int globalplayerNum;
     private int[] levels;
+    public GameObject parkMission;
+    public GameObject arenaMission;
+    private parkMissionController parkMissionScript;
+    private arenaMissionController arenaMissionScript;
     void Start() {
-        levels = new int[4];
+        levels = new int[2]; // Park = levels[0], Arena = levels[1]
+        levels[0] = 0;
+        levels[1] = 0;
+        parkMissionScript = parkMission.GetComponent<parkMissionController>();
+        arenaMissionScript = arenaMission.GetComponent<arenaMissionController>();
         saveStatus = 1;
         StartCoroutine(performStartLoad());
     }
@@ -28,8 +36,7 @@ public class CommunWithDatabase : MonoBehaviour {
             print("startnewgame");
             levels[0] = 0;
             levels[1] = 0;
-            levels[2] = 0;
-            levels[3] = 0;
+            
             startNewGame(globalplayerNum);
         }
         else
@@ -53,7 +60,7 @@ public class CommunWithDatabase : MonoBehaviour {
     }
 
     private int checkGameProgress (){
-        return levels[0] * 1 + levels[1] * 2 + levels[2] * 4 + levels[3] * 8;
+        return levels[0] * 1 + levels[1] * 2;
     }
 
     private void Update()
@@ -66,9 +73,7 @@ public class CommunWithDatabase : MonoBehaviour {
             save(inputmaplevelNum, inputplayerNum, inputsaveTime);
         }
     }
-
     
-
     int getInt(string data, string index)
     {
         string temp = data.Substring(data.IndexOf(index) + index.Length);
@@ -89,13 +94,15 @@ public class CommunWithDatabase : MonoBehaviour {
         }
         return temp;
     }
+
     public void load(int maplevelNum, int playerNum)
     {
+        //player Part
         for (int i = 0 ; i < playerNum; i++)
         {
             Instantiate(players[i]);
             
-            if (maplevelNum >= 0 && maplevelNum <= 15)
+            if (maplevelNum >= 0 && maplevelNum <= 3)
             {
                 players[i].transform.position = new Vector3(100.0f, 10.0f, 270.0f + (float)i * 5.0f);
             }
@@ -103,6 +110,17 @@ public class CommunWithDatabase : MonoBehaviour {
         }
         tunePlayView(playerNum);
         
+
+        //mission part
+        if(levels[0] == 1)
+        {
+            parkMissionScript.levelClear();
+        }
+
+        if(levels[1] == 1)
+        {
+            arenaMissionScript.levelClear();
+        }
     }
 
     public void startNewGame(int playerNum)

@@ -11,6 +11,7 @@ public class parkMissionController : MonoBehaviour {
     public GameObject fireCage3;
     public GameObject fireCage4;
     public GameObject fireCage5;
+    
     public GameObject DB;
     private burningController burningScriptS1;
     private burningController burningScriptS2;
@@ -20,7 +21,9 @@ public class parkMissionController : MonoBehaviour {
     private burningController burningScript3;
     private burningController burningScript4;
     private burningController burningScript5;
-    private CommunWithDatabase DBscript; 
+    
+    private CommunWithDatabase DBscript;
+    
     private bool forOnce;
 
     // Use this for initialization
@@ -35,6 +38,7 @@ public class parkMissionController : MonoBehaviour {
         burningScript4 = fireCage4.transform.GetChild(0).gameObject.GetComponent<burningController>();
         burningScript5 = fireCage5.transform.GetChild(0).gameObject.GetComponent<burningController>();
         burningScript3.turn();
+        
         DBscript = DB.GetComponent<CommunWithDatabase>();
     }
 	
@@ -64,9 +68,30 @@ public class parkMissionController : MonoBehaviour {
             burningScriptS1.enabled = false;
             burningScriptS2.enabled = false;
             burningScriptS3.enabled = false;
+            burningScript1.enabled = false;
             DBscript.finishPuzzle(0);
         }
 	}
+
+
+    public void levelClear()
+    {
+        forOnce = true;
+        
+        for (int i = 0; i < 25; i++)
+        {
+            transform.GetChild(i).gameObject.SetActive(false);
+        }
+        burningScriptS1.enabled = false;
+        burningScriptS2.enabled = false;
+        burningScriptS3.enabled = false;
+        burningScript1.enabled = false;
+        burningScript2.enabled = false;
+        burningScript3.enabled = false;
+        burningScript4.enabled = false;
+        burningScript5.enabled = false;
+
+    }
 
     IEnumerator DisableObject(int i,GameObject road)
     {

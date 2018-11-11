@@ -3013,6 +3013,7 @@ MonoBehaviour:
   minVerticalAngle: -60
   xAxis: 2
   yAxis: 3
+  canvas: {fileID: 0}
 --- !u!114 &114307633036841648
 MonoBehaviour:
   m_ObjectHideFlags: 1
@@ -3119,7 +3120,20 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   downTime: 4
   health: 2
-  respawn: {fileID: 0}
+  healthCap: 2
+  center: {fileID: 0}
+  earthFx: {fileID: 0}
+  waterFx: {fileID: 0}
+  fireFx: {fileID: 0}
+  airFx: {fileID: 0}
+  icon: {fileID: 0}
+  earthIcon: {fileID: 0}
+  waterIcon: {fileID: 0}
+  fireIcon: {fileID: 0}
+  airIcon: {fileID: 0}
+  hearts: []
+  fullHeart: {fileID: 0}
+  hollowHeart: {fileID: 0}
 --- !u!114 &114667363285968332
 MonoBehaviour:
   m_ObjectHideFlags: 1
@@ -3140,6 +3154,7 @@ MonoBehaviour:
   bindingHand: {fileID: 4365323594765224}
   bindingHand2: {fileID: 4365323594765224}
   forceEject: 0
+  popUp: {fileID: 0}
 --- !u!114 &114797814378814192
 MonoBehaviour:
   m_ObjectHideFlags: 1
@@ -3195,6 +3210,8 @@ MonoBehaviour:
   turningSpeed: 0.01
   flapVelocity: 0
   drag: 5
+  inited: 0
+  isInWater: 0
 --- !u!114 &114945976337004844
 MonoBehaviour:
   m_ObjectHideFlags: 1
