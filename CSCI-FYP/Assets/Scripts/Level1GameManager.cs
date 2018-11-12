@@ -54,6 +54,7 @@ public class Level1GameManager : MonoBehaviour {
                 Debug.Log("Player Activation failure");
                 break;
         }
+        TunePlayView(playerCount);
     }
     private void Update()
     {
@@ -103,5 +104,32 @@ public class Level1GameManager : MonoBehaviour {
             healthScript.Respawn();
         }
         inited2 = false;
+    }
+
+    public void TunePlayView(int playerNum)
+    {
+        if (playerNum == 1)
+        {
+            player1.transform.GetChild(0).gameObject.GetComponent<Camera>().rect = new Rect(0.0f, 0.0f, 1.0f, 0.5f);
+        }
+        else if (playerNum == 2)
+        {
+
+            player1.transform.GetChild(0).gameObject.GetComponent<Camera>().rect = new Rect(0.0f, 0.5f, 1.0f, 0.5f);
+            player2.transform.GetChild(0).gameObject.GetComponent<Camera>().rect = new Rect(0.0f, 0.0f, 1.0f, 0.5f);
+        }
+        else if (playerNum == 3)
+        {
+            player1.transform.GetChild(0).gameObject.GetComponent<Camera>().rect = new Rect(0.0f, 0.5f, 0.5f, 0.5f);
+            player2.transform.GetChild(0).gameObject.GetComponent<Camera>().rect = new Rect(0.5f, 0.5f, 0.5f, 0.5f);
+            player3.transform.GetChild(0).gameObject.GetComponent<Camera>().rect = new Rect(0.0f, 0.0f, 0.5f, 0.5f);
+        }
+        else if (playerNum == 4)
+        {
+            player1.transform.GetChild(0).gameObject.GetComponent<Camera>().rect = new Rect(0.0f, 0.5f, 0.5f, 0.5f);
+            player2.transform.GetChild(0).gameObject.GetComponent<Camera>().rect = new Rect(0.5f, 0.5f, 0.5f, 0.5f);
+            player3.transform.GetChild(0).gameObject.GetComponent<Camera>().rect = new Rect(0.0f, 0.0f, 0.5f, 0.5f);
+            player4.transform.GetChild(0).gameObject.GetComponent<Camera>().rect = new Rect(0.5f, 0.0f, 0.5f, 0.5f);
+        }
     }
 }
