@@ -62736,6 +62736,24 @@ MonoBehaviour:
     pitch: 1
     loop: 0
     source: {fileID: 0}
+  - name: ShootWind
+    clip: {fileID: 8300000, guid: ab235784ce7468d4fbd3bd0b4e5c22bf, type: 3}
+    volume: 0.5
+    pitch: 1
+    loop: 1
+    source: {fileID: 0}
+  - name: ShootMud
+    clip: {fileID: 8300000, guid: 9c0a8e7a50301464cae60d3a2877b435, type: 3}
+    volume: 0.5
+    pitch: 1
+    loop: 0
+    source: {fileID: 0}
+  - name: PickUp
+    clip: {fileID: 8300000, guid: b273d5a2b5a292e4d84a1b59440bb7f3, type: 3}
+    volume: 0.5
+    pitch: 1
+    loop: 0
+    source: {fileID: 0}
 --- !u!4 &1315026055
 Transform:
   m_ObjectHideFlags: 0

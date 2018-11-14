@@ -10,6 +10,13 @@ public class BulletBehaviour : MonoBehaviour {
     Rigidbody tempRigid;
     public GameObject explosion;
     public float impactForce = 1000;
+
+    private AudioManager audioManager;
+
+    private void Start()
+    {
+        audioManager = FindObjectOfType<AudioManager>();
+    }
     // Use this for initialization
 
     private void OnCollisionEnter(Collision collision)
@@ -24,9 +31,9 @@ public class BulletBehaviour : MonoBehaviour {
         if (!hit.CompareTag("Player"))
         {
             Debug.Log(hit);
-            impactGO = Instantiate(explosion, collision.contacts[0].point, Quaternion.LookRotation(collision.contacts[0].normal));
-            Destroy(gameObject, 0.5f);
-            Destroy(impactGO, 2f);
+            audioManager.Play("ShootMud");
+            Destroy(gameObject);
+            
         }
         else {
             if (hit.transform.name == "Earth Eve")

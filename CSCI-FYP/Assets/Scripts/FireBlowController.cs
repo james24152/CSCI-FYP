@@ -100,6 +100,8 @@ public class FireBlowController : MonoBehaviour
             audioMangaer.Play("ShootFire"); //play fire sound effect
         if (transform.name == "Water Eve" || transform.name == "Water Eve(Clone)")
             audioMangaer.Play("ShootWater"); //play fire sound effect
+        if (transform.name == "Air Eve" || transform.name == "Air Eve(Clone)")
+            audioMangaer.Play("ShootWind"); //play fire sound effect
     }
 
     void StopAudio()
@@ -108,6 +110,8 @@ public class FireBlowController : MonoBehaviour
             audioMangaer.FadeOut("ShootFire");
         if (transform.name == "Water Eve" || transform.name == "Water Eve(Clone)")
             audioMangaer.FadeOut("ShootWater");
+        if (transform.name == "Air Eve" || transform.name == "Air Eve(Clone)")
+            audioMangaer.FadeOut("ShootWind");
     }
 }
 

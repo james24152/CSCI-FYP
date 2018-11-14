@@ -26,6 +26,7 @@ public class PickUpBehaviour : MonoBehaviour {
     private Vector3 grabRotation;
     private GameObject itemGrabbed;
     private Grabber grabber;
+    private AudioManager audioMangaer;
     const float k_Spring = 100.0f;
     const float k_Damper = 5.0f;
     const float k_Drag = 5.0f;
@@ -39,6 +40,7 @@ public class PickUpBehaviour : MonoBehaviour {
     void Start () {
         anim = GetComponent<Animator>();
         layerMask = LayerMask.GetMask("PickUp", "Grabs");
+        audioMangaer = FindObjectOfType<AudioManager>();
     }
 	
 	// Update is called once per frame
@@ -111,6 +113,7 @@ public class PickUpBehaviour : MonoBehaviour {
             {
                 pickUp = true;
                 anim.SetBool("PickUp", true);
+                audioMangaer.Play("PickUp");
                 if (grabber = hit.transform.GetComponent<Grabber>()) {
                     grabber.grabber = gameObject;
                 }
