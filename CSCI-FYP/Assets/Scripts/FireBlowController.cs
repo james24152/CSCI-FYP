@@ -18,7 +18,7 @@ public class FireBlowController : MonoBehaviour
     public Camera cam;
 
     private MoveBehaviour moveScript;
-    
+    private bool audioInited;
 
     private Animator animator;
     // Use this for initialization
@@ -43,6 +43,10 @@ public class FireBlowController : MonoBehaviour
         {
             moveScript.walkSpeed = 4;
             moveScript.runSpeed = 4;
+            if (audioInited) {
+                StopAudio();
+                audioInited = false;
+            }
         }
 
 
@@ -52,10 +56,15 @@ public class FireBlowController : MonoBehaviour
     {
         fireHandL.Play();
         fireHandR.Play();
+
     }
 
     void Fire()
     {
+        if (!audioInited) {
+            StartAudio();
+            audioInited = true;
+        }
         fire.Play();
     }
     void FireBear()
@@ -74,6 +83,21 @@ public class FireBlowController : MonoBehaviour
 
         //fire.Play();
 
+    }
+
+    void StartAudio() {
+        if (transform.name == "Fire Eve" || transform.name == "Fire Eve(Clone)")
+            FindObjectOfType<AudioManager>().Play("ShootFire"); //play respawn sound effect
+        if (transform.name == "Water Eve" || transform.name == "Water Eve(Clone)")
+            FindObjectOfType<AudioManager>().Play("ShootWater"); //play respawn sound effect
+    }
+
+    void StopAudio()
+    {
+        if (transform.name == "Fire Eve" || transform.name == "Fire Eve(Clone)")
+            FindObjectOfType<AudioManager>().Stop("ShootFire"); //play respawn sound effect
+        if (transform.name == "Water Eve" || transform.name == "Water Eve(Clone)")
+            FindObjectOfType<AudioManager>().Stop("ShootWater"); //play respawn sound effect
     }
 }
 

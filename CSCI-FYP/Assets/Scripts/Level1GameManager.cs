@@ -110,7 +110,7 @@ public class Level1GameManager : MonoBehaviour {
     {
         if (playerNum == 1)
         {
-            player1.transform.GetChild(0).gameObject.GetComponent<Camera>().rect = new Rect(0.0f, 0.0f, 1.0f, 0.5f);
+            player1.transform.GetChild(0).gameObject.GetComponent<Camera>().rect = new Rect(0.0f, 0.0f, 1.0f, 1.0f);
         }
         else if (playerNum == 2)
         {

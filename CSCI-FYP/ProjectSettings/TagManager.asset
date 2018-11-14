@@ -33,6 +33,7 @@ TagManager:
   - GameManager
   - Spawn1
   - Spawn2
+  - AudioManager
   layers:
   - Default
   - TransparentFX

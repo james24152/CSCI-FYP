@@ -85,6 +85,7 @@ public class Health : MonoBehaviour {
     }
 
     public void FirstSpawn() {
+        FindObjectOfType<AudioManager>().Play("Vortex"); //play respawn sound effect
         if (!invoked)
         {
             anim.SetBool("Damaged", true);
@@ -154,6 +155,7 @@ public class Health : MonoBehaviour {
         {
             tempFx = Instantiate(airFx, center.transform.position, center.transform.rotation);
         }
+        FindObjectOfType<AudioManager>().Play("Respawn"); //play respawn sound effect
         tempFx.transform.parent = center.transform;
         if (drownScript != null) {
             drownScript.inited = false;

@@ -25,7 +25,8 @@ public class MoveBehaviour : GenericBehaviour
     private int flyBool;
     private bool jump = false;                              // Boolean to determine whether or not the player started a jump.
 	private bool isColliding;                       // Boolean to determine if the player has collided with an obstacle.
-
+    private bool isWalking;
+    private bool walkInited;
 	// Start is always called after any Awake functions.
 	void Start() 
 	{
@@ -172,6 +173,23 @@ public class MoveBehaviour : GenericBehaviour
 
 		// Set proper speed.
 		Vector2 dir = new Vector2(horizontal, vertical);
+        if (dir != Vector2.zero)
+        {
+            //is walking
+            isWalking = true;
+            if (!walkInited)
+            {
+                FindObjectOfType<AudioManager>().Play("Walk"); //play walk sound effect
+                walkInited = true;
+            }
+        }
+        else {
+            isWalking = false;
+            if (walkInited) {
+                FindObjectOfType<AudioManager>().Stop("Walk");
+                walkInited = false;
+            }
+        }
 		speed = Vector2.ClampMagnitude(dir, 1f).magnitude;
 		// This is for PC only, gamepads control speed via analog stick.
 		speedSeeker += Input.GetAxis("Mouse ScrollWheel");

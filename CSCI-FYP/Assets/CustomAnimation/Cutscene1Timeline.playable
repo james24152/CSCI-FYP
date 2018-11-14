@@ -18,6 +18,7 @@ MonoBehaviour:
   - {fileID: 114177927132487476}
   - {fileID: 114748874943260836}
   - {fileID: 114149894941383324}
+  - {fileID: 114150712763505568}
   m_FixedDuration: 0
   m_EditorSettings:
     m_Framerate: 60
@@ -54,6 +55,25 @@ MonoBehaviour:
   m_Clips: []
   m_Version: 1
   m_PostPlaybackState: 3
+--- !u!114 &114150712763505568
+MonoBehaviour:
+  m_ObjectHideFlags: 1
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: -2113462093, guid: 6a10b2909283487f913b00d94cd3faf5, type: 3}
+  m_Name: Audio Track
+  m_EditorClassIdentifier: 
+  m_Locked: 0
+  m_Muted: 0
+  m_CustomPlayableFullTypename: 
+  m_AnimClip: {fileID: 0}
+  m_Parent: {fileID: 11400000}
+  m_Children: []
+  m_Clips: []
+  m_Version: 1
 --- !u!114 &114177927132487476
 MonoBehaviour:
   m_ObjectHideFlags: 1
