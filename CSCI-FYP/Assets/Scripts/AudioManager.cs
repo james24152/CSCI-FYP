@@ -38,4 +38,23 @@ public class AudioManager : MonoBehaviour {
         Sound s = Array.Find(sounds, sound => sound.name == name);
         s.source.Stop();
     }
+
+    public void FadeOut(string name)
+    {
+        Sound s = Array.Find(sounds, sound => sound.name == name);
+        StartCoroutine(Fade(s));
+    }
+
+    IEnumerator Fade(Sound s) {
+        float originVolume = s.volume;
+        float volume = s.source.volume;
+        while (s.source.volume >= 0.01f)
+        {
+            volume -= 0.01f;
+            s.source.volume = volume;
+            yield return null;
+        }
+        s.source.Stop();
+        s.source.volume = originVolume;
+    }
 }

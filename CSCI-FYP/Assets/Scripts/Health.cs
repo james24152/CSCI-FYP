@@ -169,6 +169,7 @@ public class Health : MonoBehaviour {
     private void Wake() {
         anim.SetBool("Death", false);
         rb.angularDrag = 0;
+        FindObjectOfType<AudioManager>().FadeOut("Respawn");
     }
 
     private Transform FindSpawn() {

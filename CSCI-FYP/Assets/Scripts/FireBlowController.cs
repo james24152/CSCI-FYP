@@ -19,6 +19,8 @@ public class FireBlowController : MonoBehaviour
 
     private MoveBehaviour moveScript;
     private bool audioInited;
+    private bool audioInitedFire;
+    private AudioManager audioMangaer;
 
     private Animator animator;
     // Use this for initialization
@@ -26,6 +28,7 @@ public class FireBlowController : MonoBehaviour
     {
         animator = GetComponent<Animator>();
         moveScript = GetComponent<MoveBehaviour>();
+        audioMangaer = FindObjectOfType<AudioManager>();
     }
 
     // Update is called once per frame
@@ -43,17 +46,24 @@ public class FireBlowController : MonoBehaviour
         {
             moveScript.walkSpeed = 4;
             moveScript.runSpeed = 4;
-            if (audioInited) {
+            if (audioInitedFire) {
                 StopAudio();
-                audioInited = false;
+                audioInitedFire = false;
+                //audioInited = false;
             }
         }
 
-
+        if (!shoot && audioInited) {
+            audioMangaer.FadeOut("Charge");
+            audioInited = false;
+        }
     }
 
     void Cast()
     {
+
+        audioMangaer.Play("Charge");
+        audioInited = true;
         fireHandL.Play();
         fireHandR.Play();
 
@@ -61,9 +71,9 @@ public class FireBlowController : MonoBehaviour
 
     void Fire()
     {
-        if (!audioInited) {
+        if (!audioInitedFire) {
             StartAudio();
-            audioInited = true;
+            audioInitedFire = true;
         }
         fire.Play();
     }
@@ -87,17 +97,17 @@ public class FireBlowController : MonoBehaviour
 
     void StartAudio() {
         if (transform.name == "Fire Eve" || transform.name == "Fire Eve(Clone)")
-            FindObjectOfType<AudioManager>().Play("ShootFire"); //play respawn sound effect
+            audioMangaer.Play("ShootFire"); //play fire sound effect
         if (transform.name == "Water Eve" || transform.name == "Water Eve(Clone)")
-            FindObjectOfType<AudioManager>().Play("ShootWater"); //play respawn sound effect
+            audioMangaer.Play("ShootWater"); //play fire sound effect
     }
 
     void StopAudio()
     {
         if (transform.name == "Fire Eve" || transform.name == "Fire Eve(Clone)")
-            FindObjectOfType<AudioManager>().Stop("ShootFire"); //play respawn sound effect
+            audioMangaer.FadeOut("ShootFire");
         if (transform.name == "Water Eve" || transform.name == "Water Eve(Clone)")
-            FindObjectOfType<AudioManager>().Stop("ShootWater"); //play respawn sound effect
+            audioMangaer.FadeOut("ShootWater");
     }
 }
 
