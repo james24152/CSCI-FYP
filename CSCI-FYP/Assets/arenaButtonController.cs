@@ -21,23 +21,31 @@ public class arenaButtonController : MonoBehaviour {
         {
             shootTargetGateClose();
             shootTargetScript.hit = false;
+            
         }
 	}
 
     private void OnParticleCollision(GameObject other)
     {
-        if (other.gameObject.CompareTag("WindAttack") && GateOpen == true)
+        if (other.gameObject.CompareTag("WindAttack") && GateOpen == false)
         {
+            
             shootTargetGateOpen();
         }
     }
 
     public void shootTargetGateOpen()
     {
-        shootTargetGate.transform.Translate(new Vector3(0.0f, 0.0f, -2.0f));
+        Vector3 shootTargetGatePos = new Vector3(shootTargetGate.transform.position.x+4.0f, shootTargetGate.transform.position.y, shootTargetGate.transform.position.z);
+        shootTargetGate.transform.position = Vector3.MoveTowards(shootTargetGate.transform.position, shootTargetGatePos, 0.1f);
+        
+        //shootTargetGate.transform.Translate(new Vector3(0.0f, 0.0f, -4.0f)*Time.deltaTime);
+        if (shootTargetGate.transform.position.x == shootTargetGatePos.x)GateOpen = true;
+        
     }
     public void shootTargetGateClose()
     {
-        shootTargetGate.transform.Translate(new Vector3(0.0f, 0.0f, 2.0f));
+        shootTargetGate.transform.Translate(new Vector3(0.0f, 0.0f, 4.0f));
+        GateOpen = false;
     }
 }

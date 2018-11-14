@@ -30,4 +30,11 @@ public class burningController : MonoBehaviour {
         print("turn!");
         burning = !burning;
     }
+
+    public void forceOff()
+    {
+        transform.GetChild(0).gameObject.SetActive(false);
+        transform.GetChild(1).gameObject.SetActive(false);
+        transform.GetChild(2).gameObject.SetActive(false);
+    }
 }

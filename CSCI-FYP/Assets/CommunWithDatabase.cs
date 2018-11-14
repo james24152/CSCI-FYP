@@ -6,6 +6,12 @@ public class CommunWithDatabase : MonoBehaviour {
 
     // Use this for initialization
     public string[] items;
+    public int[] maplevelSaves;
+    public int[] playerNumSaves;
+    public string[] timesaves;
+    public int[] CmaplevelSaves;
+    public int[] CplayerNumSaves;
+    public string[] Ctimesaves;
     string saveGameDataURL = "http://localhost/saveGameData.php";
     public int inputmaplevelNum;
     public int inputplayerNum;
@@ -14,41 +20,48 @@ public class CommunWithDatabase : MonoBehaviour {
     public int saveStatus;
     public int globalplayerNum;
     private int[] levels;
+    
     public GameObject parkMission;
     public GameObject arenaMission;
     private parkMissionController parkMissionScript;
     private arenaMissionController arenaMissionScript;
     void Start() {
+        maplevelSaves = new int[100];
+        playerNumSaves = new int[100];
+        timesaves = new string[100];
+        CmaplevelSaves = new int[100];
+        CplayerNumSaves = new int[100];
+        Ctimesaves = new string[100];
         levels = new int[2]; // Park = levels[0], Arena = levels[1]
         levels[0] = 0;
         levels[1] = 0;
         parkMissionScript = parkMission.GetComponent<parkMissionController>();
         arenaMissionScript = arenaMission.GetComponent<arenaMissionController>();
-        saveStatus = 1;
+        saveStatus = 0;
         StartCoroutine(performStartLoad());
     }
 
     private IEnumerator performStartLoad()
     {
-
+        WWW saveData = new WWW("http://localhost/gameData.php");
+        yield return saveData;
+        string saveDataString = saveData.text;
+        items = saveDataString.Split(';');
+        int maplevelNum = getInt(items[0], "maplevelNum:");
+        int playerNum = getInt(items[0], "playerNum:");
+        string saveTime = getString(items[0], "Time:");
+        //printData();
         if (saveStatus == 1)
         {
             print("startnewgame");
             levels[0] = 0;
             levels[1] = 0;
-            
             startNewGame(globalplayerNum);
         }
         else
         {
             print("loadData");
-            WWW saveData = new WWW("http://localhost/gameData.php");
-            yield return saveData;
-            string saveDataString = saveData.text;
-            items = saveDataString.Split(';');
-            int maplevelNum = getInt(items[0], "maplevelNum:");
-            int playerNum = getInt(items[0], "playerNum:");
-            string saveTime = getString(items[0], "Time:");
+            
             load(maplevelNum, playerNum);
 
         }
@@ -65,6 +78,15 @@ public class CommunWithDatabase : MonoBehaviour {
 
     private void Update()
     {
+        if (saveStatus == 1)
+        {
+            saveStatus = 0;
+            print("startnewgame");
+            levels[0] = 0;
+            levels[1] = 0;
+            startNewGame(globalplayerNum);
+        }
+
         if (Input.GetKeyDown(KeyCode.Space))
         {
             inputmaplevelNum=checkGameProgress();
@@ -97,20 +119,34 @@ public class CommunWithDatabase : MonoBehaviour {
 
     public void load(int maplevelNum, int playerNum)
     {
+        
         //player Part
         for (int i = 0 ; i < playerNum; i++)
         {
-            Instantiate(players[i]);
+            players[i].SetActive(true);
             
-            if (maplevelNum >= 0 && maplevelNum <= 3)
-            {
-                players[i].transform.position = new Vector3(100.0f, 10.0f, 270.0f + (float)i * 5.0f);
-            }
-            else { }
         }
         tunePlayView(playerNum);
-        
 
+        switch (maplevelNum)
+        {
+            case 1:
+                levels[0] = 1;
+                levels[1] = 0;
+                break;
+            case 2:
+                levels[0] = 0;
+                levels[1] = 1;
+                break;
+            case 3:
+                levels[0] = 1;
+                levels[1] = 1;
+                break;
+            default:
+                levels[0] = 0;
+                levels[1] = 0;
+                break;
+        }
         //mission part
         if(levels[0] == 1)
         {
@@ -119,6 +155,7 @@ public class CommunWithDatabase : MonoBehaviour {
 
         if(levels[1] == 1)
         {
+            
             arenaMissionScript.levelClear();
         }
     }
@@ -128,7 +165,8 @@ public class CommunWithDatabase : MonoBehaviour {
         
         for (int i = 0; i < playerNum; i++)
         {
-            Instantiate(players[i],new Vector3(100.0f,10.0f,270.0f+(float)i*5.0f),Quaternion.identity);
+            //Instantiate(players[i],new Vector3(100.0f,10.0f,270.0f+(float)i*5.0f),Quaternion.identity);
+            players[i].SetActive(true);
         }
         tunePlayView(playerNum);
         
@@ -173,5 +211,55 @@ public class CommunWithDatabase : MonoBehaviour {
     }
 
     // Update is called once per frame
+
+    public void printData()
+    {
+        CmaplevelSaves = getMaplevelList();
+        CplayerNumSaves = getPlayerNumList();
+        Ctimesaves = getTimeList();
+    }
+    
+    
+    public int[] getMaplevelList()
+    {
+        int j = 0;
+        for(int i = items.Length - 2; i >= 0; i--)
+        {
+            //print(items[i]);
+            maplevelSaves[j] = getInt(items[i], "maplevelNum:");
+            //print(maplevelSaves[j]);
+            j++;
+            
+        }
+        
+        //print("EOMLS");
+        return maplevelSaves;
+    }
+    public int[] getPlayerNumList()
+    {
+        int j = 0;
+        for (int i = items.Length - 2; i >= 0; i--)
+        {
+            playerNumSaves[j] = getInt(items[i], "playerNum:");
+            //print(playerNumSaves[j]);
+            j++;
+        }
+        
+        //print("EOPNS");
+        return playerNumSaves;
+    }
+    public string[] getTimeList()
+    {
+        int j = 0;
+        for (int i = items.Length - 2; i >= 0; i--)
+        {
+            timesaves[j] = getString(items[i], "Time:");
+            //print(timesaves[j]);
+            j++;
+        }
+        
+        //print("EOTS");
+        return timesaves;
+    }
 
 }

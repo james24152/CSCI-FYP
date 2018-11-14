@@ -30,11 +30,15 @@ public class arenaMissionController : MonoBehaviour {
             progress = progress + 1;
             randShowBlock();
         }
-        if (progress == 5)
+        if (progress == 5 && forOnce == false)
         {
             forOnce = true;
+            for (int j = 0; j < 4; j++)
+            {
+                blockPos.transform.GetChild(j).gameObject.SetActive(false);
+            }
             destroyLine();
-            progress = progress + 1;
+            
         }
 	}
 

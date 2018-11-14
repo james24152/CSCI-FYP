@@ -44,6 +44,7 @@ public class FireCageSwtich : MonoBehaviour {
         burningScript3.turn();
     }
 
+    
 
 
     private void OnParticleCollision(GameObject other)

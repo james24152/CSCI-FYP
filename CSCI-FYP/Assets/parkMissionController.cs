@@ -77,11 +77,20 @@ public class parkMissionController : MonoBehaviour {
     public void levelClear()
     {
         forOnce = true;
-        
+        print("run level clear");
         for (int i = 0; i < 25; i++)
         {
             transform.GetChild(i).gameObject.SetActive(false);
         }
+        burningScriptS1.forceOff();
+        burningScriptS2.forceOff(); 
+        burningScriptS3.forceOff();
+        burningScript1.forceOff();
+        burningScript2.forceOff();
+        burningScript3.forceOff();
+        burningScript4.forceOff();
+        burningScript5.forceOff();
+
         burningScriptS1.enabled = false;
         burningScriptS2.enabled = false;
         burningScriptS3.enabled = false;
