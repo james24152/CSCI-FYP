@@ -77,7 +77,6 @@ public class Level1GameManager : MonoBehaviour {
             }
         }
         if (missionFailed) {
-            audioMangaer.Play("GameOver");
             dialogueTrigger.TriggerDialogue();
             missionFailed = false;
         }

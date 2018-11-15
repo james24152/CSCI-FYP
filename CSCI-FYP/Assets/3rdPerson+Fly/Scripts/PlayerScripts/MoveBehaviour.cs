@@ -27,8 +27,9 @@ public class MoveBehaviour : GenericBehaviour
 	private bool isColliding;                       // Boolean to determine if the player has collided with an obstacle.
     private bool isWalking;
     private bool walkInited;
-	// Start is always called after any Awake functions.
-	void Start() 
+    private AudioManager audioMangaer;
+    // Start is always called after any Awake functions.
+    void Start() 
 	{
 		// Set up the references.
 		jumpBool = Animator.StringToHash("Jump");
@@ -38,9 +39,10 @@ public class MoveBehaviour : GenericBehaviour
         idleJumpBool = Animator.StringToHash("IdleJump");
         flightBool = Animator.StringToHash("FlightSkill");
         behaviourManager.GetAnim.SetBool (groundedBool, true);
+        audioMangaer = FindObjectOfType<AudioManager>();
 
-		// Subscribe and register this behaviour as the default behaviour.
-		behaviourManager.SubscribeBehaviour (this);
+        // Subscribe and register this behaviour as the default behaviour.
+        behaviourManager.SubscribeBehaviour (this);
 		behaviourManager.RegisterDefaultBehaviour (this.behaviourCode);
 		speedSeeker = runSpeed;
 	}
@@ -132,6 +134,7 @@ public class MoveBehaviour : GenericBehaviour
             // Is a locomotion jump?
             if (behaviourManager.GetAnim.GetFloat(speedFloat) > 0.1)
             {
+                audioMangaer.Play("Jump");
                 behaviourManager.GetAnim.SetBool(jumpBool, true);
                 // Temporarily change player friction to pass through obstacles.
                 GetComponent<CapsuleCollider>().material.dynamicFriction = 0f;
@@ -146,12 +149,19 @@ public class MoveBehaviour : GenericBehaviour
                 behaviourManager.GetAnim.SetBool(idleJumpBool, true);
                 idleJumpLeaveGround = false;
             }
-
+        }
+        if (!behaviourManager.IsGrounded()) {
+            if (walkInited)
+            {
+                audioMangaer.Stop("Walk");
+                walkInited = false;
+            }
         }
 	}
 
     void IdleJump()
     {
+        audioMangaer.Play("Jump");
         // Temporarily change player friction to pass through obstacles.
         GetComponent<CapsuleCollider>().material.dynamicFriction = 0f;
         GetComponent<CapsuleCollider>().material.staticFriction = 0f;
@@ -179,14 +189,14 @@ public class MoveBehaviour : GenericBehaviour
             isWalking = true;
             if (!walkInited)
             {
-                FindObjectOfType<AudioManager>().Play("Walk"); //play walk sound effect
+                audioMangaer.Play("Walk"); //play walk sound effect
                 walkInited = true;
             }
         }
         else {
             isWalking = false;
             if (walkInited) {
-                FindObjectOfType<AudioManager>().Stop("Walk");
+                audioMangaer.Stop("Walk");
                 walkInited = false;
             }
         }
@@ -202,6 +212,11 @@ public class MoveBehaviour : GenericBehaviour
 
         if (behaviourManager.GetAnim.GetCurrentAnimatorStateInfo(0).IsName("Down") || behaviourManager.GetAnim.GetCurrentAnimatorStateInfo(0).IsName("Recover")) {
             speed = 0f;
+            if (walkInited)
+            {
+                audioMangaer.Stop("Walk");
+                walkInited = false;
+            }
         }
 
 		behaviourManager.GetAnim.SetFloat(speedFloat, speed, animSpeedDampTime, Time.deltaTime);

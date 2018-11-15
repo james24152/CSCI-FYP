@@ -10,6 +10,7 @@ public class WaveController : MonoBehaviour {
     private bool inited1;
     private bool inited2;
     private bool inited3;
+    private bool audioInited;
     private bool finishedWave1;
     private bool finishedWave2;
     private AgentScript script1;
@@ -59,7 +60,10 @@ public class WaveController : MonoBehaviour {
                         inited3 = true;
                     }
                     if (CheckFinishWave3()) {
-                        audioMangaer.Play("Win");
+                        if (!audioInited) {
+                            audioMangaer.Play("Win");
+                            audioInited = true;
+                        }
                         dialogueTrigger.TriggerDialogue();
                     }
                 }

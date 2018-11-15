@@ -31,6 +31,7 @@ public class Health : MonoBehaviour {
     private Rigidbody rb;
     private DrownBehaviour drownScript;
     private AudioManager audioMangaer;
+    private bool isFirstSpawn; 
     GameObject[] gameManager;
     Level1GameManager managerScript;
 
@@ -87,6 +88,7 @@ public class Health : MonoBehaviour {
     }
 
     public void FirstSpawn() {
+        isFirstSpawn = true;
         FindObjectOfType<AudioManager>().Play("Vortex"); //play respawn sound effect
         if (!invoked)
         {
@@ -105,7 +107,6 @@ public class Health : MonoBehaviour {
             {
                 anim.SetBool("Damaged", true);
                 invoked = true;
-                //Invoke("SetDamagedFalse", 0.2f);
             }
             if (health == 0) {
                 anim.SetBool("Death", true);
@@ -136,6 +137,8 @@ public class Health : MonoBehaviour {
     }
 
     public void Respawn() {
+        if (isFirstSpawn)
+            isFirstSpawn = false;
         Debug.Log("respawn");
         health = 2;
         respawn = FindSpawn();
@@ -220,6 +223,7 @@ public class Health : MonoBehaviour {
     }
 
     public void FallDownAudio() {
-        audioMangaer.Play("FallDown");
+        if (!isFirstSpawn)
+            audioMangaer.Play("FallDown");
     }
 }

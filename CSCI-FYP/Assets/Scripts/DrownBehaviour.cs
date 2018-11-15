@@ -19,6 +19,7 @@ public class DrownBehaviour : MonoBehaviour
     private Animator anim;
     private FogBehaviour fogScript;
     private Health healthScript;
+    private AudioManager audioMangaer;
 
     // Start is always called after any Awake functions.
     void Start()
@@ -27,6 +28,7 @@ public class DrownBehaviour : MonoBehaviour
         anim = GetComponent<Animator>();
         fogScript = cam.GetComponent<FogBehaviour>();
         healthScript = GetComponent<Health>();
+        audioMangaer = FindObjectOfType<AudioManager>();
     }
 
     // Update is used to set features regardless the active behaviour.
@@ -59,6 +61,7 @@ public class DrownBehaviour : MonoBehaviour
         {
             if (!inited) {
                 isInWater = true;
+                audioMangaer.Play("Splash");
                 healthScript.Drown();
                 Debug.Log("we are in water");
                 inited = true;

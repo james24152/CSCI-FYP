@@ -19,7 +19,7 @@ public class AgentScript : Agent {
     private int targetHealth;
     private GameObject steppedIn;
     private GameObject[] manager;
-    public bool death = false;
+    private AudioManager audioMangaer;
     //wayOfDone = 1 means collide to wall, 2 means collide to goal
 
     /*
@@ -28,6 +28,7 @@ public class AgentScript : Agent {
     public GameObject player3;
     public GameObject player4;
     */
+    public bool death = false;
     public ParticleSystem ghostFire;
     public float attack;
     public float speed;
@@ -46,6 +47,7 @@ public class AgentScript : Agent {
         distance = Vector3.Distance(transform.position, target.transform.position);
         anim = GetComponent<Animator>();
         manager = GameObject.FindGameObjectsWithTag("GameManager");
+        audioMangaer = FindObjectOfType<AudioManager>();
         AgentReset();
         //attributes of first spawn
     }
@@ -189,6 +191,7 @@ public class AgentScript : Agent {
 
     public void Die() {
         //agent is hit by any attack from eves
+        audioMangaer.Play("EnemyDie");
         ghostFire.Play();
         death = true;
         GetComponent<Collider>().enabled = false;
@@ -240,6 +243,7 @@ public class AgentScript : Agent {
 
     void Attack() {
         Debug.Log("attack");
+        audioMangaer.Play("EnemySwing");
         RaycastHit hit;
         if (Physics.SphereCast(new Vector3(transform.position.x, transform.position.y + 1, transform.position.z), 0.125f, transform.forward, out hit, 1.375f)) {
             if (hit.transform.gameObject.layer == LayerMask.NameToLayer("Character")) {

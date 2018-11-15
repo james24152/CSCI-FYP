@@ -62726,7 +62726,7 @@ MonoBehaviour:
     source: {fileID: 0}
   - name: Walk
     clip: {fileID: 8300000, guid: 257b6fe49db56724fb2698690c823680, type: 3}
-    volume: 0.5
+    volume: 0.2
     pitch: 1
     loop: 1
     source: {fileID: 0}
@@ -62756,7 +62756,7 @@ MonoBehaviour:
     source: {fileID: 0}
   - name: Grab
     clip: {fileID: 8300000, guid: 584c7face807e0c48b1ff2fd5a274b3a, type: 3}
-    volume: 0.2
+    volume: 0.1
     pitch: 0.5
     loop: 0
     source: {fileID: 0}
@@ -62780,13 +62780,13 @@ MonoBehaviour:
     source: {fileID: 0}
   - name: RecieveLogs
     clip: {fileID: 8300000, guid: c65e4eb673d962948ac8b9356e3f81a0, type: 3}
-    volume: 0.5
+    volume: 0.1
     pitch: 1
     loop: 0
     source: {fileID: 0}
   - name: EjectKey
     clip: {fileID: 8300000, guid: 5205817b7dd8a9d4aa428de2101af69f, type: 3}
-    volume: 0.5
+    volume: 1
     pitch: 1
     loop: 0
     source: {fileID: 0}
@@ -62822,7 +62822,31 @@ MonoBehaviour:
     source: {fileID: 0}
   - name: GetHit
     clip: {fileID: 8300000, guid: b97cf061b98282f4d82434cf06055019, type: 3}
+    volume: 0.15
+    pitch: 1
+    loop: 0
+    source: {fileID: 0}
+  - name: Splash
+    clip: {fileID: 8300000, guid: 81556909b8fe49c4c90837b0df7580d5, type: 3}
     volume: 0.5
+    pitch: 1
+    loop: 0
+    source: {fileID: 0}
+  - name: EnemySwing
+    clip: {fileID: 8300000, guid: 3b1cd80782d97704c8348711b71326c0, type: 3}
+    volume: 0.5
+    pitch: 1
+    loop: 0
+    source: {fileID: 0}
+  - name: EnemyDie
+    clip: {fileID: 8300000, guid: c65e4eb673d962948ac8b9356e3f81a0, type: 3}
+    volume: 0.1
+    pitch: 1
+    loop: 0
+    source: {fileID: 0}
+  - name: Jump
+    clip: {fileID: 8300000, guid: e47980716239de54caa72a63a4342ed9, type: 3}
+    volume: 1
     pitch: 1
     loop: 0
     source: {fileID: 0}

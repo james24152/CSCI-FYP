@@ -10,6 +10,12 @@ public class DialogueTrigger : MonoBehaviour {
     public Camera cutsceneCam;
     private bool inited;
     private bool inited2;
+    private AudioManager audioMangaer;
+
+    private void Start()
+    {
+        audioMangaer = FindObjectOfType<AudioManager>();
+    }
 
     private void OnTriggerEnter(Collider other)
     {
@@ -20,6 +26,7 @@ public class DialogueTrigger : MonoBehaviour {
         if (gameObject.transform.name == "Dialogue Trigger4") {
             Debug.Log("trigger dialogue");
             if (!inited2) {
+                audioMangaer.Play("GameOver");
                 cutsceneCam.gameObject.SetActive(true);
                 cutscene.Play();
                 FindObjectOfType<DialogueManager>().StartDialogue(dialogue);

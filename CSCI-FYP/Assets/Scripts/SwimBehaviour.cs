@@ -135,13 +135,12 @@ public class SwimBehaviour : GenericBehaviour
     {
         if (other.gameObject.CompareTag("Water")) {
             isInWater = true;
-            if (other is CapsuleCollider) {
-                if (!audioLock)
-                {
-                    audioMangaer.Play("Splash");
-                    audioLock = true;
-                }
-            }
+            Debug.Log(other.GetType());
+            if (!audioLock)
+            {
+                audioMangaer.Play("Splash");
+                audioLock = true;
+            }        
             Debug.Log("we are in water");
         }
     }
@@ -154,8 +153,7 @@ public class SwimBehaviour : GenericBehaviour
                 if (behaviourManager.IsGrounded()) {
                     isInWater = false;
                     if (audioLock)
-                        if (other is CapsuleCollider)
-                            audioLock = false;
+                        audioLock = false;
                     Debug.Log("we are out of water");
                 }
             }
