@@ -27,7 +27,6 @@ public class CameraObjectiveActivation : MonoBehaviour {
         {
             Debug.Log("end game");
             gameManager[0].GetComponent<Level1GameManager>().missionSuccess = true;
-            //destroy the scene
         }
     }
     public void InvokeWaveStart()

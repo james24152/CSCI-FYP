@@ -82,6 +82,7 @@ public class PickUpBehaviour : MonoBehaviour {
             {
                 grab = true;
                 anim.SetBool("Grab", true);
+                audioMangaer.Play("Grab");
                 hit.transform.parent = bindingHand;
                 if (hit.transform.gameObject.CompareTag("Axe"))
                 {

@@ -19,10 +19,11 @@ public class WaveController : MonoBehaviour {
     private AgentScript script5;
     private AgentScript script6;
     private AgentScript script7;
+    private AudioManager audioMangaer;
     // Use this for initialization
     void Start () {
-		
-	}
+        audioMangaer = FindObjectOfType<AudioManager>();
+    }
 
     private void OnEnable()
     {
@@ -58,6 +59,7 @@ public class WaveController : MonoBehaviour {
                         inited3 = true;
                     }
                     if (CheckFinishWave3()) {
+                        audioMangaer.Play("Win");
                         dialogueTrigger.TriggerDialogue();
                     }
                 }

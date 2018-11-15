@@ -28,6 +28,7 @@ public class Level1GameManager : MonoBehaviour {
     private bool inited;
     private bool inited2;
     private GameObject[] players;
+    private AudioManager audioMangaer;
     private void Start()
     {
         switch (playerCount)
@@ -55,6 +56,7 @@ public class Level1GameManager : MonoBehaviour {
                 break;
         }
         TunePlayView(playerCount);
+        audioMangaer = FindObjectOfType<AudioManager>();
     }
     private void Update()
     {
@@ -68,12 +70,14 @@ public class Level1GameManager : MonoBehaviour {
             signObjective.gameObject.SetActive(false);
         if (defendObjectiveStart) {
             if (!inited) {
+                audioMangaer.Play("Symbol");
                 enemySymbol.Play();
                 Invoke("SetEnemyActive", 2f);
                 inited = true;
             }
         }
         if (missionFailed) {
+            audioMangaer.Play("GameOver");
             dialogueTrigger.TriggerDialogue();
             missionFailed = false;
         }

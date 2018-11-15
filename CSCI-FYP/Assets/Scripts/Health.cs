@@ -30,6 +30,7 @@ public class Health : MonoBehaviour {
     private MoveBehaviour moveScript;
     private Rigidbody rb;
     private DrownBehaviour drownScript;
+    private AudioManager audioMangaer;
     GameObject[] gameManager;
     Level1GameManager managerScript;
 
@@ -65,6 +66,7 @@ public class Health : MonoBehaviour {
         moveScript = GetComponent<MoveBehaviour>();
         gameManager = GameObject.FindGameObjectsWithTag("GameManager");
         managerScript = gameManager[0].GetComponent<Level1GameManager>();
+        audioMangaer = FindObjectOfType<AudioManager>();
         rb = GetComponent<Rigidbody>();
         drownScript = GetComponent<DrownBehaviour>();
         respawn = FindSpawn();
@@ -97,6 +99,7 @@ public class Health : MonoBehaviour {
 
     public bool GetHit() {
         if (Time.time > nextTimeGetHit) {
+            audioMangaer.Play("GetHit");
             health--;
             if (!invoked)
             {
@@ -155,7 +158,7 @@ public class Health : MonoBehaviour {
         {
             tempFx = Instantiate(airFx, center.transform.position, center.transform.rotation);
         }
-        FindObjectOfType<AudioManager>().Play("Respawn"); //play respawn sound effect
+        audioMangaer.Play("Respawn"); //play respawn sound effect
         tempFx.transform.parent = center.transform;
         if (drownScript != null) {
             drownScript.inited = false;
@@ -214,5 +217,9 @@ public class Health : MonoBehaviour {
         }
         Debug.Log("level is wrong");
         return gameObject.transform;
+    }
+
+    public void FallDownAudio() {
+        audioMangaer.Play("FallDown");
     }
 }

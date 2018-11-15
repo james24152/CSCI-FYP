@@ -7,6 +7,7 @@ using UnityEngine.Playables;
 public class KeyEjectController : MonoBehaviour {
     private LogReceiveController logReceiveScript1;
     private LogReceiveController logReceiveScript2;
+    private AudioManager audioMangaer;
     public GameObject door1;
     public GameObject door2;
     public GameObject key;
@@ -19,6 +20,7 @@ public class KeyEjectController : MonoBehaviour {
     void Start () {
         logReceiveScript1 = door1.GetComponent<LogReceiveController>();
         logReceiveScript2 = door2.GetComponent<LogReceiveController>();
+        audioMangaer = FindObjectOfType<AudioManager>();
         keyPos = new Vector3(58f, -6.35f, 50.0f);
     }
 	
@@ -36,6 +38,7 @@ public class KeyEjectController : MonoBehaviour {
 
     private void ejectKey()
     {
+        audioMangaer.Play("EjectKey");
         int i = 0;
         for (i= 0;i< 2; i++)
         {

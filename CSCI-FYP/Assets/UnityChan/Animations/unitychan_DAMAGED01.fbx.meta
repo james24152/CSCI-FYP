@@ -670,6 +670,14 @@ ModelImporter:
         floatParameter: 0
         intParameter: 0
         messageOptions: 0
+      - time: 0.2
+        functionName: FallDownAudio
+        data: 
+        objectReferenceParameter: {fileID: 11500000, guid: f056a71656d059444b1cd6fd69456c1f,
+          type: 3}
+        floatParameter: 0
+        intParameter: 0
+        messageOptions: 0
       transformMask:
       - path: 
         weight: 1

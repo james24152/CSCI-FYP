@@ -8,11 +8,13 @@ public class LogReceiveController : MonoBehaviour {
     private Grabber grabber;
     private Vector3 targetPosition;
     private GameObject chimney;
-	// Use this for initialization
-	void Start () {
+    private AudioManager audioMangaer;
+    // Use this for initialization
+    void Start () {
         chimney = transform.GetChild(0).gameObject;
         targetPosition = chimney.transform.position;
-	}
+        audioMangaer = FindObjectOfType<AudioManager>();
+    }
 
     private void working()
     {
@@ -23,6 +25,7 @@ public class LogReceiveController : MonoBehaviour {
     {
         if (other.gameObject.tag == "logs")
         {
+            audioMangaer.Play("RecieveLogs");
             grabber = other.gameObject.GetComponent<Grabber>();
             if (grabber.grabber != null)
                 grabber.grabber.GetComponent<PickUpBehaviour>().forceEject = true;
