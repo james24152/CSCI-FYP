@@ -37,8 +37,24 @@ public class CommunWithDatabase : MonoBehaviour {
         levels[1] = 0;
         parkMissionScript = parkMission.GetComponent<parkMissionController>();
         arenaMissionScript = arenaMission.GetComponent<arenaMissionController>();
-        saveStatus = 0;
-        StartCoroutine(performStartLoad());
+        ////////////////
+        //saveStatus = 0;
+        ///////////////
+
+        //REMEMBER TO CHANGE THIS BACK
+        ////////////////////////////////////////////////////////////
+        //StartCoroutine(performStartLoad());
+        //////////////////////////////////////////////////////////
+    }
+
+    private void StartGame() {
+        if (saveStatus == 1)
+        {
+            print("startnewgame");
+            levels[0] = 0;
+            levels[1] = 0;
+            startNewGame(globalplayerNum);
+        }
     }
 
     private IEnumerator performStartLoad()
@@ -166,6 +182,7 @@ public class CommunWithDatabase : MonoBehaviour {
         for (int i = 0; i < playerNum; i++)
         {
             //Instantiate(players[i],new Vector3(100.0f,10.0f,270.0f+(float)i*5.0f),Quaternion.identity);
+            Debug.Log("invoke active");
             players[i].SetActive(true);
         }
         tunePlayView(playerNum);
@@ -181,14 +198,14 @@ public class CommunWithDatabase : MonoBehaviour {
         else if(playerNum == 2)
         {
             
-            players[0].transform.GetChild(0).gameObject.GetComponent<Camera>().rect = new Rect(0.0f,0.5f,1.0f,1.0f);
+            players[0].transform.GetChild(0).gameObject.GetComponent<Camera>().rect = new Rect(0.0f,0.5f,1.0f,0.5f);
             players[1].transform.GetChild(0).gameObject.GetComponent<Camera>().rect = new Rect(0.0f,0.0f,1.0f,0.5f);
         }
         else if (playerNum == 3)
         {
             players[0].transform.GetChild(0).gameObject.GetComponent<Camera>().rect = new Rect(0.0f, 0.5f, 0.5f, 0.5f);
             players[1].transform.GetChild(0).gameObject.GetComponent<Camera>().rect = new Rect(0.5f, 0.5f, 0.5f, 0.5f);
-            players[2].transform.GetChild(0).gameObject.GetComponent<Camera>().rect = new Rect(0.0f, 0.0f, 0.5f, 0.5f);
+            players[2].transform.GetChild(0).gameObject.GetComponent<Camera>().rect = new Rect(0.0f, 0.0f, 1.0f, 0.5f);
         }
         else if (playerNum == 4)
         {

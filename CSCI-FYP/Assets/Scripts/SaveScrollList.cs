@@ -26,8 +26,8 @@ public class SaveScrollList : MonoBehaviour {
 
     // Use this for initialization
     void Start () {
-        AddButtons();	
-        //StartCoroutine(LoadSaveData());
+        //AddButtons();	
+        StartCoroutine(LoadSaveData());
     }
 
     private void AddButtons() {
@@ -46,10 +46,18 @@ public class SaveScrollList : MonoBehaviour {
         yield return saveData;
         string saveDataString = saveData.text;
         items = saveDataString.Split(';');
-        foreach (string item in items) {
+        /*foreach (string item in items) {
             int maplevelNum = getInt(item, "maplevelNum:"); //each levelNum
             int playerNum = getInt(item, "playerNum:"); //each playerNum
             string saveTime = getString(item, "Time:"); //each saveTime
+
+            itemList.Add(new Item(maplevelNum, playerNum, saveTime));
+        }*/
+        int i;
+        for (i = 0; i < items.Length - 1; i++) {
+            int maplevelNum = getInt(items[i], "maplevelNum:"); //each levelNum
+            int playerNum = getInt(items[i], "playerNum:"); //each playerNum
+            string saveTime = getString(items[i], "Time:"); //each saveTime
 
             itemList.Add(new Item(maplevelNum, playerNum, saveTime));
         }

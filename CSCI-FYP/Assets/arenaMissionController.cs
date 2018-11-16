@@ -7,14 +7,19 @@ public class arenaMissionController : MonoBehaviour {
     public GameObject blockPos;
     private bool forOnce;
     public GameObject DB;
+    public DialogueTrigger trigger;
+    public AudioManager audioManager;
+
     private CommunWithDatabase DBscript;
     private int elementToShoot;
     private TargetScript[] shootTargetScript = new TargetScript[4];
     private int progress;
+    private bool audioLock;
     // Use this for initialization
     void Start () {
         forOnce = false;
         DBscript = DB.GetComponent<CommunWithDatabase>();
+        audioManager = FindObjectOfType<AudioManager>();
         for (int i=0; i<4; i++)
         {
             shootTargetScript[i] = shootTarget[i].GetComponent<TargetScript>();
@@ -32,6 +37,11 @@ public class arenaMissionController : MonoBehaviour {
         }
         if (progress == 5 && forOnce == false)
         {
+            if (!audioLock) {
+                audioManager.Play("Win");
+                audioLock = true;
+            }
+            trigger.TriggerDialogue();
             forOnce = true;
             for (int j = 0; j < 4; j++)
             {
@@ -68,10 +78,11 @@ public class arenaMissionController : MonoBehaviour {
     IEnumerator DisableObject(int i, GameObject road)
     {
         print(i);
-        yield return new WaitForSeconds(i - 1);
+        yield return new WaitForSeconds(i/2f);
         print("wait end");
         print(i);
-        road.SetActive(false);
+        //road.SetActive(false);
+        road.SetActive(true);
     }
 
     public void levelClear()

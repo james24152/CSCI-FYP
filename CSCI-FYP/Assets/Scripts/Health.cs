@@ -34,6 +34,7 @@ public class Health : MonoBehaviour {
     private bool isFirstSpawn; 
     GameObject[] gameManager;
     Level1GameManager managerScript;
+    Level2GameManager managerScript2;
 
     private void Start()
     {
@@ -67,6 +68,8 @@ public class Health : MonoBehaviour {
         moveScript = GetComponent<MoveBehaviour>();
         gameManager = GameObject.FindGameObjectsWithTag("GameManager");
         managerScript = gameManager[0].GetComponent<Level1GameManager>();
+        if (managerScript == null)
+            managerScript2 = gameManager[0].GetComponent<Level2GameManager>();
         audioMangaer = FindObjectOfType<AudioManager>();
         rb = GetComponent<Rigidbody>();
         drownScript = GetComponent<DrownBehaviour>();
@@ -179,46 +182,93 @@ public class Health : MonoBehaviour {
     }
 
     private Transform FindSpawn() {
-        if (managerScript.sublevel == 1)
+        if (managerScript != null) //Stage1
         {
-            GameObject[] spawn1 = GameObject.FindGameObjectsWithTag("Spawn1");
-            if ((gameObject.transform.name == "Earth Eve") || (gameObject.transform.name == "Earth Eve(Clone)"))
+            if (managerScript.sublevel == 1)
             {
-                return spawn1[1].transform;
+                GameObject[] spawn1 = GameObject.FindGameObjectsWithTag("Spawn1");
+                if ((gameObject.transform.name == "Earth Eve") || (gameObject.transform.name == "Earth Eve(Clone)"))
+                {
+                    return spawn1[1].transform;
+                }
+                if (gameObject.transform.name == "Water Eve" || gameObject.transform.name == "Water Eve(Clone)")
+                {
+                    return spawn1[0].transform;
+                }
+                if (gameObject.transform.name == "Fire Eve" || gameObject.transform.name == "Fire Eve(Clone)")
+                {
+                    return spawn1[3].transform;
+                }
+                if (gameObject.transform.name == "Air Eve" || gameObject.transform.name == "Air Eve(Clone)")
+                {
+                    return spawn1[2].transform;
+                }
             }
-            if (gameObject.transform.name == "Water Eve" || gameObject.transform.name == "Water Eve(Clone)")
+            else if (managerScript.sublevel == 2)
             {
-                return spawn1[0].transform;
+                GameObject[] spawn2 = GameObject.FindGameObjectsWithTag("Spawn2");
+                if ((gameObject.transform.name == "Earth Eve") || (gameObject.transform.name == "Earth Eve(Clone)"))
+                {
+                    return spawn2[0].transform;
+                }
+                if (gameObject.transform.name == "Water Eve" || gameObject.transform.name == "Water Eve(Clone)")
+                {
+                    return spawn2[3].transform;
+                }
+                if (gameObject.transform.name == "Fire Eve" || gameObject.transform.name == "Fire Eve(Clone)")
+                {
+                    return spawn2[1].transform;
+                }
+                if (gameObject.transform.name == "Air Eve" || gameObject.transform.name == "Air Eve(Clone)")
+                {
+                    return spawn2[2].transform;
+                }
             }
-            if (gameObject.transform.name == "Fire Eve" || gameObject.transform.name == "Fire Eve(Clone)")
-            {
-                return spawn1[3].transform;
-            }
-            if (gameObject.transform.name == "Air Eve" || gameObject.transform.name == "Air Eve(Clone)")
-            {
-                return spawn1[2].transform;
-            }
+            Debug.Log("level is wrong");
         }
-        else if (managerScript.sublevel == 2) {
-            GameObject[] spawn2 = GameObject.FindGameObjectsWithTag("Spawn2");
-            if ((gameObject.transform.name == "Earth Eve") || (gameObject.transform.name == "Earth Eve(Clone)"))
+        else { //Stage2
+            if (managerScript2.sublevel == 1)
             {
-                return spawn2[0].transform;
+                GameObject[] spawn1 = GameObject.FindGameObjectsWithTag("Spawn1");
+                if ((gameObject.transform.name == "Earth Eve") || (gameObject.transform.name == "Earth Eve(Clone)"))
+                {
+                    return spawn1[1].transform;
+                }
+                if (gameObject.transform.name == "Water Eve" || gameObject.transform.name == "Water Eve(Clone)")
+                {
+                    return spawn1[0].transform;
+                }
+                if (gameObject.transform.name == "Fire Eve" || gameObject.transform.name == "Fire Eve(Clone)")
+                {
+                    return spawn1[3].transform;
+                }
+                if (gameObject.transform.name == "Air Eve" || gameObject.transform.name == "Air Eve(Clone)")
+                {
+                    return spawn1[2].transform;
+                }
             }
-            if (gameObject.transform.name == "Water Eve" || gameObject.transform.name == "Water Eve(Clone)")
+            else if (managerScript2.sublevel == 2)
             {
-                return spawn2[3].transform;
+                GameObject[] spawn2 = GameObject.FindGameObjectsWithTag("Spawn2");
+                if ((gameObject.transform.name == "Earth Eve") || (gameObject.transform.name == "Earth Eve(Clone)"))
+                {
+                    return spawn2[0].transform;
+                }
+                if (gameObject.transform.name == "Water Eve" || gameObject.transform.name == "Water Eve(Clone)")
+                {
+                    return spawn2[3].transform;
+                }
+                if (gameObject.transform.name == "Fire Eve" || gameObject.transform.name == "Fire Eve(Clone)")
+                {
+                    return spawn2[1].transform;
+                }
+                if (gameObject.transform.name == "Air Eve" || gameObject.transform.name == "Air Eve(Clone)")
+                {
+                    return spawn2[2].transform;
+                }
             }
-            if (gameObject.transform.name == "Fire Eve" || gameObject.transform.name == "Fire Eve(Clone)")
-            {
-                return spawn2[1].transform;
-            }
-            if (gameObject.transform.name == "Air Eve" || gameObject.transform.name == "Air Eve(Clone)")
-            {
-                return spawn2[2].transform;
-            }
+            Debug.Log("level is wrong");
         }
-        Debug.Log("level is wrong");
         return gameObject.transform;
     }
 

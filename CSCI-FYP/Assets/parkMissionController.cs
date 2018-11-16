@@ -3,6 +3,7 @@ using System.Collections.Generic;
 using UnityEngine;
 
 public class parkMissionController : MonoBehaviour {
+    public DialogueTrigger trigger;
     public GameObject Switch1;
     public GameObject Switch2;
     public GameObject Switch3;
@@ -55,6 +56,7 @@ public class parkMissionController : MonoBehaviour {
 	void Update () {
 		if (AllOff() == true && forOnce == false)
         {
+            trigger.TriggerDialogue();
             forOnce = true;
             int i = 2;
             transform.GetChild(0).gameObject.SetActive(false);
@@ -105,7 +107,7 @@ public class parkMissionController : MonoBehaviour {
     IEnumerator DisableObject(int i,GameObject road)
     {
         print(i);
-        yield return new WaitForSeconds(i-1);
+        yield return new WaitForSeconds(i/2f); //i-1
         print("wait end");
         print(i);
         road.SetActive(false);
