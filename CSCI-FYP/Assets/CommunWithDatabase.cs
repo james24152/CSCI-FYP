@@ -47,9 +47,9 @@ public class CommunWithDatabase : MonoBehaviour {
         yield return saveData;
         string saveDataString = saveData.text;
         items = saveDataString.Split(';');
-        int maplevelNum = getInt(items[0], "maplevelNum:");
-        int playerNum = getInt(items[0], "playerNum:");
-        string saveTime = getString(items[0], "Time:");
+        //int maplevelNum = getInt(items[0], "maplevelNum:");
+        //int playerNum = getInt(items[0], "playerNum:");
+        //string saveTime = getString(items[0], "Time:");
         //printData();
         if (saveStatus == 1)
         {
@@ -61,9 +61,9 @@ public class CommunWithDatabase : MonoBehaviour {
         else
         {
             print("loadData");
-            
-            load(maplevelNum, playerNum);
 
+            //load(maplevelNum, playerNum);
+            load(inputmaplevelNum, inputplayerNum);
         }
     }
 

@@ -31,6 +31,7 @@ public class Level1GameManager : MonoBehaviour {
     private AudioManager audioMangaer;
     private void Start()
     {
+        playerCount = PlayerPrefs.GetInt("playerNum");
         switch (playerCount)
         {
             case 1:
@@ -125,7 +126,7 @@ public class Level1GameManager : MonoBehaviour {
         {
             player1.transform.GetChild(0).gameObject.GetComponent<Camera>().rect = new Rect(0.0f, 0.5f, 0.5f, 0.5f);
             player2.transform.GetChild(0).gameObject.GetComponent<Camera>().rect = new Rect(0.5f, 0.5f, 0.5f, 0.5f);
-            player3.transform.GetChild(0).gameObject.GetComponent<Camera>().rect = new Rect(0.0f, 0.0f, 0.5f, 0.5f);
+            player3.transform.GetChild(0).gameObject.GetComponent<Camera>().rect = new Rect(0.0f, 0.0f, 1.0f, 0.5f);
         }
         else if (playerNum == 4)
         {
