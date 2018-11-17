@@ -54,6 +54,7 @@ public class arenaMissionController : MonoBehaviour {
 
     void destroyLine()
     {
+        
         int i = 0;
         while (i < 16)
         {
@@ -65,7 +66,7 @@ public class arenaMissionController : MonoBehaviour {
 
     void randShowBlock()
     {
-        elementToShoot = Random.Range(0, 3);
+        elementToShoot = Random.Range(0, 4);
         print("randomGen");
         print(elementToShoot);
         for (int j = 0; j < 4; j++)
@@ -81,7 +82,7 @@ public class arenaMissionController : MonoBehaviour {
         yield return new WaitForSeconds(i/2f);
         print("wait end");
         print(i);
-        //road.SetActive(false);
+        road.SetActive(false);
         road.SetActive(true);
     }
 
