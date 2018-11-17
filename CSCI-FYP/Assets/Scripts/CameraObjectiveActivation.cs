@@ -28,6 +28,11 @@ public class CameraObjectiveActivation : MonoBehaviour {
             Debug.Log("end game");
             gameManager[0].GetComponent<Level1GameManager>().missionSuccess = true;
         }
+        else if (gameObject.transform.name == "Camera11")
+        {
+            Debug.Log("end game");
+            gameManager[0].GetComponent<Level2GameManager>().missionSuccess = true;
+        }
     }
     public void InvokeWaveStart()
     {

@@ -13,13 +13,13 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   m_NextId: 0
   m_Tracks:
-  - {fileID: 114355110293241636}
+  - {fileID: 114066188932385720}
   m_FixedDuration: 0
   m_EditorSettings:
     m_Framerate: 60
   m_DurationMode: 0
   m_Version: 0
---- !u!114 &114207664997591644
+--- !u!114 &114013963192114600
 MonoBehaviour:
   m_ObjectHideFlags: 1
   m_PrefabParentObject: {fileID: 0}
@@ -28,9 +28,9 @@ MonoBehaviour:
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 2024714994, guid: 6a10b2909283487f913b00d94cd3faf5, type: 3}
-  m_Name: AnimationPlayableAsset of Cutscene8pan4
+  m_Name: AnimationPlayableAsset of Cutscene8pan1
   m_EditorClassIdentifier: 
-  m_Clip: {fileID: 7400000, guid: 5b70132dcc939324eb2f0dc0960b9b5d, type: 2}
+  m_Clip: {fileID: 7400000, guid: 50e7552fb6e757449b0ce45845cf315c, type: 2}
   m_Position: {x: 0, y: 0, z: 0}
   m_EulerAngles: {x: 0, y: 0, z: 0}
   m_UseTrackMatchFields: 0
@@ -38,7 +38,7 @@ MonoBehaviour:
   m_RemoveStartOffset: 1
   m_Version: 1
   m_Rotation: {x: 0, y: 0, z: 0, w: 1}
---- !u!114 &114278997485041056
+--- !u!114 &114019861589508194
 MonoBehaviour:
   m_ObjectHideFlags: 1
   m_PrefabParentObject: {fileID: 0}
@@ -47,9 +47,9 @@ MonoBehaviour:
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 2024714994, guid: 6a10b2909283487f913b00d94cd3faf5, type: 3}
-  m_Name: AnimationPlayableAsset of Cutscene8pan3
+  m_Name: AnimationPlayableAsset of Cutscene8pan5
   m_EditorClassIdentifier: 
-  m_Clip: {fileID: 7400000, guid: 373bf33fa99fd0d4d89762893790a4b4, type: 2}
+  m_Clip: {fileID: 7400000, guid: 0e622183ecd85f24fad44cfba841f222, type: 2}
   m_Position: {x: 0, y: 0, z: 0}
   m_EulerAngles: {x: 0, y: 0, z: 0}
   m_UseTrackMatchFields: 0
@@ -57,7 +57,7 @@ MonoBehaviour:
   m_RemoveStartOffset: 1
   m_Version: 1
   m_Rotation: {x: 0, y: 0, z: 0, w: 1}
---- !u!114 &114355110293241636
+--- !u!114 &114066188932385720
 MonoBehaviour:
   m_ObjectHideFlags: 1
   m_PrefabParentObject: {fileID: 0}
@@ -77,10 +77,10 @@ MonoBehaviour:
   m_Clips:
   - m_Start: 0
     m_ClipIn: 0
-    m_Asset: {fileID: 114540177694098310}
+    m_Asset: {fileID: 114013963192114600}
     m_Duration: 3
     m_TimeScale: 1
-    m_ParentTrack: {fileID: 114355110293241636}
+    m_ParentTrack: {fileID: 114066188932385720}
     m_EaseInDuration: 0
     m_EaseOutDuration: 0
     m_BlendInDuration: -1
@@ -146,10 +146,10 @@ MonoBehaviour:
     m_Version: 1
   - m_Start: 3
     m_ClipIn: 0
-    m_Asset: {fileID: 114417519992342962}
+    m_Asset: {fileID: 114425705685095514}
     m_Duration: 1.5
     m_TimeScale: 1
-    m_ParentTrack: {fileID: 114355110293241636}
+    m_ParentTrack: {fileID: 114066188932385720}
     m_EaseInDuration: 0
     m_EaseOutDuration: 0
     m_BlendInDuration: -1
@@ -215,10 +215,10 @@ MonoBehaviour:
     m_Version: 1
   - m_Start: 4.5
     m_ClipIn: 0
-    m_Asset: {fileID: 114278997485041056}
+    m_Asset: {fileID: 114246344213462032}
     m_Duration: 1.5
     m_TimeScale: 1
-    m_ParentTrack: {fileID: 114355110293241636}
+    m_ParentTrack: {fileID: 114066188932385720}
     m_EaseInDuration: 0
     m_EaseOutDuration: 0
     m_BlendInDuration: -1
@@ -284,10 +284,10 @@ MonoBehaviour:
     m_Version: 1
   - m_Start: 6
     m_ClipIn: 0
-    m_Asset: {fileID: 114207664997591644}
+    m_Asset: {fileID: 114853178386316096}
     m_Duration: 1.5
     m_TimeScale: 1
-    m_ParentTrack: {fileID: 114355110293241636}
+    m_ParentTrack: {fileID: 114066188932385720}
     m_EaseInDuration: 0
     m_EaseOutDuration: 0
     m_BlendInDuration: -1
@@ -353,10 +353,10 @@ MonoBehaviour:
     m_Version: 1
   - m_Start: 7.5
     m_ClipIn: 0
-    m_Asset: {fileID: 114597600439082682}
+    m_Asset: {fileID: 114019861589508194}
     m_Duration: 3
     m_TimeScale: 1
-    m_ParentTrack: {fileID: 114355110293241636}
+    m_ParentTrack: {fileID: 114066188932385720}
     m_EaseInDuration: 0
     m_EaseOutDuration: 0
     m_BlendInDuration: -1
@@ -434,7 +434,26 @@ MonoBehaviour:
   m_ApplyAvatarMask: 1
   m_OpenClipOffsetRotation: {x: 0, y: 0, z: 0, w: 1}
   m_Rotation: {x: 0, y: 0, z: 0, w: 1}
---- !u!114 &114417519992342962
+--- !u!114 &114246344213462032
+MonoBehaviour:
+  m_ObjectHideFlags: 1
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 2024714994, guid: 6a10b2909283487f913b00d94cd3faf5, type: 3}
+  m_Name: AnimationPlayableAsset of Cutscene8pan3
+  m_EditorClassIdentifier: 
+  m_Clip: {fileID: 7400000, guid: 373bf33fa99fd0d4d89762893790a4b4, type: 2}
+  m_Position: {x: 0, y: 0, z: 0}
+  m_EulerAngles: {x: 0, y: 0, z: 0}
+  m_UseTrackMatchFields: 0
+  m_MatchTargetFields: 63
+  m_RemoveStartOffset: 1
+  m_Version: 1
+  m_Rotation: {x: 0, y: 0, z: 0, w: 1}
+--- !u!114 &114425705685095514
 MonoBehaviour:
   m_ObjectHideFlags: 1
   m_PrefabParentObject: {fileID: 0}
@@ -453,7 +472,7 @@ MonoBehaviour:
   m_RemoveStartOffset: 1
   m_Version: 1
   m_Rotation: {x: 0, y: 0, z: 0, w: 1}
---- !u!114 &114540177694098310
+--- !u!114 &114853178386316096
 MonoBehaviour:
   m_ObjectHideFlags: 1
   m_PrefabParentObject: {fileID: 0}
@@ -462,28 +481,9 @@ MonoBehaviour:
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 2024714994, guid: 6a10b2909283487f913b00d94cd3faf5, type: 3}
-  m_Name: AnimationPlayableAsset of Cutscene8pan1
+  m_Name: AnimationPlayableAsset of Cutscene8pan4
   m_EditorClassIdentifier: 
-  m_Clip: {fileID: 7400000, guid: 50e7552fb6e757449b0ce45845cf315c, type: 2}
-  m_Position: {x: 0, y: 0, z: 0}
-  m_EulerAngles: {x: 0, y: 0, z: 0}
-  m_UseTrackMatchFields: 0
-  m_MatchTargetFields: 63
-  m_RemoveStartOffset: 1
-  m_Version: 1
-  m_Rotation: {x: 0, y: 0, z: 0, w: 1}
---- !u!114 &114597600439082682
-MonoBehaviour:
-  m_ObjectHideFlags: 1
-  m_PrefabParentObject: {fileID: 0}
-  m_PrefabInternal: {fileID: 0}
-  m_GameObject: {fileID: 0}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 2024714994, guid: 6a10b2909283487f913b00d94cd3faf5, type: 3}
-  m_Name: AnimationPlayableAsset of Cutscene8pan5
-  m_EditorClassIdentifier: 
-  m_Clip: {fileID: 7400000, guid: 0e622183ecd85f24fad44cfba841f222, type: 2}
+  m_Clip: {fileID: 7400000, guid: 5b70132dcc939324eb2f0dc0960b9b5d, type: 2}
   m_Position: {x: 0, y: 0, z: 0}
   m_EulerAngles: {x: 0, y: 0, z: 0}
   m_UseTrackMatchFields: 0

@@ -37,24 +37,15 @@ public class CommunWithDatabase : MonoBehaviour {
         levels[1] = 0;
         parkMissionScript = parkMission.GetComponent<parkMissionController>();
         arenaMissionScript = arenaMission.GetComponent<arenaMissionController>();
-        ////////////////
-        //saveStatus = 0;
-        ///////////////
 
-        //REMEMBER TO CHANGE THIS BACK
-        ////////////////////////////////////////////////////////////
-        //StartCoroutine(performStartLoad());
-        //////////////////////////////////////////////////////////
-    }
 
-    private void StartGame() {
-        if (saveStatus == 1)
-        {
-            print("startnewgame");
-            levels[0] = 0;
-            levels[1] = 0;
-            startNewGame(globalplayerNum);
-        }
+        saveStatus = PlayerPrefs.GetInt("saveStatus");
+        globalplayerNum = PlayerPrefs.GetInt("playerNum");
+        inputmaplevelNum = PlayerPrefs.GetInt("levelState");
+        inputplayerNum = PlayerPrefs.GetInt("playerNum");
+
+        StartCoroutine(performStartLoad());
+
     }
 
     private IEnumerator performStartLoad()

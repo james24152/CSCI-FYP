@@ -93,6 +93,27 @@ public class Health : MonoBehaviour {
     public void FirstSpawn() {
         isFirstSpawn = true;
         FindObjectOfType<AudioManager>().Play("Vortex"); //play respawn sound effect
+        switch (transform.name) {
+            case "Earth Eve":
+                GameObject earthVortex = GameObject.FindGameObjectWithTag("EarthVortex");
+                earthVortex.GetComponent<ParticleSystem>().Play();
+                break;
+            case "Water Eve":
+                GameObject waterVortex = GameObject.FindGameObjectWithTag("WaterVortex");
+                waterVortex.GetComponent<ParticleSystem>().Play();
+                break;
+            case "Fire Eve":
+                GameObject fireVortex = GameObject.FindGameObjectWithTag("FireVortex");
+                fireVortex.GetComponent<ParticleSystem>().Play();
+                break;
+            case "Air Eve":
+                GameObject windVortex = GameObject.FindGameObjectWithTag("WindVortex");
+                windVortex.GetComponent<ParticleSystem>().Play();
+                break;
+            default:
+                Debug.Log("can't access vortex fx");
+                break;
+        }
         if (!invoked)
         {
             anim.SetBool("Damaged", true);

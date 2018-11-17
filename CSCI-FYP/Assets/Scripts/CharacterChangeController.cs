@@ -33,8 +33,11 @@ public class CharacterChangeController : MonoBehaviour {
     private Health healthScript;
     private DrownBehaviour drownScript;
     private CanvasHearts heartScript;
+    private AudioManager audioMangaer;
 
     public void Evolve(int element) { //find out what element collected
+        audioMangaer = FindObjectOfType<AudioManager>();
+        audioMangaer.Play("Respawn");
         switch (element)
         {
             case 1:
@@ -112,6 +115,15 @@ public class CharacterChangeController : MonoBehaviour {
         healthScript.hearts = heartScript.hearts;
         Destroy(tempFx);
         tempEve.SetActive(true);
+        if (transform.name == "Earth Eve" || transform.name == "Earth Eve(Clone)")
+            audioMangaer.Stop("WalkEarth");
+        if (transform.name == "Water Eve" || transform.name == "Water Eve(Clone)")
+            audioMangaer.Stop("WalkWater");
+        if (transform.name == "Fire Eve" || transform.name == "Fire Eve(Clone)")
+            audioMangaer.Stop("WalkFire");
+        if (transform.name == "Air Eve" || transform.name == "Air Eve(Clone)")
+            audioMangaer.Stop("WalkWind");
+        audioMangaer.FadeOut("Respawn");
         Destroy(gameObject);
     }
 

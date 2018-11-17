@@ -3,6 +3,7 @@ using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.UI;
 using TMPro;
+using UnityEngine.SceneManagement;
 
 public class SavesItem : MonoBehaviour {
 
@@ -34,6 +35,6 @@ public class SavesItem : MonoBehaviour {
         PlayerPrefs.SetInt("playerNum", item.playerNum);
         PlayerPrefs.SetInt("saveStatus", 0);
         PlayerPrefs.SetInt("levelState", item.levelState);
-        //load
+        SceneManager.LoadScene(2);
     }
 }

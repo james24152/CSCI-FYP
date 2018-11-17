@@ -45,6 +45,6 @@ public class NewGameMenuScript : MonoBehaviour {
         //load stage 1 (MapAncient)
         PlayerPrefs.SetInt("playerNum", playerNum);
         PlayerPrefs.SetInt("saveStatus", 1);
-        //SceneManager.LoadScene(2);
+        SceneManager.LoadScene(2);
     }
 }

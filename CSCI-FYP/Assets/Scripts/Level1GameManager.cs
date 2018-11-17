@@ -2,6 +2,7 @@
 using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.UI;
+using UnityEngine.SceneManagement;
 
 public class Level1GameManager : MonoBehaviour {
 
@@ -89,6 +90,7 @@ public class Level1GameManager : MonoBehaviour {
         }
         if (missionSuccess) {
             //endgame
+            SceneManager.LoadScene(0);
         }
     }
 

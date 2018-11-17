@@ -36,6 +36,7 @@ public class DialogueTrigger : MonoBehaviour {
         }
         if (!inited) {
             cutsceneCam.gameObject.SetActive(true);
+            Debug.Log("triggered dialoague");
             cutscene.Play();
             FindObjectOfType<DialogueManager>().StartDialogue(dialogue);
             inited = true;

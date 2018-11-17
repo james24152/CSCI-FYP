@@ -76,7 +76,7 @@ MonoBehaviour:
     pitch: 1
     loop: 1
     source: {fileID: 0}
-  - name: Walk
+  - name: WalkEarth
     clip: {fileID: 8300000, guid: 257b6fe49db56724fb2698690c823680, type: 3}
     volume: 0.2
     pitch: 1
@@ -201,4 +201,22 @@ MonoBehaviour:
     volume: 1
     pitch: 1
     loop: 0
+    source: {fileID: 0}
+  - name: WalkWater
+    clip: {fileID: 8300000, guid: 257b6fe49db56724fb2698690c823680, type: 3}
+    volume: 0.2
+    pitch: 1
+    loop: 1
+    source: {fileID: 0}
+  - name: WalkFire
+    clip: {fileID: 8300000, guid: 257b6fe49db56724fb2698690c823680, type: 3}
+    volume: 0.2
+    pitch: 1
+    loop: 1
+    source: {fileID: 0}
+  - name: WalkWind
+    clip: {fileID: 8300000, guid: 257b6fe49db56724fb2698690c823680, type: 3}
+    volume: 0.2
+    pitch: 1
+    loop: 1
     source: {fileID: 0}

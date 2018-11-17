@@ -153,7 +153,14 @@ public class MoveBehaviour : GenericBehaviour
         if (!behaviourManager.IsGrounded()) {
             if (walkInited)
             {
-                audioMangaer.Stop("Walk");
+                if (transform.name == "Earth Eve" || transform.name == "Earth Eve(Clone)")
+                    audioMangaer.Stop("WalkEarth");
+                if (transform.name == "Water Eve" || transform.name == "Water Eve(Clone)")
+                    audioMangaer.Stop("WalkWater");
+                if (transform.name == "Fire Eve" || transform.name == "Fire Eve(Clone)")
+                    audioMangaer.Stop("WalkFire");
+                if (transform.name == "Air Eve" || transform.name == "Air Eve(Clone)")
+                    audioMangaer.Stop("WalkWind");
                 walkInited = false;
             }
         }
@@ -189,14 +196,28 @@ public class MoveBehaviour : GenericBehaviour
             isWalking = true;
             if (!walkInited)
             {
-                audioMangaer.Play("Walk"); //play walk sound effect
+                if (transform.name == "Earth Eve" || transform.name == "Earth Eve(Clone)")
+                    audioMangaer.Play("WalkEarth");
+                if (transform.name == "Water Eve" || transform.name == "Water Eve(Clone)")
+                    audioMangaer.Play("WalkWater");
+                if (transform.name == "Fire Eve" || transform.name == "Fire Eve(Clone)")
+                    audioMangaer.Play("WalkFire");
+                if (transform.name == "Air Eve" || transform.name == "Air Eve(Clone)")
+                    audioMangaer.Play("WalkWind"); //play walk sound effect
                 walkInited = true;
             }
         }
         else {
             isWalking = false;
             if (walkInited) {
-                audioMangaer.Stop("Walk");
+                if (transform.name == "Earth Eve" || transform.name == "Earth Eve(Clone)")
+                    audioMangaer.Stop("WalkEarth");
+                if (transform.name == "Water Eve" || transform.name == "Water Eve(Clone)")
+                    audioMangaer.Stop("WalkWater");
+                if (transform.name == "Fire Eve" || transform.name == "Fire Eve(Clone)")
+                    audioMangaer.Stop("WalkFire");
+                if (transform.name == "Air Eve" || transform.name == "Air Eve(Clone)")
+                    audioMangaer.Stop("WalkWind");
                 walkInited = false;
             }
         }
@@ -214,7 +235,14 @@ public class MoveBehaviour : GenericBehaviour
             speed = 0f;
             if (walkInited)
             {
-                audioMangaer.Stop("Walk");
+                if (transform.name == "Earth Eve" || transform.name == "Earth Eve(Clone)")
+                    audioMangaer.Stop("WalkEarth");
+                if (transform.name == "Water Eve" || transform.name == "Water Eve(Clone)")
+                    audioMangaer.Stop("WalkWater");
+                if (transform.name == "Fire Eve" || transform.name == "Fire Eve(Clone)")
+                    audioMangaer.Stop("WalkFire");
+                if (transform.name == "Air Eve" || transform.name == "Air Eve(Clone)")
+                    audioMangaer.Stop("WalkWind");
                 walkInited = false;
             }
         }
