@@ -9,8 +9,10 @@ public class LogReceiveController : MonoBehaviour {
     private Vector3 targetPosition;
     private GameObject chimney;
     private AudioManager audioMangaer;
+    private bool receive;
     // Use this for initialization
     void Start () {
+        receive = true;
         chimney = transform.GetChild(0).gameObject;
         targetPosition = chimney.transform.position;
         audioMangaer = FindObjectOfType<AudioManager>();
@@ -23,7 +25,7 @@ public class LogReceiveController : MonoBehaviour {
 
     private void OnTriggerEnter(Collider other)
     {
-        if (other.gameObject.tag == "logs")
+        if (other.gameObject.tag == "logs" && receive )
         {
             audioMangaer.Play("RecieveLogs");
             grabber = other.gameObject.GetComponent<Grabber>();
@@ -34,6 +36,7 @@ public class LogReceiveController : MonoBehaviour {
         }
         if (woodCount == 3)
         {
+            receive = false;
             working();
         }
     }

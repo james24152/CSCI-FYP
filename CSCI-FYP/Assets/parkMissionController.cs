@@ -58,6 +58,7 @@ public class parkMissionController : MonoBehaviour {
         {
             trigger.TriggerDialogue();
             forOnce = true;
+            //delete line
             int i = 2;
             transform.GetChild(0).gameObject.SetActive(false);
             transform.GetChild(1).gameObject.SetActive(false);
@@ -67,6 +68,17 @@ public class parkMissionController : MonoBehaviour {
                 StartCoroutine(DisableObject(i,transform.GetChild(26-i).gameObject));
                 i = i + 1;
             }
+
+            //disable button
+            Switch1.transform.GetChild(0).gameObject.transform.GetChild(0).gameObject.SetActive(false);
+            Switch1.transform.GetChild(0).gameObject.transform.GetChild(1).gameObject.SetActive(false);
+            Switch1.transform.GetChild(0).gameObject.transform.GetChild(2).gameObject.SetActive(false);
+            Switch2.transform.GetChild(0).gameObject.transform.GetChild(0).gameObject.SetActive(false);
+            Switch2.transform.GetChild(0).gameObject.transform.GetChild(1).gameObject.SetActive(false);
+            Switch2.transform.GetChild(0).gameObject.transform.GetChild(2).gameObject.SetActive(false);
+            Switch3.transform.GetChild(0).gameObject.transform.GetChild(0).gameObject.SetActive(false);
+            Switch3.transform.GetChild(0).gameObject.transform.GetChild(1).gameObject.SetActive(false);
+            Switch3.transform.GetChild(0).gameObject.transform.GetChild(2).gameObject.SetActive(false);
             burningScriptS1.enabled = false;
             burningScriptS2.enabled = false;
             burningScriptS3.enabled = false;

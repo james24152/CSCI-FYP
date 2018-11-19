@@ -85,14 +85,14 @@ public class CommunWithDatabase : MonoBehaviour {
 
     private void Update()
     {
-        if (saveStatus == 1)
+        /*if (saveStatus == 1)
         {
             saveStatus = 0;
             print("startnewgame");
             levels[0] = 0;
             levels[1] = 0;
             startNewGame(globalplayerNum);
-        }
+        }*/
 
         if (Input.GetKeyDown(KeyCode.Space))
         {

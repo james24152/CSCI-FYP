@@ -54,8 +54,8 @@ public class FireCageSwtich : MonoBehaviour {
             if (!water)
             {
                 turn();
-                burning = false;
                 theSwitch = true;
+                burning = false;
                 water = true;
                 fire = false;
             }
