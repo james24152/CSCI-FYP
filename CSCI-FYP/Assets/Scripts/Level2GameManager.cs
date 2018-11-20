@@ -8,6 +8,13 @@ public class Level2GameManager : MonoBehaviour {
 
     public int sublevel = 1;
     public bool missionSuccess;
+    private AudioManager audioManager;
+
+    private void Start()
+    {
+        audioManager = FindObjectOfType<AudioManager>();
+        audioManager.Play("BGMMedieval");
+    }
 
     private void Update()
     {

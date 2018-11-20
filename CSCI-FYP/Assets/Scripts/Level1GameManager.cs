@@ -32,6 +32,7 @@ public class Level1GameManager : MonoBehaviour {
     private AudioManager audioMangaer;
     private void Start()
     {
+        
         playerCount = PlayerPrefs.GetInt("playerNum");
         switch (playerCount)
         {
@@ -59,6 +60,7 @@ public class Level1GameManager : MonoBehaviour {
         }
         TunePlayView(playerCount);
         audioMangaer = FindObjectOfType<AudioManager>();
+        audioMangaer.Play("BGMAncient");
     }
     private void Update()
     {
