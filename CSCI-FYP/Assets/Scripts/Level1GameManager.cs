@@ -29,7 +29,7 @@ public class Level1GameManager : MonoBehaviour {
     private bool inited;
     private bool inited2;
     private GameObject[] players;
-    private AudioManager audioMangaer;
+    private AudioManager audioManager;
     private void Start()
     {
         
@@ -59,8 +59,8 @@ public class Level1GameManager : MonoBehaviour {
                 break;
         }
         TunePlayView(playerCount);
-        audioMangaer = FindObjectOfType<AudioManager>();
-        audioMangaer.Play("BGMAncient");
+        audioManager = FindObjectOfType<AudioManager>();
+        audioManager.Play("BGMAncient");
     }
     private void Update()
     {
@@ -74,7 +74,9 @@ public class Level1GameManager : MonoBehaviour {
             signObjective.gameObject.SetActive(false);
         if (defendObjectiveStart) {
             if (!inited) {
-                audioMangaer.Play("Symbol");
+                audioManager.Stop("BGMAncient");
+                audioManager.Play("BGMFighting");
+                audioManager.Play("Symbol");
                 enemySymbol.Play();
                 Invoke("SetEnemyActive", 2f);
                 inited = true;

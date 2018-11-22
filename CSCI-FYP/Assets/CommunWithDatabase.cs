@@ -96,10 +96,7 @@ public class CommunWithDatabase : MonoBehaviour {
 
         if (Input.GetKeyDown(KeyCode.Space))
         {
-            inputmaplevelNum=checkGameProgress();
-            inputplayerNum = globalplayerNum;
-            inputsaveTime = System.DateTime.Now.Hour + ":" + System.DateTime.Now.Minute;
-            save(inputmaplevelNum, inputplayerNum, inputsaveTime);
+            save();
         }
     }
     
@@ -209,13 +206,22 @@ public class CommunWithDatabase : MonoBehaviour {
 
 
 
-    public void save(int maplevelNum, int playerNum, string saveTime)
+    public void saveToDB(int maplevelNum, int playerNum, string saveTime)
     {
         WWWForm form = new WWWForm();
         form.AddField("maplevelNumPost", maplevelNum);
         form.AddField("playerNumPost", playerNum);
         form.AddField("saveTimePost", saveTime);
         WWW www = new WWW(saveGameDataURL,form);
+    }
+
+    public void save()
+    {
+        
+        inputmaplevelNum = checkGameProgress();
+        inputplayerNum = globalplayerNum;
+        inputsaveTime = System.DateTime.Now.Hour + ":" + System.DateTime.Now.Minute;
+        saveToDB(inputmaplevelNum, inputplayerNum, inputsaveTime);
     }
 
     // Update is called once per frame

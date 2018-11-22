@@ -4144,13 +4144,13 @@ Prefab:
     - target: {fileID: 114225452436823218, guid: f0f10476a44634949a83124036800584,
         type: 2}
       propertyPath: sounds.Array.data[30].name
-      value: BGMBigEnough
+      value: BGMMenu
       objectReference: {fileID: 0}
     - target: {fileID: 114225452436823218, guid: f0f10476a44634949a83124036800584,
         type: 2}
       propertyPath: sounds.Array.data[30].clip
       value: 
-      objectReference: {fileID: 8300000, guid: 9d5d3f4142ede014db8b92183e821c32, type: 3}
+      objectReference: {fileID: 8300000, guid: d95e2cd0f79ca1c48979548d238b7372, type: 3}
     - target: {fileID: 114225452436823218, guid: f0f10476a44634949a83124036800584,
         type: 2}
       propertyPath: sounds.Array.data[30].volume

@@ -7,7 +7,7 @@ public class MenuPageAudio : MonoBehaviour {
 	// Use this for initialization
 	void Start () {
 		audioManager = FindObjectOfType<AudioManager>();
-        audioManager.Play("BGMBigEnough");
+        audioManager.Play("BGMMenu");
     }
 	
 	// Update is called once per frame
