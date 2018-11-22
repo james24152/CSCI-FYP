@@ -8,4 +8,5 @@ public class CanvasHearts : MonoBehaviour {
     public Image[] hearts;
     public Image icon;
     public Image pressX;
+    public Image pressY;
 }

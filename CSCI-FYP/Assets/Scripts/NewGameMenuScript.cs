@@ -2,15 +2,10 @@
 using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.UI;
-using UnityEngine.SceneManagement;
 
 public class NewGameMenuScript : MonoBehaviour {
 
     private int playerNum = 1;
-	// Use this for initialization
-	void Start () {
-		
-	}
 
     public void AssignPlayerNum(Toggle toggle) {
         switch (toggle.transform.name) {
@@ -38,7 +33,6 @@ public class NewGameMenuScript : MonoBehaviour {
     public void Stage1() {
         //load stage 1 (MapAncient)
         PlayerPrefs.SetInt("playerNum", playerNum);
-        SceneManager.LoadScene(1);
     }
 
     public void Stage2() {
@@ -46,6 +40,5 @@ public class NewGameMenuScript : MonoBehaviour {
         PlayerPrefs.SetInt("playerNum", playerNum);
         PlayerPrefs.SetInt("saveStatus", 1);
         Debug.Log("save statas is 1");
-        SceneManager.LoadScene(2);
     }
 }

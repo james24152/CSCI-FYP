@@ -17,8 +17,12 @@ public class SaveStationController : MonoBehaviour {
     public GameObject cube;
     private Vector3 aniSpwanPos;
     public ParticleSystem saveAni;
-	// Use this for initialization
-	void Start () {
+    public Canvas canvas1;
+    public Canvas canvas2;
+    public Canvas canvas3;
+    public Canvas canvas4;
+    // Use this for initialization
+    void Start () {
         DBScript = DB.GetComponent<CommunWithDatabase>();
         saveAct = false;
         saveAni.Stop();
@@ -26,16 +30,30 @@ public class SaveStationController : MonoBehaviour {
         rotation = Quaternion.Euler(-90, 0, 0);
 	}
 	
-	// Update is called once per frame
-	void Update () {
-        
-    }
     private void OnTriggerEnter(Collider other)
     {
 
         if (other is CapsuleCollider){
             saveAct = true;
             print("change to true");
+            switch (other.transform.parent.name)
+            {
+                case "Player1":
+                    canvas1.GetComponent<CanvasHearts>().pressY.gameObject.SetActive(true);
+                    break;
+                case "Player2":
+                    canvas2.GetComponent<CanvasHearts>().pressY.gameObject.SetActive(true);
+                    break;
+                case "Player3":
+                    canvas4.GetComponent<CanvasHearts>().pressY.gameObject.SetActive(true);
+                    break;
+                case "Player4":
+                    canvas4.GetComponent<CanvasHearts>().pressY.gameObject.SetActive(true);
+                    break;
+                default:
+                    Debug.Log("save station switch error");
+                    break;
+            }
         }
     }
     private void OnTriggerStay(Collider other)
@@ -58,7 +76,26 @@ public class SaveStationController : MonoBehaviour {
     private void OnTriggerExit(Collider other)
     {
         saveAct = false;
-        
+        if (other is CapsuleCollider) {
+            switch (other.transform.parent.name)
+            {
+                case "Player1":
+                    canvas1.GetComponent<CanvasHearts>().pressY.gameObject.SetActive(false);
+                    break;
+                case "Player2":
+                    canvas2.GetComponent<CanvasHearts>().pressY.gameObject.SetActive(false);
+                    break;
+                case "Player3":
+                    canvas4.GetComponent<CanvasHearts>().pressY.gameObject.SetActive(false);
+                    break;
+                case "Player4":
+                    canvas4.GetComponent<CanvasHearts>().pressY.gameObject.SetActive(false);
+                    break;
+                default:
+                    Debug.Log("save station switch error");
+                    break;
+            }
+        }
     }
 
     public void playSaveAni()

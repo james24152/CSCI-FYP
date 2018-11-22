@@ -38,6 +38,8 @@ TagManager:
   - WaterVortex
   - FireVortex
   - WindVortex
+  - LoadingBar
+  - LoadMenu
   layers:
   - Default
   - TransparentFX
