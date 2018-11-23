@@ -5,6 +5,7 @@ using UnityEngine;
 public class LogReceiveController : MonoBehaviour {
     public int woodCount = 0;
     public ParticleSystem smokeParticle;
+    public GameObject glow;
     private Grabber grabber;
     private Vector3 targetPosition;
     private GameObject chimney;
@@ -37,6 +38,7 @@ public class LogReceiveController : MonoBehaviour {
         if (woodCount == 3)
         {
             receive = false;
+            glow.SetActive(false);
             working();
         }
     }

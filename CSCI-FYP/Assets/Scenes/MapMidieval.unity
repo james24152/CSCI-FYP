@@ -13714,6 +13714,46 @@ Prefab:
     m_RemovedComponents: []
   m_ParentPrefab: {fileID: 100100000, guid: 22d131011a33c56418286cc08fa82b8f, type: 2}
   m_IsPrefabParent: 0
+--- !u!1 &881034361
+GameObject:
+  m_ObjectHideFlags: 0
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  serializedVersion: 5
+  m_Component:
+  - component: {fileID: 881034363}
+  - component: {fileID: 881034362}
+  m_Layer: 0
+  m_Name: SpeedModder
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!114 &881034362
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  m_GameObject: {fileID: 881034361}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 908f099693b7e854c96e85aeef318a36, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+--- !u!4 &881034363
+Transform:
+  m_ObjectHideFlags: 0
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  m_GameObject: {fileID: 881034361}
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: 353.5364, y: 335.7908, z: 89.147865}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_Children: []
+  m_Father: {fileID: 0}
+  m_RootOrder: 32
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1 &882179719
 GameObject:
   m_ObjectHideFlags: 0
@@ -24295,6 +24335,16 @@ Prefab:
     - target: {fileID: 4920858317377646, guid: 664596dba43b0b84ca7aed34461ebf0c, type: 2}
       propertyPath: m_LocalPosition.x
       value: -20.93
+      objectReference: {fileID: 0}
+    - target: {fileID: 20438222634261246, guid: 664596dba43b0b84ca7aed34461ebf0c,
+        type: 2}
+      propertyPath: field of view
+      value: 60
+      objectReference: {fileID: 0}
+    - target: {fileID: 114906744116338610, guid: 664596dba43b0b84ca7aed34461ebf0c,
+        type: 2}
+      propertyPath: camOffset.z
+      value: -2
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_ParentPrefab: {fileID: 100100000, guid: 664596dba43b0b84ca7aed34461ebf0c, type: 2}

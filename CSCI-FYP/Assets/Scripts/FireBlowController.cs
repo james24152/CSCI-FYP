@@ -44,11 +44,11 @@ public class FireBlowController : MonoBehaviour
         }
         else
         {
-            moveScript.walkSpeed = 4;
-            moveScript.runSpeed = 4;
             if (audioInitedFire) {
                 StopAudio();
                 audioInitedFire = false;
+                moveScript.walkSpeed = 4;
+                moveScript.runSpeed = 4;
                 //audioInited = false;
             }
         }
@@ -56,6 +56,8 @@ public class FireBlowController : MonoBehaviour
         if (!shoot && audioInited) {
             audioMangaer.FadeOut("Charge");
             audioInited = false;
+            moveScript.walkSpeed = 4;
+            moveScript.runSpeed = 4;
         }
     }
 

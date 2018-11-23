@@ -61,6 +61,7 @@ public class WaveController : MonoBehaviour {
                     }
                     if (CheckFinishWave3()) {
                         if (!audioInited) {
+                            audioMangaer.Stop("BGMFighting");
                             audioMangaer.Play("Win");
                             audioInited = true;
                         }

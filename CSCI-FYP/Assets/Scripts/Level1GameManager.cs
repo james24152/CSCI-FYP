@@ -83,6 +83,7 @@ public class Level1GameManager : MonoBehaviour {
             }
         }
         if (missionFailed) {
+            audioManager.Stop("BGMFighting");
             dialogueTrigger.TriggerDialogue();
             missionFailed = false;
         }
@@ -93,7 +94,7 @@ public class Level1GameManager : MonoBehaviour {
             }
         }
         if (missionSuccess) {
-            //endgame
+            enemyAcademy.SetActive(false);
             SceneManager.LoadScene(0);
         }
     }
@@ -106,6 +107,7 @@ public class Level1GameManager : MonoBehaviour {
     private void MissionReset() {
         enemies.SetActive(false);
         enemies.SetActive(true);
+        audioManager.Play("BGMFighting");
         missionReset = false;
         players = GameObject.FindGameObjectsWithTag("Player");
         Health healthScript;
