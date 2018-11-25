@@ -24,6 +24,7 @@ public class parkMissionController : MonoBehaviour {
     private burningController burningScript5;
     
     private CommunWithDatabase DBscript;
+    private AudioManager audioManager;
     
     private bool forOnce;
 
@@ -39,7 +40,7 @@ public class parkMissionController : MonoBehaviour {
         burningScript4 = fireCage4.transform.GetChild(0).gameObject.GetComponent<burningController>();
         burningScript5 = fireCage5.transform.GetChild(0).gameObject.GetComponent<burningController>();
         burningScript3.turn();
-        
+        audioManager = FindObjectOfType<AudioManager>();
         DBscript = DB.GetComponent<CommunWithDatabase>();
     }
 	
@@ -47,6 +48,8 @@ public class parkMissionController : MonoBehaviour {
     {
         if (burningScriptS1.burning == false && burningScriptS2.burning == false && burningScriptS3.burning == false && burningScript1.burning == false && burningScript2.burning == false && burningScript3.burning == false && burningScript4.burning == false && burningScript5.burning == false)
         {
+          
+            
             return true;
         }
         else return false;
@@ -56,6 +59,8 @@ public class parkMissionController : MonoBehaviour {
 	void Update () {
 		if (AllOff() == true && forOnce == false)
         {
+            audioManager.Stop("BGMMaze");
+            audioManager.Play("BGMMedieval");
             trigger.TriggerDialogue();
             forOnce = true;
             //delete line

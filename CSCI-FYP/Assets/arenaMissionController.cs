@@ -8,7 +8,7 @@ public class arenaMissionController : MonoBehaviour {
     private bool forOnce;
     public GameObject DB;
     public DialogueTrigger trigger;
-    public AudioManager audioManager;
+    private AudioManager audioManager;
 
     private CommunWithDatabase DBscript;
     private int elementToShoot;
@@ -41,6 +41,8 @@ public class arenaMissionController : MonoBehaviour {
                 audioManager.Play("Win");
                 audioLock = true;
             }
+            audioManager.Stop("BGMArena");
+            audioManager.Play("BGMMedieval");
             trigger.TriggerDialogue();
             forOnce = true;
             for (int j = 0; j < 4; j++)

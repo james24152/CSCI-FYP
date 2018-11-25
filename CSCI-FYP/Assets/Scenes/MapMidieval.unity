@@ -21,12 +21,12 @@ RenderSettings:
   m_LinearFogStart: 0
   m_LinearFogEnd: 300
   m_AmbientSkyColor: {r: 0.212, g: 0.227, b: 0.259, a: 1}
-  m_AmbientEquatorColor: {r: 0.114, g: 0.125, b: 0.133, a: 1}
-  m_AmbientGroundColor: {r: 0.047, g: 0.043, b: 0.035, a: 1}
+  m_AmbientEquatorColor: {r: 0.7042542, g: 0.7458526, b: 0.7735849, a: 1}
+  m_AmbientGroundColor: {r: 0.6698113, g: 0.6561202, b: 0.628738, a: 1}
   m_AmbientIntensity: 1
-  m_AmbientMode: 0
+  m_AmbientMode: 1
   m_SubtractiveShadowColor: {r: 0.42, g: 0.478, b: 0.627, a: 1}
-  m_SkyboxMaterial: {fileID: 10304, guid: 0000000000000000f000000000000000, type: 0}
+  m_SkyboxMaterial: {fileID: 2100000, guid: d1385980456cd2044b282d73625457db, type: 2}
   m_HaloStrength: 0.5
   m_FlareStrength: 1
   m_FlareFadeSpeed: 3
@@ -38,7 +38,7 @@ RenderSettings:
   m_ReflectionIntensity: 1
   m_CustomReflection: {fileID: 0}
   m_Sun: {fileID: 0}
-  m_IndirectSpecularColor: {r: 0.44657844, g: 0.49641222, b: 0.57481694, a: 1}
+  m_IndirectSpecularColor: {r: 0.12112749, g: 0.15458468, b: 0.22906184, a: 1}
   m_UseRadianceAmbientProbe: 0
 --- !u!157 &3
 LightmapSettings:
@@ -3460,6 +3460,8 @@ MonoBehaviour:
       of this city!
     - We need to fill in the correct element to successfully initiate the system
   cutsceneCam: {fileID: 1517429266}
+  BGMWhileTrigger: BGMArena
+  BGM: BGMMedieval
 --- !u!1001 &195701998
 Prefab:
   m_ObjectHideFlags: 0
@@ -9869,6 +9871,8 @@ MonoBehaviour:
     sentences:
     - Now that the Defense the system is restored, the city is safe for the moment
   cutsceneCam: {fileID: 860897500}
+  BGMWhileTrigger: 
+  BGM: 
 --- !u!1001 &614861143
 Prefab:
   m_ObjectHideFlags: 0
@@ -14024,6 +14028,8 @@ MonoBehaviour:
     sentences:
     - It Worked! The Power of the Darkness in the city is fading!
   cutsceneCam: {fileID: 1300394170}
+  BGMWhileTrigger: 
+  BGM: 
 --- !u!1001 &905084109
 Prefab:
   m_ObjectHideFlags: 0
@@ -14307,6 +14313,8 @@ MonoBehaviour:
 
 '
   cutsceneCam: {fileID: 1124322115}
+  BGMWhileTrigger: BGMMaze
+  BGM: BGMMedieval
 --- !u!1001 &920829845
 Prefab:
   m_ObjectHideFlags: 0
@@ -15331,7 +15339,6 @@ MonoBehaviour:
   blockPos: {fileID: 1666034285}
   DB: {fileID: 1612434494}
   trigger: {fileID: 612957532}
-  audioManager: {fileID: 0}
 --- !u!1001 &1015341901
 Prefab:
   m_ObjectHideFlags: 0
@@ -19420,7 +19427,7 @@ Prefab:
     - target: {fileID: 114225452436823218, guid: f0f10476a44634949a83124036800584,
         type: 2}
       propertyPath: sounds.Array.size
-      value: 29
+      value: 31
       objectReference: {fileID: 0}
     - target: {fileID: 4102943830506118, guid: f0f10476a44634949a83124036800584, type: 2}
       propertyPath: m_LocalPosition.x
@@ -19493,6 +19500,56 @@ Prefab:
         type: 2}
       propertyPath: sounds.Array.data[27].volume
       value: 0.075
+      objectReference: {fileID: 0}
+    - target: {fileID: 114225452436823218, guid: f0f10476a44634949a83124036800584,
+        type: 2}
+      propertyPath: sounds.Array.data[29].name
+      value: BGMMaze
+      objectReference: {fileID: 0}
+    - target: {fileID: 114225452436823218, guid: f0f10476a44634949a83124036800584,
+        type: 2}
+      propertyPath: sounds.Array.data[29].clip
+      value: 
+      objectReference: {fileID: 8300000, guid: ea40de800700f0745a738d95c2d176a5, type: 3}
+    - target: {fileID: 114225452436823218, guid: f0f10476a44634949a83124036800584,
+        type: 2}
+      propertyPath: sounds.Array.data[29].volume
+      value: 0.2
+      objectReference: {fileID: 0}
+    - target: {fileID: 114225452436823218, guid: f0f10476a44634949a83124036800584,
+        type: 2}
+      propertyPath: sounds.Array.data[29].pitch
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 114225452436823218, guid: f0f10476a44634949a83124036800584,
+        type: 2}
+      propertyPath: sounds.Array.data[29].loop
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 114225452436823218, guid: f0f10476a44634949a83124036800584,
+        type: 2}
+      propertyPath: sounds.Array.data[30].name
+      value: BGMArena
+      objectReference: {fileID: 0}
+    - target: {fileID: 114225452436823218, guid: f0f10476a44634949a83124036800584,
+        type: 2}
+      propertyPath: sounds.Array.data[30].clip
+      value: 
+      objectReference: {fileID: 8300000, guid: a32ed6349a478c546a55bf13a0f462e7, type: 3}
+    - target: {fileID: 114225452436823218, guid: f0f10476a44634949a83124036800584,
+        type: 2}
+      propertyPath: sounds.Array.data[30].volume
+      value: 0.2
+      objectReference: {fileID: 0}
+    - target: {fileID: 114225452436823218, guid: f0f10476a44634949a83124036800584,
+        type: 2}
+      propertyPath: sounds.Array.data[30].pitch
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 114225452436823218, guid: f0f10476a44634949a83124036800584,
+        type: 2}
+      propertyPath: sounds.Array.data[30].loop
+      value: 1
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_ParentPrefab: {fileID: 100100000, guid: f0f10476a44634949a83124036800584, type: 2}
@@ -23279,7 +23336,7 @@ Light:
   serializedVersion: 8
   m_Type: 1
   m_Color: {r: 0.8392157, g: 0.91374457, b: 1, a: 1}
-  m_Intensity: 0.5
+  m_Intensity: 0.1
   m_Range: 10
   m_SpotAngle: 30
   m_CookieSize: 10
@@ -23298,8 +23355,8 @@ Light:
   m_CullingMask:
     serializedVersion: 2
     m_Bits: 4294967295
-  m_Lightmapping: 4
-  m_AreaSize: {x: 1, y: 1}
+  m_Lightmapping: 2
+  m_AreaSize: {x: 10, y: 10}
   m_BounceIntensity: 1
   m_ColorTemperature: 6570
   m_UseColorTemperature: 0
@@ -23312,7 +23369,7 @@ Transform:
   m_PrefabInternal: {fileID: 0}
   m_GameObject: {fileID: 1512838963}
   m_LocalRotation: {x: 0.40821788, y: -0.23456968, z: 0.10938163, w: 0.8754261}
-  m_LocalPosition: {x: -65.4, y: 3, z: 0}
+  m_LocalPosition: {x: 126.2, y: 3, z: 110.5}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children: []
   m_Father: {fileID: 0}
