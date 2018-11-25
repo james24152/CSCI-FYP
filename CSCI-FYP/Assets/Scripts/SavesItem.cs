@@ -26,7 +26,23 @@ public class SavesItem : MonoBehaviour {
 
     public void Setup(Item currentItem, SaveScrollList currentScrollList) {
         item = currentItem;
-        levelState.text = currentItem.levelState.ToString();
+        switch (currentItem.levelState) {
+            case 0:
+                levelState.text = "Wandering in Town";
+                break;
+            case 1:
+                levelState.text = "At the Maze";
+                break;
+            case 2:
+                levelState.text = "At the Defense system";
+                break;
+            case 3:
+                levelState.text = "Stage Cleared!";
+                break;
+            default:
+                Debug.Log("something wrong with levelState parser");
+                break;
+        }
         playerNum.text = currentItem.playerNum.ToString();
         time.text = currentItem.time;
 

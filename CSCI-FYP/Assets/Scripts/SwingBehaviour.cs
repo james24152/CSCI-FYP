@@ -7,6 +7,7 @@ public class SwingBehaviour : MonoBehaviour {
     public float range = 2f;
     private ChopBehaviour chopScript;
     private AudioManager audioMangaer;
+    private GameObject axe;
 
     private void Start()
     {
@@ -15,17 +16,15 @@ public class SwingBehaviour : MonoBehaviour {
 
     void Swing() {
         audioMangaer.Play("Swing");
-        Debug.Log("swinging");
-        RaycastHit hit;
-        if (Physics.Raycast(transform.position, transform.forward, out hit, range)) {
-            Debug.Log(hit.transform.name);
-            if (hit.transform.gameObject.CompareTag("InteractableTrees"))
-            {
-                audioMangaer.Play("WoodChop");
-                Debug.Log(hit.transform.name);
-                chopScript = hit.transform.gameObject.GetComponent<ChopBehaviour>();
-                chopScript.GetChopped();
-            }
-        }
+    }
+
+    void ColliderActive() {
+        axe = GetComponent<PickUpBehaviour>().itemGrabbed;
+        axe.GetComponent<Collider>().enabled = true;
+    }
+    void ColliderDeactive()
+    {
+        axe = GetComponent<PickUpBehaviour>().itemGrabbed;
+        axe.GetComponent<Collider>().enabled = false;
     }
 }

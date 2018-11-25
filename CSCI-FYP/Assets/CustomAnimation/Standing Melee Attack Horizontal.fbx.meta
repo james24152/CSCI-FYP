@@ -203,7 +203,23 @@ ModelImporter:
       bodyMask: 01000000010000000100000001000000010000000100000001000000010000000100000001000000010000000100000001000000
       curves: []
       events:
-      - time: 0.6423077
+      - time: 0.60546875
+        functionName: ColliderActive
+        data: 
+        objectReferenceParameter: {fileID: 11500000, guid: b93cb6f09ed76cc498db0aba5d8773bc,
+          type: 3}
+        floatParameter: 0
+        intParameter: 0
+        messageOptions: 0
+      - time: 0.7050781
+        functionName: ColliderDeactive
+        data: 
+        objectReferenceParameter: {fileID: 11500000, guid: b93cb6f09ed76cc498db0aba5d8773bc,
+          type: 3}
+        floatParameter: 0
+        intParameter: 0
+        messageOptions: 0
+      - time: 0.6464844
         functionName: Swing
         data: 
         objectReferenceParameter: {fileID: 11500000, guid: b93cb6f09ed76cc498db0aba5d8773bc,

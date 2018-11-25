@@ -21,6 +21,7 @@ public class FireBlowController : MonoBehaviour
     private bool audioInited;
     private bool audioInitedFire;
     private AudioManager audioMangaer;
+    private bool isBear;
 
     private Animator animator;
     // Use this for initialization
@@ -50,6 +51,10 @@ public class FireBlowController : MonoBehaviour
                 moveScript.walkSpeed = 4;
                 moveScript.runSpeed = 4;
                 //audioInited = false;
+            }
+            if (isBear) {
+                moveScript.walkSpeed = 4;
+                moveScript.runSpeed = 4;
             }
         }
 
@@ -81,6 +86,7 @@ public class FireBlowController : MonoBehaviour
     }
     void FireBear()
     {
+        isBear = true;
         GameObject tempBullet;
         tempBullet = Instantiate(bullet, shootPoint.transform.position, shootPoint.transform.rotation) as GameObject;
 

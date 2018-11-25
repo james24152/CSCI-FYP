@@ -17,12 +17,14 @@ public class AimBehaviourBasic : GenericBehaviour
 	private bool aim;// Boolean to determine whether or not the player is aiming.
     private float speedSmoothVelocity;
     private float currSpeed;
+    private MoveBehaviour moveScript;
 
     // Start is always called after any Awake functions.
     void Start ()
 	{
 		// Set up the references.
 		aimBool = Animator.StringToHash("Aim");
+        moveScript = GetComponent<MoveBehaviour>();
 	}
 
 	// Update is used to set features regardless the active behaviour.
@@ -36,7 +38,9 @@ public class AimBehaviourBasic : GenericBehaviour
 		else if (aim && XCI.GetAxis(XboxAxis.LeftTrigger, joystick) == 0)
 		{
             StartCoroutine(ToggleAimOff());
-		}
+            moveScript.walkSpeed = 4;
+            moveScript.runSpeed = 4;
+        }
 
 		// No sprinting while aiming.
 		canSprint = !aim;

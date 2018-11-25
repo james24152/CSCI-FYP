@@ -12,6 +12,13 @@ public class ChopBehaviour : MonoBehaviour {
     public GameObject woodPoint2;
     private Rigidbody rigid;
     private bool alreadyInstantiated = false;
+    private bool furtherLock = false;
+    private AudioManager audioManager;
+
+    private void Start()
+    {
+        audioManager = FindObjectOfType<AudioManager>();
+    }
 
     public void GetChopped() {
         if (alreadyInstantiated == false) {
@@ -33,6 +40,19 @@ public class ChopBehaviour : MonoBehaviour {
             Instantiate(wood, woodPoint2.transform.position, woodPoint2.transform.rotation);
             alreadyInstantiated = true;
             Destroy(gameObject);
+        }
+    }
+
+    private void OnTriggerEnter(Collider other)
+    {
+        if (!furtherLock)
+        {
+            if (other.transform.name == "CustomAxe")
+            {
+                audioManager.Play("WoodChop");
+                GetChopped();
+                furtherLock = true;
+            }
         }
     }
 }

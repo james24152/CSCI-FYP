@@ -24,7 +24,7 @@ public class PickUpBehaviour : MonoBehaviour {
 
     private Vector3 grabPosition;
     private Vector3 grabRotation;
-    private GameObject itemGrabbed;
+    public GameObject itemGrabbed;
     private Grabber grabber;
     private AudioManager audioMangaer;
     const float k_Spring = 100.0f;
@@ -106,6 +106,7 @@ public class PickUpBehaviour : MonoBehaviour {
                         grabRotation = new Vector3(-5.297f, -186.048f, -2.949f);
                     }
                     itemGrabbed = hit.transform.gameObject;
+                    hit.collider.isTrigger = true;
                     hit.collider.enabled = false; //turn off collider
                     StartCoroutine(ItemFollowHand(hit.transform.gameObject));
                 }
@@ -145,6 +146,7 @@ public class PickUpBehaviour : MonoBehaviour {
         }
         else if (pickButtonPressed && grab) {
             itemGrabbed.GetComponent<BoxCollider>().enabled = true; //turn collider back on
+            itemGrabbed.GetComponent<BoxCollider>().isTrigger = false;
             grab = false;
             anim.SetBool("Grab", false);
             itemGrabbed.transform.parent = null;
