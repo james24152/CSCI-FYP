@@ -220,11 +220,19 @@ public class CommunWithDatabase : MonoBehaviour {
         
         inputmaplevelNum = checkGameProgress();
         inputplayerNum = globalplayerNum;
-        inputsaveTime = System.DateTime.Now.Hour + ":" + System.DateTime.Now.Minute;
+        inputsaveTime = collectTime();
         saveToDB(inputmaplevelNum, inputplayerNum, inputsaveTime);
     }
 
     // Update is called once per frame
+    public string collectTime()
+    {
+        string date = System.DateTime.Now.ToString("MM/dd/yyyy");
+        string time = System.DateTime.Now.ToString("hh:mm:ss");
+        string result = date + " " + time;
+        print(result);
+        return result;
+    }
 
     public void printData()
     {

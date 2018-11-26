@@ -123,10 +123,8 @@ public class parkMissionController : MonoBehaviour {
 
     IEnumerator DisableObject(int i,GameObject road)
     {
-        print(i);
-        yield return new WaitForSeconds(i/2f); //i-1
-        print("wait end");
-        print(i);
+        
+        yield return new WaitForSeconds(i/2f);
         road.SetActive(false);
     }
 }
