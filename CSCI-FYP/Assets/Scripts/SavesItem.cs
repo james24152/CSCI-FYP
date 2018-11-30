@@ -8,7 +8,7 @@ using UnityEngine.SceneManagement;
 public class SavesItem : MonoBehaviour {
 
     public Button button;
-    public TextMeshProUGUI levelState;
+    public LevelStateToggle levelState;
     public TextMeshProUGUI playerNum;
     public TextMeshProUGUI time;
 
@@ -28,16 +28,20 @@ public class SavesItem : MonoBehaviour {
         item = currentItem;
         switch (currentItem.levelState) {
             case 0:
-                levelState.text = "Wandering in Town";
+                levelState.mazeToggle.isOn = false;
+                levelState.arenaToggle.isOn = false;
                 break;
             case 1:
-                levelState.text = "At the Maze";
+                levelState.mazeToggle.isOn = true;
+                levelState.arenaToggle.isOn = false;
                 break;
             case 2:
-                levelState.text = "At the Defense system";
+                levelState.mazeToggle.isOn = false;
+                levelState.arenaToggle.isOn = true;
                 break;
             case 3:
-                levelState.text = "Stage Cleared!";
+                levelState.mazeToggle.isOn = true;
+                levelState.arenaToggle.isOn = true;
                 break;
             default:
                 Debug.Log("something wrong with levelState parser");

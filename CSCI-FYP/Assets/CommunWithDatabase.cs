@@ -43,7 +43,6 @@ public class CommunWithDatabase : MonoBehaviour {
         globalplayerNum = PlayerPrefs.GetInt("playerNum");
         inputmaplevelNum = PlayerPrefs.GetInt("levelState");
         inputplayerNum = PlayerPrefs.GetInt("playerNum");
-
         StartCoroutine(performStartLoad());
 
     }

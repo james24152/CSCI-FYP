@@ -10,6 +10,7 @@ public class arenaButtonController : MonoBehaviour {
     private bool GateOpen;
     private GameObject wholeSystem;
     private AudioManager audioManager;
+    private bool audioLock;
 	// Use this for initialization
 	void Start () {
         gateLock = 0;
@@ -32,6 +33,10 @@ public class arenaButtonController : MonoBehaviour {
             Spin();
             print(gateLock);
             gateOpenning();
+            if (!audioLock) {
+                audioManager.Play("ArenaDoor");
+                audioLock = true;
+            }
             StartCoroutine(lockCountDown());
             //Play Sound **********************
         }
@@ -40,6 +45,11 @@ public class arenaButtonController : MonoBehaviour {
             print(gateLock);
             Spin();
             gateClosing();
+            if (!audioLock)
+            {
+                audioManager.Play("ArenaDoor");
+                audioLock = true;
+            }
             StartCoroutine(lockCountDown());
             //Play Sound ***********************
         }
@@ -85,6 +95,11 @@ public class arenaButtonController : MonoBehaviour {
     {
         yield return new WaitForSeconds(3.0f);
         gateLock = 0;
+        if (audioLock)
+        {
+            audioManager.FadeOut("ArenaDoor");
+            audioLock = false;
+        }
     }
     
 }

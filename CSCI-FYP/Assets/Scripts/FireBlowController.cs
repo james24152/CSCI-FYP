@@ -16,6 +16,7 @@ public class FireBlowController : MonoBehaviour
     public float damage = 10;
     public XboxAxis punchButton;
     public Camera cam;
+    public bool speedMod;
 
     private MoveBehaviour moveScript;
     private bool audioInited;
@@ -48,21 +49,22 @@ public class FireBlowController : MonoBehaviour
             if (audioInitedFire) {
                 StopAudio();
                 audioInitedFire = false;
-                moveScript.walkSpeed = 4;
-                moveScript.runSpeed = 4;
                 //audioInited = false;
             }
-            if (isBear) {
+            if (!speedMod)
+            {
                 moveScript.walkSpeed = 4;
                 moveScript.runSpeed = 4;
+            }
+            else {
+                moveScript.walkSpeed = 10;
+                moveScript.runSpeed = 10;
             }
         }
 
         if (!shoot && audioInited) {
             audioMangaer.FadeOut("Charge");
             Debug.Log("fadeout + speed");
-            moveScript.walkSpeed = 4;
-            moveScript.runSpeed = 4;
             audioInited = false;
         }
     }

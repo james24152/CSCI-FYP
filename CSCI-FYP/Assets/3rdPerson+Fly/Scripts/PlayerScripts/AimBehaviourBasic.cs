@@ -38,8 +38,8 @@ public class AimBehaviourBasic : GenericBehaviour
 		else if (aim && XCI.GetAxis(XboxAxis.LeftTrigger, joystick) == 0)
 		{
             StartCoroutine(ToggleAimOff());
-            moveScript.walkSpeed = 4;
-            moveScript.runSpeed = 4;
+            //moveScript.walkSpeed = 4;
+            //moveScript.runSpeed = 4;
         }
 
 		// No sprinting while aiming.

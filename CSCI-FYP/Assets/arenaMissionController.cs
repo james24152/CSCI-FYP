@@ -31,6 +31,7 @@ public class arenaMissionController : MonoBehaviour {
 	void Update () {
         if(forOnce =shootTargetScript[elementToShoot].hit2 == true && forOnce == false)
         {
+            audioManager.Play("ArenaCorrect");
             shootTargetScript[elementToShoot].hit2 = false;
             progress = progress + 1;
             randShowBlock();
