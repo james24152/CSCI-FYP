@@ -5,6 +5,8 @@ using UnityEngine;
 public class arenaButtonController : MonoBehaviour {
     public GameObject shootTarget;
     public GameObject shootTargetGate;
+    private int countA;
+    private int countB;
     private int gateLock;
     private TargetScript shootTargetScript;
     private bool GateOpen;
@@ -18,6 +20,8 @@ public class arenaButtonController : MonoBehaviour {
         shootTargetScript = shootTarget.GetComponent<TargetScript>();
         wholeSystem = transform.parent.gameObject;
         audioManager = FindObjectOfType<AudioManager>();
+        countA = 0;
+        countB = 0;
     }
 	
 	// Update is called once per frame
@@ -28,10 +32,11 @@ public class arenaButtonController : MonoBehaviour {
             shootTargetGateClose();
             shootTargetScript.hit = false;
         }
-        if (gateLock > 0)
+        if (gateLock > 0 && countA<50)
         {
             Spin();
-            print(gateLock);
+            countA = countA + 1;
+            print(countA);
             gateOpenning();
             if (!audioLock) {
                 audioManager.Play("ArenaDoor");
@@ -40,9 +45,10 @@ public class arenaButtonController : MonoBehaviour {
             StartCoroutine(lockCountDown());
             //Play Sound **********************
         }
-        if (gateLock < 0)
+        if (gateLock < 0 && countB <50)
         {
-            print(gateLock);
+            countB = countB + 1;
+            print(countB);
             Spin();
             gateClosing();
             if (!audioLock)
@@ -50,8 +56,14 @@ public class arenaButtonController : MonoBehaviour {
                 audioManager.Play("ArenaDoor");
                 audioLock = true;
             }
-            StartCoroutine(lockCountDown());
+            //StartCoroutine(lockCountDown());
             //Play Sound ***********************
+        }
+        if (countA == 50 || countB == 50)
+        {
+            countA = 0;
+            countB = 0;
+            gateLock = 0;
         }
 	}
 
@@ -86,10 +98,12 @@ public class arenaButtonController : MonoBehaviour {
     public void gateOpenning()
     {
         shootTargetGate.transform.Translate(Vector3.back * gateLock*0.1f);
+        
     }
     public void gateClosing()
     {
         shootTargetGate.transform.Translate(Vector3.back * gateLock*0.1f);
+       
     }
     IEnumerator lockCountDown()
     {
