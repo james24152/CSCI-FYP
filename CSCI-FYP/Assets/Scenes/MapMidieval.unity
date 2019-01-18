@@ -19944,7 +19944,7 @@ Prefab:
     - target: {fileID: 114225452436823218, guid: f0f10476a44634949a83124036800584,
         type: 2}
       propertyPath: sounds.Array.data[29].volume
-      value: 0.2
+      value: 0.075
       objectReference: {fileID: 0}
     - target: {fileID: 114225452436823218, guid: f0f10476a44634949a83124036800584,
         type: 2}
@@ -19969,7 +19969,7 @@ Prefab:
     - target: {fileID: 114225452436823218, guid: f0f10476a44634949a83124036800584,
         type: 2}
       propertyPath: sounds.Array.data[30].volume
-      value: 0.2
+      value: 0.075
       objectReference: {fileID: 0}
     - target: {fileID: 114225452436823218, guid: f0f10476a44634949a83124036800584,
         type: 2}
@@ -25574,6 +25574,7 @@ MonoBehaviour:
   CmaplevelSaves: 
   CplayerNumSaves: 
   Ctimesaves: []
+  mazeTrigger: {fileID: 916962631}
   inputmaplevelNum: 0
   inputplayerNum: 0
   inputsaveTime: 

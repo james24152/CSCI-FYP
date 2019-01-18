@@ -12,6 +12,7 @@ public class CommunWithDatabase : MonoBehaviour {
     public int[] CmaplevelSaves;
     public int[] CplayerNumSaves;
     public string[] Ctimesaves;
+    public GameObject mazeTrigger;
     string saveGameDataURL = "http://localhost/saveGameData.php";
     public int inputmaplevelNum;
     public int inputplayerNum;
@@ -92,7 +93,7 @@ public class CommunWithDatabase : MonoBehaviour {
             levels[1] = 0;
             startNewGame(globalplayerNum);
         }*/
-
+        
         if (Input.GetKeyDown(KeyCode.Space))
         {
             save();
@@ -153,6 +154,7 @@ public class CommunWithDatabase : MonoBehaviour {
         //mission part
         if(levels[0] == 1)
         {
+            mazeTrigger.SetActive(false);
             parkMissionScript.levelClear();
         }
 
@@ -228,7 +230,8 @@ public class CommunWithDatabase : MonoBehaviour {
     {
         string date = System.DateTime.Now.ToString("MM/dd/yyyy");
         string time = System.DateTime.Now.ToString("hh:mm:ss");
-        string result = date + " " + time;
+        //string result = date + " " + time;
+        string result = System.DateTime.Now.ToString("yyyy-MM-dd HH:mm:ss");
         print(result);
         return result;
     }

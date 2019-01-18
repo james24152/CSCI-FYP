@@ -95,6 +95,7 @@ public class Level1GameManager : MonoBehaviour {
         }
         if (missionSuccess) {
             enemyAcademy.SetActive(false);
+            Time.timeScale = 1;
             SceneManager.LoadScene(0);
         }
     }

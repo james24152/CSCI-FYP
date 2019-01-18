@@ -51,7 +51,8 @@ public class PickUpBehaviour : MonoBehaviour {
                              playerCam.transform.forward, out hitCheck, 4,
                              layerMask))
         {
-            popUp.gameObject.SetActive(true);
+            if (!grab && !pickUp)
+                popUp.gameObject.SetActive(true);
         }else
             popUp.gameObject.SetActive(false);
 
