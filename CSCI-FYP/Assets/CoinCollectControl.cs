@@ -4,10 +4,11 @@ using UnityEngine;
 
 public class CoinCollectControl : MonoBehaviour {
     public float RotateSpeed = 20;
+    private AudioManager audioManager;
     // Use this for initialization
     void Start () {
-		
-	}
+        audioManager = FindObjectOfType<AudioManager>();
+    }
 	
 	// Update is called once per frame
 	void Update () {
@@ -17,6 +18,7 @@ public class CoinCollectControl : MonoBehaviour {
     {
         if (other.gameObject.layer == LayerMask.NameToLayer("Character"))
         {
+            audioManager.Play("BGMCollectCoin");
             Destroy(gameObject, 0.1f);
         }
     }
