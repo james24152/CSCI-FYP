@@ -11061,7 +11061,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: ecc44f1b723b69f488c651f84ad113ce, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  fireBall: {fileID: 164416, guid: 8aeb2c0224fe763499eed3ec0587162b, type: 2}
+  fireBall: {fileID: 1061121449713292, guid: d71b2cfbd885be1479ec3c1485edd3f7, type: 2}
   interval: 5
   power: 5
 --- !u!1001 &760675655
@@ -11752,7 +11752,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: ecc44f1b723b69f488c651f84ad113ce, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  fireBall: {fileID: 164416, guid: 8aeb2c0224fe763499eed3ec0587162b, type: 2}
+  fireBall: {fileID: 1061121449713292, guid: d71b2cfbd885be1479ec3c1485edd3f7, type: 2}
   interval: 5
   power: 5
 --- !u!4 &798241468 stripped
@@ -15626,6 +15626,17 @@ Animator:
   m_HasTransformHierarchy: 1
   m_AllowConstantClipSamplingOptimization: 1
   m_KeepAnimatorControllerStateOnDisable: 0
+--- !u!114 &1043001643
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  m_GameObject: {fileID: 1043001641}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 603f00eaba0efd14cb878cee486bd4c6, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!4 &1043382070 stripped
 Transform:
   m_PrefabParentObject: {fileID: 4200049494542966, guid: 5d21292ec0168af449b084d997e41ba3,
@@ -21845,7 +21856,7 @@ Prefab:
       objectReference: {fileID: 0}
     - target: {fileID: 471166, guid: f4f6b630159e6b34386dec2579f250b2, type: 2}
       propertyPath: m_LocalPosition.y
-      value: -1.98
+      value: -1.5
       objectReference: {fileID: 0}
     - target: {fileID: 471166, guid: f4f6b630159e6b34386dec2579f250b2, type: 2}
       propertyPath: m_LocalPosition.z
@@ -21887,7 +21898,7 @@ Prefab:
       objectReference: {fileID: 0}
     - target: {fileID: 471166, guid: f4f6b630159e6b34386dec2579f250b2, type: 2}
       propertyPath: m_LocalPosition.y
-      value: -1.98
+      value: -1.5
       objectReference: {fileID: 0}
     - target: {fileID: 471166, guid: f4f6b630159e6b34386dec2579f250b2, type: 2}
       propertyPath: m_LocalPosition.z
@@ -23110,7 +23121,7 @@ Prefab:
       objectReference: {fileID: 0}
     - target: {fileID: 100000, guid: 5e9e851c0e142814dac026a256ba2ac0, type: 2}
       propertyPath: m_IsActive
-      value: 0
+      value: 1
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_ParentPrefab: {fileID: 100100000, guid: 5e9e851c0e142814dac026a256ba2ac0, type: 2}
@@ -25353,7 +25364,7 @@ Prefab:
       objectReference: {fileID: 0}
     - target: {fileID: 471166, guid: f4f6b630159e6b34386dec2579f250b2, type: 2}
       propertyPath: m_LocalPosition.y
-      value: -1.98
+      value: -1.5
       objectReference: {fileID: 0}
     - target: {fileID: 471166, guid: f4f6b630159e6b34386dec2579f250b2, type: 2}
       propertyPath: m_LocalPosition.z
@@ -30500,7 +30511,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: ecc44f1b723b69f488c651f84ad113ce, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  fireBall: {fileID: 164416, guid: 8aeb2c0224fe763499eed3ec0587162b, type: 2}
+  fireBall: {fileID: 1398317538474464, guid: 5a5a749efe4fea24ba9cd6f7de489feb, type: 2}
   interval: 5
   power: 5
 --- !u!1001 &2053184196
