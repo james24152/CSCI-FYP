@@ -88,23 +88,23 @@ public class PickUpBehaviour : MonoBehaviour {
                 if (hit.transform.gameObject.CompareTag("Axe"))
                 {
                     if (gameObject.transform.name == "Earth Eve" || gameObject.transform.name == "Earth Eve(Clone)") {
-                        grabPosition = new Vector3(-0.039f, 0.001f, 0.089f);
-                        grabRotation = new Vector3(-107.399f, 240.646f, -85.57199f);
+                        grabPosition = new Vector3(-0.019f, -0.109f, 0.059f);
+                        grabRotation = new Vector3(-79.22f, 141.87f, 22.042f);
                     }
                     else if (gameObject.transform.name == "Water Eve" || gameObject.transform.name == "Water Eve(Clone)")
                     {
-                        grabPosition = new Vector3(-0.015f, 0.065f, 0.001f);
-                        grabRotation = new Vector3(-1.536f, 161.945f, -1.289f);
+                        grabPosition = new Vector3(-0.001736604f, 0.07012841f, 0.07449407f);
+                        grabRotation = new Vector3(3.849f, -192.886f, 357.794f);
                     }
                     else if (gameObject.transform.name == "Fire Eve" || gameObject.transform.name == "Fire Eve(Clone)")
                     {
-                        grabPosition = new Vector3(-0.038f, 0.0f, 0.187f);
-                        grabRotation = new Vector3(-61.538f, 426.303f, -254.492f);
+                        grabPosition = new Vector3(-0.03f, 0.05f, 0.24f);
+                        grabRotation = new Vector3(-13.377f, 510.878f, -377.237f);
                     }
                     else if (gameObject.transform.name == "Air Eve" || gameObject.transform.name == "Air Eve(Clone)")
                     {
-                        grabPosition = new Vector3(-0.012f, 0.053f, 0.006f);
-                        grabRotation = new Vector3(-5.297f, -186.048f, -2.949f);
+                        grabPosition = new Vector3(0.068f, 0.062f, 0.009f);
+                        grabRotation = new Vector3(2.552f, 190.73f, -14.744f);
                     }
                     itemGrabbed = hit.transform.gameObject;
                     hit.collider.isTrigger = true;
