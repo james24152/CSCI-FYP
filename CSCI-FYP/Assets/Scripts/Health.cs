@@ -22,6 +22,10 @@ public class Health : MonoBehaviour {
     public Image[] hearts;
     public Sprite fullHeart;
     public Sprite hollowHeart;
+    public GameObject earthVortex;
+    public GameObject fireVortex;
+    public GameObject waterVortex;
+    public GameObject windVortex;
     private ParticleSystem tempFx;
     private Transform respawn;
     private bool invoked;
@@ -95,19 +99,19 @@ public class Health : MonoBehaviour {
         FindObjectOfType<AudioManager>().Play("Vortex"); //play respawn sound effect
         switch (transform.name) {
             case "Earth Eve":
-                GameObject earthVortex = GameObject.FindGameObjectWithTag("EarthVortex");
+                //GameObject earthVortex = GameObject.FindGameObjectWithTag("EarthVortex");
                 earthVortex.GetComponent<ParticleSystem>().Play();
                 break;
             case "Water Eve":
-                GameObject waterVortex = GameObject.FindGameObjectWithTag("WaterVortex");
+                //GameObject waterVortex = GameObject.FindGameObjectWithTag("WaterVortex");
                 waterVortex.GetComponent<ParticleSystem>().Play();
                 break;
             case "Fire Eve":
-                GameObject fireVortex = GameObject.FindGameObjectWithTag("FireVortex");
+                //GameObject fireVortex = GameObject.FindGameObjectWithTag("FireVortex");
                 fireVortex.GetComponent<ParticleSystem>().Play();
                 break;
             case "Air Eve":
-                GameObject windVortex = GameObject.FindGameObjectWithTag("WindVortex");
+                //GameObject windVortex = GameObject.FindGameObjectWithTag("WindVortex");
                 windVortex.GetComponent<ParticleSystem>().Play();
                 break;
             default:

@@ -23,6 +23,7 @@ public class FireBlowController : MonoBehaviour
     private bool audioInitedFire;
     private AudioManager audioMangaer;
     private bool isBear;
+    private ElementCombineBehaviour combineScript;
 
     private Animator animator;
     // Use this for initialization
@@ -30,6 +31,7 @@ public class FireBlowController : MonoBehaviour
     {
         animator = GetComponent<Animator>();
         moveScript = GetComponent<MoveBehaviour>();
+        combineScript = GetComponent<ElementCombineBehaviour>();
         audioMangaer = FindObjectOfType<AudioManager>();
     }
 
@@ -74,18 +76,26 @@ public class FireBlowController : MonoBehaviour
 
         audioMangaer.Play("Charge");
         audioInited = true;
-        fireHandL.Play();
-        fireHandR.Play();
-
+        if (!combineScript.secondTierElement)
+        {
+            fireHandL.Play();
+            fireHandR.Play();
+        }
     }
 
     void Fire()
     {
-        if (!audioInitedFire) {
-            StartAudio();
-            audioInitedFire = true;
+        if (!combineScript.secondTierElement)
+        {
+            if (!audioInitedFire)
+            {
+                StartAudio();
+                audioInitedFire = true;
+            }
+            fire.Play();
         }
-        fire.Play();
+        else
+            combineScript.SecondTierAttack();
     }
     void FireBear()
     {

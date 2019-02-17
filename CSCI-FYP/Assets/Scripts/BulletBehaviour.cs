@@ -28,9 +28,9 @@ public class BulletBehaviour : MonoBehaviour {
             tempRigid = hit.GetComponent<Rigidbody>();
             tempRigid.AddForce(-collision.contacts[0].normal * impactForce);
         }*/
-        if (!hit.CompareTag("Player"))
+        if (hit.transform.name != "Earth Eve")
         {
-            Debug.Log(hit);
+            //Debug.Log(hit.gameObject.transform.name);
             audioManager.Play("ShootMud");
             Destroy(gameObject);
             
