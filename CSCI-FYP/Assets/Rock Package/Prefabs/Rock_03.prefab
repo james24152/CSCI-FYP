@@ -71,6 +71,7 @@ GameObject:
   - component: {fileID: 4000011255812436}
   - component: {fileID: 33000010629808600}
   - component: {fileID: 23000012513637330}
+  - component: {fileID: 64588225339143652}
   m_Layer: 0
   m_Name: Rock_03_LOD0
   m_TagString: Untagged
@@ -259,6 +260,20 @@ MeshFilter:
   m_PrefabInternal: {fileID: 100100000}
   m_GameObject: {fileID: 1000010874394890}
   m_Mesh: {fileID: 4300004, guid: 48320e7576ce0664eb501ebbd6c815da, type: 3}
+--- !u!64 &64588225339143652
+MeshCollider:
+  m_ObjectHideFlags: 1
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 100100000}
+  m_GameObject: {fileID: 1000013742746218}
+  m_Material: {fileID: 0}
+  m_IsTrigger: 0
+  m_Enabled: 1
+  serializedVersion: 3
+  m_Convex: 0
+  m_CookingOptions: 14
+  m_SkinWidth: 0.01
+  m_Mesh: {fileID: 4300006, guid: 48320e7576ce0664eb501ebbd6c815da, type: 3}
 --- !u!205 &205000011883594630
 LODGroup:
   m_ObjectHideFlags: 1

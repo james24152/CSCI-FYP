@@ -41,6 +41,7 @@ TagManager:
   - LoadingBar
   - LoadMenu
   - Fire
+  - door
   layers:
   - Default
   - TransparentFX
