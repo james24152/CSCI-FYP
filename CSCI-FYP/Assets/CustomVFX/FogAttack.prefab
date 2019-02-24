@@ -38,6 +38,7 @@ GameObject:
   - component: {fileID: 4071290230280412}
   - component: {fileID: 198178768460093014}
   - component: {fileID: 199104749254774418}
+  - component: {fileID: 114159272670276126}
   m_Layer: 0
   m_Name: FogAttack
   m_TagString: Untagged
@@ -165,6 +166,18 @@ Transform:
   m_Father: {fileID: 4071290230280412}
   m_RootOrder: 3
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!114 &114159272670276126
+MonoBehaviour:
+  m_ObjectHideFlags: 1
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 100100000}
+  m_GameObject: {fileID: 1577859088040756}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 0d3010596baddb242bc900fa96cac27e, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  master: {fileID: 0}
 --- !u!198 &198130194847793870
 ParticleSystem:
   m_ObjectHideFlags: 1
@@ -4619,10 +4632,10 @@ ParticleSystem:
   m_PrefabInternal: {fileID: 100100000}
   m_GameObject: {fileID: 1577859088040756}
   serializedVersion: 5
-  lengthInSec: 2
+  lengthInSec: 10
   simulationSpeed: 1
-  stopAction: 0
-  looping: 1
+  stopAction: 3
+  looping: 0
   prewarm: 0
   playOnAwake: 1
   useUnscaledTime: 0

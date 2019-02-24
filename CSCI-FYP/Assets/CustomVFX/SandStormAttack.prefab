@@ -38,6 +38,7 @@ GameObject:
   - component: {fileID: 4673495664630570}
   - component: {fileID: 198871682162528388}
   - component: {fileID: 199118018577848142}
+  - component: {fileID: 114871567453366056}
   m_Layer: 0
   m_Name: SandStormAttack
   m_TagString: Untagged
@@ -72,6 +73,18 @@ Transform:
   m_Father: {fileID: 0}
   m_RootOrder: 0
   m_LocalEulerAnglesHint: {x: 90, y: 0, z: 0}
+--- !u!114 &114871567453366056
+MonoBehaviour:
+  m_ObjectHideFlags: 1
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 100100000}
+  m_GameObject: {fileID: 1260541344678610}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 0d3010596baddb242bc900fa96cac27e, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  master: {fileID: 0}
 --- !u!198 &198636303604686632
 ParticleSystem:
   m_ObjectHideFlags: 1
@@ -82,7 +95,7 @@ ParticleSystem:
   lengthInSec: 5
   simulationSpeed: 1
   stopAction: 0
-  looping: 1
+  looping: 0
   prewarm: 0
   playOnAwake: 1
   useUnscaledTime: 0
@@ -4531,8 +4544,8 @@ ParticleSystem:
   serializedVersion: 5
   lengthInSec: 5
   simulationSpeed: 1
-  stopAction: 0
-  looping: 1
+  stopAction: 3
+  looping: 0
   prewarm: 0
   playOnAwake: 1
   useUnscaledTime: 0

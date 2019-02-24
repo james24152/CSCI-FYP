@@ -1,4 +1,5 @@
-﻿using System.Collections;
+﻿using System;
+using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
@@ -33,9 +34,13 @@ public class ElementCombineBehaviour : MonoBehaviour {
     public ParticleSystem lifeAttack;
     public ParticleSystem lavaAttack;
     public Transform center;
-
+    public string[] secondTierElements = { "Steam", "Fog", "Sand", "Life", "Thunder", "Lava" };
     public Transform lavaPoint;
+    public Transform thunderPoint;
+    public Transform steamPoint;
+    public Transform origin;
 
+    private Animator anim;
     private ParticleSystem transformFx;
     private ParticleSystem aura;
     private ParticleSystem tempAura;
@@ -44,13 +49,15 @@ public class ElementCombineBehaviour : MonoBehaviour {
     private string combinedElement;
     private bool instantiated;
     private string currentElement;
+    private bool lavaLock;
     public bool secondTierElement;
-	// Use this for initialization
-	void Start () {
+    // Use this for initialization
+    void Start() {
+        anim = GetComponent<Animator>();
         CreateElementCombineLookUpList();
         currentElement = CheckElement();
     }
-	
+
 
     private void OnParticleCollision(GameObject other)
     {
@@ -74,6 +81,7 @@ public class ElementCombineBehaviour : MonoBehaviour {
                     combinedElement = CombinedElement("Earth", currentElement);
                 }
                 secondTierElement = true;
+                anim.SetBool("SecondTierAttack", true);
                 Transform(combinedElement);
                 Debug.Log(combinedElement);
                 instantiated = true;
@@ -81,9 +89,9 @@ public class ElementCombineBehaviour : MonoBehaviour {
         }
     }
 
-    public void SecondTierAttack() {
+    /*public void SecondTierAttack() {
         switch (combinedElement) {
-            /*case "Steam":
+            case "Steam":
                 transformFx = Instantiate(steamTransform, center.transform.position, steamTransform.transform.rotation);
                 aura = steamAura;
                 break;
@@ -94,21 +102,21 @@ public class ElementCombineBehaviour : MonoBehaviour {
             case "Sand":
                 transformFx = Instantiate(sandTransform, center.transform.position, sandTransform.transform.rotation);
                 aura = sandAura;
-                break;*/
-            /*case "Thunder":
+                break;
+            case "Thunder":
                 tempAttack = Instantiate(thunderTransform, center.transform.position, thunderTransform.transform.rotation);
                 aura = thunderAura;
-                break;*/
-            /*case "Life":
+                break;
+            case "Life":
                 transformFx = Instantiate(lifeTransform, center.transform.position, lifeTransform.transform.rotation);
                 aura = lifeAura;
-                break;*/
+                break;
             case "Lava":
                 tempAttack = Instantiate(lavaAttack, lavaPoint.transform.position, gameObject.transform.rotation);
                 Destroy(tempAttack, 20f);
                 break;
         }
-    }
+    }*/
 
     private void Transform(string element) {
         switch (element)
@@ -138,6 +146,7 @@ public class ElementCombineBehaviour : MonoBehaviour {
                 aura = lavaAura;
                 break;
         }
+        anim.SetInteger("CombinedElement", Array.IndexOf(secondTierElements, combinedElement));
         transformFx.transform.parent = center.transform;
         Invoke("Aura", 2f);
     }
@@ -208,5 +217,66 @@ public class ElementCombineBehaviour : MonoBehaviour {
             }
         }
         return "CombinedElementFailed";
+    }
+    //the following are attack properties
+
+    /*void Fire()
+    {
+        SecondTierAttack();
+    }*/
+
+    public void FireLava()
+    {
+        if (!lavaLock) {
+            tempAttack = Instantiate(lavaAttack, lavaPoint.transform.position, gameObject.transform.rotation);
+            ParticleStopBehaviour steamScript = tempAttack.GetComponent<ParticleStopBehaviour>();
+            steamScript.master = gameObject;
+            //Destroy(tempAttack, 20f);
+            lavaLock = true;
+        }
+    }
+    public void FireThunder() {
+        tempAttack = Instantiate(thunderAttack, thunderPoint.transform.position, gameObject.transform.rotation);
+        ParticleStopBehaviour steamScript = tempAttack.GetComponent<ParticleStopBehaviour>();
+        steamScript.master = gameObject;
+        //Destroy(tempAttack, 5f);
+    }
+
+    public void FireLife() {
+        ElementCombineBehaviour[] scripts = FindObjectsOfType<ElementCombineBehaviour>();
+        foreach (ElementCombineBehaviour script in scripts) {
+            tempAttack = Instantiate(lifeAttack, script.origin.transform.position, lifeAttack.transform.rotation);
+            tempAttack.transform.parent = script.origin.transform;
+        }
+        ParticleStopBehaviour steamScript = tempAttack.GetComponent<ParticleStopBehaviour>();
+        steamScript.master = gameObject;
+    }
+
+    public void FireSand() {
+        tempAttack = Instantiate(sandAttack, center.transform.position, sandAttack.transform.rotation);
+        ParticleStopBehaviour steamScript = tempAttack.GetComponent<ParticleStopBehaviour>();
+        steamScript.master = gameObject;
+        //Destroy(tempAttack, 15f);
+    }
+
+    public void FireFog()
+    {
+        tempAttack = Instantiate(fogAttack, center.transform.position, fogAttack.transform.rotation);
+        ParticleStopBehaviour steamScript = tempAttack.GetComponent<ParticleStopBehaviour>();
+        steamScript.master = gameObject;
+        //Destroy(tempAttack, 15f);
+    }
+
+    public void FireSteam()
+    {
+        tempAttack = Instantiate(steamAttack, steamPoint.transform.position, gameObject.transform.rotation);
+        ParticleStopBehaviour steamScript = tempAttack.GetComponent<ParticleStopBehaviour>();
+        steamScript.master = gameObject;
+        tempAttack.transform.parent = steamPoint.transform;
+        //Destroy(tempAttack, 20f);
+    }
+
+    public void StopAura() {
+        tempAura.Stop();
     }
 }
