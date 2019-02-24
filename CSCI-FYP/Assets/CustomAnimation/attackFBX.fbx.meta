@@ -150,6 +150,8 @@ ModelImporter:
     7400000: Cast
     7400002: Fire
     7400004: FireBear
+    7400006: FireLava
+    7400008: FireThunder
     9500000: //RootNode
     13700000: Beta_Joints
     13700002: Beta_Surface
@@ -281,6 +283,78 @@ ModelImporter:
         functionName: FireBear
         data: 
         objectReferenceParameter: {fileID: 11500000, guid: 3a06548c4c7510742a4a460c4da69139,
+          type: 3}
+        floatParameter: 0
+        intParameter: 0
+        messageOptions: 0
+      transformMask: []
+      maskType: 3
+      maskSource: {instanceID: 0}
+      additiveReferencePoseFrame: 0
+    - serializedVersion: 16
+      name: FireLava
+      takeName: mixamo.com
+      firstFrame: 41
+      lastFrame: 48
+      wrapMode: 0
+      orientationOffsetY: 0
+      level: 0
+      cycleOffset: 0
+      loop: 0
+      hasAdditiveReferencePose: 0
+      loopTime: 0
+      loopBlend: 0
+      loopBlendOrientation: 0
+      loopBlendPositionY: 0
+      loopBlendPositionXZ: 0
+      keepOriginalOrientation: 0
+      keepOriginalPositionY: 1
+      keepOriginalPositionXZ: 0
+      heightFromFeet: 0
+      mirror: 0
+      bodyMask: 01000000010000000100000001000000010000000100000001000000010000000100000001000000010000000100000001000000
+      curves: []
+      events:
+      - time: 0
+        functionName: FireLava
+        data: 
+        objectReferenceParameter: {fileID: 11500000, guid: 39a479a7eabc23b4b878cc19bad77990,
+          type: 3}
+        floatParameter: 0
+        intParameter: 0
+        messageOptions: 0
+      transformMask: []
+      maskType: 3
+      maskSource: {instanceID: 0}
+      additiveReferencePoseFrame: 0
+    - serializedVersion: 16
+      name: FireThunder
+      takeName: mixamo.com
+      firstFrame: 41
+      lastFrame: 48
+      wrapMode: 0
+      orientationOffsetY: 0
+      level: 0
+      cycleOffset: 0
+      loop: 0
+      hasAdditiveReferencePose: 0
+      loopTime: 0
+      loopBlend: 0
+      loopBlendOrientation: 0
+      loopBlendPositionY: 0
+      loopBlendPositionXZ: 0
+      keepOriginalOrientation: 0
+      keepOriginalPositionY: 1
+      keepOriginalPositionXZ: 0
+      heightFromFeet: 0
+      mirror: 0
+      bodyMask: 01000000010000000100000001000000010000000100000001000000010000000100000001000000010000000100000001000000
+      curves: []
+      events:
+      - time: 0
+        functionName: FireThunder
+        data: 
+        objectReferenceParameter: {fileID: 11500000, guid: 39a479a7eabc23b4b878cc19bad77990,
           type: 3}
         floatParameter: 0
         intParameter: 0
