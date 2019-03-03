@@ -38,6 +38,30 @@ public class ShopItemHolder : MonoBehaviour {
             }
             else
             {
+                ElementCombineBehaviour[] scripts = FindObjectsOfType<ElementCombineBehaviour>();
+                foreach (ElementCombineBehaviour script in scripts) {
+                    switch (itemID) {
+                        case 2:
+                            script.AddSteamCombination();
+                            break;
+                        case 3:
+                            script.AddFogCombination();
+                            break;
+                        case 4:
+                            script.AddThunderCombination();
+                            break;
+                        case 5:
+                            script.AddLavaCombination();
+                            break;
+                        case 6:
+                            script.AddLifeCombination();
+                            break;
+                        case 7:
+                            script.AddSandCombination();
+                            break;
+
+                    }
+                }
                 itemBuyButton.interactable = false;
             }
         }

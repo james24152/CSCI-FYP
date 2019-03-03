@@ -7,10 +7,12 @@ public class ParticleStopBehaviour : MonoBehaviour {
     public GameObject master;
     private Animator anim;
     void OnParticleSystemStopped() {
-        ElementCombineBehaviour script = master.GetComponent<ElementCombineBehaviour>();
-        script.StopAura();
-        anim = master.GetComponent<Animator>();
-        anim.SetBool("SecondTierAttack", false);
-        Destroy(gameObject);
+        if (master != null) {
+            ElementCombineBehaviour script = master.GetComponent<ElementCombineBehaviour>();
+            script.StopAura();
+            anim = master.GetComponent<Animator>();
+            anim.SetBool("SecondTierAttack", false);
+        }
+            Destroy(gameObject);
     }
 }

@@ -45,7 +45,7 @@ public class ElementCombineBehaviour : MonoBehaviour {
     private ParticleSystem aura;
     private ParticleSystem tempAura;
     private ParticleSystem tempAttack;
-    private List<string[]> chart;
+    public List<string[]> chart;
     private string combinedElement;
     private bool instantiated;
     private string currentElement;
@@ -80,11 +80,13 @@ public class ElementCombineBehaviour : MonoBehaviour {
                 {
                     combinedElement = CombinedElement("Earth", currentElement);
                 }
-                secondTierElement = true;
-                anim.SetBool("SecondTierAttack", true);
-                Transform(combinedElement);
-                Debug.Log(combinedElement);
-                instantiated = true;
+                if (combinedElement != "CombinedElementFailed") {
+                    secondTierElement = true;
+                    anim.SetBool("SecondTierAttack", true);
+                    Transform(combinedElement);
+                    Debug.Log(combinedElement);
+                    instantiated = true;
+                }
             }
         }
     }
@@ -178,12 +180,42 @@ public class ElementCombineBehaviour : MonoBehaviour {
         string[] lifeCom = new string[] { "Water", "Earth", "Life" };
         string[] lavaCom = new string[] { "Fire", "Earth", "Lava" };
         chart = new List<string[]>();
-        chart.Add(steamCom);
+        /*chart.Add(steamCom);
         chart.Add(fogCom);
         chart.Add(sandCom);
         chart.Add(thunderCom);
         chart.Add(lifeCom);
+        chart.Add(lavaCom);*/
+    }
+
+    public void AddLifeCombination() {
+        string[] lifeCom = new string[] { "Water", "Earth", "Life" };
+        chart.Add(lifeCom);
+    }
+    public void AddLavaCombination()
+    {
+        string[] lavaCom = new string[] { "Fire", "Earth", "Lava" };
         chart.Add(lavaCom);
+    }
+    public void AddSteamCombination()
+    {
+        string[] steamCom = new string[] { "Fire", "Water", "Steam" };
+        chart.Add(steamCom);
+    }
+    public void AddSandCombination()
+    {
+        string[] sandCom = new string[] { "Earth", "Air", "Sand" };
+        chart.Add(sandCom);
+    }
+    public void AddFogCombination()
+    {
+        string[] fogCom = new string[] { "Water", "Air", "Fog" };
+        chart.Add(fogCom);
+    }
+    public void AddThunderCombination()
+    {
+        string[] thunderCom = new string[] { "Fire", "Air", "Thunder" };
+        chart.Add(thunderCom);
     }
 
     public string CheckElement() {
@@ -278,5 +310,7 @@ public class ElementCombineBehaviour : MonoBehaviour {
 
     public void StopAura() {
         tempAura.Stop();
+        secondTierElement = false;
+        instantiated = false;
     }
 }

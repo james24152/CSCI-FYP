@@ -2,12 +2,15 @@
 using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.UI;
+using XboxCtrlrInput;
 
 public class ItemFadeOutScript : MonoBehaviour {
 
+    public XboxController joystick;
     public float timeTillFade = 5f;
     private Image image;
     private Text text;
+    private bool activate;
 
 	// Use this for initialization
 	void Start () {
@@ -27,7 +30,8 @@ public class ItemFadeOutScript : MonoBehaviour {
 	
 	// Update is called once per frame
 	void Update () {
-        if (Input.GetKeyDown(KeyCode.RightShift))
+        activate = XCI.GetButtonDown(XboxButton.LeftBumper, joystick) || XCI.GetButtonDown(XboxButton.RightBumper, joystick);
+        if (activate)
         {
             if (image != null)
                 image.CrossFadeAlpha(1, 0.5f, false);
