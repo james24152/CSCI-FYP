@@ -13,8 +13,8 @@ public class ShopScript : MonoBehaviour {
     public Text potionAmount;
     public Text speedBoostAmount;
 
-    private int pAmount = 0;
-    private int sbAmount = 0;
+    public int pAmount = 0;
+    public int sbAmount = 0;
 
 	// Use this for initialization
 	void Start () {

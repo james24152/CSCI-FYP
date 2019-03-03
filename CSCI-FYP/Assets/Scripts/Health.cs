@@ -127,6 +127,14 @@ public class Health : MonoBehaviour {
         Invoke("Respawn", 5f);
     }
 
+    public bool TryRegen() {
+        if (health < 2 && health != 0) {
+            health++;
+            return true;
+        }
+        return false;
+    }
+
     public bool GetHit() {
         if (Time.time > nextTimeGetHit) {
             audioMangaer.Play("GetHit");
