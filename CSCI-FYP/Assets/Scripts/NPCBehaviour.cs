@@ -5,6 +5,7 @@ using UnityEngine;
 public class NPCBehaviour : MonoBehaviour {
 
     private Animator anim;
+    private Animator shopAnim;
 
 	// Use this for initialization
 	void Start () {
@@ -19,6 +20,9 @@ public class NPCBehaviour : MonoBehaviour {
         }
         else if (gameObject.transform.name == "InnerCollider")
         {
+            shopAnim = ShopScript.shopScript.gameObject.GetComponent<Animator>();
+            //delay the time for conversation bubble
+            shopAnim.SetBool("Open", true);
             anim.SetBool("InnerCollider", true);
         }
     }
@@ -30,6 +34,8 @@ public class NPCBehaviour : MonoBehaviour {
         }
         else if (gameObject.transform.name == "InnerCollider")
         {
+            shopAnim = ShopScript.shopScript.gameObject.GetComponent<Animator>();
+            shopAnim.SetBool("Open", false);
             anim.SetBool("InnerCollider", false);
         }
     }
