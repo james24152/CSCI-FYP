@@ -5,10 +5,14 @@ using UnityEngine;
 public class chestController : MonoBehaviour {
     private bool triggered;
     public bool haveKey;
+    private Animator anim;
+    
     
 	// Use this for initialization
 	void Start () {
+        anim = GetComponent<Animator>();
         triggered = false;
+       
 	}
 	
 	// Update is called once per frame
@@ -20,7 +24,9 @@ public class chestController : MonoBehaviour {
         if (other.gameObject.layer == LayerMask.NameToLayer("Character") && triggered == false && haveKey == true)
         {
             triggered = true;
-            transform.Rotate(new Vector3(-90, 0, 0));
+            anim.SetBool("chestOpen", true);
+            
+
         }
     }
 
