@@ -1529,6 +1529,11 @@ Prefab:
       propertyPath: m_IsTrigger
       value: 0
       objectReference: {fileID: 0}
+    - target: {fileID: 65893102237867358, guid: 0f2dd90ab96b1e84eb76531de7b98ff3,
+        type: 2}
+      propertyPath: m_Size.y
+      value: 1
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_ParentPrefab: {fileID: 100100000, guid: 0f2dd90ab96b1e84eb76531de7b98ff3, type: 2}
   m_IsPrefabParent: 0
@@ -10050,7 +10055,7 @@ Prefab:
       objectReference: {fileID: 0}
     - target: {fileID: 4211063064775734, guid: 0f2dd90ab96b1e84eb76531de7b98ff3, type: 2}
       propertyPath: m_LocalPosition.z
-      value: 203.7
+      value: 204.12
       objectReference: {fileID: 0}
     - target: {fileID: 4211063064775734, guid: 0f2dd90ab96b1e84eb76531de7b98ff3, type: 2}
       propertyPath: m_LocalRotation.x
@@ -11319,7 +11324,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   fireBall: {fileID: 1061121449713292, guid: d71b2cfbd885be1479ec3c1485edd3f7, type: 2}
-  interval: 5
+  interval: 2
   power: 5
 --- !u!1001 &760675655
 Prefab:
@@ -12010,7 +12015,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   fireBall: {fileID: 1061121449713292, guid: d71b2cfbd885be1479ec3c1485edd3f7, type: 2}
-  interval: 5
+  interval: 2
   power: 5
 --- !u!4 &798241468 stripped
 Transform:
@@ -16045,7 +16050,7 @@ GameObject:
   m_PrefabParentObject: {fileID: 1428976566157528, guid: 0f2dd90ab96b1e84eb76531de7b98ff3,
     type: 2}
   m_PrefabInternal: {fileID: 699891334}
---- !u!114 &1043001643
+--- !u!114 &1043001642
 MonoBehaviour:
   m_ObjectHideFlags: 0
   m_PrefabParentObject: {fileID: 0}
@@ -16053,10 +16058,25 @@ MonoBehaviour:
   m_GameObject: {fileID: 1043001641}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 603f00eaba0efd14cb878cee486bd4c6, type: 3}
+  m_Script: {fileID: 11500000, guid: 09ca362cc2317934f9cd055b8c1a1b9a, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  step: 0
+  speed: 1.2
+  totalLength: 0
+  startTime: 0
+  triggered: 0
+--- !u!65 &1043001647
+BoxCollider:
+  m_ObjectHideFlags: 0
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  m_GameObject: {fileID: 1043001641}
+  m_Material: {fileID: 0}
+  m_IsTrigger: 1
+  m_Enabled: 1
+  serializedVersion: 2
+  m_Size: {x: 1, y: 1.1, z: 1}
+  m_Center: {x: 0, y: 0, z: 0}
 --- !u!4 &1043382070 stripped
 Transform:
   m_PrefabParentObject: {fileID: 4200049494542966, guid: 5d21292ec0168af449b084d997e41ba3,
@@ -27447,6 +27467,18 @@ GameObject:
   m_PrefabParentObject: {fileID: 1428976566157528, guid: 0f2dd90ab96b1e84eb76531de7b98ff3,
     type: 2}
   m_PrefabInternal: {fileID: 96292972}
+--- !u!65 &1419731574
+BoxCollider:
+  m_ObjectHideFlags: 0
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  m_GameObject: {fileID: 1419731573}
+  m_Material: {fileID: 0}
+  m_IsTrigger: 1
+  m_Enabled: 1
+  serializedVersion: 2
+  m_Size: {x: 1, y: 1.1, z: 1}
+  m_Center: {x: 0, y: 0, z: 0}
 --- !u!114 &1419731579
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -27458,7 +27490,10 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 603f00eaba0efd14cb878cee486bd4c6, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  step: 0
+  speed: 2
+  totalLength: 0
+  startTime: 0
+  triggered: 0
 --- !u!4 &1420297374 stripped
 Transform:
   m_PrefabParentObject: {fileID: 4200049494542966, guid: 5d21292ec0168af449b084d997e41ba3,
@@ -37336,7 +37371,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   fireBall: {fileID: 1398317538474464, guid: 5a5a749efe4fea24ba9cd6f7de489feb, type: 2}
-  interval: 5
+  interval: 3
   power: 5
 --- !u!1001 &2053184196
 Prefab:
