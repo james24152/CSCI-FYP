@@ -42,6 +42,7 @@ TagManager:
   - LoadMenu
   - Fire
   - door
+  - firegun
   layers:
   - Default
   - TransparentFX

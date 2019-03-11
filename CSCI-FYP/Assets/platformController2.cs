@@ -27,7 +27,7 @@ public class platformController2 : MonoBehaviour {
     // Update is called once per frame
     void Update()
     {
-        print(Vector3.Distance(transform.position, location1));
+       
         if (triggered == 1)
         {
             Lerp();
@@ -74,8 +74,7 @@ public class platformController2 : MonoBehaviour {
         float distCovered = (Time.time - startTime) * speed;
         float fracJourney = distCovered / totalLength;
         transform.position = Vector3.Lerp(location1, location2, fracJourney);
-        print("this lerp move:");
-        print(fracJourney);
+
     }
 
     public void LerpBack()

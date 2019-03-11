@@ -23,7 +23,7 @@ public class signTriggerController : MonoBehaviour {
         if (other.gameObject.layer == LayerMask.NameToLayer("Character") && anim.GetBool("toggled")==false) 
         {
             print("triggered");
-            count++;
+            //count++;
             anim.SetBool("toggled", true);
         }
     }
@@ -33,8 +33,9 @@ public class signTriggerController : MonoBehaviour {
         if(other.gameObject.layer == LayerMask.NameToLayer("Character"))
         {
             print("leave");
-            count--;
-            if(count == 0 && anim.GetBool("toggled") == true)
+            //count--;
+            //if(count == 0 && anim.GetBool("toggled") == true)
+            if (anim.GetBool("toggled") == true)
             {
                 anim.SetBool("toggled", false);
             }
