@@ -7,6 +7,7 @@ public class ElectricityBoxController : MonoBehaviour {
     public GameObject allLight;
     public float power;
     public bool press;
+    public Animator anim;
 	// Use this for initialization
 	void Start () {
         triggered = false;
@@ -18,6 +19,7 @@ public class ElectricityBoxController : MonoBehaviour {
         if (press == true && triggered == false)
         {
             triggered = true;
+            anim.SetBool("electricBoxTriggered", true);
             LightOn();
         }
 
@@ -27,6 +29,7 @@ public class ElectricityBoxController : MonoBehaviour {
         if (other.gameObject.CompareTag("LighteningAttack") && triggered == false)
         {
             triggered = true;
+            anim.SetBool("electricBoxTriggered", true);
             LightOn();
         }
         
