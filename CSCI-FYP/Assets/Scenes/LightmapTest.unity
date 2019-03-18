@@ -376,15 +376,15 @@ Prefab:
       objectReference: {fileID: 0}
     - target: {fileID: 4772241058340664, guid: d68dfe968bb015f4a81065dc300d5c7b, type: 2}
       propertyPath: m_LocalScale.x
-      value: 2
+      value: 1.5
       objectReference: {fileID: 0}
     - target: {fileID: 4772241058340664, guid: d68dfe968bb015f4a81065dc300d5c7b, type: 2}
       propertyPath: m_LocalScale.y
-      value: 2
+      value: 1.5
       objectReference: {fileID: 0}
     - target: {fileID: 4772241058340664, guid: d68dfe968bb015f4a81065dc300d5c7b, type: 2}
       propertyPath: m_LocalScale.z
-      value: 2
+      value: 1.5
       objectReference: {fileID: 0}
     - target: {fileID: 1053703740775942, guid: d68dfe968bb015f4a81065dc300d5c7b, type: 2}
       propertyPath: m_IsActive
@@ -753,6 +753,18 @@ GameObject:
   m_PrefabParentObject: {fileID: 1248638086229940, guid: d68dfe968bb015f4a81065dc300d5c7b,
     type: 2}
   m_PrefabInternal: {fileID: 493523639}
+--- !u!135 &1366256589
+SphereCollider:
+  m_ObjectHideFlags: 0
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  m_GameObject: {fileID: 1366256588}
+  m_Material: {fileID: 0}
+  m_IsTrigger: 1
+  m_Enabled: 1
+  serializedVersion: 2
+  m_Radius: 8
+  m_Center: {x: 0, y: 0, z: 0}
 --- !u!4 &1366256591 stripped
 Transform:
   m_PrefabParentObject: {fileID: 4772241058340664, guid: d68dfe968bb015f4a81065dc300d5c7b,
