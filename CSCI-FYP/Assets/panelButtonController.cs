@@ -22,6 +22,7 @@ public class panelButtonController : MonoBehaviour {
             animButton.SetBool("triggered", true);
             bridge.SetBool("triggered", true);
             triggered = true;
+            
         }
 
     }
