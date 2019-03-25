@@ -21,7 +21,6 @@ GameObject:
   - component: {fileID: 4001264744659070}
   - component: {fileID: 198837435645824574}
   - component: {fileID: 199548440269054702}
-  - component: {fileID: 114120732851792920}
   m_Layer: 0
   m_Name: BossAOE
   m_TagString: Untagged
@@ -73,9 +72,10 @@ GameObject:
   - component: {fileID: 4818144952121718}
   - component: {fileID: 198152955742278132}
   - component: {fileID: 199448315205609226}
+  - component: {fileID: 114888744642907712}
   m_Layer: 0
-  m_Name: Smoke
-  m_TagString: Untagged
+  m_Name: AOESmoke
+  m_TagString: AOESmoke
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -166,15 +166,15 @@ Transform:
   m_Father: {fileID: 4001264744659070}
   m_RootOrder: 0
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
---- !u!114 &114120732851792920
+--- !u!114 &114888744642907712
 MonoBehaviour:
   m_ObjectHideFlags: 1
   m_PrefabParentObject: {fileID: 0}
   m_PrefabInternal: {fileID: 100100000}
-  m_GameObject: {fileID: 1174498131387186}
+  m_GameObject: {fileID: 1591676574163044}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 0d3010596baddb242bc900fa96cac27e, type: 3}
+  m_Script: {fileID: 11500000, guid: 72162ad31d82cee408708ed85e87a71a, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
   master: {fileID: 0}
@@ -8080,9 +8080,9 @@ ParticleSystem:
         m_NumAlphaKeys: 2
     range: {x: 0, y: 1}
   CollisionModule:
-    enabled: 0
+    enabled: 1
     serializedVersion: 3
-    type: 0
+    type: 1
     collisionMode: 0
     colliderForce: 0
     multiplyColliderForceByParticleSize: 0
@@ -8258,11 +8258,11 @@ ParticleSystem:
     radiusScale: 1
     collidesWith:
       serializedVersion: 2
-      m_Bits: 4294967295
+      m_Bits: 4294901758
     maxCollisionShapes: 256
     quality: 0
     voxelSize: 0.5
-    collisionMessages: 0
+    collisionMessages: 1
     collidesWithDynamic: 1
     interiorCollisions: 1
   TriggerModule:
@@ -18814,7 +18814,7 @@ ParticleSystem:
     startSize:
       serializedVersion: 2
       minMaxState: 3
-      scalar: 1
+      scalar: 3
       minScalar: 3
       maxCurve:
         serializedVersion: 2
@@ -23077,7 +23077,7 @@ ParticleSystemRenderer:
   m_RenderMode: 0
   m_SortMode: 0
   m_MinParticleSize: 0
-  m_MaxParticleSize: 0.5
+  m_MaxParticleSize: 2
   m_CameraVelocityScale: 0
   m_VelocityScale: 0
   m_LengthScale: 2

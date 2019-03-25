@@ -154,6 +154,34 @@ public class Health : MonoBehaviour {
         return false;
     }
 
+    private void KnockBack(GameObject obj, float knockBack) {
+        Vector3 knockBackDir = new Vector3((gameObject.transform.position.x - obj.transform.position.x), 15f, (gameObject.transform.position.z - obj.transform.position.z));
+        gameObject.GetComponent<Rigidbody>().AddForce(knockBackDir * knockBack);
+    }
+
+    public bool GetHitWithKnockBack(GameObject obj, float knockBack)
+    {
+        if (Time.time > nextTimeGetHit)
+        {
+            //audioMangaer.Play("GetHit");
+            health--;
+            if (!invoked)
+            {
+                KnockBack(obj, knockBack);
+                invoked = true;
+            }
+            if (health == 0)
+            {
+                anim.SetBool("Damaged", true);
+                anim.SetBool("Death", true);
+                Invoke("Respawn", 2f);
+            }
+            nextTimeGetHit = Time.time + downTime;
+            return true;
+        }
+        return false;
+    }
+
     public void Drown() {
         Debug.Log("drown");
         health = 0;

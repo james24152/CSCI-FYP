@@ -38,9 +38,10 @@ GameObject:
   - component: {fileID: 4313131850774634}
   - component: {fileID: 198073990605161854}
   - component: {fileID: 199999294467888506}
+  - component: {fileID: 114231113256728722}
   m_Layer: 0
   m_Name: BossProj
-  m_TagString: Untagged
+  m_TagString: BossProj
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -72,6 +73,18 @@ Transform:
   m_Father: {fileID: 4313131850774634}
   m_RootOrder: 0
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!114 &114231113256728722
+MonoBehaviour:
+  m_ObjectHideFlags: 1
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 100100000}
+  m_GameObject: {fileID: 1530318210968928}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 72162ad31d82cee408708ed85e87a71a, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  master: {fileID: 0}
 --- !u!198 &198073990605161854
 ParticleSystem:
   m_ObjectHideFlags: 1
@@ -3468,11 +3481,11 @@ ParticleSystem:
     radiusScale: 0.05
     collidesWith:
       serializedVersion: 2
-      m_Bits: 4294967295
+      m_Bits: 4294901758
     maxCollisionShapes: 256
     quality: 0
     voxelSize: 0.5
-    collisionMessages: 0
+    collisionMessages: 1
     collidesWithDynamic: 1
     interiorCollisions: 1
   TriggerModule:

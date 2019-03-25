@@ -43,6 +43,10 @@ TagManager:
   - Fire
   - door
   - firegun
+  - BossProj
+  - AOESmoke
+  - LavaAttack
+  - LightningAttack
   layers:
   - Default
   - TransparentFX
@@ -60,7 +64,7 @@ TagManager:
   - PickUp
   - Hair
   - FireLayer
-  - 
+  - Boss
   - 
   - 
   - 
