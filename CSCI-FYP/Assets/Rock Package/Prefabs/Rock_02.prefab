@@ -54,7 +54,7 @@ GameObject:
   - component: {fileID: 4000010739201174}
   - component: {fileID: 33000010772601046}
   - component: {fileID: 23000011465591036}
-  - component: {fileID: 64506424859300324}
+  - component: {fileID: 64263934077435502}
   m_Layer: 0
   m_Name: 'Rock_02_LOD0 '
   m_TagString: Untagged
@@ -260,7 +260,7 @@ MeshFilter:
   m_PrefabInternal: {fileID: 100100000}
   m_GameObject: {fileID: 1000012523636006}
   m_Mesh: {fileID: 4300004, guid: 05e04fedc78047c48af519e94c595e13, type: 3}
---- !u!64 &64506424859300324
+--- !u!64 &64263934077435502
 MeshCollider:
   m_ObjectHideFlags: 1
   m_PrefabParentObject: {fileID: 0}
