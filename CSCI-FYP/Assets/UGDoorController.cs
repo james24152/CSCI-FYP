@@ -35,16 +35,16 @@ public class UGDoorController : MonoBehaviour {
                 switch (other.transform.parent.name)
                 {
                     case "Player1":
-                        canvas1.GetComponent<CanvasHearts>().Locked.gameObject.SetActive(true);
+                        canvas1.GetComponent<CanvasLog>().Locked.gameObject.SetActive(true);
                         break;
                     case "Player2":
-                        canvas2.GetComponent<CanvasHearts>().Locked.gameObject.SetActive(true);
+                        canvas2.GetComponent<CanvasLog>().Locked.gameObject.SetActive(true);
                         break;
                     case "Player3":
-                        canvas4.GetComponent<CanvasHearts>().Locked.gameObject.SetActive(true);
+                        canvas4.GetComponent<CanvasLog>().Locked.gameObject.SetActive(true);
                         break;
                     case "Player4":
-                        canvas4.GetComponent<CanvasHearts>().Locked.gameObject.SetActive(true);
+                        canvas4.GetComponent<CanvasLog>().Locked.gameObject.SetActive(true);
                         break;
                     default:
                         Debug.Log("save station switch error");
@@ -70,16 +70,16 @@ public class UGDoorController : MonoBehaviour {
                 switch (other.transform.parent.name)
                 {
                     case "Player1":
-                        canvas1.GetComponent<CanvasHearts>().Locked.gameObject.SetActive(false);
+                        canvas1.GetComponent<CanvasLog>().Locked.gameObject.SetActive(false);
                         break;
                     case "Player2":
-                        canvas2.GetComponent<CanvasHearts>().Locked.gameObject.SetActive(false);
+                        canvas2.GetComponent<CanvasLog>().Locked.gameObject.SetActive(false);
                         break;
                     case "Player3":
-                        canvas4.GetComponent<CanvasHearts>().Locked.gameObject.SetActive(false);
+                        canvas4.GetComponent<CanvasLog>().Locked.gameObject.SetActive(false);
                         break;
                     case "Player4":
-                        canvas4.GetComponent<CanvasHearts>().Locked.gameObject.SetActive(false);
+                        canvas4.GetComponent<CanvasLog>().Locked.gameObject.SetActive(false);
                         break;
                     default:
                         Debug.Log("save station switch error");

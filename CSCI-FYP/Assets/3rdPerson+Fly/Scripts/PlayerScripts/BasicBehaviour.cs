@@ -68,8 +68,8 @@ public class BasicBehaviour : MonoBehaviour
 		h = XCI.GetAxis(XboxAxis.LeftStickX, joystick);
 		v = XCI.GetAxis(XboxAxis.LeftStickY, joystick);
 
-		// Set the input axes on the Animator Controller.
-		anim.SetFloat(hFloat, h, 0.1f, Time.deltaTime);
+        // Set the input axes on the Animator Controller.
+        anim.SetFloat(hFloat, h, 0.1f, Time.deltaTime);
 		anim.SetFloat(vFloat, v, 0.1f, Time.deltaTime);
 
 		// Toggle sprint by input.

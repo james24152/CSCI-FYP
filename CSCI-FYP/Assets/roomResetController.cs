@@ -1,6 +1,7 @@
 ﻿using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using XboxCtrlrInput;
 
 public class roomResetController : MonoBehaviour {
     public Animator anim;
@@ -27,6 +28,17 @@ public class roomResetController : MonoBehaviour {
     private Quaternion tableLight1O;
     private Quaternion tableLight2O;
 
+    public Canvas canvas1;
+    public Canvas canvas2;
+    public Canvas canvas3;
+    public Canvas canvas4;
+    public bool entered;
+    public XboxButton resetButton;
+    public XboxController joystick1;
+    public XboxController joystick2;
+    public XboxController joystick3;
+    public XboxController joystick4; 
+
     // Use this for initialization
     void Start () {
         playerNum = 0;
@@ -44,6 +56,7 @@ public class roomResetController : MonoBehaviour {
         smallTableO = smallTable.transform.rotation;
         tableLight1O = tableLight1.transform.rotation;
         tableLight2O = tableLight2.transform.rotation;
+        entered = false;
     }
 	
 	// Update is called once per frame
@@ -53,11 +66,35 @@ public class roomResetController : MonoBehaviour {
 
     private void OnTriggerEnter(Collider other)
     {
-        if (other.gameObject.layer == LayerMask.NameToLayer("Character") && playerNum == 0)
+        if (other is CapsuleCollider)
+        {
+            entered = true;
+            print("change to true");
+            switch (other.transform.parent.name)
+            {
+                case "Player1":
+                    canvas1.GetComponent<CanvasLog>().pressY.gameObject.SetActive(true);
+                    break;
+                case "Player2":
+                    canvas2.GetComponent<CanvasLog>().pressY.gameObject.SetActive(true);
+                    break;
+                case "Player3":
+                    canvas4.GetComponent<CanvasLog>().pressY.gameObject.SetActive(true);
+                    break;
+                case "Player4":
+                    canvas4.GetComponent<CanvasLog>().pressY.gameObject.SetActive(true);
+                    break;
+                default:
+                    Debug.Log("save station switch error");
+                    break;
+            }
+        }
+
+        /*if (other.gameObject.layer == LayerMask.NameToLayer("Character") && playerNum == 0)
         {
             anim.SetBool("triggered", true);
             resetRoom();
-        }
+        }*/
     }
 
     public void resetRoom()
@@ -80,13 +117,51 @@ public class roomResetController : MonoBehaviour {
     }
 
 
+    private void OnTriggerStay(Collider other)
+    {
+        if (entered)
+        {
+            if (XCI.GetButtonDown(resetButton, joystick1) || XCI.GetButtonDown(resetButton, joystick2) || XCI.GetButtonDown(resetButton, joystick3) || XCI.GetButtonDown(resetButton, joystick4))
+            {
+                print("pressed");
+                anim.SetBool("triggered", true);
+                resetRoom();
+
+            }
+        }
+    }
+    
+
     private void OnTriggerExit(Collider other)
     {
-        if (other.gameObject.layer == LayerMask.NameToLayer("Character"))
+        if (other is CapsuleCollider)
+        {
+            print("change to true");
+            switch (other.transform.parent.name)
+            {
+                case "Player1":
+                    canvas1.GetComponent<CanvasLog>().pressY.gameObject.SetActive(false);
+                    break;
+                case "Player2":
+                    canvas2.GetComponent<CanvasLog>().pressY.gameObject.SetActive(false);
+                    break;
+                case "Player3":
+                    canvas4.GetComponent<CanvasLog>().pressY.gameObject.SetActive(false);
+                    break;
+                case "Player4":
+                    canvas4.GetComponent<CanvasLog>().pressY.gameObject.SetActive(false);
+                    break;
+                default:
+                    Debug.Log("save station switch error");
+                    break;
+            }
+        }
+
+        /*if (other.gameObject.layer == LayerMask.NameToLayer("Character"))
         {
             anim.SetBool("triggered", false);
             
-        }
+        }*/
     }
 
 

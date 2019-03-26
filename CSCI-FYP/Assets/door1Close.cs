@@ -6,15 +6,41 @@ public class door1Close : MonoBehaviour {
     private int counter;
     public Animator animD1;
     public Animator animD2;
-	// Use this for initialization
-	void Start () {
+    private AudioManager audioManager;
+    private bool soundPlayedD1;
+    private bool soundPlayedD2;
+    // Use this for initialization
+    void Start () {
         counter = 0;
-	}
+        audioManager = FindObjectOfType<AudioManager>();
+        soundPlayedD1 = false;
+        soundPlayedD2 = false;
+
+    }
 	
 	// Update is called once per frame
 	void Update () {
-		
-	}
+		if (!soundPlayedD1 && !animD1.GetBool("opened"))
+        {
+            audioManager.Play("doorClose");
+            soundPlayedD1 = true;
+        }
+        if (!soundPlayedD2 && !animD2.GetBool("opened"))
+        {
+            audioManager.Play("doorClose");
+            soundPlayedD2 = true;
+        }
+
+        if (soundPlayedD1 && animD1.GetBool("opened"))
+        {
+            soundPlayedD1 = false;
+        }
+
+        if (soundPlayedD2 && animD2.GetBool("opened"))
+        {
+            soundPlayedD2 = false;
+        }
+    }
     private void OnTriggerEnter(Collider other)
     {
         if (other.gameObject.layer == LayerMask.NameToLayer("Character"))
@@ -30,7 +56,8 @@ public class door1Close : MonoBehaviour {
             print(counter);
             counter--;
             print(counter);
-            if(counter == 0 && animD1.GetBool("opened") == true)
+            
+            if (counter == 0 && animD1.GetBool("opened") == true)
             {
                 animD1.SetBool("opened", false);
             }
