@@ -78,6 +78,16 @@ public class roomResetController : MonoBehaviour {
         tableLight2.transform.rotation = tableLight2O;
 
     }
-  
+
+
+    private void OnTriggerExit(Collider other)
+    {
+        if (other.gameObject.layer == LayerMask.NameToLayer("Character"))
+        {
+            anim.SetBool("triggered", false);
+            
+        }
+    }
+
 
 }

@@ -9,4 +9,5 @@ public class CanvasHearts : MonoBehaviour {
     public Image icon;
     public Image pressX;
     public Image pressY;
+    public Image Locked;
 }

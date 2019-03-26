@@ -21,7 +21,6 @@ public class doorRight1 : MonoBehaviour {
         if (other.gameObject.layer == LayerMask.NameToLayer("Character") && haveKey == true)
         {
             anim.SetBool("opened", true);
-            
         }
         
     }
