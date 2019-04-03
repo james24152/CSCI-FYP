@@ -10,10 +10,12 @@ public class fireBallShooter : MonoBehaviour {
     private bool created;
     private GameObject fireBallObject;
     private Vector3 shootTarget;
+    private AudioManager audioManager;
 	// Use this for initialization
 	void Start () {
         created = false;
         nextInstTime = Time.time + interval;
+        audioManager = FindObjectOfType<AudioManager>();
 
 	}
 	
@@ -23,6 +25,7 @@ public class fireBallShooter : MonoBehaviour {
         {
             fireBallObject = Instantiate(fireBall, transform.position, Quaternion.identity);
             fireBallObject.GetComponent<Rigidbody>().AddForce(transform.forward * power*-1);
+            audioManager.Play("cannonShoot");
             nextInstTime = nextInstTime + interval;
         }
         if (created == true && Time.time > nextInstTime - 1.0f)

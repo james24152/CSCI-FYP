@@ -8,9 +8,11 @@ public class gateController : MonoBehaviour {
     private Vector3 gateLTarget;
     private Vector3 gateRTarget;
     private bool triggered;
-    public Animator anim; 
+    public Animator anim;
+    private AudioManager audioManager;
     // Use this for initialization
     void Start () {
+        audioManager = FindObjectOfType<AudioManager>();
         triggered = false;
         gateLTarget = new Vector3(gateL.transform.position.x, gateL.transform.position.y - 3.0f, gateL.transform.position.z);
         gateRTarget = new Vector3(gateR.transform.position.x, gateR.transform.position.y - 3.0f, gateR.transform.position.z);
@@ -33,7 +35,9 @@ public class gateController : MonoBehaviour {
     public void gateOpen()
     {
         anim.SetBool("triggered", true);
+        audioManager.Play("volcanoGate");
         //gateL.transform.position = Vector3.MoveTowards(gateL.transform.position, gateLTarget, 0.1f);
         //gateR.transform.position = Vector3.MoveTowards(gateR.transform.position, gateRTarget, 0.1f);
     }
+
 }

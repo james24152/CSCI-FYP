@@ -6,9 +6,11 @@ public class panelButtonController : MonoBehaviour {
     public Animator animButton;
     public Animator bridge;
     private bool triggered;
-	// Use this for initialization
-	void Start () {
+    private AudioManager audioManager;
+    // Use this for initialization
+    void Start () {
         triggered = false;
+        audioManager = FindObjectOfType<AudioManager>();
 	}
 	
 	// Update is called once per frame
@@ -21,6 +23,7 @@ public class panelButtonController : MonoBehaviour {
         {
             animButton.SetBool("triggered", true);
             bridge.SetBool("triggered", true);
+            audioManager.Play("volcanoBridge");
             triggered = true;
             
         }
