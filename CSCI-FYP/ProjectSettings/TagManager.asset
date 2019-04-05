@@ -47,6 +47,10 @@ TagManager:
   - AOESmoke
   - LavaAttack
   - LightningAttack
+  - SteamAttack
+  - FogAttack
+  - SandStormAttack
+  - DashTrail
   layers:
   - Default
   - TransparentFX
@@ -65,7 +69,7 @@ TagManager:
   - Hair
   - FireLayer
   - Boss
-  - 
+  - BossDashPhase
   - 
   - 
   - 

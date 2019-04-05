@@ -146,6 +146,7 @@ ModelImporter:
     7400036: Dash
     7400038: P2AOE
     7400040: BindCoolDown
+    7400042: StandP2
     9500000: //RootNode
     13700000: Monster_090_0
     13700002: Monster_090_1
@@ -176,7 +177,9 @@ ModelImporter:
     rigImportWarnings: 
     animationImportErrors: 
     animationImportWarnings: Event ResetState has a time (1.461197) outside the clip's
-      valid range (0.000000..1.100000). It will never be fired
+      valid range (0.000000..1.100000). It will never be firedEvent P2ResetState has
+      a time (1.514507) outside the clip's valid range (0.000000..1.100000). It will
+      never be fired
     animationRetargetingWarnings: 
     animationDoRetargetingWarnings: 0
     importAnimatedCustomProperties: 0
@@ -313,7 +316,7 @@ ModelImporter:
       name: Hit
       takeName: Hit
       firstFrame: 0
-      lastFrame: 72
+      lastFrame: 18.1
       wrapMode: 0
       orientationOffsetY: 0
       level: 0
@@ -332,7 +335,15 @@ ModelImporter:
       mirror: 0
       bodyMask: 01000000010000000100000001000000010000000100000001000000010000000100000001000000010000000100000001000000
       curves: []
-      events: []
+      events:
+      - time: 0.53954816
+        functionName: UnFlinch
+        data: 
+        objectReferenceParameter: {fileID: 11500000, guid: 804818ef12223d54fbf3f54b7e1ad9f2,
+          type: 3}
+        floatParameter: 0
+        intParameter: 0
+        messageOptions: 0
       transformMask: []
       maskType: 3
       maskSource: {instanceID: 0}
@@ -747,7 +758,15 @@ ModelImporter:
       mirror: 0
       bodyMask: 01000000010000000100000001000000010000000100000001000000010000000100000001000000010000000100000001000000
       curves: []
-      events: []
+      events:
+      - time: 0
+        functionName: TakePose
+        data: 
+        objectReferenceParameter: {fileID: 11500000, guid: 804818ef12223d54fbf3f54b7e1ad9f2,
+          type: 3}
+        floatParameter: 0
+        intParameter: 0
+        messageOptions: 0
       transformMask: []
       maskType: 3
       maskSource: {instanceID: 0}
@@ -784,6 +803,14 @@ ModelImporter:
         floatParameter: 0
         intParameter: 0
         messageOptions: 0
+      - time: 0.54352033
+        functionName: StunPlayers
+        data: 
+        objectReferenceParameter: {fileID: 11500000, guid: 804818ef12223d54fbf3f54b7e1ad9f2,
+          type: 3}
+        floatParameter: 0
+        intParameter: 0
+        messageOptions: 0
       transformMask: []
       maskType: 3
       maskSource: {instanceID: 0}
@@ -812,8 +839,24 @@ ModelImporter:
       bodyMask: 01000000010000000100000001000000010000000100000001000000010000000100000001000000010000000100000001000000
       curves: []
       events:
+      - time: 0
+        functionName: DashStopLockOn
+        data: 
+        objectReferenceParameter: {fileID: 11500000, guid: 804818ef12223d54fbf3f54b7e1ad9f2,
+          type: 3}
+        floatParameter: 0
+        intParameter: 0
+        messageOptions: 0
       - time: 0.09038462
         functionName: P2DashAttack
+        data: 
+        objectReferenceParameter: {fileID: 11500000, guid: 804818ef12223d54fbf3f54b7e1ad9f2,
+          type: 3}
+        floatParameter: 0
+        intParameter: 0
+        messageOptions: 0
+      - time: 0.6962492
+        functionName: ResetCollision
         data: 
         objectReferenceParameter: {fileID: 11500000, guid: 804818ef12223d54fbf3f54b7e1ad9f2,
           type: 3}
@@ -892,6 +935,42 @@ ModelImporter:
       bodyMask: 01000000010000000100000001000000010000000100000001000000010000000100000001000000010000000100000001000000
       curves: []
       events: []
+      transformMask: []
+      maskType: 3
+      maskSource: {instanceID: 0}
+      additiveReferencePoseFrame: 0
+    - serializedVersion: 16
+      name: StandP2
+      takeName: Stand
+      firstFrame: 0
+      lastFrame: 87
+      wrapMode: 0
+      orientationOffsetY: 0
+      level: 0
+      cycleOffset: 0
+      loop: 0
+      hasAdditiveReferencePose: 0
+      loopTime: 0
+      loopBlend: 0
+      loopBlendOrientation: 0
+      loopBlendPositionY: 0
+      loopBlendPositionXZ: 0
+      keepOriginalOrientation: 0
+      keepOriginalPositionY: 1
+      keepOriginalPositionXZ: 0
+      heightFromFeet: 0
+      mirror: 0
+      bodyMask: 01000000010000000100000001000000010000000100000001000000010000000100000001000000010000000100000001000000
+      curves: []
+      events:
+      - time: 0.52224374
+        functionName: P2ResetState
+        data: 
+        objectReferenceParameter: {fileID: 11500000, guid: 804818ef12223d54fbf3f54b7e1ad9f2,
+          type: 3}
+        floatParameter: 0
+        intParameter: 0
+        messageOptions: 0
       transformMask: []
       maskType: 3
       maskSource: {instanceID: 0}

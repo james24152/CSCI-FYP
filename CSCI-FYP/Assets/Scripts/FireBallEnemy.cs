@@ -2,8 +2,9 @@
 using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.AI;
+using UnityEngine.UI;
 
-public class FireBallEnemy : MonoBehaviour {
+public class FireBallEnemy : SmallEnemy {
 
     private List<Transform> charTransformList = new List<Transform>();
     private Transform closestEnemy;
@@ -14,12 +15,30 @@ public class FireBallEnemy : MonoBehaviour {
     private bool leaveEnemy;
     private bool targetFound;
     private bool onCD;
-    public float cd = 5f;
+    private float health = 10f;
+    private ParticleSystem tempWet;
+    private bool isWet;
     private float nextFire;
+    private bool isDead;
+
+    public float maxHealth = 10f;
+    public Transform origin;
+    public ParticleSystem wetEffect;
+    public ParticleSystem deathEffect;
+    public Image healthBar;
+    public float cd = 5f;
     public float rotationDamping = 10;
     public GameObject fireball;
     public Transform shootPoint;
     public float force = 100f;
+
+    public override string enemyName
+    {
+        get
+        {
+            return "FireBall";
+        }
+    }
 
     // Use this for initialization
     void Start()
@@ -81,7 +100,8 @@ public class FireBallEnemy : MonoBehaviour {
         {
             target = other.gameObject;
             targetFound = true;
-            agent.isStopped = true;
+            if (agent.enabled == true)
+                agent.isStopped = true;
         }
     }
     private void OnTriggerExit(Collider other)
@@ -90,7 +110,8 @@ public class FireBallEnemy : MonoBehaviour {
         {
             target = null;
             targetFound = false;
-            agent.isStopped = false;
+            if (agent.enabled == true)
+                agent.isStopped = false;
         }
     }
 
@@ -117,29 +138,56 @@ public class FireBallEnemy : MonoBehaviour {
         return bestTarget;
     }
 
-    //damage system
-    private void OnParticleCollision(GameObject other)
+    //Damage System
+    public override void GetHit(float damage)
     {
-        Debug.Log("hit lava");
-        switch (other.tag)
+        health -= damage;
+        healthBar.fillAmount = health / maxHealth;
+        if (health <= 0)
         {
-            case "FireAttack":
-            case "WaterAttack":
-                recievedDamage += 0.25f;
-                break;
-            case "WindAttack":
-                recievedDamage += 0.32f;
-                break;
-            case "MudAttack":
-                recievedDamage++;
-                break;
-            case "LavaAttack":
-                recievedDamage++;
-                break;
-            case "LightningAttack":
-                recievedDamage++;
-                break;
-                //Tier2Element 3 left
+            //die
+            if (!isDead)
+            {
+                anim.SetBool("Die", true);
+                agent.enabled = false;
+                Invoke("Die", 2f);
+                isDead = true;
+            }
         }
+    }
+
+    private void Die()
+    {
+        Instantiate(deathEffect, origin.transform.position, deathEffect.transform.rotation);
+        Destroy(gameObject);
+    }
+
+    public override void Stun()
+    {
+        agent.enabled = false;
+        Invoke("StunRelease", 5f);
+    }
+    private void StunRelease()
+    {
+        agent.enabled = true;
+    }
+
+    public override void GetWet()
+    {
+        isWet = true;
+        tempWet = Instantiate(wetEffect, origin.transform.position, wetEffect.transform.rotation);
+        tempWet.transform.parent = origin.transform;
+        tempWet.transform.localScale = new Vector3(1, 1, 1);
+    }
+
+    public override void StopGetWet()
+    {
+        tempWet.Stop();
+        isWet = false;
+    }
+
+    public override bool IsWet()
+    {
+        return isWet;
     }
 }

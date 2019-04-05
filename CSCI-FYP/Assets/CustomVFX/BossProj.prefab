@@ -21,7 +21,7 @@ GameObject:
   - component: {fileID: 4933318677558544}
   - component: {fileID: 198620714857049818}
   - component: {fileID: 199888734110140668}
-  m_Layer: 0
+  m_Layer: 16
   m_Name: FireEmbers
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -39,7 +39,7 @@ GameObject:
   - component: {fileID: 198073990605161854}
   - component: {fileID: 199999294467888506}
   - component: {fileID: 114231113256728722}
-  m_Layer: 0
+  m_Layer: 16
   m_Name: BossProj
   m_TagString: BossProj
   m_Icon: {fileID: 0}
@@ -53,8 +53,8 @@ Transform:
   m_PrefabInternal: {fileID: 100100000}
   m_GameObject: {fileID: 1530318210968928}
   m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
-  m_LocalPosition: {x: 3.1570015, y: 0.96000004, z: 6.2799997}
-  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_LocalPosition: {x: 2.42, y: 0.225, z: 4.76}
+  m_LocalScale: {x: 0.5, y: 0.5, z: 0.5}
   m_Children:
   - {fileID: 4933318677558544}
   m_Father: {fileID: 0}
@@ -199,7 +199,7 @@ ParticleSystem:
     startSpeed:
       serializedVersion: 2
       minMaxState: 0
-      scalar: 13.73664
+      scalar: 50
       minScalar: 5
       maxCurve:
         serializedVersion: 2
@@ -3478,7 +3478,7 @@ ParticleSystem:
         m_RotationOrder: 4
     minKillSpeed: 0
     maxKillSpeed: 10000
-    radiusScale: 0.05
+    radiusScale: 0.44
     collidesWith:
       serializedVersion: 2
       m_Bits: 4294901758

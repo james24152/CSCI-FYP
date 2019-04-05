@@ -137,7 +137,7 @@ public class Health : MonoBehaviour {
 
     public bool GetHit() {
         if (Time.time > nextTimeGetHit) {
-            audioMangaer.Play("GetHit");
+            //audioMangaer.Play("GetHit");
             health--;
             if (!invoked)
             {
@@ -155,8 +155,9 @@ public class Health : MonoBehaviour {
     }
 
     private void KnockBack(GameObject obj, float knockBack) {
-        Vector3 knockBackDir = new Vector3((gameObject.transform.position.x - obj.transform.position.x), 15f, (gameObject.transform.position.z - obj.transform.position.z));
-        gameObject.GetComponent<Rigidbody>().AddForce(knockBackDir * knockBack);
+        Vector3 knockBackDir = Vector3.Normalize(gameObject.transform.position - obj.transform.position);
+        Vector3 knockBackForce = new Vector3(knockBackDir.x * knockBack, 0, knockBackDir.z * knockBack);
+        gameObject.GetComponent<Rigidbody>().AddForce(knockBackForce * 100);
     }
 
     public bool GetHitWithKnockBack(GameObject obj, float knockBack)

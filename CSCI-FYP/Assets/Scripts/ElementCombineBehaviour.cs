@@ -5,6 +5,7 @@ using UnityEngine;
 
 public class ElementCombineBehaviour : MonoBehaviour {
 
+    public string elementName = "null";
     public string earthEve = "Earth Eve";
     public string earthClone = "Earth Eve(Clone)";
     public string waterEve = "Water Eve";
@@ -51,6 +52,10 @@ public class ElementCombineBehaviour : MonoBehaviour {
     private string currentElement;
     private bool lavaLock;
     public bool secondTierElement;
+
+    //for debug functions only, should be deleted afterwards
+    public string element;
+    public bool change;
     // Use this for initialization
     void Start() {
         anim = GetComponent<Animator>();
@@ -58,12 +63,25 @@ public class ElementCombineBehaviour : MonoBehaviour {
         currentElement = CheckElement();
     }
 
+    private void Update()
+    {
+        if (change) {
+            combinedElement = element;
+            secondTierElement = true;
+            anim.SetBool("SecondTierAttack", true);
+            Transform(element);
+            Debug.Log(element);
+            instantiated = true;
+            change = false;
+        }
+    }
 
     private void OnParticleCollision(GameObject other)
     {
         if (CheckCollision(other)) {
             if (!instantiated)
             {
+                combinedElement = "CombinedElementFailed";
                 if (other.gameObject.CompareTag("FireAttack"))
                 {
                     combinedElement = CombinedElement("Fire", currentElement);
@@ -124,26 +142,32 @@ public class ElementCombineBehaviour : MonoBehaviour {
         switch (element)
         {
             case "Steam":
+                elementName = "Steam";
                 transformFx = Instantiate(steamTransform, center.transform.position, steamTransform.transform.rotation);
                 aura = steamAura;
                 break;
             case "Fog":
+                elementName = "Fog";
                 transformFx = Instantiate(fogTransform, center.transform.position, fogTransform.transform.rotation);
                 aura = fogAura;
                 break;
             case "Sand":
+                elementName = "Sand";
                 transformFx = Instantiate(sandTransform, center.transform.position, sandTransform.transform.rotation);
                 aura = sandAura;
                 break;
             case "Thunder":
+                elementName = "Thunder";
                 transformFx = Instantiate(thunderTransform, center.transform.position, thunderTransform.transform.rotation);
                 aura = thunderAura;
                 break;
             case "Life":
+                elementName = "Life";
                 transformFx = Instantiate(lifeTransform, center.transform.position, lifeTransform.transform.rotation);
                 aura = lifeAura;
                 break;
             case "Lava":
+                elementName = "Lava";
                 transformFx = Instantiate(lavaTransform, center.transform.position, lavaTransform.transform.rotation);
                 aura = lavaAura;
                 break;
@@ -180,12 +204,14 @@ public class ElementCombineBehaviour : MonoBehaviour {
         string[] lifeCom = new string[] { "Water", "Earth", "Life" };
         string[] lavaCom = new string[] { "Fire", "Earth", "Lava" };
         chart = new List<string[]>();
-        /*chart.Add(steamCom);
+
+        //should be commented
+        chart.Add(steamCom);
         chart.Add(fogCom);
         chart.Add(sandCom);
         chart.Add(thunderCom);
         chart.Add(lifeCom);
-        chart.Add(lavaCom);*/
+        chart.Add(lavaCom);
     }
 
     public void AddLifeCombination() {
@@ -312,5 +338,6 @@ public class ElementCombineBehaviour : MonoBehaviour {
         tempAura.Stop();
         secondTierElement = false;
         instantiated = false;
+        elementName = "NULL";
     }
 }

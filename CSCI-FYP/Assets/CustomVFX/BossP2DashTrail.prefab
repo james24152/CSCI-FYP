@@ -21,10 +21,10 @@ GameObject:
   - component: {fileID: 4995589068131476}
   - component: {fileID: 198719281594690234}
   - component: {fileID: 199723898495860024}
-  - component: {fileID: 114786994672916238}
+  - component: {fileID: 114367508607420328}
   m_Layer: 0
   m_Name: BossP2DashTrail
-  m_TagString: Untagged
+  m_TagString: DashTrail
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -42,7 +42,7 @@ Transform:
   m_Father: {fileID: 0}
   m_RootOrder: 0
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
---- !u!114 &114786994672916238
+--- !u!114 &114367508607420328
 MonoBehaviour:
   m_ObjectHideFlags: 1
   m_PrefabParentObject: {fileID: 0}
@@ -50,9 +50,10 @@ MonoBehaviour:
   m_GameObject: {fileID: 1994925185183290}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 39b2d7d692af135498d8962c766d6354, type: 3}
+  m_Script: {fileID: 11500000, guid: 72162ad31d82cee408708ed85e87a71a, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  master: {fileID: 0}
 --- !u!198 &198719281594690234
 ParticleSystem:
   m_ObjectHideFlags: 1

@@ -15,11 +15,21 @@ public class BossParticleHOM : MonoBehaviour {
                 switch (gameObject.tag) {
                     case "AOESmoke":
                         Debug.Log("AOE hit");
+                        other.GetComponent<Health>().GetHitWithKnockBack(gameObject, 600f);
                         bossScript.aoeSuccess++;
                         break;
                     case "BossProj":
                         Debug.Log("Proj hit");
-                        bossScript.projSuccess++;
+                        other.GetComponent<Health>().GetHitWithKnockBack(gameObject, 600f);
+                        if (!bossScript.P2)
+                            bossScript.projSuccess++;
+                        else
+                            bossScript.p2aoeSuccess++;
+                        break;
+                    case "DashTrail":
+                        Debug.Log("Dash hit");
+                        other.GetComponent<Health>().GetHitWithKnockBack(gameObject, 0f);
+                        bossScript.dashSuccess++;
                         break;
                 }
                 hit = true;
