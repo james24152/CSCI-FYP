@@ -21,4 +21,11 @@ public class fireball : MonoBehaviour {
         }
     }
 
+    private void OnCollisionEnter(Collision collision)
+    {
+        GameObject obj = collision.collider.gameObject;
+        if (obj.layer == LayerMask.NameToLayer("Character")) {
+            obj.GetComponent<Health>().GetHitWithKnockBack(gameObject, 0f);
+        }
+    }
 }
