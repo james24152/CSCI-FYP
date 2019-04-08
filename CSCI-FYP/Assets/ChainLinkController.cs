@@ -4,11 +4,12 @@ using UnityEngine;
 
 public class ChainLinkController : MonoBehaviour
 {
-
+    private Collider collider;
+    
     // Use this for initialization
     void Start()
     {
-
+        collider = GetComponent<Collider>();
     }
 
     // Update is called once per frame
@@ -19,9 +20,10 @@ public class ChainLinkController : MonoBehaviour
 
     void OnCollisionEnter(Collision collision)
     {
-        //if (collision.gameObject.tag == "theobjectToIgnore")
+        
+        //if (collision.gameObject.GetComponent<ElementCombineBehavior>().elementName == "Steam")
         //{
-        //    Physics.IgnoreCollision(theobjectToIgnore.collider, collider);
-        // }
+        //    collider.enabled = false;
+        //}
     }
 }

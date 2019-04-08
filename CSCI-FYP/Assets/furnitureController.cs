@@ -6,6 +6,7 @@ public class furnitureController : MonoBehaviour {
     public Rigidbody furnitureRigidbody;
     private Vector3 zero;
     private Vector3 lastPosition;
+
 	// Use this for initialization
 	void Start () {
         furnitureRigidbody = GetComponent<Rigidbody>();
@@ -15,6 +16,7 @@ public class furnitureController : MonoBehaviour {
 	
 	// Update is called once per frame
 	void Update () {
+        
         lastPosition = transform.position;
     }
     private void OnTriggerEnter(Collider other)

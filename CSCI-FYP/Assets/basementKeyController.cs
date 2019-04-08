@@ -3,51 +3,51 @@ using System.Collections.Generic;
 using UnityEngine;
 using XboxCtrlrInput;
 
-public class keyCollectController : MonoBehaviour {
+public class basementKeyController : MonoBehaviour {
     public Canvas canvas1;
     public Canvas canvas2;
     public Canvas canvas3;
     public Canvas canvas4;
-    private bool pickAct;
-    private bool alreadyCollected;
     public XboxButton pressButton;
     private bool triggered;
     public XboxController joystick1;
     public XboxController joystick2;
     public XboxController joystick3;
     public XboxController joystick4;
-    private bool entered1;
-    private bool entered2;
-    private bool entered3;
-    private bool entered4;
-    public GameObject doorL;
-    public GameObject doorR;
-    private doorRight1 doorLScript;
-    private doorRight1 doorRScript;
+    public GameObject chest;
+    private chestController chestScript;
+    public Collider selfCollider;
+    public bool keyEnabled;
+    public bool alreadyCollected;
     private GameObject keyHolder;
     private bool unlocked;
+    public GameObject door;
+    public UGDoorController doorScript;
     // Use this for initialization
     void Start () {
-        pickAct = false;
-        alreadyCollected = false;
+        chestScript = chest.GetComponent<chestController>();
         triggered = false;
-        entered1 = false;
-        entered2 = false;
-        entered3 = false;
-        entered4 = false;
-        doorLScript = doorL.GetComponent<doorRight1>();
-        doorRScript = doorR.GetComponent<doorRight1>();
+        keyEnabled = false;
+        alreadyCollected = false;
         unlocked = false;
+        doorScript = door.GetComponent<UGDoorController>();
+        selfCollider = GetComponent<Collider>();
+
     }
 	
 	// Update is called once per frame
 	void Update () {
-		if(keyHolder != null && ! unlocked)
+        if (chestScript.triggered && !keyEnabled)
         {
-            if (Vector3.Distance(keyHolder.transform.position,doorL.transform.position)<5.0f || Vector3.Distance(keyHolder.transform.position, doorL.transform.position) < 5.0f)
+            selfCollider.enabled = true;
+            keyEnabled = true;
+        }
+
+        if (keyHolder != null && !unlocked)
+        {
+            if (Vector3.Distance(keyHolder.transform.position, door.transform.position) < 5.0f )
             {
-                doorLScript.haveKey = true;
-                doorRScript.haveKey = true;
+                doorScript.haveKey = true;
                 unlocked = true;
                 canvas1.GetComponent<CanvasLog>().key.gameObject.SetActive(false);
                 canvas2.GetComponent<CanvasLog>().key.gameObject.SetActive(false);
@@ -56,26 +56,22 @@ public class keyCollectController : MonoBehaviour {
                 StartCoroutine(showUnlockCanvas());
             }
         }
-	}
-
+    }
 
     private void OnTriggerEnter(Collider other)
     {
-        if (other is CapsuleCollider && !alreadyCollected && !triggered && checkColliderName(other.gameObject))
+        if(checkColliderName(other.gameObject) && other is CapsuleCollider && !triggered &&!alreadyCollected)
         {
-            entered1 = true;
-            pickAct = true;
             triggered = true;
-            print("change to true");
             switch (other.transform.parent.name)
             {
                 case "Player1":
                     canvas1.GetComponent<CanvasHearts>().pressX.gameObject.SetActive(true);
-                    
+
                     break;
                 case "Player2":
                     canvas2.GetComponent<CanvasHearts>().pressX.gameObject.SetActive(true);
-                    
+
                     break;
                 case "Player3":
                     canvas3.GetComponent<CanvasHearts>().pressX.gameObject.SetActive(true);
@@ -83,12 +79,13 @@ public class keyCollectController : MonoBehaviour {
                     break;
                 case "Player4":
                     canvas4.GetComponent<CanvasHearts>().pressX.gameObject.SetActive(true);
- 
+
                     break;
                 default:
                     Debug.Log("save station switch error");
                     break;
             }
+
         }
     }
 
@@ -96,7 +93,6 @@ public class keyCollectController : MonoBehaviour {
     {
         if (checkColliderName(other.gameObject) && !alreadyCollected)
         {
-            print("checking if you pick key");
             if (XCI.GetButtonDown(pressButton, joystick1) || XCI.GetButtonDown(pressButton, joystick2) || XCI.GetButtonDown(pressButton, joystick3) || XCI.GetButtonDown(pressButton, joystick4))
             {
                 print("pressed");
@@ -137,16 +133,14 @@ public class keyCollectController : MonoBehaviour {
 
     private void OnTriggerExit(Collider other)
     {
-        pickAct = false;
         if (other is CapsuleCollider && triggered && checkColliderName(other.gameObject))
         {
-            entered1 = false;
             triggered = false;
             switch (other.transform.parent.name)
             {
                 case "Player1":
                     canvas1.GetComponent<CanvasHearts>().pressX.gameObject.SetActive(false);
-                    
+
                     break;
                 case "Player2":
                     canvas2.GetComponent<CanvasHearts>().pressX.gameObject.SetActive(false);
@@ -160,13 +154,12 @@ public class keyCollectController : MonoBehaviour {
                     canvas4.GetComponent<CanvasHearts>().pressX.gameObject.SetActive(false);
 
                     break;
-                
+
                 default:
                     break;
             }
         }
     }
-
 
     private bool checkColliderName(GameObject other)
     {
@@ -185,19 +178,19 @@ public class keyCollectController : MonoBehaviour {
         switch (keyHolder.transform.parent.name)
         {
             case "Player1":
-                canvas1.GetComponent<CanvasLog>().GetRoomKey.gameObject.SetActive(true);
+                canvas1.GetComponent<CanvasLog>().GetBMKey.gameObject.SetActive(true);
 
                 break;
             case "Player2":
-                canvas2.GetComponent<CanvasLog>().GetRoomKey.gameObject.SetActive(true);
+                canvas2.GetComponent<CanvasLog>().GetBMKey.gameObject.SetActive(true);
 
                 break;
             case "Player3":
-                canvas3.GetComponent<CanvasLog>().GetRoomKey.gameObject.SetActive(true);
+                canvas3.GetComponent<CanvasLog>().GetBMKey.gameObject.SetActive(true);
 
                 break;
             case "Player4":
-                canvas4.GetComponent<CanvasLog>().GetRoomKey.gameObject.SetActive(true);
+                canvas4.GetComponent<CanvasLog>().GetBMKey.gameObject.SetActive(true);
 
                 break;
             default:
@@ -208,19 +201,19 @@ public class keyCollectController : MonoBehaviour {
         switch (keyHolder.transform.parent.name)
         {
             case "Player1":
-                canvas1.GetComponent<CanvasLog>().GetRoomKey.gameObject.SetActive(false);
+                canvas1.GetComponent<CanvasLog>().GetBMKey.gameObject.SetActive(false);
 
                 break;
             case "Player2":
-                canvas2.GetComponent<CanvasLog>().GetRoomKey.gameObject.SetActive(false);
+                canvas2.GetComponent<CanvasLog>().GetBMKey.gameObject.SetActive(false);
 
                 break;
             case "Player3":
-                canvas3.GetComponent<CanvasLog>().GetRoomKey.gameObject.SetActive(false);
+                canvas3.GetComponent<CanvasLog>().GetBMKey.gameObject.SetActive(false);
 
                 break;
             case "Player4":
-                canvas4.GetComponent<CanvasLog>().GetRoomKey.gameObject.SetActive(false);
+                canvas4.GetComponent<CanvasLog>().GetBMKey.gameObject.SetActive(false);
 
                 break;
             default:
@@ -228,8 +221,9 @@ public class keyCollectController : MonoBehaviour {
                 break;
         }
     }
+
     private void setDisable()
     {
-        transform.localScale = new Vector3(0.0f,0.0f,0.0f);
+        transform.localScale = new Vector3(0.0f, 0.0f, 0.0f);
     }
 }

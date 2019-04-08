@@ -3,7 +3,7 @@ using System.Collections.Generic;
 using UnityEngine;
 
 public class chestController : MonoBehaviour {
-    private bool triggered;
+    public bool triggered;
     public bool haveKey;
     private Animator anim;
     

@@ -32,12 +32,16 @@ public class roomResetController : MonoBehaviour {
     public Canvas canvas2;
     public Canvas canvas3;
     public Canvas canvas4;
-    public bool entered;
+    private bool entered1;
+    private bool entered2;
+    private bool entered3;
+    private bool entered4;
     public XboxButton resetButton;
     public XboxController joystick1;
     public XboxController joystick2;
     public XboxController joystick3;
-    public XboxController joystick4; 
+    public XboxController joystick4;
+    public bool animLock;
 
     // Use this for initialization
     void Start () {
@@ -56,19 +60,28 @@ public class roomResetController : MonoBehaviour {
         smallTableO = smallTable.transform.rotation;
         tableLight1O = tableLight1.transform.rotation;
         tableLight2O = tableLight2.transform.rotation;
-        entered = false;
+        entered1 = false;
+        entered2 = false;
+        entered3 = false;
+        entered4 = false;
+        animLock = false;
     }
 	
 	// Update is called once per frame
 	void Update () {
-		
+		if (animLock)
+        {
+
+            animLock = false;
+            anim.SetBool("triggered", false);
+        }
 	}
 
     private void OnTriggerEnter(Collider other)
     {
         if (other is CapsuleCollider)
         {
-            entered = true;
+            entered1 = true;
             print("change to true");
             switch (other.transform.parent.name)
             {
@@ -113,40 +126,44 @@ public class roomResetController : MonoBehaviour {
         smallTable.transform.rotation = smallTableO;
         tableLight1.transform.rotation = tableLight1O;
         tableLight2.transform.rotation = tableLight2O;
-
+        
     }
 
 
     private void OnTriggerStay(Collider other)
     {
-        if (entered)
+       
+        print("now wiating press button");
+        if (XCI.GetButtonDown(resetButton, joystick1) || XCI.GetButtonDown(resetButton, joystick2) || XCI.GetButtonDown(resetButton, joystick3)||XCI.GetButtonDown(resetButton, joystick4))
         {
-            if (XCI.GetButtonDown(resetButton, joystick1) || XCI.GetButtonDown(resetButton, joystick2) || XCI.GetButtonDown(resetButton, joystick3) || XCI.GetButtonDown(resetButton, joystick4))
-            {
-                print("pressed");
-                anim.SetBool("triggered", true);
-                resetRoom();
-
-            }
+            print("pressed");
+            anim.SetBool("triggered", true);
+            resetRoom();
         }
+        
+       
     }
     
 
     private void OnTriggerExit(Collider other)
     {
+        print("now Exit");
         if (other is CapsuleCollider)
         {
+            entered1 = false;
             print("change to true");
             switch (other.transform.parent.name)
             {
                 case "Player1":
                     canvas1.GetComponent<CanvasLog>().pressY.gameObject.SetActive(false);
+                    
                     break;
                 case "Player2":
                     canvas2.GetComponent<CanvasLog>().pressY.gameObject.SetActive(false);
+                    
                     break;
                 case "Player3":
-                    canvas4.GetComponent<CanvasLog>().pressY.gameObject.SetActive(false);
+                    canvas3.GetComponent<CanvasLog>().pressY.gameObject.SetActive(false);
                     break;
                 case "Player4":
                     canvas4.GetComponent<CanvasLog>().pressY.gameObject.SetActive(false);
