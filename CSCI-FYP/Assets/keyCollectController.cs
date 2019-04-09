@@ -4,6 +4,7 @@ using UnityEngine;
 using XboxCtrlrInput;
 
 public class keyCollectController : MonoBehaviour {
+    private AudioManager audioManager;
     public Canvas canvas1;
     public Canvas canvas2;
     public Canvas canvas3;
@@ -38,6 +39,7 @@ public class keyCollectController : MonoBehaviour {
         doorLScript = doorL.GetComponent<doorRight1>();
         doorRScript = doorR.GetComponent<doorRight1>();
         unlocked = false;
+        audioManager = FindObjectOfType<AudioManager>();
     }
 	
 	// Update is called once per frame
@@ -104,6 +106,7 @@ public class keyCollectController : MonoBehaviour {
                 //                doorLScript.haveKey = true;
                 //                doorRScript.haveKey = true;
                 setDisable();
+                audioManager.Play("getKey");
                 switch (other.transform.parent.name)
                 {
                     case "Player1":

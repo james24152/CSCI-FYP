@@ -4,6 +4,7 @@ using UnityEngine;
 using System;
 
 public class waitAllPlayer : MonoBehaviour {
+    private AudioManager audioManager;
     public GameObject blockFront;
     public Animator anim;
     public int totalPlayer;
@@ -17,14 +18,17 @@ public class waitAllPlayer : MonoBehaviour {
     void Start () {
         triggered = false;
         totalPlayer = GameObject.FindGameObjectsWithTag("Player").Length;
+        audioManager = FindObjectOfType<AudioManager>();
+        audioManager.Play("castleBGM");
 
-	}
+    }
 	
 	// Update is called once per frame
 	void Update () {
         if (playerIn == totalPlayer && !triggered)
         {
             triggered = true;
+            audioManager.Play("gateClose");
             canvas1.GetComponent<CanvasLog>().wait.gameObject.SetActive(false);
             canvas2.GetComponent<CanvasLog>().wait.gameObject.SetActive(false);
             canvas3.GetComponent<CanvasLog>().wait.gameObject.SetActive(false);
@@ -32,6 +36,7 @@ public class waitAllPlayer : MonoBehaviour {
             blockFront.SetActive(false);
             anim.SetBool("triggered",true);
             StartCoroutine(CanvasGo());
+            audioManager.FadeOut("castleBGM");
         } 
 	}
 

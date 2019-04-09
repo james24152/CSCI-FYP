@@ -3,7 +3,9 @@ using System.Collections.Generic;
 using UnityEngine;
 
 public class UGDoorController : MonoBehaviour {
+    private AudioManager audioManager;
     public bool haveKey;
+    private bool opened;
     public Animator anim;
     public Canvas canvas1;
     public Canvas canvas2;
@@ -12,7 +14,9 @@ public class UGDoorController : MonoBehaviour {
     // Use this for initialization
     void Start () {
         haveKey = false;
-	}
+        audioManager = FindObjectOfType<AudioManager>();
+        opened = false;
+    }
 	
 	// Update is called once per frame
 	void Update () {
@@ -22,35 +26,35 @@ public class UGDoorController : MonoBehaviour {
     private void OnTriggerEnter(Collider other)
     {
         print("printHere");
-        if (other.gameObject.layer == LayerMask.NameToLayer("Character") && haveKey == true)
+        if (other.gameObject.layer == LayerMask.NameToLayer("Character") && haveKey && !opened)
         {
             anim.SetBool("triggered", true);
+            opened = true;
+            audioManager.Play("UGDoor");
            
         }
-        else if (haveKey == false)
+        else if (other.gameObject.layer == LayerMask.NameToLayer("Character") && !haveKey)
         {
-            if (other is CapsuleCollider)
+            
+            switch (other.transform.parent.name)
             {
-                print("change to true");
-                switch (other.transform.parent.name)
-                {
-                    case "Player1":
-                        canvas1.GetComponent<CanvasLog>().Locked.gameObject.SetActive(true);
-                        break;
-                    case "Player2":
-                        canvas2.GetComponent<CanvasLog>().Locked.gameObject.SetActive(true);
-                        break;
-                    case "Player3":
-                        canvas4.GetComponent<CanvasLog>().Locked.gameObject.SetActive(true);
-                        break;
-                    case "Player4":
-                        canvas4.GetComponent<CanvasLog>().Locked.gameObject.SetActive(true);
-                        break;
-                    default:
-                        Debug.Log("save station switch error");
-                        break;
-                }
+                case "Player1":
+                    canvas1.GetComponent<CanvasLog>().Locked.gameObject.SetActive(true);
+                    break;
+                case "Player2":
+                    canvas2.GetComponent<CanvasLog>().Locked.gameObject.SetActive(true);
+                    break;
+                case "Player3":
+                    canvas4.GetComponent<CanvasLog>().Locked.gameObject.SetActive(true);
+                    break;
+                case "Player4":
+                    canvas4.GetComponent<CanvasLog>().Locked.gameObject.SetActive(true);
+                    break;
+                default:
+                    Debug.Log("save station switch error");
+                    break;
             }
+            
         }
     }
 

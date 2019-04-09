@@ -4,6 +4,7 @@ using UnityEngine;
 using XboxCtrlrInput;
 
 public class basementKeyController : MonoBehaviour {
+    private AudioManager audioManager;
     public Canvas canvas1;
     public Canvas canvas2;
     public Canvas canvas3;
@@ -32,7 +33,7 @@ public class basementKeyController : MonoBehaviour {
         unlocked = false;
         doorScript = door.GetComponent<UGDoorController>();
         selfCollider = GetComponent<Collider>();
-
+        audioManager = FindObjectOfType<AudioManager>();
     }
 	
 	// Update is called once per frame
@@ -100,6 +101,7 @@ public class basementKeyController : MonoBehaviour {
                 //                doorLScript.haveKey = true;
                 //                doorRScript.haveKey = true;
                 setDisable();
+                audioManager.Play("getKey");
                 switch (other.transform.parent.name)
                 {
                     case "Player1":

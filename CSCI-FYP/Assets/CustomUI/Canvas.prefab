@@ -501,7 +501,7 @@ MonoBehaviour:
     m_HorizontalOverflow: 0
     m_VerticalOverflow: 0
     m_LineSpacing: 1
-  m_Text: "You unlock the \nROOM"
+  m_Text: "You have unlocked the \nROOM"
 --- !u!114 &114219313089303286
 MonoBehaviour:
   m_ObjectHideFlags: 1
@@ -791,7 +791,7 @@ MonoBehaviour:
       m_Calls: []
     m_TypeName: UnityEngine.UI.MaskableGraphic+CullStateChangedEvent, UnityEngine.UI,
       Version=1.0.0.0, Culture=neutral, PublicKeyToken=null
-  m_Sprite: {fileID: 21300000, guid: c0f0ad65863d42c41b4cce3976ae09b2, type: 3}
+  m_Sprite: {fileID: 21300000, guid: 9e5cb985b1c6d744eaf29a5c02320d77, type: 3}
   m_Type: 0
   m_PreserveAspect: 0
   m_FillCenter: 1
@@ -976,7 +976,7 @@ MonoBehaviour:
     m_HorizontalOverflow: 0
     m_VerticalOverflow: 0
     m_LineSpacing: 1
-  m_Text: You unlock the BASEMENT
+  m_Text: "You have unlocked the \nBASEMENT"
 --- !u!114 &114822932791615586
 MonoBehaviour:
   m_ObjectHideFlags: 1

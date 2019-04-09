@@ -4,10 +4,11 @@ using UnityEngine;
 
 public class UGtriggered : MonoBehaviour {
     public Animator anim;
-	// Use this for initialization
-	void Start () {
-		
-	}
+    private AudioManager audioManager;
+    // Use this for initialization
+    void Start () {
+        audioManager = FindObjectOfType<AudioManager>();
+    }
 	
 	// Update is called once per frame
 	void Update () {
@@ -18,7 +19,9 @@ public class UGtriggered : MonoBehaviour {
         if (other.gameObject.layer == LayerMask.NameToLayer("Character"))
         {
             anim.SetBool("triggered", true);
-            
+            audioManager.Stop("castleBGM");
+            audioManager.Play("castleBossBGM");
+
         }
     }
 
