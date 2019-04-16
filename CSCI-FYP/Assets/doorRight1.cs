@@ -39,7 +39,7 @@ public class doorRight1 : MonoBehaviour {
             
             anim.SetBool("opened", true);
         }
-        else if(other.gameObject.layer == LayerMask.NameToLayer("Character") && !haveKey)
+     /*   else if(other.gameObject.layer == LayerMask.NameToLayer("Character") && !haveKey)
             {
             switch (other.transform.parent.name)
             {
@@ -63,7 +63,7 @@ public class doorRight1 : MonoBehaviour {
                     Debug.Log("save station switch error");
                     break;
             }
-        }
+        }*/
 
     }
 }
