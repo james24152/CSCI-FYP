@@ -303,6 +303,7 @@ public class ElementCombineBehaviour : MonoBehaviour {
     public void FireLife() {
         ElementCombineBehaviour[] scripts = FindObjectsOfType<ElementCombineBehaviour>();
         foreach (ElementCombineBehaviour script in scripts) {
+            script.gameObject.GetComponent<Health>().TryRegen();
             tempAttack = Instantiate(lifeAttack, script.origin.transform.position, lifeAttack.transform.rotation);
             tempAttack.transform.parent = script.origin.transform;
         }
@@ -336,6 +337,8 @@ public class ElementCombineBehaviour : MonoBehaviour {
 
     public void StopAura() {
         tempAura.Stop();
+        if (lavaLock)
+            lavaLock = false;
         secondTierElement = false;
         instantiated = false;
         elementName = "NULL";

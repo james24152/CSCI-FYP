@@ -34,11 +34,13 @@ public class Health : MonoBehaviour {
     private MoveBehaviour moveScript;
     private Rigidbody rb;
     private DrownBehaviour drownScript;
+    private LavaDrownScript lavaDrownScript;
     private AudioManager audioMangaer;
     private bool isFirstSpawn; 
     GameObject[] gameManager;
     Level1GameManager managerScript;
     Level2GameManager managerScript2;
+    volcanoLevelController managerScript3;
 
     private void Start()
     {
@@ -70,13 +72,19 @@ public class Health : MonoBehaviour {
         }
         anim = GetComponent<Animator>();
         moveScript = GetComponent<MoveBehaviour>();
-        gameManager = GameObject.FindGameObjectsWithTag("GameManager");
+        gameManager = GameObject.FindGameObjectsWithTag("GameManager"); //refactor!!!
         managerScript = gameManager[0].GetComponent<Level1GameManager>();
-        if (managerScript == null)
+        if (managerScript == null) {
             managerScript2 = gameManager[0].GetComponent<Level2GameManager>();
+            if (managerScript2 == null) {
+                managerScript3 = gameManager[0].GetComponent<volcanoLevelController>();
+            }
+        }
+
         audioMangaer = FindObjectOfType<AudioManager>();
         rb = GetComponent<Rigidbody>();
         drownScript = GetComponent<DrownBehaviour>();
+        lavaDrownScript = GetComponent<LavaDrownScript>();
         respawn = FindSpawn();
         if (transform.name == "Earth Eve" || transform.name == "Water Eve" || transform.name == "Fire Eve" || transform.name == "Air Eve")
             FirstSpawn();
@@ -232,6 +240,11 @@ public class Health : MonoBehaviour {
             drownScript.inited = false;
             drownScript.isInWater = false;
         }
+        if (lavaDrownScript != null)
+        {
+            lavaDrownScript.inited = false;
+            lavaDrownScript.isInLava = false;
+        }
         rb.useGravity = true;
         rb.drag = 0;
         Invoke("Wake", 2f);
@@ -288,7 +301,8 @@ public class Health : MonoBehaviour {
             }
             Debug.Log("level is wrong");
         }
-        else { //Stage2
+        else if (managerScript2 != null)
+        { //Stage2
             if (managerScript2.sublevel == 1)
             {
                 GameObject[] spawn1 = GameObject.FindGameObjectsWithTag("Spawn1");
@@ -330,6 +344,24 @@ public class Health : MonoBehaviour {
                 }
             }
             Debug.Log("level is wrong");
+        } else if(managerScript3 != null){ //Stage2
+            GameObject[] spawn1 = GameObject.FindGameObjectsWithTag("Spawn1");
+            if ((gameObject.transform.name == "Earth Eve") || (gameObject.transform.name == "Earth Eve(Clone)"))
+            {
+                return spawn1[1].transform;
+            }
+            if (gameObject.transform.name == "Water Eve" || gameObject.transform.name == "Water Eve(Clone)")
+            {
+                return spawn1[0].transform;
+            }
+            if (gameObject.transform.name == "Fire Eve" || gameObject.transform.name == "Fire Eve(Clone)")
+            {
+                return spawn1[3].transform;
+            }
+            if (gameObject.transform.name == "Air Eve" || gameObject.transform.name == "Air Eve(Clone)")
+            {
+                return spawn1[2].transform;
+            }
         }
         return gameObject.transform;
     }

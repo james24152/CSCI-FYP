@@ -1639,6 +1639,7 @@ GameObject:
   - component: {fileID: 114325711481207716}
   - component: {fileID: 114896691664899608}
   - component: {fileID: 114245325048409040}
+  - component: {fileID: 114668669811096616}
   m_Layer: 10
   m_Name: Water Eve
   m_TagString: Player
@@ -2074,8 +2075,8 @@ Transform:
   m_PrefabParentObject: {fileID: 0}
   m_PrefabInternal: {fileID: 100100000}
   m_GameObject: {fileID: 1967711581360020}
-  m_LocalRotation: {x: 0, y: 1, z: 0, w: 0}
-  m_LocalPosition: {x: -14.62, y: 0, z: 5.69}
+  m_LocalRotation: {x: 0, y: 0.7071068, z: 0, w: 0.7071068}
+  m_LocalPosition: {x: 0, y: 0, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children:
   - {fileID: 4972383068302698}
@@ -2086,7 +2087,7 @@ Transform:
   - {fileID: 4428561577528534}
   m_Father: {fileID: 0}
   m_RootOrder: 0
-  m_LocalEulerAnglesHint: {x: 0, y: 180, z: 0}
+  m_LocalEulerAnglesHint: {x: 0, y: 90, z: 0}
 --- !u!4 &4323082268042572
 Transform:
   m_ObjectHideFlags: 1
@@ -3431,7 +3432,7 @@ MonoBehaviour:
   m_PrefabParentObject: {fileID: 0}
   m_PrefabInternal: {fileID: 100100000}
   m_GameObject: {fileID: 1967711581360020}
-  m_Enabled: 0
+  m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: b93cb6f09ed76cc498db0aba5d8773bc, type: 3}
   m_Name: 
@@ -3454,7 +3455,7 @@ MonoBehaviour:
   m_PrefabParentObject: {fileID: 0}
   m_PrefabInternal: {fileID: 100100000}
   m_GameObject: {fileID: 1967711581360020}
-  m_Enabled: 0
+  m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: f056a71656d059444b1cd6fd69456c1f, type: 3}
   m_Name: 
@@ -3492,10 +3493,10 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 06ab882bfba3f854dbfb6b62bf107c54, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  earthEve: {fileID: 1808633723774864, guid: a666b4b64805a644bbc5f11b92b0e958, type: 2}
+  earthEve: {fileID: 1218151397260190, guid: b374fbfddfbd22344b5634181015164c, type: 2}
   waterEve: {fileID: 1967711581360020}
-  fireEve: {fileID: 1539869617077334, guid: 9c0501b72fffa6a478cfd20dd98c70ea, type: 2}
-  airEve: {fileID: 1159662375413382, guid: 26e74c95bc3577940980807e3b8214ba, type: 2}
+  fireEve: {fileID: 1933211315089820, guid: 0402a598204b65348a78f841857a6f06, type: 2}
+  airEve: {fileID: 1907195598122188, guid: 10e994750102cf44ba9ac162d6e15a80, type: 2}
   earthFx: {fileID: 198683642931419858, guid: 5e8ffcfa8485e5d458be6d64015c4433, type: 2}
   waterFx: {fileID: 198627196327330122, guid: d399199477fccfe4aad81b1d1fa4eeca, type: 2}
   fireFx: {fileID: 198476698190073724, guid: 13182df65c0c2c64fa8898144cd3666e, type: 2}
@@ -3511,7 +3512,7 @@ MonoBehaviour:
   m_PrefabParentObject: {fileID: 0}
   m_PrefabInternal: {fileID: 100100000}
   m_GameObject: {fileID: 1967711581360020}
-  m_Enabled: 0
+  m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: ef6013119f286ba45acd150ba8f54d4a, type: 3}
   m_Name: 
@@ -3533,7 +3534,7 @@ MonoBehaviour:
   m_PrefabParentObject: {fileID: 0}
   m_PrefabInternal: {fileID: 100100000}
   m_GameObject: {fileID: 1967711581360020}
-  m_Enabled: 0
+  m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: 247335de9c2ba3d49bbbada1d0562339, type: 3}
   m_Name: 
@@ -3546,6 +3547,22 @@ MonoBehaviour:
   aimCamOffset: {x: 0, y: 0.4, z: -1.5}
   joystick: 2
   aimSpeed: 1.5
+--- !u!114 &114668669811096616
+MonoBehaviour:
+  m_ObjectHideFlags: 1
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 100100000}
+  m_GameObject: {fileID: 1967711581360020}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 5fdbc9546d9618f4e9c6a059822e027d, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  turningSpeed: 0.01
+  flapVelocity: 0
+  drag: 2
+  inited: 0
+  isInLava: 0
 --- !u!114 &114699906182062060
 MonoBehaviour:
   m_ObjectHideFlags: 1
@@ -3632,7 +3649,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 7d91044bddee1594cb64cddcbb5e76b9, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  joystick: 1
+  joystick: 2
   playerCamera: {fileID: 0}
   turnSmoothing: 0.06
   sprintFOV: 100
@@ -3645,7 +3662,7 @@ MonoBehaviour:
   m_PrefabParentObject: {fileID: 0}
   m_PrefabInternal: {fileID: 100100000}
   m_GameObject: {fileID: 1967711581360020}
-  m_Enabled: 0
+  m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: 534dc9ee269ba254e832d2d318b205dd, type: 3}
   m_Name: 
@@ -3666,7 +3683,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 3a06548c4c7510742a4a460c4da69139, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  joystick: 1
+  joystick: 2
   fireHandL: {fileID: 198976360267149726}
   shootPoint: {fileID: 1894684864186344}
   bullet: {fileID: 1025034366332902, guid: dca5888f1876ca747a57f8e1a6931e27, type: 2}
@@ -3978,7 +3995,7 @@ CharacterJoint:
   m_Anchor: {x: 0, y: 0, z: 0}
   m_Axis: {x: 1, y: 0, z: 0}
   m_AutoConfigureConnectedAnchor: 1
-  m_ConnectedAnchor: {x: -0.06947165, y: 0.00000007088034, z: 0.00000011920932}
+  m_ConnectedAnchor: {x: -0.06947257, y: 0.000000070879615, z: -0.00000008940699}
   serializedVersion: 2
   m_SwingAxis: {x: 0, y: 1, z: 0}
   m_TwistLimitSpring:

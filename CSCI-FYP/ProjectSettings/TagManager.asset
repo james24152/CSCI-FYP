@@ -51,6 +51,8 @@ TagManager:
   - FogAttack
   - SandStormAttack
   - DashTrail
+  - Lava
+  - LavaSoftKill
   layers:
   - Default
   - TransparentFX

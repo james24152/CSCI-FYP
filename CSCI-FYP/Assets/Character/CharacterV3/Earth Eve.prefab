@@ -385,6 +385,7 @@ GameObject:
   - component: {fileID: 114978412258290382}
   - component: {fileID: 114957981203487418}
   - component: {fileID: 114449558536153120}
+  - component: {fileID: 114944552757607008}
   m_Layer: 10
   m_Name: Earth Eve
   m_TagString: Player
@@ -1242,7 +1243,7 @@ GameObject:
   m_Component:
   - component: {fileID: 4766325246768676}
   - component: {fileID: 54002194124834178}
-  m_Layer: 14
+  m_Layer: 0
   m_Name: head
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -2060,7 +2061,7 @@ Transform:
   m_PrefabInternal: {fileID: 100100000}
   m_GameObject: {fileID: 1218151397260190}
   m_LocalRotation: {x: 0, y: 0.7071068, z: 0, w: 0.7071068}
-  m_LocalPosition: {x: -16.53, y: 0, z: -18.2}
+  m_LocalPosition: {x: 0, y: 0, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children:
   - {fileID: 4450878491629710}
@@ -2960,7 +2961,7 @@ BoxCollider:
   m_GameObject: {fileID: 1218151397260190}
   m_Material: {fileID: 0}
   m_IsTrigger: 1
-  m_Enabled: 0
+  m_Enabled: 1
   serializedVersion: 2
   m_Size: {x: 3, y: 0.1, z: 3}
   m_Center: {x: 0, y: 0.3, z: 0}
@@ -3006,7 +3007,7 @@ MonoBehaviour:
   m_PrefabParentObject: {fileID: 0}
   m_PrefabInternal: {fileID: 100100000}
   m_GameObject: {fileID: 1218151397260190}
-  m_Enabled: 0
+  m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: ef6013119f286ba45acd150ba8f54d4a, type: 3}
   m_Name: 
@@ -3190,7 +3191,7 @@ MonoBehaviour:
   m_PrefabParentObject: {fileID: 0}
   m_PrefabInternal: {fileID: 100100000}
   m_GameObject: {fileID: 1218151397260190}
-  m_Enabled: 0
+  m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: b93cb6f09ed76cc498db0aba5d8773bc, type: 3}
   m_Name: 
@@ -3237,6 +3238,22 @@ MonoBehaviour:
   punchButton: 5
   cam: {fileID: 0}
   speedMod: 0
+--- !u!114 &114944552757607008
+MonoBehaviour:
+  m_ObjectHideFlags: 1
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 100100000}
+  m_GameObject: {fileID: 1218151397260190}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 5fdbc9546d9618f4e9c6a059822e027d, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  turningSpeed: 0.01
+  flapVelocity: 0
+  drag: 2
+  inited: 0
+  isInLava: 0
 --- !u!114 &114957981203487418
 MonoBehaviour:
   m_ObjectHideFlags: 1
@@ -3271,9 +3288,9 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   earthEve: {fileID: 1218151397260190}
-  waterEve: {fileID: 1450047247110820, guid: c54b455b3653aa748bad7ece4fea0747, type: 2}
-  fireEve: {fileID: 1539869617077334, guid: 9c0501b72fffa6a478cfd20dd98c70ea, type: 2}
-  airEve: {fileID: 1159662375413382, guid: 26e74c95bc3577940980807e3b8214ba, type: 2}
+  waterEve: {fileID: 1967711581360020, guid: 102d76e340baef84c84300b31fb1a13a, type: 2}
+  fireEve: {fileID: 1933211315089820, guid: 0402a598204b65348a78f841857a6f06, type: 2}
+  airEve: {fileID: 1907195598122188, guid: 10e994750102cf44ba9ac162d6e15a80, type: 2}
   earthFx: {fileID: 198683642931419858, guid: 5e8ffcfa8485e5d458be6d64015c4433, type: 2}
   waterFx: {fileID: 198627196327330122, guid: d399199477fccfe4aad81b1d1fa4eeca, type: 2}
   fireFx: {fileID: 198476698190073724, guid: 13182df65c0c2c64fa8898144cd3666e, type: 2}
@@ -3289,7 +3306,7 @@ MonoBehaviour:
   m_PrefabParentObject: {fileID: 0}
   m_PrefabInternal: {fileID: 100100000}
   m_GameObject: {fileID: 1218151397260190}
-  m_Enabled: 0
+  m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: aa6345162cdaadb4fb28b58d679ae159, type: 3}
   m_Name: 
@@ -3517,7 +3534,7 @@ CharacterJoint:
   m_Anchor: {x: 0, y: 0, z: 0}
   m_Axis: {x: 1, y: 0, z: 0}
   m_AutoConfigureConnectedAnchor: 1
-  m_ConnectedAnchor: {x: -0.5940811, y: 0.2537058, z: 0.00021427512}
+  m_ConnectedAnchor: {x: -0.59408116, y: 0.25370008, z: 0.00021236877}
   serializedVersion: 2
   m_SwingAxis: {x: 0, y: 1, z: 0}
   m_TwistLimitSpring:
@@ -3561,7 +3578,7 @@ CharacterJoint:
   m_Anchor: {x: 0, y: 0, z: 0}
   m_Axis: {x: 1, y: 0, z: 0}
   m_AutoConfigureConnectedAnchor: 1
-  m_ConnectedAnchor: {x: -0.5940811, y: -0.25311112, z: 0.00021427388}
+  m_ConnectedAnchor: {x: -0.59408116, y: -0.2531054, z: 0.00021236754}
   serializedVersion: 2
   m_SwingAxis: {x: 0, y: 1, z: 0}
   m_TwistLimitSpring:

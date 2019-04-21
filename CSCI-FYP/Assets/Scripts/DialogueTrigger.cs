@@ -27,7 +27,7 @@ public class DialogueTrigger : MonoBehaviour {
             audioManager.Play(BGMWhileTrigger);
             BGMLock = true;
         }
-        
+        Debug.Log("trigger enter");
         TriggerDialogue();
     }
 

@@ -12,7 +12,7 @@ public class RushEnemy : SmallEnemy {
     private NavMeshAgent agent;
     private Animator anim;
     public float maxHealth = 10f;
-    private float health = 10f;
+    public float health = 10f;
     private bool leaveEnemy;
     private GameObject attackTarget;
     private ParticleSystem tempWet;
@@ -33,6 +33,7 @@ public class RushEnemy : SmallEnemy {
 
     // Use this for initialization
     void Start() {
+        Instantiate(deathEffect, origin.transform.position, deathEffect.transform.rotation);
         Health[] scripts = FindObjectsOfType<Health>();
         foreach (Health script in scripts)
         {

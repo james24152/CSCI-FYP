@@ -5,7 +5,9 @@ public class FogBehaviour : MonoBehaviour
 {
 
     public bool fog;
+    public bool lava;
     public Color fogColor;
+    public Color lavaColor;
     public float fogDensity;
     public Color ambientLight;
     public float haloStrength;
@@ -29,7 +31,10 @@ public class FogBehaviour : MonoBehaviour
         if (fog)
         {
             RenderSettings.fog = fog;
-            RenderSettings.fogColor = fogColor;
+            if (lava)
+                RenderSettings.fogColor = lavaColor;
+            else
+                RenderSettings.fogColor = fogColor;
             RenderSettings.fogDensity = fogDensity;
             RenderSettings.ambientLight = ambientLight;
             RenderSettings.haloStrength = haloStrength;

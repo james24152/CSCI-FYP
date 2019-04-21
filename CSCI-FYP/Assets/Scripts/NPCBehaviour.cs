@@ -19,11 +19,11 @@ public class NPCBehaviour : MonoBehaviour {
 
     private void OnTriggerEnter(Collider other)
     {
-        if (gameObject.transform.name == "OuterCollider")
+        if (gameObject.transform.name == "OuterCollider" && other.gameObject.layer == LayerMask.NameToLayer("Character"))
         {
             anim.SetBool("OuterCollider", true);
         }
-        else if (gameObject.transform.name == "InnerCollider")
+        else if (gameObject.transform.name == "InnerCollider" && other.gameObject.layer == LayerMask.NameToLayer("Character"))
         {
             image.gameObject.SetActive(true);
             text.text = "What do you want buy?";
@@ -34,12 +34,12 @@ public class NPCBehaviour : MonoBehaviour {
     }
     private void OnTriggerExit(Collider other)
     {
-        if (gameObject.transform.name == "OuterCollider")
+        if (gameObject.transform.name == "OuterCollider" && other.gameObject.layer == LayerMask.NameToLayer("Character"))
         {
             anim.SetBool("OuterCollider", false);
             dialogueCanvas.SetBool("toggled", false);
         }
-        else if (gameObject.transform.name == "InnerCollider")
+        else if (gameObject.transform.name == "InnerCollider" && other.gameObject.layer == LayerMask.NameToLayer("Character"))
         {
             shopAnim = ShopScript.shopScript.gameObject.GetComponent<Animator>();
             text.text = "See you next time!";
