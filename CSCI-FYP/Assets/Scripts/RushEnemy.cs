@@ -18,6 +18,7 @@ public class RushEnemy : SmallEnemy {
     private ParticleSystem tempWet;
     private bool isWet;
     private bool isDead;
+    private AudioManager audioManager;
 
     public Transform origin;
     public ParticleSystem wetEffect;
@@ -41,6 +42,8 @@ public class RushEnemy : SmallEnemy {
         }
         agent = GetComponent<NavMeshAgent>();
         anim = GetComponent<Animator>();
+        audioManager = FindObjectOfType<AudioManager>();
+        audioManager.Play("EnemyDead");
     }
 
     // Update is called once per frame
@@ -116,6 +119,7 @@ public class RushEnemy : SmallEnemy {
     }
 
     private void Die() {
+        audioManager.Play("EnemyDead");
         Instantiate(deathEffect, origin.transform.position, deathEffect.transform.rotation);
         Destroy(gameObject);
     }

@@ -19,6 +19,7 @@ public class FlyEnemy : SmallEnemy {
     private ParticleSystem tempCharge;
     public float rotationDamping = 10f;
     private bool continueLockOn;
+    private AudioManager audioManager;
 
     //damage system
     public float maxHealth = 10f;
@@ -49,6 +50,7 @@ public class FlyEnemy : SmallEnemy {
         rbody = GetComponent<Rigidbody>();
         agent = GetComponent<NavMeshAgent>();
         anim = GetComponent<Animator>();
+        audioManager = FindObjectOfType<AudioManager>();
     }
 	
 	// Update is called once per frame
@@ -85,6 +87,7 @@ public class FlyEnemy : SmallEnemy {
     }
 
     public void Charge() {
+        audioManager.Play("EnemyCharge");
         tempCharge = Instantiate(chargeParticle, center.transform.position, gameObject.transform.rotation);
         tempCharge.transform.parent = center.transform;
         tempCharge.transform.localScale = new Vector3(1, 1, 1);
@@ -148,6 +151,7 @@ public class FlyEnemy : SmallEnemy {
 
     private void Die()
     {
+        audioManager.Play("EnemyDead");
         Instantiate(deathEffect, origin.transform.position, deathEffect.transform.rotation);
         Destroy(gameObject);
     }

@@ -21,6 +21,7 @@ public class PickUpBehaviour : MonoBehaviour {
     public Transform bindingHand2;
     public bool forceEject = false;
     public Image popUp;
+    public bool isInKeyTrigger;
 
     private Vector3 grabPosition;
     private Vector3 grabRotation;
@@ -49,7 +50,7 @@ public class PickUpBehaviour : MonoBehaviour {
         if (
             Physics.Raycast(playerCam.transform.position,
                              playerCam.transform.forward, out hitCheck, 4,
-                             layerMask))
+                             layerMask) || isInKeyTrigger)
         {
             if (!grab && !pickUp)
                 popUp.gameObject.SetActive(true);

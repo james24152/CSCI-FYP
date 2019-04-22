@@ -5,9 +5,11 @@ using UnityEngine;
 public class UGtriggered : MonoBehaviour {
     public Animator anim;
     private AudioManager audioManager;
+    private castleManager manager;
     // Use this for initialization
     void Start () {
         audioManager = FindObjectOfType<AudioManager>();
+        manager = FindObjectOfType<castleManager>();
     }
 	
 	// Update is called once per frame
@@ -21,7 +23,7 @@ public class UGtriggered : MonoBehaviour {
             anim.SetBool("triggered", true);
             audioManager.Stop("castleBGM");
             audioManager.Play("castleBossBGM");
-
+            manager.sublevel = 2;
         }
     }
 

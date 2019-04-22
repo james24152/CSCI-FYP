@@ -53,6 +53,7 @@ TagManager:
   - DashTrail
   - Lava
   - LavaSoftKill
+  - LightBox
   layers:
   - Default
   - TransparentFX
@@ -72,8 +73,8 @@ TagManager:
   - FireLayer
   - Boss
   - BossDashPhase
-  - 
-  - 
+  - LightBox
+  - Floor
   - 
   - 
   - 

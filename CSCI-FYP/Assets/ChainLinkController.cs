@@ -4,12 +4,12 @@ using UnityEngine;
 
 public class ChainLinkController : MonoBehaviour
 {
-    private Collider collider;
+    private Collider meshCollider;
     
     // Use this for initialization
     void Start()
     {
-        collider = GetComponent<Collider>();
+        meshCollider = GetComponent<Collider>();
     }
 
     // Update is called once per frame
@@ -21,9 +21,14 @@ public class ChainLinkController : MonoBehaviour
     void OnCollisionEnter(Collision collision)
     {
         
-        //if (collision.gameObject.GetComponent<ElementCombineBehavior>().elementName == "Steam")
-        //{
-        //    collider.enabled = false;
-        //}
+        if (collision.gameObject.GetComponent<ElementCombineBehaviour>().elementName == "Steam")
+        {
+            meshCollider.isTrigger = true;
+        }
+    }
+
+    private void OnTriggerExit(Collider collider)
+    {
+        meshCollider.isTrigger = false;
     }
 }

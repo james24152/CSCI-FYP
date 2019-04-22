@@ -4,11 +4,12 @@ using UnityEngine;
 
 public class CoinCollectControl : MonoBehaviour {
     public float RotateSpeed = 20;
-    public CurrencyManager manager;
+    private CurrencyManager manager;
     private AudioManager audioManager;
     // Use this for initialization
     void Start () {
         audioManager = FindObjectOfType<AudioManager>();
+        manager = FindObjectOfType<CurrencyManager>();
     }
 	
 	// Update is called once per frame

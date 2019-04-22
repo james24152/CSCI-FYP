@@ -20,6 +20,7 @@ public class FireBallEnemy : SmallEnemy {
     private bool isWet;
     private float nextFire;
     private bool isDead;
+    private AudioManager audioManager;
 
     public float maxHealth = 10f;
     public Transform origin;
@@ -50,6 +51,7 @@ public class FireBallEnemy : SmallEnemy {
         }
         agent = GetComponent<NavMeshAgent>();
         anim = GetComponent<Animator>();
+        audioManager = FindObjectOfType<AudioManager>();
     }
 
     // Update is called once per frame
@@ -84,6 +86,7 @@ public class FireBallEnemy : SmallEnemy {
     }
 
     private void Fire() {
+        audioManager.Play("EnemyShoot");
         GameObject tempFireBall = Instantiate(fireball, shootPoint.position, gameObject.transform.rotation);
         tempFireBall.GetComponent<Rigidbody>().AddForce(gameObject.transform.forward * force);
     }
@@ -158,6 +161,7 @@ public class FireBallEnemy : SmallEnemy {
 
     private void Die()
     {
+        audioManager.Play("EnemyDead");
         Instantiate(deathEffect, origin.transform.position, deathEffect.transform.rotation);
         Destroy(gameObject);
     }

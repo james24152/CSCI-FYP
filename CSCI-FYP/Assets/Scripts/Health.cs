@@ -41,6 +41,7 @@ public class Health : MonoBehaviour {
     Level1GameManager managerScript;
     Level2GameManager managerScript2;
     volcanoLevelController managerScript3;
+    castleManager managerScript4;
 
     private void Start()
     {
@@ -78,6 +79,9 @@ public class Health : MonoBehaviour {
             managerScript2 = gameManager[0].GetComponent<Level2GameManager>();
             if (managerScript2 == null) {
                 managerScript3 = gameManager[0].GetComponent<volcanoLevelController>();
+                if (managerScript3 == null) {
+                    managerScript4 = gameManager[0].GetComponent<castleManager>();
+                }
             }
         }
 
@@ -344,7 +348,9 @@ public class Health : MonoBehaviour {
                 }
             }
             Debug.Log("level is wrong");
-        } else if(managerScript3 != null){ //Stage2
+        }
+        else if (managerScript3 != null)
+        { //Stage3
             GameObject[] spawn1 = GameObject.FindGameObjectsWithTag("Spawn1");
             if ((gameObject.transform.name == "Earth Eve") || (gameObject.transform.name == "Earth Eve(Clone)"))
             {
@@ -362,6 +368,49 @@ public class Health : MonoBehaviour {
             {
                 return spawn1[2].transform;
             }
+        }
+        else if (managerScript4 != null) { //Stage4
+            if (managerScript4.sublevel == 1)
+            {
+                GameObject[] spawn1 = GameObject.FindGameObjectsWithTag("Spawn1");
+                if ((gameObject.transform.name == "Earth Eve") || (gameObject.transform.name == "Earth Eve(Clone)"))
+                {
+                    return spawn1[0].transform;
+                }
+                if (gameObject.transform.name == "Water Eve" || gameObject.transform.name == "Water Eve(Clone)")
+                {
+                    return spawn1[3].transform;
+                }
+                if (gameObject.transform.name == "Fire Eve" || gameObject.transform.name == "Fire Eve(Clone)")
+                {
+                    return spawn1[2].transform;
+                }
+                if (gameObject.transform.name == "Air Eve" || gameObject.transform.name == "Air Eve(Clone)")
+                {
+                    return spawn1[1].transform;
+                }
+            }
+            else if (managerScript4.sublevel == 2)
+            {
+                GameObject[] spawn2 = GameObject.FindGameObjectsWithTag("Spawn2");
+                if ((gameObject.transform.name == "Earth Eve") || (gameObject.transform.name == "Earth Eve(Clone)"))
+                {
+                    return spawn2[0].transform;
+                }
+                if (gameObject.transform.name == "Water Eve" || gameObject.transform.name == "Water Eve(Clone)")
+                {
+                    return spawn2[3].transform;
+                }
+                if (gameObject.transform.name == "Fire Eve" || gameObject.transform.name == "Fire Eve(Clone)")
+                {
+                    return spawn2[1].transform;
+                }
+                if (gameObject.transform.name == "Air Eve" || gameObject.transform.name == "Air Eve(Clone)")
+                {
+                    return spawn2[2].transform;
+                }
+            }
+            Debug.Log("level is wrong");
         }
         return gameObject.transform;
     }

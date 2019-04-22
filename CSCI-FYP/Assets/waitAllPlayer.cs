@@ -20,7 +20,6 @@ public class waitAllPlayer : MonoBehaviour {
         totalPlayer = GameObject.FindGameObjectsWithTag("Player").Length;
         audioManager = FindObjectOfType<AudioManager>();
         audioManager.Play("castleBGM");
-
     }
 	
 	// Update is called once per frame

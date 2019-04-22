@@ -25,6 +25,7 @@ public class BossBehaviour : SmallEnemy {
     public float rotationDamping = 6.0f;
     public float aoeCD = 20f; //for boss not spamming aoe
     public float pushKnockBack = 26f;
+    public DialogueTrigger trigger;
 
     private float nextAOE;
     private bool aoeOnCD;
@@ -43,6 +44,7 @@ public class BossBehaviour : SmallEnemy {
     private int swingInited = 2; //0: not inited, 1:inited, 2: onStandby
     private int dashInited = 2; //0: not inited, 1:inited, 2: onStandby
     public bool P2;
+    private AudioManager audioManager;
 
     //success rate related variables
     private int totalAttackAmount;
@@ -95,6 +97,7 @@ public class BossBehaviour : SmallEnemy {
         anim = GetComponent<Animator>();
         rBody = GetComponent<Rigidbody>();
         agent = GetComponent<NavMeshAgent>();
+        audioManager = FindObjectOfType<AudioManager>();
     }
 
     // Update is called once per frame
@@ -126,7 +129,7 @@ public class BossBehaviour : SmallEnemy {
 
     private void Tactics() {
         Debug.Log("Tactics");
-        if (health < 250) {
+        if (health < 100) {
             //Phase 2 begins
             P2 = true;
             anim.SetBool("P2", true);
@@ -150,7 +153,7 @@ public class BossBehaviour : SmallEnemy {
                 P2UpdateAttackSuccessRate();
         }
         far = anim.GetBool("FarAway");
-        healthLow = health < 350 ? true : false;
+        healthLow = health < 150 ? true : false;
         Debug.Log("Health = " + health);
         if (!far) //near
         {
@@ -486,6 +489,7 @@ public class BossBehaviour : SmallEnemy {
     }
 
     public void InitiateProjectile() {
+        audioManager.Play("BossRoar");
         Debug.Log("Using projtile");
         agent.isStopped = true;
         lockOn = true;
@@ -496,6 +500,7 @@ public class BossBehaviour : SmallEnemy {
 
     public void InitiateSwing()
     {
+        audioManager.Play("BossRoar");
         swingInited = 1;
         anim.SetBool("Move", false);
         Debug.Log("using swing");
@@ -514,16 +519,20 @@ public class BossBehaviour : SmallEnemy {
 
     public void InitiateAOE()
     {
+        audioManager.Play("BossRoar");
         Debug.Log("init aoe");
         state = 2;
+        lockOn = true;
         anim.SetBool("UseAOE", true);
         aoeAmount++;
     }
 
     public void InitiatePushAndHeal()
     {
+        audioManager.Play("BossRoar");
         anim.SetBool("Move", false);
         Debug.Log("Push and Heal");
+        lockOn = true;
         agent.isStopped = true;
         state = 4;
         anim.SetBool("NeedHeal", true);
@@ -531,6 +540,7 @@ public class BossBehaviour : SmallEnemy {
 
     public void FireProj()
     {
+        audioManager.Play("BossProj");
         lockOn = false;
         ParticleSystem tempProj = Instantiate(proj, projPoint.transform.position, gameObject.transform.rotation);
         tempProj.gameObject.GetComponent<BossParticleHOM>().master = gameObject;
@@ -561,6 +571,7 @@ public class BossBehaviour : SmallEnemy {
 
     public void Heal()
     {
+        audioManager.Play("BossHeal");
         tempAttack = Instantiate(healing, origin.transform.position, healing.transform.rotation);
         health += 20;
         healthBar.fillAmount = health / maxHealth;
@@ -576,6 +587,7 @@ public class BossBehaviour : SmallEnemy {
 
     public void AOE()
     {
+        audioManager.Play("BossAOE");
         tempAttack = Instantiate(aoe, origin.transform.position, aoe.transform.rotation);
         tempAttack.GetComponentInChildren<BossParticleHOM>().master = gameObject;
         anim.SetBool("UseAOE", false);
@@ -584,6 +596,7 @@ public class BossBehaviour : SmallEnemy {
     //P2 Initiate
 
     public void InitiateP2Dash() {
+        audioManager.Play("BossRoar");
         Debug.Log(rotationLockOnTarget);
         dashInited = 1;
         anim.SetBool("Move", false);
@@ -603,7 +616,9 @@ public class BossBehaviour : SmallEnemy {
     }
 
     public void InitiateP2Bind() {
+        audioManager.Play("BossRoar");
         Debug.Log("P2Bind");
+        lockOn = true;
         agent.isStopped = true;
         state = 7;
         anim.SetBool("Bind", true);
@@ -612,13 +627,16 @@ public class BossBehaviour : SmallEnemy {
 
     public void InitiateP2AOE()
     {
+        audioManager.Play("BossRoar");
         Debug.Log("P2 aoe");
+        lockOn = true;
         state = 6;
         anim.SetBool("P2AOE", true);
         p2aoeAmount++;
     }
 
     public void InitiateP2SpawnMinion() {   //not used
+        audioManager.Play("BossRoar");
         anim.SetBool("Summon", true);
         Debug.Log("spawning minion");
         agent.isStopped = true;
@@ -626,6 +644,7 @@ public class BossBehaviour : SmallEnemy {
     }
 
     public void P2Bind() {
+        audioManager.Play("BossP2Bind");
         anim.SetBool("Bind", false);
         tempAttack = Instantiate(bindAura, origin.transform.position, bindAura.transform.rotation);
         ElementCombineBehaviour[] scripts = FindObjectsOfType<ElementCombineBehaviour>();
@@ -672,6 +691,7 @@ public class BossBehaviour : SmallEnemy {
         gameObject.layer = LayerMask.NameToLayer("BossDashPhase");
         tempAttack = Instantiate(P2DashTrail, origin.transform.position, P2DashTrail.transform.rotation);
         tempAttack.transform.parent = origin;
+        audioManager.Play("BossDash");
         tempAttack.gameObject.GetComponent<BossParticleHOM>().master = gameObject;
         rBody.AddForce(transform.forward * dashForce); //take care of residue particle?
         anim.SetBool("Dash", false);
@@ -688,6 +708,7 @@ public class BossBehaviour : SmallEnemy {
     }
 
     public void P2AOEAttack() {
+        audioManager.Play("BossP2AOE");
         GameObject tempAttack = Instantiate(P2AOE, origin.transform.position, gameObject.transform.rotation);
         BossParticleHOM[] homs = tempAttack.GetComponentsInChildren<BossParticleHOM>();
         foreach (BossParticleHOM hom in homs) {
@@ -703,14 +724,16 @@ public class BossBehaviour : SmallEnemy {
     }
 
     private void CheckFlinch() {
-        if (damageTaken >= 125) {
+        if (damageTaken >= 30) {
             if (!flinched)
             {
+                audioManager.Play("BossRoar");
                 anim.SetBool("Flinch", true); //first flinch
                 flinched = true;
             }
-            else if (damageTaken >= 375) {
+            else if (damageTaken >= 120) {
                 if (!flinchedTwice) {
+                    audioManager.Play("BossRoar");
                     anim.SetBool("Flinch", true); //second flinch
                     flinchedTwice = true;
                 }
@@ -727,11 +750,17 @@ public class BossBehaviour : SmallEnemy {
             //die
             if (!isDead)
             {
+                audioManager.Play("BossRoar");
                 anim.SetBool("Die", true);
                 agent.enabled = false;
+                Invoke("Cutscene", 6f);
                 isDead = true;
             }
         }
+    }
+
+    private void Cutscene() {
+        trigger.TriggerDialogue();
     }
 
     public void UnFlinch() {

@@ -46,6 +46,9 @@ public class ElementCombineBehaviour : MonoBehaviour {
     private ParticleSystem aura;
     private ParticleSystem tempAura;
     private ParticleSystem tempAttack;
+    private AudioManager audioManager;
+    private String auraAudioString;
+    private String attackAudioString;
     public List<string[]> chart;
     private string combinedElement;
     private bool instantiated;
@@ -61,6 +64,7 @@ public class ElementCombineBehaviour : MonoBehaviour {
         anim = GetComponent<Animator>();
         CreateElementCombineLookUpList();
         currentElement = CheckElement();
+        audioManager = FindObjectOfType<AudioManager>();
     }
 
     private void Update()
@@ -145,41 +149,56 @@ public class ElementCombineBehaviour : MonoBehaviour {
                 elementName = "Steam";
                 transformFx = Instantiate(steamTransform, center.transform.position, steamTransform.transform.rotation);
                 aura = steamAura;
+                auraAudioString = "SteamAura";
+                attackAudioString = "SteamAttack";
                 break;
             case "Fog":
                 elementName = "Fog";
                 transformFx = Instantiate(fogTransform, center.transform.position, fogTransform.transform.rotation);
                 aura = fogAura;
+                auraAudioString = "FogAura";
+                attackAudioString = "FogAttack";
                 break;
             case "Sand":
                 elementName = "Sand";
                 transformFx = Instantiate(sandTransform, center.transform.position, sandTransform.transform.rotation);
                 aura = sandAura;
+                auraAudioString = "SandStormAura";
+                attackAudioString = "SandStormAttack";
                 break;
             case "Thunder":
                 elementName = "Thunder";
                 transformFx = Instantiate(thunderTransform, center.transform.position, thunderTransform.transform.rotation);
                 aura = thunderAura;
+                auraAudioString = "LightningAura";
+                attackAudioString = "ThunderAttack";
                 break;
             case "Life":
                 elementName = "Life";
                 transformFx = Instantiate(lifeTransform, center.transform.position, lifeTransform.transform.rotation);
                 aura = lifeAura;
+                auraAudioString = "LifeAura";
+                attackAudioString = "LifeAttack";
                 break;
             case "Lava":
                 elementName = "Lava";
                 transformFx = Instantiate(lavaTransform, center.transform.position, lavaTransform.transform.rotation);
                 aura = lavaAura;
+                auraAudioString = "LavaAura";
+                attackAudioString = "LavaAttack";
                 break;
         }
+        audioManager.Play("ElementCombine");
         anim.SetInteger("CombinedElement", Array.IndexOf(secondTierElements, combinedElement));
         transformFx.transform.parent = center.transform;
         Invoke("Aura", 2f);
     }
 
     private void Aura() {
+        audioManager.FadeOut("ElementCombine");
         tempAura = Instantiate(aura, center.transform.position, aura.transform.rotation);
         tempAura.transform.parent = center.transform;
+        audioManager.Play(auraAudioString);
     }
 
     private bool CheckCollision(GameObject other) {
@@ -286,6 +305,7 @@ public class ElementCombineBehaviour : MonoBehaviour {
     public void FireLava()
     {
         if (!lavaLock) {
+            audioManager.Play(attackAudioString);
             tempAttack = Instantiate(lavaAttack, lavaPoint.transform.position, gameObject.transform.rotation);
             ParticleStopBehaviour steamScript = tempAttack.GetComponent<ParticleStopBehaviour>();
             steamScript.master = gameObject;
@@ -294,6 +314,7 @@ public class ElementCombineBehaviour : MonoBehaviour {
         }
     }
     public void FireThunder() {
+        audioManager.Play(attackAudioString);
         tempAttack = Instantiate(thunderAttack, thunderPoint.transform.position, gameObject.transform.rotation);
         ParticleStopBehaviour steamScript = tempAttack.GetComponent<ParticleStopBehaviour>();
         steamScript.master = gameObject;
@@ -301,6 +322,7 @@ public class ElementCombineBehaviour : MonoBehaviour {
     }
 
     public void FireLife() {
+        audioManager.Play(attackAudioString);
         ElementCombineBehaviour[] scripts = FindObjectsOfType<ElementCombineBehaviour>();
         foreach (ElementCombineBehaviour script in scripts) {
             script.gameObject.GetComponent<Health>().TryRegen();
@@ -312,6 +334,7 @@ public class ElementCombineBehaviour : MonoBehaviour {
     }
 
     public void FireSand() {
+        audioManager.Play(attackAudioString);
         tempAttack = Instantiate(sandAttack, center.transform.position, sandAttack.transform.rotation);
         ParticleStopBehaviour steamScript = tempAttack.GetComponent<ParticleStopBehaviour>();
         steamScript.master = gameObject;
@@ -320,6 +343,7 @@ public class ElementCombineBehaviour : MonoBehaviour {
 
     public void FireFog()
     {
+        audioManager.Play(attackAudioString);
         tempAttack = Instantiate(fogAttack, center.transform.position, fogAttack.transform.rotation);
         ParticleStopBehaviour steamScript = tempAttack.GetComponent<ParticleStopBehaviour>();
         steamScript.master = gameObject;
@@ -328,6 +352,7 @@ public class ElementCombineBehaviour : MonoBehaviour {
 
     public void FireSteam()
     {
+        audioManager.Play(attackAudioString);
         tempAttack = Instantiate(steamAttack, steamPoint.transform.position, gameObject.transform.rotation);
         ParticleStopBehaviour steamScript = tempAttack.GetComponent<ParticleStopBehaviour>();
         steamScript.master = gameObject;
@@ -337,6 +362,8 @@ public class ElementCombineBehaviour : MonoBehaviour {
 
     public void StopAura() {
         tempAura.Stop();
+        audioManager.FadeOut(attackAudioString);
+        audioManager.FadeOut(auraAudioString);
         if (lavaLock)
             lavaLock = false;
         secondTierElement = false;

@@ -69,28 +69,7 @@ public class keyCollectController : MonoBehaviour {
             pickAct = true;
             triggered = true;
             print("change to true");
-            switch (other.transform.parent.name)
-            {
-                case "Player1":
-                    canvas1.GetComponent<CanvasHearts>().pressX.gameObject.SetActive(true);
-                    
-                    break;
-                case "Player2":
-                    canvas2.GetComponent<CanvasHearts>().pressX.gameObject.SetActive(true);
-                    
-                    break;
-                case "Player3":
-                    canvas3.GetComponent<CanvasHearts>().pressX.gameObject.SetActive(true);
-
-                    break;
-                case "Player4":
-                    canvas4.GetComponent<CanvasHearts>().pressX.gameObject.SetActive(true);
- 
-                    break;
-                default:
-                    Debug.Log("save station switch error");
-                    break;
-            }
+            other.gameObject.GetComponent<PickUpBehaviour>().isInKeyTrigger = true;
         }
     }
 
@@ -107,25 +86,22 @@ public class keyCollectController : MonoBehaviour {
                 //                doorRScript.haveKey = true;
                 setDisable();
                 audioManager.Play("getKey");
+                other.gameObject.GetComponent<PickUpBehaviour>().isInKeyTrigger = false;
                 switch (other.transform.parent.name)
                 {
                     case "Player1":
-                        canvas1.GetComponent<CanvasHearts>().pressX.gameObject.SetActive(false);
                         canvas1.GetComponent<CanvasLog>().key.gameObject.SetActive(true);
                         keyHolder = other.gameObject;
                         break;
                     case "Player2":
                         canvas2.GetComponent<CanvasLog>().key.gameObject.SetActive(true);
-                        canvas2.GetComponent<CanvasHearts>().pressX.gameObject.SetActive(false);
                         keyHolder = other.gameObject;
                         break;
                     case "Player3":
-                        canvas3.GetComponent<CanvasHearts>().pressX.gameObject.SetActive(false);
                         canvas3.GetComponent<CanvasLog>().key.gameObject.SetActive(true);
                         keyHolder = other.gameObject;
                         break;
                     case "Player4":
-                        canvas4.GetComponent<CanvasHearts>().pressX.gameObject.SetActive(false);
                         canvas4.GetComponent<CanvasLog>().key.gameObject.SetActive(true);
                         keyHolder = other.gameObject;
                         break;
@@ -145,35 +121,14 @@ public class keyCollectController : MonoBehaviour {
         {
             entered1 = false;
             triggered = false;
-            switch (other.transform.parent.name)
-            {
-                case "Player1":
-                    canvas1.GetComponent<CanvasHearts>().pressX.gameObject.SetActive(false);
-                    
-                    break;
-                case "Player2":
-                    canvas2.GetComponent<CanvasHearts>().pressX.gameObject.SetActive(false);
-
-                    break;
-                case "Player3":
-                    canvas3.GetComponent<CanvasHearts>().pressX.gameObject.SetActive(false);
-
-                    break;
-                case "Player4":
-                    canvas4.GetComponent<CanvasHearts>().pressX.gameObject.SetActive(false);
-
-                    break;
-                
-                default:
-                    break;
-            }
+            other.gameObject.GetComponent<PickUpBehaviour>().isInKeyTrigger = false;
         }
     }
 
 
     private bool checkColliderName(GameObject other)
     {
-        if (other.name == "Earth Eve" || other.name == "Fire Eve" || other.name == "Water Eve" || other.name == "Air Eve")
+        if (other.name == "Earth Eve" || other.name == "Fire Eve" || other.name == "Water Eve" || other.name == "Air Eve" || other.name == "Earth Eve(Clone)" || other.name == "Fire Eve(Clone)" || other.name == "Water Eve(Clone)" || other.name == "Air Eve(Clone)")
         {
             return true;
         }

@@ -58,7 +58,7 @@ MeshRenderer:
   m_ReflectionProbeUsage: 1
   m_RenderingLayerMask: 4294967295
   m_Materials:
-  - {fileID: 2100000, guid: 33779e10f86b9144dac4da261547373d, type: 2}
+  - {fileID: 2100000, guid: 842e0cc7ef9265f4980f854bb394277a, type: 2}
   m_StaticBatchInfo:
     firstSubMesh: 0
     subMeshCount: 0
@@ -97,6 +97,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   RotateSpeed: 20
+  manager: {fileID: 0}
 --- !u!136 &136311243257476476
 CapsuleCollider:
   m_ObjectHideFlags: 1
