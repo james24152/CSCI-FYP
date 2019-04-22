@@ -18,6 +18,7 @@ public class CoinCollectControl : MonoBehaviour {
     }
     private void OnTriggerEnter(Collider other)
     {
+        print(other.gameObject.layer);
         if (other.gameObject.layer == LayerMask.NameToLayer("Character"))
         {
             audioManager.Play("BGMCollectCoin");

@@ -5,9 +5,12 @@ using UnityEngine;
 public class closeChestController : MonoBehaviour {
     private int counter;
     public Animator anim;
+    public GameObject cover;
+    private chestController coverScript;
 	// Use this for initialization
 	void Start () {
         counter = 0;
+        coverScript = cover.GetComponent<chestController>();
 	}
 	
 	// Update is called once per frame
@@ -31,6 +34,7 @@ public class closeChestController : MonoBehaviour {
             if(counter == 0 && anim.GetBool("chestOpen"))
             {
                 anim.SetBool("chestOpen", false);
+                coverScript.triggered = false;
             }
         }
     }

@@ -21,6 +21,7 @@ public class furnitureController : MonoBehaviour {
     }
     private void OnTriggerEnter(Collider other)
     {
+        print(other.name);
         if (other.name != "Earth Eve")
         {
             furnitureRigidbody.velocity = zero;
